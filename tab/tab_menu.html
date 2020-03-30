@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+ ul { list-style: none; }
+ button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+.tab::after { content: ''; display: block; overflow: hidden; clear: both; }
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #fdc7c7;
+}
+.tab button:hover {
+  background-color: rgb(63, 17, 17);
+  color: white;
+} 
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.tab_active { display: block; }
+.bg_active { background-color: rgb(63, 17, 17); color: white; }
+
+</style>
+<script>
+    $(document).ready( function(){
+
+        $('.tablinks').each( function(){
+            $(this).click( function(){
+                
+				$(".tablinks").removeClass("bg_active");
+				$(this).addClass("bg_active");
+
+				$(".tabcontent").removeClass("tab_active");
+				$(".tabcontent").css("display", "none");
+
+                var chk = $(this).attr("tab_name");
+                $('#' + chk).css("display", "block");
+                //jquery ui data 참고
+
+            });
+            
+        });
+    });
+</script>
+
+
+</head>
+<body>
+    <h2>tab menu</h2>
+    <div class="tab">
+        <button class="tablinks bg_active" tab_name="tab1">카테고리</button>
+        <button class="tablinks" tab_name="tab2">마이페이지</button>
+        <button class="tablinks" tab_name="tab3">오늘본상품</button>
+    </div>
+
+    <div class="tabcontent tab_active" id="tab1">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+
+    <div class="tabcontent" id="tab2">
+        <ul>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+        </ul>
+    </div>
+
+    <div class="tabcontent" id="tab3">
+        <ul>
+            <li>d</li>
+            <li>d</li>
+            <li>d</li>
+            <li>d</li>
+            <li>a</li>
+        </ul>
+    </div>
+
+</body>
+</html> 
