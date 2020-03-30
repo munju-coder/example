@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> slick slider </title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="slick-1.8.1/slick/slick.css">
+    <link rel="stylesheet" href="slick-1.8.1/slick/slick-theme.scss">    
+    <script src="slick-1.8.1/slick/slick.min.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.slick').slick({
+            dots: true, //하단 paging 버튼 노출 유무
+            arrows: true, 
+            prevArrow: '.slick-prev', //prev 버튼
+            nextArrow: '.slick-next', //netx 버튼
+            infinite: true, //양방향 무한 모션
+            speed: 100, //슬라이드 스피드
+            autoplay: true, //자동플레이 유무
+            autoplaySpeed: 4000, //자동 플레이 스피드
+            
+        });
+
+        $('#slider-div').slick({
+				slide: 'div',		//슬라이드 되어야 할 태그 ex) div, li 
+				infinite : true, 	//무한 반복 옵션	 
+				slidesToShow : 1,		// 한 화면에 보여질 컨텐츠 개수
+				slidesToScroll : 1,		//스크롤 한번에 움직일 컨텐츠 개수
+				speed : 100,	 // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
+				arrows : true, 		// 옆으로 이동하는 화살표 표시 여부
+				dots : true, 		// 스크롤바 아래 점으로 페이지네이션 여부
+				autoplay : true,			// 자동 스크롤 사용 여부
+				autoplaySpeed : 10000, 		// 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
+				pauseOnHover : true,		// 슬라이드 이동	시 마우스 호버하면 슬라이더 멈추게 설정
+				vertical : false,		// 세로 방향 슬라이드 옵션
+				prevArrow : "<i class='slick-prev fas fa-chevron-left'></i>",		// 이전 화살표 모양 설정
+				nextArrow : "<i class='slick-prev fas fa-chevron-right'></i>",		// 다음 화살표 모양 설정
+				//dotsClass : "slick-dots", 	//아래 나오는 페이지네이션(점) css class 지정
+				draggable : true, 	//드래그 가능 여부 
+				
+				responsive: [ // 반응형 웹 구현 옵션
+					{  
+						breakpoint: 992, //화면 사이즈 960px
+						settings: {
+							//위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+							slidesToShow:1
+						} 
+					},
+					{ 
+						breakpoint: 768, //화면 사이즈 768px
+						settings: {	
+							//위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+							slidesToShow:1
+						} 
+					}
+				]
+
+			});
+
+    });
+</script>
+
+<style>
+
+.slick-dots { position: absolute; bottom: -45px; list-style: none; display: block; text-align: center; padding: 0; width: 100%; }
+.slick-dots li { position: relative; display: inline-block; height: 20px; width: 20px; margin: 0 5px; padding: 0; cursor: pointer; }
+.slick-dots li button { border: 0; display: block; height: 20px; width: 20px; outline: none; line-height: 0; font-size: 0; padding: 5px; cursor: pointer; background-color: blue; border-radius: 23px; }
+
+    
+</style>
+
+<body>
+<!--     <div class="slick">
+        <div><img src="images/main_banner1.jpg" alt=""></div>
+        <div><img src="images/main_banner2.jpg" alt=""></div>
+        <div><img src="images/main_banner3.jpg" alt=""></div>
+    </div> -->
+
+    <!-- <i class="slick-prev fas fa-chevron-left"></i>
+    <i class="slick_next fas fa-chevron-right"></i> -->
+
+    <!-- <div class="slick-prev"></div>
+    <div class="slick_next"></div> -->
+        <div id="slider-div">
+          <div><img src="images/main_banner1.jpg" alt=""></div>
+          <div><img src="images/main_banner2.jpg" alt=""></div>
+          <div><img src="images/main_banner3.jpg" alt=""></div>
+        </div>    
+
+
+</body>
+</html>
