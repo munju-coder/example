@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>비회원 주문</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="js/jquery.number.min.js"></script>
+	
+</head>
+
+<script>
+	$(document).ready( function(){
+		var $selectEmail = $('.select_domain'),
+		    $targetInput = $('.email_domain'),
+			$count = $('.count'),
+			// $unitPrice =parseInt($('.unitprice').attr('data-unitprice')), //문자->숫자 parseInt로 묶어줌 숫자형식으로 가져오게 정수로 바뀐게 들어감
+			// $currentNumber = $('.count').text(),
+
+			$unit = $('.unitprice').text(), //콤마가있는 40만원 저장
+
+			$unitPrice = parseInt($('.unitprice').text()),
+			//A.replace(B,C) 
+			$unitPrice = parseInt($unit.replace(',','')), //콤마를 빼서 전체를 정수로 만듬
+			$currentNumber = parseInt($count.text()),
+			$total = $('.total');
+
+			//parseInt(값) 값을 숫자(정수)로 변환
+
+			
+
+			$('span a').click( function(e){
+				e.preventDefault(); //a 태그 링크 기본속성 막음
+				if($(this).hasClass('plus')){ //.plus를 클릭한게 판단이 되면 1만큼 증가
+					$currentNumber += 1;
+				}else{
+					if($currentNumber > 0) {
+						$currentNumber -= 1;
+
+					}
+
+				}
+				// console.log($currentNumber); 1을 문자로 인식함. 숫자로 바뀌줘야함
+				// console.log($currentNumber);
+				$count.text($currentNumber);
+
+				var semiTotal = $unitPrice * $currentNumber;
+				/* var total = Number(semiTotal).toLocaleString('en'); */ //천단위구분
+				$total.text(semiTotal); //합계
+				$('.number').number( true );
+
+			});//버튼을 클릭할때 할일
+			$('.number').number( true );
+
+
+			$selectEmail.change( function(){
+				var domain = $(this).val();
+				/* console.log('1'); */
+				$targetInput.val(domain);
+			});
+		
+
+
+	});
+</script>
+<body>
+<h1>주문하기</h1>
+	
+<form action="#" method="post">
+	<fieldset>
+		<legend>주문자 정보</legend>
+		<p>
+			<label for="username">성명</label>
+			<input type="text" name="ordername" id="username" value="" placeholder="주문자명">			
+		</p>
+		<p>
+			<label for="useremail">이메일</label>
+			<input type="text" class="email_name" value=""> @
+			<input type="text" class="email_domain" value="">
+			<select class="select_domain">
+				<option value="daum.net">daum</option>
+				<option value="naver.com">naver</option>
+				<option value="gmail.com">gmail</option>
+				<option value="yahoo.com">yahoo</option>
+				<option value="">직접입력</option>
+			</select>
+		</p>
+	</fieldset>
+	<fieldset>
+		<legend>주문정보</legend>
+		<p>
+			<span>i pad mini 64GB</span>
+			<span class="unitprice" data-unitprice="400000">400,000</span>원
+			<span>
+				<a href="#" id="minus"> - </a> / 
+				<a href="#" id="plus" class="plus"> + </a>
+				개수: <em class="count">1</em>
+			</span>
+			합계 : 
+			<span class="total number">
+				400000
+			</span>원
+		</p>
+		<p>
+		</p>
+	</fieldset>	
+</form>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
