@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>append, prepend,before,after,remove,empty</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+
+<script>
+    $(document).ready( function(){
+        $('.btn1').click( function(){
+            $('p').append('<b>append text</b>');
+        });
+
+        $('.btn2').click( function(){
+            $('ul').append('<li>4</li>');
+        });
+
+        $('.btn3').click( function(){
+            $('p').prepend('<b>prevend text</b>');
+        });
+
+        $('.btn4').click( function(){
+            $('.apple').before('<b>before</b>')
+        });
+        
+        $('.btn5').click( function(){
+            $('p').remove();
+        });
+
+        $('.btn6').click( function(){
+            $('.p_empty').empty();
+        });
+
+
+
+    });
+</script>
+
+<style>
+    .p_empty { background-color: rebeccapurple; } 
+
+</style>
+
+<body>
+    <p>1.append추가하기</p>
+    <p>1.append추가하기</p>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <span class="apple"><i class="fab fa-apple"></i></span>
+
+<button class="btn1">Append text</button>
+<button class="btn2">Append list items</button>
+<button class="btn3">Append text</button>
+<button class="btn4">Append text</button>
+
+<div class="p_empty">
+    This is empty
+    <p>p태그 empty</p>
+    <p>p태그 empty</p>
+    <p>p태그 empty</p>
+</div>
+
+<div class="remove_div">
+    <button class="btn5">Remove div element</button>
+    <button class="btn6">empty div element</button>
+</div>
+
+</body>
+</html>

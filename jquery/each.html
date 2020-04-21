@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+<script>
+
+    $(document).ready( function(){
+
+        $('.sub_img img').each( function(){
+
+            $(this).click( function(){
+
+                var img = $(this).attr('src');
+                $('.main_img > img').attr('src',img);
+            });
+        });
+    });
+</script>
+
+<style>
+    .main_img img { width: 300px; }
+    .sub_img img { width: 100px; }
+
+</style>
+
+<body>
+    <!-- <div>
+        <span>첫번째</span>
+        <span>두번째</span>
+        <span>세번째</span>
+    </div> -->
+
+    <div class="main_img">
+        <img src="../images/chrome_img.png" alt="">
+    </div>
+
+    <div class="sub_img">
+        <img src="../images/pr_img33.png" alt="">
+        <img src="../images/pr_img34.jpg" alt="">
+        <img src="../images/pr_img35.jpg" alt="">
+    </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text,html,val</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    $(document).ready( function(){
+
+        $('.btn1').click( function(){
+            // console.log(1);
+            $('.test1').text("Hello");
+        });
+
+        $('.btn2').click( function(){
+
+            $('.test2').html("<h2>hi</h2>");
+            $('.test2').css('color','red');
+
+        });
+
+        $('.btn3').click( function(){
+            var Today = "today";
+            //var Today = $(".test2").text();
+            $('.test3').val(Today);
+        });
+    });
+</script>
+
+</head>
+
+<body>
+
+    <h1>제이쿼리 val()</h1>
+    <p class="test1">This is paragraph</p>
+    <p class="test2">This is another paragraph</p>
+    
+    <p>Input field <input type="text" class="test3" value="monday"></p>
+
+    <button class="btn1">set Text</button>
+    <button class="btn2">set html</button>
+    <button class="btn3">set value</button>
+</body>
+</html>

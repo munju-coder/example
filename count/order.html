@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>비회원 주문</title>
+	<title>증가감소 상품수량</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script src="js/jquery.number.min.js"></script>
@@ -13,6 +13,8 @@
 	$(document).ready( function(){
 		var $selectEmail = $('.select_domain'),
 		    $targetInput = $('.email_domain'),
+
+
 			$count = $('.count'),
 			// $unitPrice =parseInt($('.unitprice').attr('data-unitprice')), //문자->숫자 parseInt로 묶어줌 숫자형식으로 가져오게 정수로 바뀐게 들어감
 			// $currentNumber = $('.count').text(),
@@ -58,7 +60,43 @@
 				/* console.log('1'); */
 				$targetInput.val(domain);
 			});
+
+
+			/**
+			1. 공통으로 사용하는 전역변수를 선언한다.
+			2. 옵션 값이 있을경우 옵션 value를 가져온다.hdl_login
+			3. Plus, Minus event 시 값을 증가감 시켜준다.
+			*/
+			var option_price = 0;
+			var product_price = Number($(".unitprice").attr("data-unitprice"));
+			var total_price = product_price;
+			var count = Number($(".count").text());
+			var sum_price = 0;
+
+			$(".price").change(function(){
+				option_price = Number($(this).val());
+				total_price = product_price + option_price;
+
+				if(option_price == 0 || option_price == "")
+				{
+					$(".total").text(product_price);
+				}
+				else
+				{
+					$(".total").text(total_price);
+				}
+
+				sum_price = total_price;
+				
+			});
+
+			$(".plus").click(function(){
+				count = count + 1;
+				total_price = sum_price * count;
+				$(".total").text(total_price);
+			});
 		
+			
 
 
 	});
@@ -83,6 +121,14 @@
 				<option value="gmail.com">gmail</option>
 				<option value="yahoo.com">yahoo</option>
 				<option value="">직접입력</option>
+			</select>
+
+			<select class="price">
+				<option value="">옵션을선택하세요.</option>
+				<option value="0">문주 +0</option>
+				<option value="1000">문주 +1000</option>				
+				<option value="100">문주 +100</option>
+				<option value="2000">문주 +2000</option>
 			</select>
 		</p>
 	</fieldset>
