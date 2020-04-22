@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> bx_full( background-image) </title>
+    <link rel="stylesheet" href="css/jquery.bxslider.css">
+    <style>
+        
+        body {
+            margin: 0;
+        }
+        
+        #mainVis {
+            width: 100%;
+            height: 450px;
+        }
+        
+        #mainVis ul li {
+            height: 450px;
+        }
+        
+        .bg1 { background: url(http://placehold.it/1920x450/ed2f2f/ffffff?text=1) center center no-repeat; }
+        .bg2 { background: url(http://placehold.it/1920x450/edba2f/ffffff?text=2) center center no-repeat; }
+        .bg3 { background: url(http://placehold.it/1920x450/2fed36/ffffff?text=3) center center no-repeat; }
+        .bg4 { background: url(http://placehold.it/1920x450/2f62ed/ffffff?text=4) center center no-repeat; }
+        
+    </style>
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="js/jquery.bxslider.js"></script>
+    <script>
+    
+        $( function() {
+           
+            var slider = $( '.slider' ).bxSlider();
+            
+        });
+    </script>
+</head>
+
+<body>
+
+<section id="mainVis">
+    <ul class="slider">
+        <li class="bg1"></li>
+        <li class="bg2"></li>
+        <li class="bg3"></li>
+        <li class="bg4"></li>
+    </ul>
+</section>
+
+
+</body>
+
+</html>

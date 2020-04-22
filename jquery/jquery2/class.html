@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Class제어 </title>
+    
+    <style>
+    
+        body {
+            min-width: 800px;
+        }
+        
+        p,dl,dd {
+            margin: 0;
+        }
+        
+        .main {
+            width: 400px;
+            height: 400px;
+            margin: 80px auto;
+            border: 0 dashed black;
+            overflow: hidden;
+        }
+        
+        .main img {
+            width: 100%;
+            display: block;
+        }
+        
+        .main p {
+            height: 110px;
+            background-color: black;
+            color: white;
+            font-size: 22px;
+            font-weight: 900;
+            line-height: 110px;
+            text-align: center;
+        }
+        
+        .listGroup {
+            width: 800px;
+            margin: auto;
+     /*       background-color: palevioletred;*/
+            overflow: hidden;
+            /*clear대신 부모영역에 overflow*/
+        }
+        
+        .listGroup dl {
+            width: 130px;
+            padding: 10px;
+            margin: 0 25px;
+            float: left;
+        }
+        
+        .listGroup dl dt {
+            padding: 5px;
+            font-weight: 900;
+            border-bottom: 2px solid black;
+        }
+        
+        .listGroup dl dd {
+            padding: 10px;
+            margin: 5px 0;
+            user-select: none;
+            transition: all .5s ease;
+        }
+        
+        
+        .listGroup dl dd:hover {
+            background-color: black;
+            color: white;
+        }
+        
+        
+        .effect1{
+            box-shadow: 0 0 30px black;
+        }/*x, y-제자리, 블러, color*/
+        .effect2 { border: 5px dashed black; }
+        .effect3 { border-radius: 50%; }
+        
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="script/class.js"></script>
+    
+</head>
+
+<body>
+
+<div class="main">
+    <img src="images/main.jpg" alt="돼지">
+    <p>Class제어</p>
+</div>
+
+<div class="listGroup">
+    <dl class="list1">
+        <dt>addClass</dt>
+        <dd>box-shadow</dd>
+        <dd>border</dd>
+        <dd>border-radius</dd>
+    </dl>
+    
+    <dl class="list2">
+        <dt>removeClass</dt>
+        <dd>box-shadow</dd>
+        <dd>border</dd>
+        <dd>border-radius</dd>
+    </dl>
+    
+    <dl class="list3">
+        <dt>toggleClass</dt>
+        <dd>box-shadow</dd>
+        <dd>border</dd>
+        <dd>border-radius</dd>
+    </dl>
+    
+    <dl class="list4">
+        <dt>hasClass</dt>
+        <dd>effect1</dd>
+        <dd>effect2</dd>
+        <dd>effect3</dd>
+    </dl>
+</div>
+
+</body>
+
+</html>

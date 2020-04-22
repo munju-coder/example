@@ -1,0 +1,112 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	<style>
+    
+        @font-face {
+            font-family: swg;
+            src: url(font/SDSwaggerTTF.eot);
+            src: local( ※ ),
+                url(font/SDSwaggerTTF.woff) format('woff'),
+             url(font/SDSwaggerTTF.ttf) format('truetype')
+        }
+        body{
+            font-family: swg;
+            margin: 0;
+        }
+        header{
+            height: 400px;
+            background: url(images/home_office.jpg) center center fixed;
+            background-size: cover;
+        }
+        nav{
+            background-color: #2a2929;
+            padding: 20px 0; /* padding 대신에 높이값을 주면, 안의 내용작업시 중간에 넣을때 여백을 줄 수가 없으므로, padding으로 주면 가운데 맞춤도 수월함.*/
+        }
+        nav ul{
+            display: inline-table;/*table안에 들어있는 cell들은 넓이값을 안에 들어있는 퍼센트에 맞게 알아서 들어가줌.*/
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        nav ul li{
+            display: table-cell;/*inline-table을 쓰면 자식요소에는 table-cell이 꼭 들어있어야함. */
+            width: calc(100%/7); /*1/7->14.2857...*/
+            height: 20px;
+            text-align: center;
+            border-left: 1px solid #ccc;
+        }
+        nav ul li:first-child{
+            border: 0;
+        }
+        nav ul li a{
+            color: #ffb62f;
+            text-decoration: none;
+            font-size: 24px;
+        }
+        section{
+            height: 2000px;
+            background: url(http://placehold.it/1000/14a3fd/ffffff?text=contents) center center;
+            background-size: cover; 
+        }
+        .nav_fix{
+            position: fixed;
+            width:100%;
+            top: 0;
+        }
+        
+    
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+    
+    $(function(){
+      // 브라우저 창의 세로 스크롤바가 움직이면 함수 실행
+        $(window).scroll( function(){
+            
+            console.log( $(this).scrollTop() );
+            //방향값은 top, left만 있음.세로스크롤바 움직일때
+           if( $(this).scrollTop() >=$('header').height() ){
+               //header 높이값이 400, 고정하고자 하는 위치값은 400
+               //세로 스크롤바가 400이상 ->아래, 400이하-> 위
+               //400이상일때만 고정해주고 그렇지 않으면 움직이게 끔. 
+               $( 'nav' ).addClass('nav_fix');
+               
+           }else { $( 'nav' ).removeClass('nav_fix');
+                  //그렇지 않으면 고정이 안되게 만들어야하므로, 클래스를 제거한다.
+            }
+            
+        });
+    });
+    
+    </script>
+</head>
+
+<body>
+
+<header></header>
+
+   <nav>
+    <ul>
+        <li><a href="#">HTML</a></li>
+        <li><a href="#">CSS</a></li>
+        <li><a href="#">JavaScript</a></li>
+        <li><a href="#">jQuery</a></li>
+        <li><a href="#">웹표준</a></li>
+        <li><a href="#">반응형 웹</a></li>
+        <li><a href="#">크로스 브라우징</a></li>
+    </ul>
+</nav>
+
+<section></section>
+
+<footer>Copyright &copy; All Rights Reserved</footer>
+
+</body>
+</html>

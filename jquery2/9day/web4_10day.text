@@ -1,0 +1,171 @@
+7day->결석, 
+web4 -9~10day
+키보드 로그인, 키보드페이징 
+
+
+key-board_paging 예제> 
+-키보드 방향키 오른쪽을 누르면(keydown, 37, 39 -방향키코드)
+배경색이 페이지마다 애니메이션 동작 실행
+
+
+ ★switch case문 ;->: 콜론 이용
+조건-> 조건식이 아니라 어떠한 값과 비교함.
+하나의 case구문이 끝나면 break; 
+switch( 값 ) {
+       case 비교값 1(첫번째비교값) :
+              비교값 1과 일치 할 경우 실행 할 내용;
+              break; 
+       
+       case 비교값 2 :
+              비교값 2와 일치 할 경우 실행 할 내용;
+              break; 
+       
+       case 비교값 3 :
+              비교값 2과 일치 할 경우 실행 할 내용;
+              break; 
+              
+              default (else구문과 비슷) :
+              비교값이 일치 하지 않은 경우 실행 할 내용;
+              break;
+   }
+ ★ keyCode -키값
+     keydown - 키보드의 키가 눌려질때 
+     keypress - 키보드의 키가 눌려서 입력 될때 
+     keyup    -키보드의 키가 떼어질 떄 
+
+
+
+<script>
+    
+        $( function() {
+           
+            $( window ).keydown( function( e ) {
+                -> 브라우저 창에서 키보드의 키가 눌려질때(keydown) event 함수 실행 ( 해야 할 일 )
+                console.log( e.keyCode );
+                ->콘솔값 찍어서 확인 ( 동작할 방향키 left->37, right->39 눌러서 키코드값 확인가능)
+
+                switch( e.keyCode ) {
+                       ->switch 문 이용해서 동작 실행.
+ 
+                    case 37 :
+                        $( 'html, body' ).stop().animate({ 'scrollLeft' : '-=' + $(this).width() }, 1000 );
+
+                        ->비교값 37과 일치할 경우 실행할 내용 (37은 키보드 왼쪽 방향키)
+                        -> html, body에 animate를  scrollLeft(스크롤왼쪽)로 빼서,
+                         $(this).width() ->keydown된 브라우저의 넓이를 1초 동안 실행해라.
+
+                        break;
+                        -> switch 문에서 비교구문 끝나면 항상 break; 
+
+                    case 39 :
+                        $( 'html, body' ).stop().animate({ 'scrollLeft' : '+=' + $(this).width() }, 1000 );
+                        ->html,body에 키의 오른쪽 방향이 눌려지면 브라우저의 넓이를 더해담고 애니메이션 1초실행
+                        break;       
+                }  
+            });
+            
+        });
+        
+    </script>
+
+
+
+--------------------------keyboard_login.html---------------------------------------------------------------
+
+
+style>
+css 부분
+border-top-left-radius: 100px;
+border-top-right-radius: 100px;
+
+->form태그 윗부분 둥그렇게 top-left, top-right두개 넣을것. 
+
+:focus 선택자
+a:focus{속성: 속성 값;}
+
+->해당 요소에 초점이 맞춰졌을 떄 적용, 예를 들면
+텍스트 필드 안에 초점이 맞춰질떄 사용. 
+
+
+★placsholder 의 color 를 바꾸려면
+:: colon 2개 붙여서 css 작성
+
+->fieldset input::placeholder{
+            color: #810e66;
+        }
+
+★leftArm, rightArm 에는 
+on 클래스 추가하거나 제거해서 동작 넣어줌. 
+
+★스크립트 
+
+ $(function(){
+          
+            var faceX;
+            var faceY;
+            var txtLength;
+            --> 변수지정(돼지 face 움직임에 따라 -x축, y축, 아이디가 입력되는 
+             글자에 따라서 동작할 것이므로 3개 필요함 
+
+             function faceMove(txtLength){
+                 
+                 faceX = 50+txtLength *2;
+            --> *2 하는 이유는 maxlength가 12글자로 좁게 보일 수 있으므로 두배해줌.
+                 faceY = 90;
+                 
+                 $('.face').stop().animate({'top':faceY,'left':faceX},150);
+             }
+            
+            $('#userId').focus( function(){
+              -->#userId 에 초점이 맞춰졌을떄(focus) 해야할일 
+                $('.pig').removeClass('on');
+              --> .pig 클래스에 있는 on클래스 제거 
+             --> on클래스에는 왼쪽, 오른쪽 팔 위치가 지정되어 있었음.
+
+                faceMove(txtLength);
+             --> txtLength 함수 호출 
+            });
+            
+            $('#userId').keydown( function(){
+              -->#userId(아이디입력란)에 키보드가 눌려지면 해야 할 일
+
+                txtLength = $(this).val().length;
+              -->txtLength에 담아줘라 
+              -->키보드가 눌려진 아이디입력안의 value 값의 길이- 즉,입력한 갯수
+                faceMove(txtLength);
+              -->txtLength 함수 호출
+            });
+            
+            $('#userPw').focus( function(){
+              -->#userPw(비밀번호입력란)에 초점이 맞춰지면 해야할 일 
+
+                faceX = 50;   -->left값
+                faceY =70;    -->top값
+                
+                $('.face').stop().animate({'top':faceY, 'left':faceX},150);
+             -->.face에 left로는 50, top은 70만큼 1.5초 동안 애니메이션 실행   
+                $('.pig').addClass('on');
+            -->.pig 클래스에 on클래스 추가 
+             
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

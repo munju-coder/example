@@ -1,0 +1,61 @@
+html, body { height: 100%; }
+
+body , h1 , dd {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    width: 25%;
+    height: 100%;
+    background-color: #003909;
+    color: white;
+    position: absolute;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 3vw;
+    margin: 40px auto;
+}
+
+header ul li {
+    padding: 1vw 1.2vw;
+    margin: 0 2vw;
+}
+
+section {
+    width: 75%;
+    height: 100%;
+    float: right;
+    background-color: #ededed;
+}
+
+section .product {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+section .btn {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    top: 10px;
+    right: 25px;
+    background-color: #003909;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    font-size: 22px;
+}

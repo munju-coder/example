@@ -1,0 +1,34 @@
+멀티미디어 
+★video 태그 속성 
+
+★autoplay 자동으로 비디오 재생
+★src 재생 할 비디오 경로 지정 (삽입할 비디오의 주소)
+HTML5 에서의 표준 파일 형식이 지정되지 않았기
+떄문에 모든 브라우저에서 다 보여주기 위해서는
+★source 태그를 이용하여 여러 형식의 파일을 
+추가 해줘야 한다. ----
+★controls 컨트롤러 표시
+★loop 비디오 반복 재생
+★poster 재생 전 보일 이미지 경로(섬네일)
+
+★preload 동영상 재생 시 다운로드 여부 (auto자동, none조작전 다운X)
+★muted 비디오 오디오 출력을 중지( 비디오에 포함된 오디오를 음소거할지 지정)
+--> 기본값 false/ 지원 브라우저 IE 10+ 크롬 FF, 오페라 사파리 6+
+
+★<video 태그 요소 파일 형식 지원>
+1. mp4 파일: IE, Chrome, FF, Safari
+2. WebM 파일 : Chrome, FF, Opera
+3. ogg 파일: Chrome, FF , Opera
+
+★<source>요소
+소스 태그는 <video>, <audio> 태그와 함께 사용
+src : 파일 경로,  type="video/mp4" 파일 형식 유형
+
+★video 태그 형식
+<video width="넓이" height="넓이" 재생속성>
+
+<source src="파일명.mp4" type="video/mp4">
+<source src="파일명.ogv" type="video/ogv">
+<source src="파일명.webm" type="video/webm">
+
+</video>

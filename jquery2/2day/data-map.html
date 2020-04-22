@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <style>
+        * {
+            user-select: none;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .store {
+            width: 800px;
+            margin: 100px auto;
+
+        }
+
+        .storeList ul li {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: chocolate;
+            color: aliceblue;
+            margin: 10px 0;
+        }
+
+        .storeList ul li:hover {
+            background-color: #812300;
+        }
+
+        .mapArea {
+            margin-top: 80px;
+        }
+
+        .wrap_controllers {
+            display: none;
+        }
+
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+        $(function() {
+
+            var stamp = "1565311690176"
+            var key = "uoag"
+
+            function mapDraw() {
+                new daum.roughmap.Lander({
+                    "timestamp": stamp,
+                    "key": key,
+                    "mapWidth": "800",
+                    "mapHeight": "400"
+                }).render();
+            }
+            mapDraw();
+
+            $('.storeList ul li').click(function() {
+
+                stamp = $(this).attr('data-stamp');
+                key = $(this).attr('data-key');
+
+                $('.mapArea').html('<div id="daumRoughmapContainer' + stamp + '" class="root_daum_roughmap root_daum_roughmap_landing"</div>');
+
+                mapDraw();
+
+            });
+
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="store">
+
+        <div class="storeList">
+            <ul>
+                <li data-stamp="1565311690176" data-key="uoag">합정역점</li>
+                <li data-stamp="1565310477376" data-key="uo86">대구 죽전점</li>
+                <li data-stamp="1565310543008" data-key="uo8h">중동소풍점</li>
+                <li data-stamp="1565310587783" data-key="uo8r">올림픽공원점</li>
+                <li data-stamp="1565310640351" data-key="uo96">마산롯데마트점</li>
+                <li data-stamp="1565310689415" data-key="uo9d">금천홈플러스점</li>
+                <li data-stamp="1565310731928" data-key="uo9i">센텀시티홈플러스점</li>
+                <li data-stamp="1565310771287" data-key="uo9m">영등포타임스퀘어점</li>
+                <li data-stamp="1565310816920" data-key="uo9p">부천역사점</li>
+                <li data-stamp="1565310853808" data-key="uo9s">의정부 이마트점</li>
+            </ul>
+        </div>
+
+        <div class="mapArea">
+            <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+            <div id="daumRoughmapContainer1565311690176" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

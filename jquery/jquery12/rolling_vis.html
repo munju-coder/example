@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<style>
+        #mainVis{
+            width: 800px;
+            height: 300px;
+            margin: 100px auto;
+            border: 2px solid black;
+            position: relative;
+            
+        }
+        .leftBtn, .rightBtn{
+            font-size: 35px;
+            width: 50px;
+            height: 50px;
+            /*background-color: #333;*/
+            text-align: center;
+            position: absolute;
+            top: 125px;
+            left: 30px;
+            color: aliceblue;
+            z-index: 10;
+            cursor: pointer;
+            
+        }
+        
+        .rightBtn{
+            right: 30px;
+            left: auto;/*초기화*/
+        }
+        
+        
+        #mainVis ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            
+        }
+        #mainVis ul li{
+            position: absolute;
+            left: 800px;/*위치 상관X*/
+            
+        }
+        #mainVis ul li:first-child{
+            left: 0;
+        }
+        #mainVis ul li img{
+            display: block;    
+        }
+        
+        
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery.easing.1.3.js"></script>
+    <script>
+        
+        $(function(){
+          
+            
+            var prevNum= 0; //이전번호
+            var num=0;        //현재번호
+            var pos=0;        //위치값
+            
+            var $vis = $( '#mainVis ul li' );
+            $('.leftBtn').click( function(){
+                
+                console.log(num);
+                if( $vis.is(':animated')) return;
+                
+              $vis.not( $vis.eq(num) ).css({ 'left': $vis.width( ) });
+                
+                if ( num < $vis.length -1){
+                
+                    num++;
+                    prevNum = num -1;
+                
+                }else{
+                    
+                    num=0;
+                    prevNum = $vis.length-1;
+                    
+                }
+                pos= -$vis.width();
+                
+                visAni( num, prevNum, pos);
+                
+            });
+            
+             $('.rightBtn').click( function(){
+                 
+              console.log(num);
+                 if( $vis.is(':animated')) return;
+                
+              $vis.not( $vis.eq(num) ).css({ 'left': -$vis.width( ) }); //왼쪽으로-800
+                
+                if ( num >0 ){
+                
+                    num --;
+                    prevNum = num +1;
+                
+                }else{
+                    
+                    num=$vis.length-1;
+                    prevNum = 0;
+                    
+                }
+                pos=$vis.width();
+                
+                visAni( num, prevNum, pos);
+            
+           });  
+            
+            function visAni( num, prevNum, pos ){
+                
+                $vis.eq( prevNum ).animate({ 'left': pos },1000, 'easeOutExpo');
+                
+                $vis.eq( num ).animate({ 'left': 0 },1000, "easeOutExpo");
+                
+            }
+            
+           
+
+        });
+    
+    
+    
+    </script>
+</head>
+
+<body>
+    
+    <div id="mainVis">
+       <div class="leftBtn"><i class="fas fa-chevron-circle-left"></i></div>
+        <div class="rightBtn"><i class="fas fa-chevron-circle-right"></i></div>
+        <ul>
+            <li><img src="http://placehold.it/800x300/f53131/ffffff?text=1" alt="1"></li>
+            <li><img src="http://placehold.it/800x300/3175f5/ffffff?text=2" alt="2"></li>
+            <li><img src="http://placehold.it/800x300/57bc00/ffffff?text=3" alt="3"></li>
+            <li><img src="http://placehold.it/800x300/f59b31/ffffff?text=4" alt="4"></li>
+            
+            
+        </ul>
+    </div>
+
+</body>
+</html>

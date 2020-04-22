@@ -1,0 +1,132 @@
+html, body { height: 100%; }
+
+body , h1 , dd {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    width: 25%;
+    height: 100%;
+    background-color: #003909;
+    color: white;
+    position: absolute;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 3vw;
+    margin: 40px auto;
+}
+
+header ul li {
+    padding: 1vw 1.2vw;
+    margin: 0 2vw;
+}
+
+section {
+    width: 75%;
+    height: 100%;
+    float: right;
+    background-color: #ededed;
+}
+
+section .product {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+section .product ul {
+    padding: 2%;
+    margin-top: 50px;
+}
+
+section .product ul li {
+    width: 25%;
+    margin: 1.2vw 0;
+    padding: 2%;
+    box-sizing: border-box;
+    float: left;
+}
+
+section .product ul li img {
+    width: 100%;
+}
+
+section .product ul li dl dt ,
+section .product ul li dl dd:last-child {
+    font-size: 1.6vw;
+    font-weight: 900;
+    margin-bottom: 7px 0;
+    padding: 7px 0;
+
+}
+section .product ul li dl dd:nth-child(2){
+    font-size: 0.9vw;
+    color: orange;
+    font-weight: 700;
+    padding-bottom: 7px;
+    border-bottom: 1px solid gray;
+    
+}
+section .product ul li dl dd:nth-child(3){
+    line-height: 1.2em;/*html */
+    height: 2.4rem;
+    margin: 10px 0;
+    position: relative;
+    color: forestgreen;
+    overflow: hidden;
+}
+section .product ul li dl dd:nth-child(3):after{
+    content: "...";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    text-align: right;
+    width: 100%;
+    background: -moz-linear-gradient(left,  rgba(237,237,237,0) 0%, rgba(237,237,237,1) 100%);
+background: -webkit-linear-gradient(left,  rgba(237,237,237,0) 0%,rgba(237,237,237,1) 100%);
+background: linear-gradient(to right,  rgba(237,237,237,0) 0%,rgba(237,237,237,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ededed', endColorstr='#ededed',GradientType=1 );
+    
+}
+section .product ul li dl *:not(:nth-child(3)){
+    white-space: nowrap; /*한줄*/
+    overflow: hidden;
+    text-overflow: ellipsis; /*말줄임*/
+    
+    
+}
+
+
+
+
+section .btn {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    top: 10px;
+    right: 25px;
+    background-color: #003909;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    font-size: 22px;
+}
+
+
+
+
+
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    
+    <style>
+        .area {
+            background: url(images/bg.png);
+            width: 792px;
+            height: 424px;
+            margin: 150px auto;
+            position: relative;
+        }
+        
+        .light {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            animation: light 2s ease-out infinite alternate;
+        }
+        
+        @keyframes light {
+            0% { opacity: 1}
+            100% { opacity: 0}
+        }
+        
+        
+    </style>
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="lib/jquery.easing.1.3.js"></script>
+    <script>
+        $( function() {
+            
+            var timer = setInterval( randomMove , 2000 );
+            
+            function randomMove() {
+                //x : 642        y : 274
+                
+                var posX = Math.random() * 642; 
+                var posY = Math.random() * 274; 
+                
+                $( '.light' ).animate( { 'top' : posY , 'left' : posX }, 2000, "easeInOutQuad" );
+                                
+            }
+            
+        });
+    </script>
+    
+    
+    
+</head>
+
+<body>
+
+<div class="area">
+    <div class="light"><img src="images/light.png" alt="light>"></div>
+</div>
+
+
+</body>
+
+</html>

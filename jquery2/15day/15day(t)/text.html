@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+    
+        $( function() {
+           
+            /*
+            
+                문자열.indexOf('텍스트값');
+                - 문자열의 왼쪽에서부터 처음나타나는 텍스트의 index번호를 반환
+                
+                문자열.indexOf('텍스트값' , index번호);
+                - 문자열의 index번호에서부터 처음나타나는 텍스트의 index번호를 반환
+                
+                문자열.charAt(index번호);
+                - 문자열에서 index번호의 텍스트 반환
+                
+                문자열.length
+                - 글자의 갯수
+                
+                문자열.substring( 시작index번호 , 끝index번호);
+                - 시작index부터 끝index까지의 문자열을 반환
+                
+                문자열.substr(시작index번호 , 갯수);
+                - 시작index부터 갯수만큼 문자열 반환
+                
+                문자열.split('텍스트값');
+                - 문자열에서 텍스트값을 기준으로 문자열을 나누어 배열로 저장
+            
+            */
+            
+            var txt = "SBS아카데미 컴퓨터 아트 학원 032.437.0111 신현프라자 3층 C클래스";
+            
+            console.log( txt.indexOf( '.' ) );
+            console.log( txt.indexOf( '.' , 22 ) );
+            
+            console.log( txt.charAt(27) );
+            
+            console.log( txt.substring( 18 , 30 ) );
+            console.log( txt.substr( 18 , 12 ) );
+            
+            console.log( txt.split( ' ' ) );
+            console.log( txt.split( ' ' )[4] );
+            
+        });
+    
+    </script>
+</head>
+
+<body>
+
+SBS아카데미 컴퓨터 아트 학원 032.437.0111 신현프라자 3층 C클래스
+
+</body>
+
+</html>

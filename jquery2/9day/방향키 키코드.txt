@@ -1,0 +1,33 @@
+← (백스페이스)	8	
+TAB		9	
+ENTER		13	
+
+SHIFT		16	
+CTRL		17	
+ALT		18	
+
+PAUSEBREAK	19
+CAPSLOOK	20	
+
+한/영		21	
+한자		25	
+ESC		27	
+
+스페이스	32
+
+PAGEUP	33	
+PAGEDN	34	
+END	35	
+HOME	36
+
+
+← (방향키)	37	
+↑ (방향키)	38	
+→ (방향키)	39	
+↓ (방향키)	40
+
+윈도우키(왼쪽)	91	
+기능키	93	
+
+NUMLOCK	144	　	　
+SCROOLLLOCK	145

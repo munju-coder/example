@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> data-map2 </title>
+    <style>
+        * {
+            user-select: none;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .store {
+            width: 800px;
+            margin: 70px auto;
+
+        }
+
+        .storeList ul li {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #05481c;
+            color: aliceblue;
+            margin: 10px 5px;
+            
+        }
+        .storeList ul li:first-child{
+            margin-left: 90px;
+        }
+
+        .storeList ul li:hover {
+            background-color: #54ba08;
+        }
+
+        .mapArea {
+            margin-top: 50px;
+        }
+
+        .wrap_controllers {
+            display: none;
+        }
+
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+        $(function() {
+
+            var stamp = "1565367125514"
+            var key = "uopr"
+
+            function mapDraw() {
+                new daum.roughmap.Lander({
+                    "timestamp": stamp,
+                    "key": key,
+                    "mapWidth": "800",
+                    "mapHeight": "400"
+                }).render();
+            }
+            mapDraw();
+
+            $('.storeList ul li').click(function() {
+
+                stamp = $(this).attr('data-stamp');
+                key = $(this).attr('data-key');
+
+                $('.mapArea').html('<div id="daumRoughmapContainer' + stamp + '" class="root_daum_roughmap root_daum_roughmap_landing"</div>');
+
+                mapDraw();
+
+            });
+
+        });
+
+    </script>
+  
+</head>
+
+<body>
+    <div class="store">
+        <div class="storeList">
+            <ul>
+                <li data-stamp="1565367125514" data-key="uopr">올리브영 홈플러스 간석점</li>
+                <li data-stamp="1565367344592" data-key="uops">올리브영 만수점</li>
+                <li data-stamp="1565524488368" data-key="uou4">올리브영 인천 주안역점</li>
+                <li data-stamp="1565524553868" data-key="uou5">올리브영 구월중앙점</li>
+                <li data-stamp="1565524902701" data-key="uou9">올리브영 CGV인천점</li>
+                <li data-stamp="1565524625190" data-key="uou7">올리브영 길병원점</li>
+                <li data-stamp="1565524943832" data-key="uoua">올리브영 구월아시아드점</li>
+            </ul>
+
+        </div>
+        <div class="mapArea">
+            <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+            <div id="daumRoughmapContainer1565367125514" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

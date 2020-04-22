@@ -1,0 +1,44 @@
+web-3
+6day 
+gnb ( global animation button ) menu 
+★작성하는 방법 알고 구조 외우기
+
+script-all 메뉴 마우스 올렸을 시 전체 서브메뉴 slideDown
+
+$(function(){ //nav 영역에 마우스커서가 들어오면 함수 실행-해야할일
+  $( 'nav' ).mouseenter(function(){      //메인메뉴 영역에 slideDown
+      $( 'nav ul li ul' ).stop().slideDown('slow');
+          
+      });//nav영역에서 마우스커서가 빠져나가면 함수 실행
+      $( 'nav' ).mouseleave(function(){
+        $( 'nav ul li ul' ).stop().slideUp('slow');
+  });  
+});
+★/*mouseenter-mouseleave, mouseover(마우스들어올때)-mouseout
+★gnb_single
+
+ $(function(){
+    //각각의 메인메뉴 영역(nav>ul>li)을 마우스커서가 올려졌을 때 함수(해야할일) 실행
+  $( 'nav>ul>li' ).mouseenter(function(){
+    $( 'ul', this ).stop().slideDown('slow');
+});
+    //this -이벤트를 받는 것, 항상 this가 가리키는것은 실행시킬 이벤트의 바로 앞에것을 의미함.
+    //mouseenter(이벤트)가 들어온 li를 의미함. 
+   $( 'nav>ul>li' ).mouseleave(function(){
+     $('ul', this).stop().slideUp('slow');  
+   });
+ });    
+★mouseenter-mouseleave, mouseover(마우스들어올때)-mouseout--->짝지어서 알아놓기
+★jQuery animation에는 큐라는 동작이 존재, stop이 없으면 움직인 만큼 동작이 쌓임.
+이벤트를 실행시킨만큼 축척되서 동작이 실행함.->sub메뉴클릭하려면 타이밍을 맞춰야하는 한계
+따라서 동작을 막아주거나 끊어줘야힘 stop().동작->큐가 쌓이지 않고
+중간 animation을 끊어준다. 다음 큐로 넘어감.*/
+
+★over_enter.html
+ /*mouseenter->들어가는 순간만을 의미함./이미 마우스커서가 자식요소 안에 들어가봤자
+        부모영역안에 이미 들어와있기 때문에 숫자값은 1번 변한것, 
+    mouseover->마우스 커서가 들어와있을떄 부모영역에서 1번 변하고 자식요소에 들어가면
+            1번더 동작됨 자식요소와 부모요소 두번 검사를 해준다. 
+            이벤트가 두번 발생한것.(올려져있는 상태라서)
+        mouseenter와 mouseover 의 차이
+        중복실행이 일어날 수 있기떄문에 될 수 있으면 mouseenter를 사용하는것이 좋다.*/

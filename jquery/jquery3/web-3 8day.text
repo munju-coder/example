@@ -1,0 +1,123 @@
+web-3
+8day복습
+
+----------Class 제어 질문한 것 ----------------------------------------------
+<질문부분>
+
+$( '.list4 dd' ).click( function(){
+-> list4 클래스의dd를 클릭하면 해야 할 일은 
+
+      var txt = $(this).text();
+-> 이것:클릭한 .list4의 dd가 text(글자)가 변할것이다. (변수)
+
+         if( $('.main').hasClass(txt) ) {
+->만약  txt값(변수가)이 참이면  .main영역에 바뀔값은
+             $( '.main p' ).text (txt+'클래스를 가지고 있다');
+-> .main p에 클래스를 가지고 있다 라고 출력하고
+
+         }else{
+             $('.main p').text (txt+'클래스를 가지고 있지 않다');
+->그렇지 않으면 -false값이므로 main p에 클래스를 가지고 있지 않다 라고 출력한다. 
+         }
+     });
+
+참고-$( 선택자 ).hasClass ( '클래스명' )           
+  -선택자에 Class가 있으면 true, 없으면 false 검사의 개념
+
+----------------------------------------------------------------------------------
+vert_gnb (세로형 메뉴) 두번쨰 수업 이어서, 
+메인메뉴만 선택하려면 자손선택자 이용할것.
+css부분
+
+   nav > ul > li > a.active {
+            background-color: mediumvioletred;
+        }
+★active 마우스를 클릭했을 떄 반응하는 배경컬러지정.
+
+----------------------script부분---------------------------------------------------
+1. 클릭한 메인메뉴는 active 클래스를 추가하고
+클릭하지 않은 서브메뉴들은 active 클래스를 제거한다. 
+2. 메인 메뉴를 클릭하면 클릭한 메뉴의 서브메뉴는 펼쳐지고, 
+클릭하지 않는 서브메뉴는 접힌다.
+★선택자가 길면 변수로 설정, 유지-보수에 편리, 용량도 작음
+★ 동작이 여러개 있으면 하나 하고 확인하면 시간을 단축시킬 수 있음.
+
+$(function(){
+
+var $mainMenu =$('nav>ul>li>a' );       ->클릭하는 부분인 mainMenu부분을 변수로 지정
+$mainMenu.click( function( ){               ->mainMenu를 click하면 함수를 실행한다.  
+$(this).addClass( 'active' );                   ->클릭한 a태그* 클릭한것, 이벤트를 받는것, this에 active추가
+$mainMenu.not(this).removeClass( 'active' );  ->not은 첫번째 선택자가 범위- 메인메뉴들 중에서 클릭한게 아닌것에
+                                                           ->반대로 active클래스를 제거해라 -removeClass
+$(this).next().slideDown( 'slow' );          -> 클릭한 것의 다음요소를 slideDown아래로 펼쳐준다.
+
+$( 'nav ul li ul' ).not( $(this).next( ) ).slideUp( 'slow' );   -> 하나를 클릭하면 하나가 닫히므로, 서브메뉴들 중에서 
+                                                                       클릭한 것의 다음요소가 아닌것 (펼친것은 this next,)을 접어라.
+
+★동시에 같이 움직이는것이 하나 이상이면 같은시간동안 같은 속도로 들어가야 자연스럽다.
+  });
+});
+-----------------------vert_gnb2------------------------------------------------------------
+
+a 태그 뒤에span태그 추가.-화살표 들어갈 공간이 필요하므로
+결국 클릭하게 되는것들은 a태그를 클릭할 것이기 떄문에
+다른  태그를 넣어줘야함 (linline요소가 아니더라도 상관없음)
+
+ 
+------------------------fiexd_menu---------------------------------------------------------------
+css부분 
+
+@font-face {
+            font-family: swg;
+            src: url(font/SDSwaggerTTF.eot);
+            src: local( ※ ),
+                url(font/SDSwaggerTTF.woff) format('woff'),
+             url(font/SDSwaggerTTF.ttf) format('truetype')
+        }
+->구글폰트에 없으므로 font-face를 이용해서 만들어준다.
+swg 라는 이름은 지어주는것. (웹폰트를 만든다.)
+
+
+<script>
+    
+    $(function(){
+      ->브라우저 창(세로스크롤이 있는 곳)의
+            세로 스크롤바가 움직이면 함수 실행(동작실행)
+        $(window).scroll( function(){
+            
+            console.log( $(this).scrollTop() );
+      
+      ->JavaScript 또는 jQuery에서의 방향값으로 설정하는 것은 
+                top, left만 있음. -스크롤바(세로, 가로) 움직일때
+
+      ->세로면 위, 아래 bottom와 left는 없으므로 top을 쓴다.
+
+           if( $(this).scrollTop() >=$('header').height() ){
+
+             header 높이값이 400, 고정하고자 하는 위치값은 400
+               세로 스크롤바가 400이상 ->아래, 400이하-> 위
+   스크롤바의 위치가 400이상일때만 고정해주고 그렇지않은 경우에는 움직이게 끔. 
+  ->만약에 세로스크롤값이 400이상이면, header의 높이값 보다이상이냐
+-header의 높으값으로 지정해놓으면 값이 변해도 알아서 가져오므로, 
+                                이상 내려갔으면 , 
+
+               $( 'nav' ).addClass('nav_fix');
+              -> nav영역에 nav_fix인 클래스를 추가해라(nav_fix->고정하는값이 들어있음)
+               
+           }else { $( 'nav' ).removeClass('nav_fix'); 
+       ->그렇지 않으면 고정이 안되게 만들어야 하므로, 
+         고정이 되게 해주었던 nav_fix 클래스를 제거한다.
+            }
+        });
+    });
+    
+    </script>
+
+
+
+
+
+
+
+
+

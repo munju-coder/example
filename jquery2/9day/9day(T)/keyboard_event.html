@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+    
+        $( function() {
+           
+            /*
+                keydown()         - 키보드의 키가 눌려질때
+                keypress()        - 키보드의 키가 눌려서 입력될때
+                keyup()           - 키보드의 키가 떼어질때
+                
+                keyCode           - 키값
+            */
+            
+            $(window).keydown( function( e ) {
+                $( 'h1' ).text( 'key값 : ' + e.keyCode );
+                console.log( e.keyCode );
+            })
+            
+        });
+    </script>
+</head>
+
+<body>
+
+<h1></h1>
+
+</body>
+
+</html>

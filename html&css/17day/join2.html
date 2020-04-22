@@ -1,0 +1,89 @@
+        <!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> 회원가입 step2 </title>
+	<link rel="stylesheet" href="css/join_step_2.css">
+</head>
+
+	<body>
+	<div id="wrap">
+    
+    <h2><img src="images/join_step_2.jpg" alt="회원가입"></h2>
+    <h3>회원정보 등록</h3>
+    <form>
+        <img src="images/icon_basic_info.jpg" alt="기본정보 필수">
+        <fieldset>
+            <legend>기본정보</legend>
+            
+            <ul>
+                <li>
+                <label id="userName">이름</label>
+                <input type="text" id="userName" required>
+                </li>
+                
+                <li>
+                    <label id="userID">아이디</label>
+                    <input type="text" id="userID" required>
+                </li>
+                
+                <li>
+                    <label id="userPW">비밀번호</label>
+                    <input type="password" id="userPW" maxlength="15" required>
+                    (8~15자의 영문 대소문자 숫자 및 특수문자)
+                </li>
+                
+                <li>
+                    <label id="userRePW">비밀번호 재입력</label>
+                    <input type="password" id="userRePW" maxlength="15" required>
+                </li>
+                
+                <li>
+                    <label id="userHP">핸드폰</label>
+                    <select id="userHP">
+                        <option>010</option>
+                        <option>011</option>
+                        <option>019</option>
+                        
+                    </select>-
+                    <input type="text" maxlength="4" required>-
+                    <input type="text" maxlength="4" required>
+                    <br>
+                    <input type="checkbox" id="chk1" name="phoneChk">
+                    등록하신 핸드폰 번호로 주문/결재 정보를 받으시겠습니까?
+                </li>
+                <li>
+                    <label for="gender">성별</label>
+                    <select id="gender">
+                        <option>남자</option>
+                        <option>여자</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="birthday">생년월일</label>
+                    <select id="birthday">
+                        <option>2019</option>
+                    </select>년
+                    <select>
+                        <option>1</option>
+                    </select>월
+                    <select>
+                        <option>1</option>
+                    </select>일
+          
+                </li>
+            </ul>
+        </fieldset>
+        <img src="images/icon_add_info.jpg" alt="추가정보">
+        <fieldset>
+            <legend>추가정보</legend>
+        </fieldset>
+    </form>    
+    
+	    
+	</div>
+
+</body>
+</html>

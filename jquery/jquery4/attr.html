@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> attr </title>
+	<script src="lib/jquery-1.11.1.min.js"></script>
+	<script>
+        $( function(){
+          
+            /*
+            attr ( html 속성 )
+            $( 선택자 ). attr( '속성이름' )
+            
+            -선택자의 html 속성값을 가져온다.
+            
+            $( 선택자 ). attr( '속성이름', '속성값'  )
+            -선택자의 html 속성값을 바꿈
+            
+            css 
+            $( 선택자 ). css( '속성이름', '속성값' )
+            -속성이 1개인 경우
+        
+            $( 선택자 ).css ( { '속성이름' : '속성값' } )
+            -속성이 1개 이상인 경우
+            
+            */
+            console.log( $( 'img' ).attr( 'src' ) );
+            $( 'img' ).attr( 'src', 'http://placehold.it/300x300/752201/ffffff?text=attr' )
+            
+        });
+    
+    
+    
+    </script>
+</head>
+
+<body>
+
+<img src="http://placehold.it/300x300" alt="image">
+
+</body>
+</html>

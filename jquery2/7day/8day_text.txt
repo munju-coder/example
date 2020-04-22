@@ -1,0 +1,53 @@
+8day
+(7day-수업X)
+8/20
+random_move  -> 소스 질문하기.
+css animation 
+alternate: 정해진 순서로 진행했다가 반대 순서로 진행.
+alternate-reverse: 반대순서로 진행했다가 정해진 순서로 진행.
+initial: 기본값으로 설정.
+
+event.preventDefault();
+-현재 이벤트의 기본 동작을 중단한다.
+
+
+-------------mouseWheel.html------------------------------------------
+       /* 
+                $( 선택자 ).mousewheel( function( e, delta) {
+                
+                    마우스 휠이 움직이면 실행 할 내용;
+                
+                });
+            
+ - delta 값은 휠을 위로 굴리면 양수값, 아래로 굴리면 음수값
+ - scroll이벤트와 함께 동작하므로 스크롤 이동 애니메이션 시
+ 스크롤 이벤트는 막아놓고 작업해야 중복이 일어나지않는다.
+            
+     */
+
+ <script>
+    
+        $( function() {
+        
+            $( window ).mousewheel( function( e, delta ) {
+                
+                console.log( delta );
+                
+                if( delta > 0 ) {
+                    $( 'h1' ).text( "마우스 휠 : 위로 굴리중" );
+                }else{
+                    $( 'h1' ).text( "마우스 휠 : 아래로 굴리중" );
+                }    
+                
+            });
+
+        });
+
+    </script>
+
+----------------------mousewheel_anchor.html-------------------------
+
+
+
+
+            

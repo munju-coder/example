@@ -1,0 +1,192 @@
+16day
+
+ 
+
+
+9day js parallax 넣기-------------------------------------------------------------------------------------------------
+
+    
+        
+        1.scroll 이벤트 사용
+        2. 스크롤바 공식 이용
+        3. .bean1~.bean5 위치 parallax
+        
+        
+        $(window).scroll( function(){
+              
+                function scrollFn (a,b,c,d){
+                    return srcAct =(d-c)/(b-a)*( $(window).scrollTop()-a)+c;
+                }
+              //a~b: 0~$('#page2').offset().top  c~d: 0~d
+            var bean1 =scrollFn( 0,$('#page2').offset().top,0,20 );
+            var bean2 =scrollFn( 0,$('#page2').offset().top,0,75 );
+            var bean3 =scrollFn( 0,$('#page2').offset().top,0,30 );
+            var bean4 =scrollFn( 0,$('#page2').offset().top,0,13 );
+            var bean5 =scrollFn( 0,$('#page2').offset().top,0,85 );
+            
+             $('.bean1').css({'top':bean1+'%'});
+             $('.bean2').css({'top':bean2+'%'});
+             $('.bean3').css({'top':bean3+'%'});
+             $('.bean4').css({'top':bean4+'%'});
+             $('.bean5').css({'top':bean5+'%'});
+            
+            });
+    });
+
+
+15day 파일 browser_check.html ie 크로스 브라우징-------------------------------------------------------------------
+
+
+ie_style.css 파일 생성(15day)
+
+hr{ text-align: left; }
+
+-> 익스플로러에서만 적용하고 다른곳에서는 적용하지 않을 것이기 떄문에
+파일을 따로 생성함. css 연결을 스크립트로 해줄것임.
+
+browser_check.html 파일에서
+<script>
+       $( function(){
+           
+       
+        var ua = window.navigator.userAgent;
+        //$('h1').text( ua );
+           
+           if( ua.indexOf('MISE') >0 || ua.indexOf( 'Trident/' )>0){
+    //$('h1').text( "현재 브라우저는 IE" );  -> ie 에서 입력된 h1은 브라우저체크라고 되어있지만
+    h1의 text 가 현재 브라우저는 IE 로 바뀌어 있음, 익스플로러만 적용됨 
+               
+               자바스크립트 문법에 가깝기 때문에 변수지정해서 함.
+               var styleSt=document.createElement( 'link' );
+               -> 변수 styleSt에 createElemet link 태그를 생성해줄것
+
+               styleSt.rel="stylesheet"
+               styleSt.href="css/ie_style.css";
+               -> 변수상에서만 만들어놓은 상태임. 
+              -> link 태그에 필요한 속성은 rel, href 각각의 요소에 해당하는 속성을 넣어줌.
+
+               document.getElementsByTagName( 'head' )[0].appendChild(styleSt);
+               
+             ->appendChild -> styleSt 라는 자식요소 추가, head 태그는 하나니까 방번호는 [0]
+            ->현재 변수 styleSt에는 지정해놓은 link태그가 들어있음. 
+            ->ie 에서 hr 태그 오른쪽 -> 왼쪽, ie 개발자도구-link태그 추가된것 확인(크롬에서는 없음)
+               
+           }
+        
+       });
+    </script>
+
+index page2~4------------------------------------------------------------------------------------------------------
+
+보통의 홈페이지 메인페이지 포함해서 5장 이상
+각각의 메뉴들 -active 클래스 추가 css 했었음.
+메뉴-각각의 메뉴에 이동했을 때 해당메뉴를 보고 있다는 것을 표시해줄것임.
+
+active class에 일일이 다 넣어주는것보다 몇개의 페이지가 되더라도 알아서 넣어줄기능
+->js파일 만들어서 연결해주면 됨;. 
+
+ 
+
+$(function(){
+  
+    
+    
+    웹페이지에서 주소를 가져오고자 할때 선택자는 location을 주고, 
+
+    $(location).attr( 'href' )          -> 전체경로
+
+     전체경로에서 일부분만 필요할때 4가지로 나누면
+    $(location).attr( 'protocol' )    -> 프로토콜
+    $(location).attr( 'host' )          ->호스팅 주소
+    $(location).attr( 'pathname' )  -> 파일 경로
+    $(location).attr( 'search' )       -> 인자값
+    
+    
+    
+    console.log( $(location).attr( 'href' ));
+   
+   console.log( $(location).attr( 'protocol' ));
+   console.log( $(location).attr( 'host' ));
+   console.log( $(location).attr( 'pathname'));
+    
+   console.log( $(location).attr( 'search' ));
+    //http:프로토콜//127.0.0.1:49781호스팅주소/15day/index.html파일경로 
+      인자값-검색했을때 입력폼에 의해 넘겨주는 주소(search)-인자값이 없어서 search값은 안나오고 있을것임.
+
+    
+    var pageName = $(location).attr('pathname').split('/')[3];
+     나눌 구분 기호  / 
+    // var pageName = $(location).attr('pathname').split('/')[2]; -방번호의 파일명을 배열로 가져옴 
+       가장 마지막 파일인 index.html이 몇번째 방에 저장되어 있는 지를 보면 됨. (16day->page.js 2개 )
+           split 배열의 형태로 구분기호를 기준으로 텍스트를 나눠서 배열로 저장
+            뽑아낸 파일 명을 보고 분기점을 만들어낼건데
+
+
+    console.log(pageName);
+    var $menu = $('header nav ul li');
+    -> 선택자가 기니까 변수로 지정해서 사용 
+
+    if( pageName =="index.html"){
+      만약에 pageName 값이 index.html과 같다면(==)
+  첫번쨰 페이지인 index 번호와 같다면 ->첫번쨰페이지를 보고있다는 얘기->첫번째에 addClass
+
+        $menu.eq(0).children( 'a' ).addClass('active');
+          자손인 a 태그에 active Class 추가 
+    }else if( pageName =="page2.html"){
+           그렇지 않다면 /페이지네임이 페이지2.html과 같다면 
+
+        $menu.eq(1).children( 'a' ).addClass('active');
+          자손인 a 태그에 active Class 추가 
+    }else if( pageName =="page3.html"){
+        $menu.eq(2).children( 'a' ).addClass('active');
+
+    }else if( pageName =="page4.html"){
+        $menu.eq(3).children( 'a' ).addClass('active');
+    }
+});
+
+       ul li a 태그에 경로 지정해놓고, 
+        page2~4까지 html 복사 
+      각각의 메뉴들을 클릭했을 때 해당 페이지의 메뉴에 active 클래스가 추가 된것을 확인 
+
+16day 파일 bxslider.html------------------------------------------------------------------------------------------------
+
+필요한 플러그인 네임.js 검색  
+크롬 구글 - bxslider 검색 플러그인 연결해서 사용할것임. 
+플러그인 사용 장점- 제이쿼리 몰라도 슬라이드 같은 효과를 편리하게 동작시킬 수 있음. 
+- 소스코드를 직접 짠것이 아니기 때문에 수정하기가 어렵다는 단점이 있음. 
+
+<script>
+        $( function() {
+           
+                변수로 작업하는 경우가 많음 
+             슬라이드를 만들것들의 부모인 ul의 .slider 가 선택자
+            var mainSlider = $('.slider').bxSlider({
+                //ul class 슬라이드를만들 이미지가 들어있는 요소의 부모를 편리하게 선택하기 위해 
+          
+                mode : 'fade' ( 옵션추가-다른 동작의 형태가 동작했으면 좋겠다 싶으면 추가적인 옵션 부분 )
+                mode 수직 (위, 아래 vertical ) 수평'horizontal 
+
+            });
+            
+        });
+    </script>
+
+★외우기★
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+//만들어주는 제이쿼리는 항상 맨마지막에 작성 순서지킬것 
+
+<img src="http://placehold.it/200x200/9a4c4c/ffffff?text=Logo">
+                                       img size/배경색/글자색?text=글자 순으로 지정 (외우기)
+● a:link : 방문하기전의 링크
+● a:visited : 방문한 링크
+● a:hover : 링크에 마우스 포인터를 올려 놓았을 때
+● a:active : 링크를 마우스로 클릭한 순간
+
+
+
+
+
+
+
+

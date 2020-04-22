@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> offset 과 position 차이 </title>
+    
+    <style>
+        body { margin: 0; }
+    
+        body > div {
+            width: 300px;
+            height: 300px;
+            position: relative;
+        }
+        
+        .box1 { background-color: red }        
+        .box2 { background-color: green }        
+        .box3 { background-color: blue }        
+        
+        div div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            background-color: white;
+        
+        }
+        
+    </style>
+    
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+    
+        /*
+            $( 선택자 ).position().top
+            - 선택자의 부모로부터 위에서 떨어진 위치값
+            
+            $( 선택자 ).position().left
+            - 선택자의 부모로부터 왼쪽에서 떨어진 위치값
+        
+        
+            $( 선택자 ).offset().top
+            - 선택자가 위에서 떨어진 절대위치값
+            
+            $( 선택자 ).offset().left
+            - 선택자가 왼쪽에서 떨어진 절대위치값
+            //top 이나 left값에 ( )안씀.
+        */
+        
+        $( function() {
+           
+            $( '.box' ).click( function() {
+               
+                console.log( "position : " + $(this).position().top + " | offset : " + $(this).offset().top );
+                
+            });
+            
+        });
+        
+    </script>
+    
+</head>
+
+<body>
+
+<div class="box1">
+    <div class="box"></div>
+</div>
+
+<div class="box2">
+    <div class="box"></div>
+</div>
+
+<div class="box3">
+    <div class="box"></div>
+</div>
+
+</body>
+
+</html>

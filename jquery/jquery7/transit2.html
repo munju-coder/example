@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> transit 속성 </title>
+	<style>
+        
+        .transit{
+            width: 300px;
+            padding: 30px;
+            box-shadow: 0 0 15px #ccc;
+            position: absolute; /*넓이있고 높이 없을때 가운데배치*/
+            top: 50%;
+            left: 50%; /*우측하단*/
+            transform: translate(-50%,-50%);
+        }
+        .box{
+            width: 50px;
+            height: 50px;
+            background-color: powderblue;
+            margin: 50px auto; /*가운데 배치 */
+        }
+        form{text-align: center;}
+        
+        label{display: block;} /*label, input inline-block-> 밑으로 떨어지게 */
+        
+        input {
+            margin: 20px 0 40px;
+        }
+    
+    
+    
+    
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery.transit.min.js"></script>
+    <script>
+    //jquery script 가 제일처음에, 마지막이 쓰는 script
+    //position 부모기준, offset 화면기준 떨어진  위 아래 위치값
+        //ocdga.dothome.co.kr 과제 루나 
+    $(function(){
+      
+        $('#scaleBar').mousedown( function(){
+            $(this).mousemove( function(){
+                $('.box').stop().transition({'scale' : $(this).val()});
+            });
+        });
+        $('#skewBar').mousedown( function(){
+            $(this).mousemove( function(){
+                  $('.box').stop().transition({'skewX' : $(this).val()});
+            });
+         });
+        $('#rotateBar').mousedown( function(){
+          $(this).mousemove( function(){
+            $('.box').stop().transition({'rotate' : $(this).val()}); 
+          });  
+        });
+    });
+    
+    
+    </script>
+</head>
+
+<body>
+ <div class="transit">
+     <div class="box"></div>
+     
+     <form>
+         <label>SCALE</label> 
+         <input type="range" value="1" min="-1" max="2" step="0.1" id="scaleBar">
+         
+         <label>SKEWX</label>
+         <input type="range" value="0" min="-45" max="45" step="1" id="skewBar">
+         
+         <label>ROTATE</label>
+         <input type="range" value="0" min="-360" max="360" step="1" id="rotateBar">
+         
+     </form>
+     
+     
+ </div>
+</body>
+</html>
+
+
+
+
+
+
+

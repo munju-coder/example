@@ -1,0 +1,248 @@
+web4-12day
+
+9day- index-coffee.js스크립트 동작 
+
+$(function () {
+
+/*
+
+페이징 - 앵커, 마우스 휠, 키보드
+
+변수지정
+var indexNum;
+
+var pos;
+
+
+*/
+       var indexNum;
+       var pos;
+    
+    //앵커
+    $('nav a').click( function(e){
+       
+    -> 매개변수 e 값 가져와서 a태그 동작 막아주기.
+        e.preventDefault();
+     ->a 태그는 앵커포인트가 이미 들어가있기때문에 기본동작 막아줘야함./a태그 동작X, 확인
+     
+    $( 'html, body' ).stop().animate({ 'scrollTop' : $(this.hash).offset().top }, 1000, "easeOutQuad" );
+  ->이동할 위치, html,body 세로스크롤바로 이동할것, hash(#page1~) 위치값은 position, offset 상관 없음.
+                   (페이지가 꽉차게 들어가 있으므로)
+
+        $(this).addClass('active');
+        -> 클릭한 것은 active 클래스 추가
+        $('nav a').not(this).removeClass('active')
+        ->nav a 태그 중에서 클릭하지 않은 것은 active 클래스 제거
+    });
+    
+    //마우스휠
+     -변수 이용 (현재 페이지가 어딘지 알아야하고, 그래야 이전 다음을 알 수 있음. ->위치가 달라지므로)
+     -필요한 변수 var indexNum;(index번호) ,var pos;(위치값)
+     -section안에서 마우스 휠을 굴리기 때문에, window 창전체에 이전과 다음은 없음. section안에서 이전과 다음 존재
+     -delta 값에 의해 마우스 휠의 이전과 다음 알 수 있었음 (양수 -위로, 음수 -아래로) 각각 이전과 다음에 해당하는 
+    내용을 알 수 있었음. 
+     -  $(this).prev()[0] !=undefined   
+     - 모르겠으면 콘솔로 찍어서 확인해볼것. 이전페이지가 가지고 있는 내용이 찍혀나옴. 
+     - 이전 페이지가 있는지 없는지를 통해 사용하고 있는 페이지가 끝인지 아닌지 알아낼 수 있음.
+     - 1 page는 이전 페이지가 없기때문에 undefined 가나옴    
+     -이전페이지가 없는 경우에는 실행하면 안되므로 아닐경우에만 실행해라.
+     -휠을 굴리고 있는 것에 이전페이지에 해당하는 위치값  이전페이지가 없으면 참이 아니므로 실행X 
+   
+
+    $('section').each( function(){
+      ->마우스 휠을 굴리는 위치는 section에서 개별적으로 동작
+
+        $(this).mousewheel( function(e, delta){
+        ->section 안에서 마우스 휠을 굴렸을 때, e(자릿수 채우기 위함), delta(실질적값)
+
+           if( $('html,body').is(':animated')) return; 
+            ->만약에 html, body에 :움직이고 있는 상태일때 return 값을 되돌려라 (밑에값 실행X)
+           -> 중복실행막음.
+            
+            console.log($(this).prev()[0]);
+            
+            if(delta>0){
+               -> 마우스 휠 위로
+
+                if( $(this).prev()[0] !=undefined){
+                    pos=$(this).prev().offset().top;
+                    indexNum=$(this).prev().index();
+                }
+            }else{
+               -> 마우스 휠 아래로 
+
+                if( $(this).next()[0] !=undefined){
+                    pos=$(this).next().offset().top;
+                    indexNum=$(this).next().index();
+                }
+            }
+            
+            $('nav a').eq( indexNum ).addClass('active'); 
+              -인덱스 번호가 일치하는 값은 active 클래스 추가 
+            $('nav a').not( $('nav a').eq( indexNum )).removeClass('active');
+             -나머지는 현재페이지가 아닌것을 표시해야하므로 active 클래스 제거 
+            $('html,body').animate({'scrollTop':pos},1000,"easeOutQuad");
+            -> stop사용하지 않고, is로 중복실행 막을것, 위에 조건식으로 담을것.
+        });
+    });
+ 
+          //키보드
+     -->이동되어 있는 페이지를 기준으로 이전 다음이 나올 것이므로 index번호와 변수는 그대로 사용
+     -->브라우저창 어디에서든 동작할 수 있으므로 window 기준임.(이전다음이 명확하지X)
+
+       $(window).keydown( function(e){
+      ->키보드는 이벤트 받아서 동작하므로 매개변수 e 
+         $('nav a').each( function(){
+           -> nav a 각각 개별 실행
+
+             if( $(this).hasClass( 'active') ){
+            -> 검사하고 있는 것에 만약에 active 클래스가 있으면 (무조건 하나는 있음로)
+            ->hasClass 클래스를 가지고 있으면 true 반환, 없으면 false 반환 
+            
+                 indexNum=$(this).index();
+                  -> active를 가지고 있으면 (참) index 번호를 가지고 올 수 있음. 
+                  ->참인것을 index 번호를 indexNum에 넣으면 현재 페이지의 위치를 알 수 있음. 
+                 -> 부모기준 첫번째자식부터 인덱스번호 
+             }
+         });
+         
+           switch(e.keyCode){
+             --> switch case문 이용 , 위와 아래 방향의 키보드 값 사용
+             -->키보드 위 37 부터 시계방향으로 
+
+               case 38:
+                   pos=$('section').eq(indexNum).prev().position().top;
+                     -> section에 현재페이지 번호 의 이전페이지 위치 top 값
+                     ->0번 0번에 이전이 없기떄문에 active 클래스 없음. 
+
+                   $('nav a').eq(indexNum).prev().addClass('active');
+                       -> 현재 index 번호의 이전페이지에 active클래스 추가
+ 
+                   $('nav a').not($('nav a').eq(indexNum).prev()).removeClass('active');
+                      -> 그렇지 않은 페이지는 원래대로 이전이 아닌것은 active 클래스 제거
+
+                   break;    
+                     -> 하나의 case 가 끝나면 break로 끝내줘야 하나의 케이스가 끝났음을 알수 있음.
+                   
+               case 40:
+                    -> 다음 페이지 (아래방향)-> next값으로 바꿔서 그대로 넣어주면 됨. 
+                   pos=$('section').eq(indexNum).next().position().top;
+                   $('nav a').eq(indexNum).next().addClass('active');
+                   $('nav a').not($('nav a').eq(indexNum).next()).removeClass('active');
+                   
+                   break;
+                   
+           }
+           $('html, body').animate({'scrollTop':pos},1000,"easeOutQuad");
+       });
+    
+        
+    });
+★parallax animation효과 
+  --가깝게 (앞) 빠름
+  --멀리 (뒤) 느림. 
+  --> 속도에 의한 시간차 -> 입체감 형성 -> 제이쿼리로 구현 -> 스크롤바 공식만 알면 구현 가능 
+
+
+                ★스크롤바 공식★
+
+                스크롤바 가동범위 a ~ b          0 ~1000
+                움직일것 가동범위 c ~ d (화면)  0~ -1200
+                     (스크롤바를 움직였을때 다른게 움직여질것)
+                
+                var 결과값변수명 = ( d - c ) / ( b - a ) * ( 스크롤바 위치 - a ) + c
+                
+
+★비워놓고 연습하기★
+
+$(function () {
+
+/*
+
+페이징 - 앵커, 마우스 휠, 키보드
+
+var indexNum;
+
+var pos;
+
+
+*/
+       var indexNum;
+       var pos;
+    
+    //앵커
+    $('nav a').click( function(e){
+      
+        e.preventDefault();
+                        
+    $( 'html, body' ).stop().animate({ 'scrollTop' : $(this.hash).offset().top }, 1000, "easeOutQuad" );
+        
+        $(this).addClass('active');
+        $('nav a').not(this).removeClass('active')
+        
+    });
+    
+    //마우스휠
+    $('section').each( function(){
+      
+        $(this).mousewheel( function(e, delta){
+            
+           if( $('html,body').is(':animated')) return; //중복실행 막음
+            
+            console.log($(this).prev()[0]);
+            
+            if(delta>0){
+                
+                if( $(this).prev()[0] !=undefined){
+                    pos=$(this).prev().offset().top;
+                    indexNum=$(this).prev().index();
+                }
+            }else{
+                
+                if( $(this).next()[0] !=undefined){
+                    pos=$(this).next().offset().top;
+                    indexNum=$(this).next().index();
+                }
+            }
+            
+            $('nav a').eq( indexNum ).addClass('active');
+            $('nav a').not( $('nav a').eq( indexNum )).removeClass('active');
+            
+            $('html,body').animate({'scrollTop':pos},1000,"easeOutQuad");
+        });
+    });
+ 
+          //키보드
+       $(window).keydown( function(e){
+         $('nav a').each( function(){
+           
+             if( $(this).hasClass( 'active') ){
+                 indexNum=$(this).index();
+             }
+         });
+         
+           switch(e.keyCode){
+               case 38:
+                   pos=$('section').eq(indexNum).prev().position().top;
+                   $('nav a').eq(indexNum).prev().addClass('active');
+                   $('nav a').not($('nav a').eq(indexNum).prev()).removeClass('active');
+                   
+                   break;
+                   
+               case 40:
+                   pos=$('section').eq(indexNum).next().position().top;
+                   $('nav a').eq(indexNum).next().addClass('active');
+                   $('nav a').not($('nav a').eq(indexNum).next()).removeClass('active');
+                   
+                   break;
+                   
+           }
+           $('html, body').animate({'scrollTop':pos},1000,"easeOutQuad");
+       });
+    
+        
+    });
+
+
+
+

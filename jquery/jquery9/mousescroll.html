@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	<style>
+        div{
+            width: 1000px; 
+            margin: 150px auto;
+            position: relative; /*div 영역내에서 이미지가 움직일것이므로 고정할것 기준포지션필요*/
+            overflow: hidden; /*div영역내에 넘어가는 부분 가림*/
+        }
+        div ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            position: relative; /*div영역내에서(기준점) ul도 움직일것, absolute, relative 둘중 하나 사용 시작값은 둘다 0이기 때문*/
+            width: 2200px; /*1000px 전체넓이 중 5장 들어갈것 한장당 200px짜리 11개*/
+        }
+        div ul li{
+            width: 200px;
+            float: left;
+        }
+        div ul li  img{width: 100%;} /*li의 100%->200px*/
+        
+    
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+        $(function(){
+          //스크롤바에 의한 동작, 마우스커서를 통해 스크롤바로 사용할것.
+            
+            /*
+                스크롤바 공식
+                
+                스크롤바 가동범위 a ~ b          0 ~1000
+                움직일것 가동범위 c ~ d (화면)  0~ -1200
+                (스크롤바를 움직였을때 다른게 움직여질것)
+                
+                var 결과값변수명 = ( d - c ) / ( b - a ) * ( 스크롤바 위치 - a ) + c
+                
+    
+            */
+            //div 안에 ul을 움직일것.
+            
+            $('div').mousemove( function(e){
+                console.log( e.pageX-$(this).offset().left );
+                
+                var pos=( -1200-0 )/( 1000-0 )*( e.pageX-$(this).offset().left-0 )+0;
+                $('ul').css({'left':pos});
+            
+            });
+        });
+    
+    
+    </script>
+</head>
+
+<body>
+<div>
+    <ul>
+        <li><a href="#"><img src="images/inspiratoin1.jpg" alt="상품"></a></li>
+        <li><a href="#"><img src="images/inspiratoin2.jpg" alt="상품"></a></li>
+        <li><a href="#"><img src="images/inspiratoin3.jpg" alt="상품"></a></li>
+        <li><a href="#"><img src="images/inspiratoin4.jpg" alt="상품"></a></li>
+        <li><a href="#"><img src="images/inspiratoin5.jpg" alt="상품"></a></li>
+        <li><a href="#"><img src="images/inspiratoin6.jpg" alt="상품"></a></li>
+        <li><a href="#"><img src="images/inspiratoin7.jpg" alt="상품"></a></li>
+        <li><a href="#"><img src="images/inspiratoin8.jpg" alt="상품"></a></li>
+        <li><a href="#"><img src="images/inspiratoin9.jpg" alt="상품"></a></li>
+        <li><a href="#"><img src="images/inspiratoin10.jpg" alt="상품"></a></li>
+        <li><a href="#"><img src="images/inspiratoin11.jpg" alt="상품"></a></li> 
+    </ul>
+</div>
+
+</body>
+</html>

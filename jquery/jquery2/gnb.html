@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>GNB</title>
+	<style>
+        
+        body{ background-color: #222;}
+        
+        a{
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        nav{
+            width: 600px;
+            margin: 150px auto;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        nav > ul > li{
+            width: 150px;
+            text-align: center;
+            float: left;
+        }
+        /*main메뉴만 선택 -자손선택자*/
+        nav > ul > li > a{
+            display: block;
+            height: 50px;
+            line-height: 50px;
+            font-size: 20px;
+            font-weight: 900;
+            background-color: powderblue;
+        }
+        
+        nav ul li ul{
+            display: none;
+        }
+        
+        nav ul li ul li{
+            padding: 10px;
+            background-color: #ccc;
+            
+        }
+        
+        /*<script src="script/gnb_all.js"></script>*/
+    </style>
+    
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="script/gnb_single.js"></script>
+    
+</head>
+
+<body>
+
+<nav>
+    <ul>
+        <li>
+            <a href="#">Main1</a>
+            <ul>
+                <li><a href="#">sub-menu1</a></li>
+                <li><a href="#">sub-menu2</a></li>
+                <li><a href="#">sub-menu3</a></li>
+                <li><a href="#">sub-menu4</a></li>
+            </ul>
+        </li>
+         <li>
+            <a href="#">Main2</a>
+            <ul>
+                <li><a href="#">sub-menu1</a></li>
+                <li><a href="#">sub-menu2</a></li>
+                <li><a href="#">sub-menu3</a></li>
+                <li><a href="#">sub-menu4</a></li>
+            </ul>
+        </li>
+          <li>
+            <a href="#">Main3</a>
+            <ul>
+                <li><a href="#">sub-menu1</a></li>
+                <li><a href="#">sub-menu2</a></li>
+                <li><a href="#">sub-menu3</a></li>
+                <li><a href="#">sub-menu4</a></li>
+            </ul>
+        </li>
+          <li>
+            <a href="#">Main4</a>
+            <ul>
+                <li><a href="#">sub-menu1</a></li>
+                <li><a href="#">sub-menu2</a></li>
+                <li><a href="#">sub-menu3</a></li>
+                <li><a href="#">sub-menu4</a></li>
+            </ul>
+        </li>
+        
+    </ul>
+</nav>
+
+</body>
+</html>

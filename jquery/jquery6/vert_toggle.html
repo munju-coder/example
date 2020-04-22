@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>vert_toggle </title>
+	 <style>
+        div {
+            width: 800px;
+            height: 350px;
+            background-color: #efefef;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: -350px; /*높이만큼 내려가야 */
+            margin: auto;/*width 있을때 가운데배치 양옆같은값 주고 */
+        }
+        div span {
+            padding: 10px 15px;
+            background-color: #ff3100;
+            position: absolute; /*부모기준으로 위치잡음*/
+            top: -41px;
+            right: 0;
+            color: white;
+        }
+        
+    </style>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <script>
+        $(function(){
+          
+            var onOff=false;   //화면밖에 있는게 false, 화면 안 true
+            
+            //span을 클릭하면 함수실행
+            $('span').click( function(){
+              
+                onOff=!onOff; //거짓이아닌것->참
+                console.log(onOff);
+                
+                //onOff값이 true라면 
+                if( onOff ){
+                    $('div').stop().animate({'bottom':0},1000);
+                    $('div span').css({'background-color':'#0a00ff'});
+                //onOff값이 false라면
+                }else{
+                     $('div').stop().animate({'bottom':-350},1000);
+                    $('div span').css({'background-color':'#ff3100'});
+                }
+            });
+            
+            
+        });
+    
+    
+    </script>
+</head>
+
+	<body>
+<div>
+    <span>장바구니</span>
+</div>
+</body>
+
+</html>

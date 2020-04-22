@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> div_layout </title>
+	<style>
+        #wrap{
+            width:800px;
+            border: 5px solid black;
+            margin:auto;
+        }
+        
+        #header{
+            background: red;
+            height: 120px;
+            
+        }
+        #sidebar{
+            width: 150px;
+            height: 500px;
+            background-color: yellow;
+          
+            float:right;
+   
+            
+        }
+        #contents{
+            width: 800px;
+            height: 500px;
+            background-color: aqua;
+        }
+        #footer{
+            height: 200px;
+            background-color: green;
+            clear:both;
+        }
+    
+    </style>
+</head>
+
+	<body>
+
+<div id="wrap">
+    <div id="header">HEADER</div>
+    <div id="sidebar">SIDEBAR</div>
+    <div id="contents">CONTENTS</div>
+    <div id="footer">FOOTER</div>
+    
+</div>
+</body>
+</html>

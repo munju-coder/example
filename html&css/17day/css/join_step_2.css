@@ -1,0 +1,39 @@
+#wrap{
+    width: 863px;
+    margin:  50px auto;
+    
+}
+#wrap h3{
+    font-size: 14px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #222;
+    color: #555;
+}
+#wrap form fieldset{
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 15px;
+    
+}
+#wrap form fieldset legend{
+    display: none;
+}
+#wrap form fieldset ul{
+    list-style: none;
+    
+}
+#wrap form fieldset  ul li{
+    font-size: 12px;
+    margin-bottom: 12px;
+    
+}
+#wrap form fieldset  li label{
+    width: 126px;
+    height: 30px;
+    float: left;
+}
+
+#wrap form fieldset ul li input [maxlength="4"]
+{
+    width: 40px;
+}

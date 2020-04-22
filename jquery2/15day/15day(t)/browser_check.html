@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+
+    <style>
+        hr {
+            width: 200px;
+            border-top: 3px solid red;
+            margin-left: 0;
+        }
+    </style>
+
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+        $(function() {
+            var ua = window.navigator.userAgent;
+
+            //$('h1').text(ua);
+            
+            if( ua.indexOf('MISE') > 0 || ua.indexOf( 'Trident/' ) > 0 ) {
+                //$('h1').text("현재 브라우저는 IE");
+                
+                var styleSt = document.createElement( 'link' );
+                
+                styleSt.rel = "stylesheet";
+                styleSt.href = "css/ie_style.css";
+                
+                document.getElementsByTagName( 'head' )[0].appendChild( styleSt );
+                
+            }
+            
+        });
+    </script>
+</head>
+
+<body>
+
+    <h1>브라우저 체크</h1>
+    <p>브라우저 마다 소스코드를 해석하는 방식이 다르다.</p>
+    <hr>
+
+</body></html>

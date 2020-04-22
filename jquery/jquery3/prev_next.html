@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+    
+        $( function() {
+           
+            /*
+                $(선택자).prev()                   - 선택자의 이전요소
+                $(선택자).next()                   - 선택자의 다음요소
+                
+                $(선택자).children('자식요소')     - 선택자의 자식요소
+                $(선택자).find('후손요소')         - 선택자의 후손요소
+                
+                $(선택자1).not(선택자2)            
+                - 선택자1중에서 선택자2가 아닌것
+            */
+            
+            $( '.list3' ).prev().css({
+                'background-color' : '#ff6e6e' ,
+                'color' : 'white'
+            });
+            
+            $( '.list3' ).next().css({
+                'background-color' : '#6eabff' ,
+                'color' : 'white'
+            });
+            
+            $( 'ul li' ).not( '.list3' ).css({ 'font-Weight' : 900 });
+            
+            
+        });
+    
+    </script>
+</head>
+
+<body>
+
+<ul>
+    <li class="list1" >Menu1</li>
+    <li class="list2" >Menu2</li>
+    <li class="list3" >Menu3</li>
+    <li class="list4" >Menu4</li>
+</ul>
+
+</body>
+
+</html>

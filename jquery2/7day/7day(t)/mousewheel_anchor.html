@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> 마우스 휠 페이저 </title>
+    
+    <style>
+    
+        body { margin: 0;}
+        
+        a { 
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        header {
+            width: 100%;
+            padding: 40px 0;
+            border-bottom: 1px solid #ccc;
+            background-color: rgba(255, 255, 255, 0.8);
+            position: fixed;
+        }
+        
+        header nav {
+            width: 800px;
+            height: 50px;
+            margin: auto;
+        }
+        
+        header nav ul li a {
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            float: left;
+            font-weight: 900;
+            color: #333;
+        }
+        
+        #wrap {
+            width: 1000px;
+            margin: auto;
+        }
+        
+        section {
+            width: 100%;
+            height: 1000px;
+        }
+        
+        #page1 { background-color: #de5454; }
+        #page2 { background-color: #deb91f; }
+        #page3 { background-color: #59de54; }
+        #page4 { background-color: #546fde; }
+        
+        footer {
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid #ccc;
+        }
+        
+        body > nav {
+            width: 100px;
+            background-color: #333;
+            position: absolute;
+            margin-left: 50%;
+            top: 150px;
+            left: 520px;
+            text-align: center;
+            color: white;
+        }
+        
+        body > nav ul {
+            padding: 0;
+            list-style: none;
+        }
+        
+        body > nav ul li {
+            padding: 10px 0;
+        }
+        
+    </style>
+    
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery.easing.1.3.js"></script>
+    <script src="lib/jquery.mousewheel.js"></script>
+    <script>
+        $( function() {
+           
+            $( 'a' ).click( function(e) {
+               
+                e.preventDefault();
+                
+                $( 'html, body' ).stop().animate({ 'scrollTop' : $(this.hash).position().top }, 1000, "easeOutExpo" );
+                
+            });
+            
+            
+            $( window ).scroll( function() {
+               
+                $( 'body > nav' ).stop().animate({ 'top' : $(this).scrollTop() + 150 }, 1000, "easeOutExpo");
+                
+            });
+            
+            $( 'section' ).each( function() {
+               $( this ).mousewheel( function(e, delta) {
+                  
+                   var moveTop;
+                   
+                   if( delta > 0 ) {
+                       
+                       console.log( $(this).prev()[0] );
+                       
+                       if( $(this).prev()[0] != undefined  ) {
+                           moveTop = $(this).prev().position().top
+                       }
+                       
+                   }else{
+                       
+                       console.log( $(this).next()[0] );
+                       
+                       if( $(this).next()[0] != undefined  ) {
+                           moveTop = $(this).next().position().top
+                       }
+                       
+                   }
+                   
+                   $( 'html, body' ).stop().animate({ 'scrollTop' : moveTop }, 1000, "easeOutExpo");
+                   
+               });
+            });
+           
+            
+            
+        });
+    </script>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="#page1">menu1</a></li>
+            <li><a href="#page2">menu2</a></li>
+            <li><a href="#page3">menu3</a></li>
+            <li><a href="#page4">menu4</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div id="wrap">
+    <section id="page1"></section>
+    <section id="page2"></section>
+    <section id="page3"></section>
+    <section id="page4"></section>
+</div>
+
+<footer>Copyrights &copy; All Rights Reserved.</footer>
+
+<nav>
+    <ul>
+        <li><a href="#page1">Menu1</a></li>
+        <li><a href="#page2">Menu2</a></li>
+        <li><a href="#page3">Menu3</a></li>
+        <li><a href="#page4">Menu4</a></li>
+        <li><a href="#wrap">top</a></li>
+    </ul>
+</nav>
+
+</body>
+
+</html>

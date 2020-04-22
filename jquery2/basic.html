@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리 기본연습하기</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<script>
+    $(document).ready( function(){
+
+        //$('.title').css('color','red');
+        $('.title').css('color','red').css('background-color','yellow'); 
+        //선택한 요소에 메서드를 연속해서 사용, 한 객체에 다양한 메서드를 이어서 사용가능
+        $('h2').css('border','1px dashed #f00'); //요소명 선택자 태그와 일치하는 요소 선택
+        $('.parent').parent().css('color','green');
+        console.log(1);
+        // $('*').css('border','1px solid #000');
+        //전체요소 선택자로 html의 모든 태그에 해당
+
+        $('h1,h3').css('color','powderblue'); //그룹선택자 한번에 여러개의 요소를 선택할 때 사용한다.
+
+        $('p.children').css('border','2px solid #ddd'); //종속 선택자로 요소명과 class 값이 일치하는 요소를 선택하여 적용함.
+
+
+    });
+</script>
+<style>
+    .title { color: blue; }
+</style>
+<body>
+    <h1 class="title">제이쿼리 선택자</h1>
+
+    <div class="parents">
+        <h2>부모요소</h2>
+        <div class="parent">
+            <div class="">
+                <p class="children">부모요소선택</p>
+                <p>종속선택자 </p>
+            </div>
+
+        </div>
+    </div> 
+    
+    <h3>그룹요소선택자</h3>
+    
+</body>
+</html>

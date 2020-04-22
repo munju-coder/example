@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> margin-padding BOX MODEL </title>
+	<style>
+        
+    
+        h1 {
+            border-top: 3px double black;
+            border-bottom:   3px double black;  
+                padding: 15px;
+        }
+        
+        body {
+            background: #d5d5d5 url(images/bgimage.gif) repeat-x;
+        }
+        
+        ol{
+            background: url(images/boxmodel.jpg) center left no-repeat;
+            background-position: left;
+            margin: 0;
+            padding: 150px 300px;
+        }
+        
+        ol li{
+            font-size: 
+            
+        }
+        
+         .box1 {
+        color: white;
+        background-color: black;
+        padding: 15px;
+        border: 100px;
+        height: 40px;
+    }
+     
+        #bluesqure1,#bluesqure2{
+            
+            list-style-image: url(images/bulllet.jpg);
+            border: 1px black solid;
+             background-color:white;
+            margin: 10px 0;
+
+            padding: 30px 50px;
+           
+        }
+       
+        .css
+        {
+            border: 1px black solid;
+            background-color:white;
+            padding: 10px 30px;
+        }
+        
+            
+    
+    </style>
+</head>
+
+<body>
+
+<h1>BOX MODEL</h1>
+    
+
+    <ol type="1" >
+    <h2><li>border</li></h2>
+    <h2><li>margin</li></h2>
+    <h2><li>padding</li></h2>
+</ol>
+       
+<h2 class="box1">border</h2>
+
+    <p class="css attribute">외곽선을 나타내는 속성이다. margin과 padding의 경계에 해당하며 width, height속성에 추가적인 두께 값을 적용한다. 만약 넓이 100px, 높이 100px의 block구조에 1px의 border속성값을 모든 방향에 추가하면 실제 넓이와 높이는 방향별로 추가된 값 넓이 102px, 높이 102px이 된다.</p>
+
+<p class="css attribute">border-width, border-style, border-color로 이루어져 있으며 각각의 속성들은 다시 border-top-width, border-right-width, border-bottom-width, border-left-width와 같이 방향별로 분류된다.</p>
+
+
+<h2 class="box1">margin</h2> 
+
+<P class="css">border를 기준으로 바깥쪽 방향에 추가되는 여백이다. block구조가 쌓여있을때 위, 아래의 여백은 중첩되는 반면 옆으로 나열되어있는 block구조 또는 inline구조의 양옆 여백은 중첩되지않는다. block구조의 실제 크기에는 영향을 주지않는다.</P>
+
+<p class="css">margin-top, margin-right, margin-bottom, margin-left로 방향별로 나누어지며 margin으로 축약형 작성이 가능하다. 이때 값을 몇개 적느냐에 따라 적용 되는 방향이 달라진다.</p>
+
+    
+    <ul id="bluesqure1">
+    <li>margin: 10px ▶ 모든 방향에 10px</li>
+    <li>margin: 10px 20px ▶ 위, 아래에 10px 양옆에 20px</li>
+    <li>margin: 10px 20px 30px▶ 위에 10px 양옆에 20px 아래에 30px</li>
+    <li>margin: 10px 20px 30px 40px▶ 위에서부터 시계방향으로 10px 20px 30px 40px</li>
+    </ul>
+
+
+<h2 class="box1">padding</h2>
+
+<p class="css">border를 기준으로 안쪽 방향에 추가되는 여백이다. border와 마찬가지로 컨텐츠 내용에 추가적인 크기가 생기기때문에 넓이, 높이 값을 사용하는 경우 실제 크기보다 늘어난다. 만약 넓이 100px, 높이 100px의 block구조에 10px의 padding값을 모든 방향에 추가하면 실제 넓이와 높이는 방향별로 추가된 값 넓이 120px, 높이 120px이 된다.</p>
+
+<p class="css">넓이, 높이값을 사용하고있는 상태에서 border나 padding에 의해 추가적인 크기가 늘어나는것을 원치않는다면 
+    box-sizing : border-box 속성을 이용하여 지정한 넓이, 높이로 지정 할 수 있다.</p>
+
+    
+    <ul id="bluesqure2">
+    <li>padding: 10px ▶ 모든 방향에 10px</li>
+    <li>padding: 10px 20px ▶ 위, 아래에 10px 양옆에 20px</li>
+    <li>padding: 10px 20px 30px▶ 위에 10px 양옆에 20px 아래에 30px</li>
+    <li>padding: 10px 20px 30px 40px▶ 위에서부터 시계방향으로 10px 20px 30px 40px</li>
+    </ul>
+    
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> quick_menu</title>
+	<style>
+    
+        #quick{
+            width: 450px;
+            height: 100px;
+            margin: 150px auto;
+            position: relative;
+            border: 1px solid black;
+        }
+        .leftbtn, .rightbtn{
+            width: 25px;
+            height: 100px;
+            background-color: black;
+            text-align: center;
+            padding-top: 39px;
+            box-sizing: border-box;
+            position: absolute;
+            left: 0;
+            
+        }
+        .rightbtn{
+            right:0;
+            left: auto; /*left도 0, 초기화*/
+            display: none;
+        }
+        .mask{
+            width: 400px;
+            height: 100px;
+            margin: auto;
+            background-color: pink;
+            overflow: hidden;
+        }
+        .mask ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            width: 1600px; /*100px*16*/
+            
+        }
+        .mask ul li{
+            width: 100px;
+            padding: 5px;
+            box-sizing: border-box;
+            float: left;
+        }
+        .mask ul li img{width: 100%;}
+    
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery.easing.1.3.js"></script>
+    <script>
+    
+        $(function (){
+          
+            var pos = 0;
+            
+            $('.leftbtn').click( function() {
+                
+                 console.log(pos);
+                
+                if( pos >=800 ){ //800다음으로 넘어갈게 없으므로 1600이 마지막
+                    
+                    $(this).hide();
+                }else{
+                    $('.rightbtn').show();
+                }
+                pos += 400;
+               
+                $('.mask').stop().animate({ 'scrollLeft' : pos });
+                
+            });
+            
+            $('.rightbtn').click( function() {
+                
+                if( pos <= 400){
+                    $(this).hide();
+                }else{
+                    $('.leftbtn').show();
+                
+                }
+                
+                pos -=400;
+                console.log(pos);
+                $('.mask').stop().animate({ 'scrollLeft' : pos });
+                
+            });
+            
+        });
+    
+        
+        
+    
+    </script>
+</head>
+
+<body>
+    <div id="quick">
+       <div class="leftbtn"><img src="images/btn_pre10.gif" alt="이전"></div>
+        <div class="rightbtn"><img src="images/btn_next10.gif" alt="다음"></div>
+        
+        <div  class="mask">
+           <ul>
+               <li><img src="images/img_200x200_01.jpg" alt="메뉴"></li>
+               <li><img src="images/img_200x200_02.jpg" alt="메뉴"></li>
+               <li><img src="images/img_200x200_03.jpg" alt="메뉴"></li>
+               <li><img src="images/img_200x200_04.jpg" alt="메뉴"></li>
+               <li><img src="images/img_200x200_05.jpg" alt="메뉴"></li>
+               <li><img src="images/img_200x200_06.jpg" alt="메뉴"></li>
+               <li><img src="images/img_200x200_07.jpg" alt="메뉴"></li>
+               <li><img src="images/img_200x200_08.jpg" alt="메뉴"></li>
+               <li><img src="images/img_200x200_09.jpg" alt="메뉴"></li>
+               <li><img src="images/img_200x200_10.jpg" alt="메뉴"></li>
+               <li><img src="images/img_200x200_11.jpg" alt="메뉴"></li>
+               <li><img src="images/img_200x200_12.jpg" alt="메뉴"></li>
+               <li><img src="images/img_200x200_13.jpg" alt="메뉴"></li>
+               <li><img src="images/img_200x200_14.jpg" alt="메뉴"></li>
+               <li><img src="images/img_200x200_15.jpg" alt="메뉴"></li>
+               <li><img src="images/img_200x200_16.jpg" alt="메뉴"></li>
+           </ul>
+            
+        </div>
+    </div>
+</body>
+</html>

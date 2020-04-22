@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+
+    <style>
+        #loginForm {
+            width: 800px;
+            padding: 70px;
+            border: 1px solid #ccc;
+            margin: 150px auto;
+            overflow: hidden;
+        }
+
+        #loginForm .logo {
+            width: 200px;
+            height: 200px;
+            margin-right: 50px;
+            float: left;
+        }
+
+        #loginForm form {
+            height: 200px;
+            border-left: 2px dashed #ccc;
+            padding-left: 50px;
+            float: left;
+        }
+
+        #loginForm form fieldset {
+            width: 466px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        #loginForm form fieldset legend {
+            font-size: 30px;
+            font-weight: 900;
+            margin-left: 20px;
+        }
+
+        #loginForm form fieldset ul {
+            list-style: none;
+        }
+
+        #loginForm form fieldset ul li {
+            margin-bottom: 15px;
+        }
+
+        #loginForm form fieldset ul li label {
+            width: 75px;
+            display: inline-block;
+            font-weight: 900;
+            color: #333;
+        }
+
+        #loginForm form fieldset ul li input {
+            padding: 10px;
+        }
+
+        #loginForm form fieldset #loginBtn {
+            width: 100px;
+            padding: 15px;
+            position: absolute;
+            right: 30px;
+            top: 80px;
+            font-weight: 900;
+            border: 0;
+            background: rgb(255, 170, 1);
+            background: -moz-linear-gradient(top, rgba(255, 170, 1, 1) 8%, rgba(200, 87, 0, 1) 100%);
+            background: -webkit-linear-gradient(top, rgba(255, 170, 1, 1) 8%, rgba(200, 87, 0, 1) 100%);
+            background: linear-gradient(to bottom, rgba(255, 170, 1, 1) 8%, rgba(200, 87, 0, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffaa01', endColorstr='#c85700', GradientType=0);
+            color: white;
+
+        }
+    </style>
+
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery.cookie.js"></script>
+    <script>
+        $(function() {
+
+            var idCookie = $.cookie('idCookie');
+            var pwCookie = $.cookie('pwCookie');
+
+            console.log(idCookie);
+            console.log(pwCookie);
+            
+            if( idCookie ) {
+                
+                $( '#saveId' ).attr( 'checked' , 'true' );
+                $( '#userId' ).val( idCookie );
+                $( '#userPw' ).val( pwCookie );
+                
+            }
+
+            $('#loginBtn').click(function(e) {
+
+                //e.preventDefault();
+
+
+                if ($('#saveId').is(':checked')) {
+
+                    //console.log("ok")
+
+                    $.cookie('idCookie', $('#userId').val(), {
+                        expires: 7,
+                        path: '/'
+                    });
+                    $.cookie('pwCookie', $('#userPw').val(), {
+                        expires: 7,
+                        path: '/'
+                    });
+
+
+                } else {
+
+                    //console.log("no")
+
+                    $.cookie('idCookie', null, {
+                        expires: 7,
+                        path: '/'
+                    });
+                    $.cookie('pwCookie', null, {
+                        expires: 7,
+                        path: '/'
+                    });
+                }
+
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+
+    <div id="loginForm">
+
+        <div class="logo"><img src="images/popup.jpg" alt="img"></div>
+
+        <form>
+            <fieldset>
+                <legend>Login</legend>
+
+                <ul>
+                    <li>
+                        <label for="userId">아이디</label>
+                        <input type="text" id="userId" placeholder="ID">
+                    </li>
+
+                    <li>
+                        <label for="userPw">비밀번호</label>
+                        <input type="password" id="userPw" placeholder="PASSWORD">
+                    </li>
+                </ul>
+
+                <input type="submit" id="loginBtn" value="로그인">
+
+            </fieldset>
+
+            <input type="checkbox" id="saveId">
+            <label for="saveId">아이디 기억하기</label>
+        </form>
+
+    </div>
+
+
+</body></html>

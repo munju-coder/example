@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <style>
+        #product {
+            width: 720px; /* 360*2 */
+            height: 540px;
+            margin: 150px auto;
+            position: relative;
+            border: 1px solid #ccc;
+        }
+
+        #product .thumb {
+            width: 360px;
+            height: 540px;
+
+        }
+
+        #product .thumb .zoomArea {
+            width: 108px; 
+            height: 162px; 
+            /*360의 30%*/
+            /*540의 30%*/
+            background-color: rgba(0, 0, 0, 0.7);
+            border:1px solid red;
+            box-sizing: border-box;
+            position: absolute; /*thumb위에 얹어지도록 -움직일것이므로*/
+            top: 0;
+        }
+        .zoomIn{
+            width: 360px;
+            height: 540px;
+            position: absolute; 
+            top: 0;
+            right: 0; /*오른쪽에가서 붙도록*/
+            background:url(images/big_ironman.jpg);
+            display: none; /* -전체이미지의 일부도 보이지 않는 상태에서 시작*/
+        }
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery-ui.js"></script>
+                      
+                            <script>
+        $( function() {
+           
+            $( '.zoomArea' ).draggable(
+                { 'containment' : 'parent' } ,
+                { start : function() { $('.zoomIn').fadeIn('slow'); } } ,
+                { drag : function() {
+                    
+                    //background-position: 100px 200px;
+                    
+                    
+                     var imgX= (720-360)/(360-0)*($('.zoomIn').position().left-0)+360;
+                    
+                        var imgY=(540-0)/(540-0)*($('.zoomIn').position().left-0)+0;
+                    
+                            console.log=( );
+                    $('.zoomIn').css({'background-position': imgX ,imgY });
+                    
+                } } ,
+                { stop : function() { $('.zoomIn').fadeOut('slow');} } 
+            );
+            
+        });
+    
+    </script>
+    
+
+</head>
+
+<body>
+    <div id="product">
+        <div class="thumb">
+            <img src="images/ironman.jpg" alt="섬네일">
+            <div class="zoomArea"></div>
+        </div>
+        <div class="zoomIn"></div>
+    </div>
+</body>
+</html>

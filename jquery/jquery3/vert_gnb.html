@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> 세로형 GNB </title>
+    
+    <style>
+    
+        nav {
+            width: 130px;
+            margin: 100px auto;
+            text-align: center;
+        }
+        
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        nav > ul > li > a {
+            display: block;
+            height: 50px;
+            line-height: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            background-color: #333;
+            color: white;
+            transition: all 1s ease;
+        }
+        nav > ul > li > a.active {
+            background-color: mediumvioletred;
+        }
+        nav ul li ul { display: none; }
+        nav ul li ul li {
+            padding: 5px 0;
+            background-color: #eee;
+            color: #333;
+        }
+        
+    
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+    
+        $( function() {
+           
+            /*          
+                클릭한 메인메뉴는 active클래스를 추가하고
+                클릭하지 않은 서브메뉴들은 active클래스 제거
+                
+                메인메뉴를 클릭하면 클릭한 메뉴의 서브메뉴는 펼쳐지고
+                클릭하지 않은 서브메뉴는 접힘
+
+            */
+            
+            //메인메뉴 선택자
+            var $mainMenu = $( 'nav > ul > li > a' );
+            
+            //nav > ul > li > a를 클릭하면 함수 실행
+            $mainMenu.click( function() {
+               
+                //클릭한 a태그(클릭한것-이벤트를 받는것)에 active클래스 추가
+                $( this ).addClass( 'active' );
+                
+                //메인메뉴들 중에서 클릭한 a가 아닌것은active클래스 제거
+                $mainMenu.not( this ).removeClass('active');
+                
+                //클릭한 것의 다음요소는 slideDown
+                $(this).next().slideDown( 'slow' );
+                
+                //nav ul li ul중에서 클릭한 것의 다음요소가 아닌것은 slideUp
+                $( 'nav ul li ul' ).not( $(this).next() ).slideUp( 'slow' );
+                
+            });
+            
+        });
+    
+    </script>
+</head>
+
+<body>
+
+<nav>
+    <ul>
+        <li>
+            <a href="#">Menu1</a>
+            <ul>
+                <li><a href="#">sub-menu1</a></li>
+                <li><a href="#">sub-menu2</a></li>
+                <li><a href="#">sub-menu3</a></li>
+                <li><a href="#">sub-menu4</a></li>
+            </ul>
+        </li>
+        
+        <li>
+            <a href="#">Menu2</a>
+            <ul>
+                <li><a href="#">sub-menu1</a></li>
+                <li><a href="#">sub-menu2</a></li>
+                <li><a href="#">sub-menu3</a></li>
+                <li><a href="#">sub-menu4</a></li>
+            </ul>
+        </li>
+        
+        <li>
+            <a href="#">Menu3</a>
+            <ul>
+                <li><a href="#">sub-menu1</a></li>
+                <li><a href="#">sub-menu2</a></li>
+                <li><a href="#">sub-menu3</a></li>
+                <li><a href="#">sub-menu4</a></li>
+            </ul>
+        </li>
+        
+        <li>
+            <a href="#">Menu4</a>
+            <ul>
+                <li><a href="#">sub-menu1</a></li>
+                <li><a href="#">sub-menu2</a></li>
+                <li><a href="#">sub-menu3</a></li>
+                <li><a href="#">sub-menu4</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+
+</body>
+
+</html>

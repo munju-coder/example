@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	<script src="lib/jquery-1.11.1.min.js"></script>
+	<script>
+     $( function (){
+         
+       /*
+       
+            setTimeout( 실행 코드, 지연시간);
+            -실행코드를 지연시간 이후 한번만 실행 후 종료
+            
+            setInterval( 실행 코드, 지연시간);
+            -실행코드를 지연시간 마다 실행
+            
+            clearInterval( setInterval이름 );
+           -실행중인 setInterval을 정지
+           
+           -실행코드는 함수로 처리
+           -지연시간 ms 단위 사용 (1000->1초)
+           -setInterval을 함수 밖에 전역변수로 지정하여 사용해야 
+           중복 실행을 방지할 수 있다.
+           (-대기함수는 제외(전역), 함수 안 - 지역변수, 함수바깥-전역변수)
+       
+       */
+         var cnt = 0;
+         var timer = setInterval( countFn , 1000);
+         function countFn (){
+             
+             /*cnt++;
+             $('h1').text( cnt+'번 동작'); */
+             
+             var date = new Date();
+             
+             var year = date.getFullYear();
+             var month = date.getMonth()+1;
+             var day = date.getDate();
+             
+             var hour = date.getHours();
+             var minute = date.getMinutes();
+             var sec = date.getSeconds();
+             
+             $('h1').text( year + '-' + month + '-' + day+' '+hour+' : '+minute+' : '+sec );
+         }
+     });
+    
+    
+    </script>
+</head>
+
+	<body>
+	<h1></h1>
+
+</body>
+</html>

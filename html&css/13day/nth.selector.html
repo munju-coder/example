@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> 구조 선택자와 형태구조선택자 </title>
+	<style>
+        ul li{
+            padding: 7px 0;
+            border-top: 1px solid coral;   
+        }
+        
+        ul li:last-child{
+            border-bottom: 1px solid coral;
+        }
+        
+        ul li:nth-child(2n+1){
+            background-color: aqua;
+        }
+        ul li:first-child{
+            color: fuchsia;
+        }
+        dl dd:nth-of-type(1) {
+            color:blue;
+        }
+        
+        
+    </style>
+</head>
+
+	<body>
+	<h1>구조선택자와 형태구조 선택자</h1>
+<ul>
+    <li>Menu1</li>
+    <li>Menu2</li>
+    <li>Menu3</li>
+    <li>Menu4</li>
+    <li>Menu5</li>
+    <li>Menu6</li>
+    <li>Menu7</li>
+</ul>
+
+<dl>
+    <dt>제목</dt>
+    <dd>내용1</dd>
+    <dd>내용2</dd>
+    <dd>내용3</dd>
+    <dd>내용4</dd>
+</dl>
+</body>
+</html>

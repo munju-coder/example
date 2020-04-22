@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> transit </title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<script src="lib/jquery-1.11.1.min.js"></script>
+	<script src="lib/jquery.transit.min.js"></script>
+	<script>
+        
+        $(function(){
+          //마우스 커서를 올려주면 해야 할 일 -함수를 실행해라 
+            $('i').mouseenter( function(){
+              //마우스커서가 들어온 i에 큐가 쌓이지 않게 하고 회전속성을 135도만큼 1초동안 회전
+                //deg도 단위 -문자 이므로 작은 따옴표 
+                $(this).stop().transition({'rotate':'135deg'},1000);
+            });
+            //반대로 마우스가 빠져나갔을 떄 해야할 일 
+            $('i').mouseleave( function(){
+                // 다시 제자리로 돌아가야하는 것이므로 회전하지 않았으므로 0도
+                $(this).stop().transition({'rotate':0},1000);
+            });
+        }); //transit script 연결해야 실행이 된다.  transform transition 으로 작성한다. 애니메이션 충돌이 일어날 수 있음 (일반적인 속성은 animate로 주고 )
+        
+        
+    
+    </script>
+</head>
+
+<body>
+<div><i class="fas fa-plus"></i></div>
+</body>
+</html>

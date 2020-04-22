@@ -1,0 +1,23 @@
+web-4
+1day
+modal.html,
+css, script
+
+과제 ________________________________________________________-
+닫기 버튼 클릭했을 때 팝업창 원래대로 동작 스크립트 부분
+
+   $('.fa-times-circle').click( function(){
+     
+       $('.bgArea').fadeOut('slow');
+       
+       $('.instaAtra').transition({
+           'translate':'-50%, -50%',
+           'scale':1
+       },1000);
+       $('body').animate({'border-width':0},1000);
+       $('.popup').transition({
+           'translate': '-50%, -50%',
+           'scale': 0
+       },1000);
+
+__________________________________________________________________

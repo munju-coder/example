@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+    
+        $( function() {
+           
+            /*
+                Math.random() * 1       0~1사이의 난수값
+                                        0~0.9999999999...
+                
+                                        0~10사이 난수값
+                Math.random() * 10      0~9.9999999999...
+                
+                
+                Math.random() * 10 + 1  1~11사이 난수값
+                                        1~10.999999999...
+                
+                function makeRandom( min , max ) {
+                    var rand = Math.random() * (max - min) + min;
+                    return Math.round(rand);
+                }
+            */
+            
+            function makeRandom( min , max ) {
+                    var rand = Math.random() * (max - min) + min;
+                    return Math.round(rand);
+            }
+            
+            $( 'button' ).click( function() {
+               
+                $( 'h1' ).text("주사위 눈 값 : " + makeRandom( 1 , 6 ));
+                
+            });
+            
+            
+        });
+        
+    </script>
+</head>
+
+<body>
+
+<h1>주사위 값 : </h1>
+
+<button type="button">Random</button>
+
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    
+    <link rel="stylesheet" href="css/jquery.bxslider.css" >
+    <style>
+        #mainVis {
+            width: 100%;
+            position: relative;
+        }
+        
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .newPager {
+            position: absolute;
+            left: 100px;
+            bottom: 50px;
+        }
+        
+        .newPager a {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #222;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            line-height: 30px;
+            transition: all 1s ease;
+        }
+        
+        .newPager a.active {
+            background-color: #eaeaea;
+            color: #222;
+        }
+        
+    </style>
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="js/jquery.bxslider.js"></script>
+    <script>
+        $( function() {
+           
+            /*
+            
+                mode        horizontal / vertical / fade    슬라이드전환
+                auto        true / false                    자동 슬라이드
+                autohover   true / false                    오버시 멈춤
+                speed       1000                            전환 시간
+                
+                -----------------------------------------------------------
+                
+                controls    true / false                    이전/다음 버튼
+                pager       true / false                    pager 버튼
+                
+                pagerCustom    선택자               control/pager 대신 사용
+                
+                prevSelector    '이전'버튼의 선택자
+                nextSelector    '다음'버튼의 선택자
+                
+                prevText        '이전'버튼 내용
+                nextText        '다음'버튼 내용
+                
+                -----------------------------------------------------------
+                
+                moveSlides      갯수                이동 슬라이드 수
+                slideWidth      넓이                목록 하나의 최소 넓이
+                slideMargin     여백                목록 사이 여백
+                minSlides       갯수                슬라이드 최소 노출갯수
+                maxSlides       갯수                슬라이드 최대 노출갯수
+                        
+            */
+            
+            
+            var mainSlider = $('.slider').bxSlider({
+                mode : 'vertical' ,
+                auto : true ,
+                controls : false ,
+                pagerCustom : '.newPager'
+            });
+            
+        });
+    </script>
+</head>
+
+<body>
+
+<section id="mainVis">
+    <ul class="slider">
+        <li><img src='http://placehold.it/1920x800/d42e2e/ffffff?text=1' alt="1"></li>
+        <li><img src='http://placehold.it/1920x800/d4ae2e/ffffff?text=2' alt="2"></li>
+        <li><img src='http://placehold.it/1920x800/6ed42e/ffffff?text=3' alt="3"></li>
+        <li><img src='http://placehold.it/1920x800/2e67d4/ffffff?text=4' alt="4"></li>
+    </ul>
+    
+    <nav class="newPager">
+        <a href="#" data-slide-index="0">1</a>
+        <a href="#" data-slide-index="1">2</a>
+        <a href="#" data-slide-index="2">3</a>
+        <a href="#" data-slide-index="3">4</a>
+    </nav>
+</section>
+
+</body>
+
+</html>

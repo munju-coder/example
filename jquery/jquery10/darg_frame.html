@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> drag_frame </title>
+    <style>
+        #product {
+            width: 550px;
+            height: 400px;
+            margin: 150px auto;
+            position: relative;
+        }
+
+        #scrArea {
+            width: 500px;
+            height: 30px;
+            position: absolute;
+            bottom: 30px;
+            left: 25px;
+
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#1e5799+0,2989d8+50,207cca+51,7db9e8+100&0+42,1+44,1+44,1+47,1+52,1+52,0+56 */
+            background: -moz-linear-gradient(top, rgba(30, 87, 153, 0) 0%, rgba(39, 129, 206, 0) 42%, rgba(40, 131, 209, 1) 44%, rgba(41, 134, 213, 1) 47%, rgba(41, 137, 216, 1) 50%, rgba(32, 124, 202, 1) 51%, rgba(34, 125, 203, 1) 52%, rgba(42, 130, 205, 0) 56%, rgba(125, 185, 232, 0) 100%);
+            /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, rgba(30, 87, 153, 0) 0%, rgba(39, 129, 206, 0) 42%, rgba(40, 131, 209, 1) 44%, rgba(41, 134, 213, 1) 47%, rgba(41, 137, 216, 1) 50%, rgba(32, 124, 202, 1) 51%, rgba(34, 125, 203, 1) 52%, rgba(42, 130, 205, 0) 56%, rgba(125, 185, 232, 0) 100%);
+            /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, rgba(30, 87, 153, 0) 0%, rgba(39, 129, 206, 0) 42%, rgba(40, 131, 209, 1) 44%, rgba(41, 134, 213, 1) 47%, rgba(41, 137, 216, 1) 50%, rgba(32, 124, 202, 1) 51%, rgba(34, 125, 203, 1) 52%, rgba(42, 130, 205, 0) 56%, rgba(125, 185, 232, 0) 100%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#001e5799', endColorstr='#007db9e8', GradientType=0);
+            /* IE6-9 */
+
+
+        }
+
+        #scrBar {
+            width: 30px;
+            height: 30px;
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#cb60b3+0,c146a1+50,a80077+51,db36a4+100;Pink+Gloss */
+            background: rgb(203, 96, 179);
+            /* Old browsers */
+            background: -moz-linear-gradient(top, rgba(203, 96, 179, 1) 0%, rgba(193, 70, 161, 1) 50%, rgba(168, 0, 119, 1) 51%, rgba(219, 54, 164, 1) 100%);
+            /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, rgba(203, 96, 179, 1) 0%, rgba(193, 70, 161, 1) 50%, rgba(168, 0, 119, 1) 51%, rgba(219, 54, 164, 1) 100%);
+            /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, rgba(203, 96, 179, 1) 0%, rgba(193, 70, 161, 1) 50%, rgba(168, 0, 119, 1) 51%, rgba(219, 54, 164, 1) 100%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cb60b3', endColorstr='#db36a4', GradientType=0);
+            /* IE6-9 */
+
+
+        }
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery-ui.js"></script>
+    <script>
+        $(function() {
+
+            /* Maht class
+                소수값-> 정수값으로 바꿈
+                Math.ceil(소수값)      올림하여 정수 표현
+                Math.round(소수값)     반올림하여 정수 표현
+                Math.floor(소수값)     버림처리하여 정수 표현
+            */
+            
+            $('#scrBar').draggable(
+                { containment : 'parent' } , //부모영역안에서만 드래그 되어야하므로 
+                { drag : function() {
+                    
+                    /*
+                        스크롤바 공식
+                        
+                        스크롤바 가동범위      a ~ b         0 ~ 470 (전체넓이500-30)
+                        움직일것 가동범위      c ~ d         1 ~ 91 (이미지의 번호가 바뀔것)
+                        
+                        var 변수명 = ( d - c ) / ( b - a ) * (스크롤바위치 - a ) + c;
+                    */
+                    
+                    var num = ( 91 - 1 ) / ( 470 - 0 ) * ( $('#scrBar').position().left - 0 ) + 1;
+                    
+                    console.log( Math.floor(num) );
+                    
+                    $( 'img' ).attr( 'src' , 'images/' + Math.floor(num) + '.jpg' );                 
+                    // 속성 속성값
+                    
+                }}
+            );
+
+        });
+    </script>
+</head>
+
+<body>
+
+    <div id="product">
+        <img src="images/1.jpg" alt="돼지">
+        <div id="scrArea">
+            <div id="scrBar"></div>
+        </div>
+    </div>
+</body></html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> animate </title>
+    
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+        
+        #box1 { background-color: #de5757; }
+        #box2 { background-color: #cdb75c; }
+        #box3 { background-color: #76cd5c; }
+        #box4 { background-color: #5cbccd; }
+        #box5 { background-color: #aa5ccd; }
+        
+    </style>
+    
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+        $( function() {
+           
+            /*
+                animate
+                
+                $(선택자).animate({ '속성이름' , 속성값 }, 재생시간, 가감속 , 콜백함수 );
+                
+                - 중간값이 존재하는 속성을 사용
+                - 예외적으로 transform속성들은 transit플러그인을 추가로 연결하여 사용
+                - 재생시간은 ms단위 사용( 1000 -> 1초 )
+                - 가감속 애니메이션은 easing플러그인을 추가로 연결하여 사용
+                - 콜백함수는 애니메이션이 종료되고 나면 실행하는 함수
+                
+                - 같은요소에 애니메이션을 주면 순차적 재생
+                - 다른요소에 애니메이션을 주면 동시 재생
+            */
+            
+            //$( '#box1' ).animate({ 'top' : 500 }, 500 ).animate({ 'left' : 500 }, 500 )
+            
+            $( '#box1' ).animate({ 'top' : 500 , 'left' : 500 } , 1000 );
+            
+            $( '#box2' ).delay(500).animate({ 'left' : 500 }, 1000);
+            $( '#box3' ).delay(1000).animate({ 'left' : 500 }, 1000);
+            $( '#box4' ).delay(1500).animate({ 'left' : 500 }, 1000);
+            $( '#box5' ).delay(2000).animate({ 'left' : 500 }, 1000);
+                        
+        });
+    </script>
+    
+</head>
+
+<body>
+
+<div id="box1"></div>
+<div id="box2"></div>
+<div id="box3"></div>
+<div id="box4"></div>
+<div id="box5"></div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <style>
+        #product {
+            width: 720px;
+            height: 540px;
+            margin: 100px auto;
+            position: relative;
+            border: 1px solid #ccc;
+        }
+        
+        #product .thumb {
+            width: 360px;
+            height: 540px;
+        }
+        
+        #product .thumb .zoomArea {
+            width: 108px;
+            height: 162px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border:1px solid red;
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+        }
+        
+        .zoomIn {
+            width: 360px;
+            height: 540px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: url(images/big_ironman.jpg);
+            display: none;
+        }
+    </style>
+    
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery-ui.js"></script>
+    <script>
+        $( function() {
+           
+            $( '.zoomArea' ).draggable(
+                { 'containment' : 'parent' } ,
+                { start : function() { $('.zoomIn').fadeIn('slow'); } } ,
+                { drag : function() {
+                    
+                    //background-position: 100px 200px;
+                    
+                    //x: a ~ b    0 ~ 252       x: c ~ d    0 ~ -840
+                    //y: a ~ b    0 ~ 378       y: c ~ d    0 ~ -1260
+                    
+                    var posX = ( -840 - 0 ) / ( 252 - 0 ) * ( $('.zoomArea').position().left - 0 ) + 0 ;
+                    
+                    var posY = ( -1260 - 0 ) / ( 378 - 0 ) * ( $('.zoomArea').position().top - 0 ) + 0 ;
+                    
+                    $( '.zoomIn' ).css({ 'background-position' : posX + 'px ' + posY + 'px' });
+                    
+                    
+                } } ,
+                { stop : function() { $('.zoomIn').fadeOut('slow'); } } 
+            );
+            
+        });
+    
+    </script>
+    
+</head>
+
+<body>
+
+<div id="product">
+    <div class="thumb">
+        <img src="images/ironman.jpg" alt="썸네일">
+        <div class="zoomArea"></div>
+    </div>
+    
+    <div class="zoomIn"></div>
+</div>
+
+</body>
+
+</html>

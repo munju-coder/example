@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	
+	<script>
+        window.onload = function () {
+    var getId= document.getElementById( 'box1' );
+    
+    getId.style.backgroundColor = "#964c4c";
+    getId.style.color = "white";
+    
+    var getClass = document.getElementsByClassName( 'txt' );
+    
+    getClass[0].style.color = "blue";
+    getClass[1].style.color = "red";
+    getClass[2].style.color = "#7c0b65";
+    
+    var getTag = document.getElementsByTagName( 'h2' );
+    for( var i= 0; i < getTag.length; i++ ){
+        getTag[ i ].style.color="red";
+    }//length-갯수 0에서 3(h2가 3개)보다 작을때까지, 2까지
+}
+</script>
+    
+</head>
+
+<body>
+
+<div id="box1">
+   <h2>getElementById</h2>
+   <p class="txt">ID선택자</p>
+</div>
+
+<div id="box2">
+   <h2>getElementsByClassName</h2>
+   <p class="txt">CLASS선택자</p>
+</div>
+
+<div id="box3">
+   <h2>getElementsByTagName</h2>
+   <p class="txt">Tag선택자</p>
+</div>
+
+</body>
+</html>

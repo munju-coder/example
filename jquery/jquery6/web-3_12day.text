@@ -1,0 +1,127 @@
+web3
+12day
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+*제이쿼리 연결 깨졌을떄 CDN*
+
+★제이쿼리-html문서안의 요소를 찾는다-찾은 요소를 조작한다.
+->css 스타일 변경하기
+
+ex) 모든 <div>의 배경색을 #FF0000;으로 만들어라
+$('div').css({'background-color':'#FF0000'});
+
+★.is()★
+
+$(선택자).is(선택자)-선택자가 있으면 true를 반환하고 없으면 false를 반환
+$(선택자).is(상태값)-상태값이 있으면 true를 반환하고 없으면 false를 반환
+
+                  attr ( html 속성 )
+            $( 선택자 ). attr( '속성이름' )
+            
+            -선택자의 html 속성값을 가져온다.
+            
+            $( 선택자 ). attr( '속성이름', '속성값'  )
+            -선택자의 html 속성값을 바꿈
+            
+            css 
+            $( 선택자 ). css( '속성이름', '속성값' )
+            -속성이 1개인 경우
+        
+           ★ $( 선택자 ).css ( { '속성이름' : '속성값' } )
+            -속성이 1개 이상인 경우
+
+★input을 클릭하면 클릭한 input태그가 password일때
+ 빨간색배경 아니면 파란색배경으로 만들어라
+
+        $('input').click( function(){
+          if( $(this).is('[type=password]') ){
+              $(this).css({'background-color':'red'});
+          }else{
+              $(this).css({'background-color':'blue'});
+          } 
+        });
+
+*선택자: input중에서 클릭한 input태그가 password일때
+-> '[type=password']  속성선택자 이용
+
+★상태값을 이용해서 동작을 만들어줄떄
+each문 선택자를 개별적으로 실행할때 이용
+(':상태값')
+         $( '.box > div' ).each( function() {
+             //this가 화면상에 보이지 않는 상태냐-보이지 않는 상태라면 보여줄거고
+             //그렇지 않으면-보이는 상태라면 감춰줄것이다.
+                if( $(this).is(':hidden') ) {
+                    $(this).show();
+                }else{
+                    $(this).hide();
+                }
+                
+            });
+★세로형 메뉴 개별적으로 선택 is이용해서 만들기
+
+is_gnb
+<script src="lib/jquery.easing.1.3.js"></script>
+easing 플러그인 연결
+
+클릭은 네개의 메뉴탭중에 하나만 선택가능
+클릭하고 있는 것의 다음 요소가 펼쳐져 있어야함.
+
+    <script>
+    
+        $( function(){
+           //각각의 메뉴를 클릭했을 때 개별적인 동작이 실행되도록
+   
+            var $mainMenu = $( 'nav > ul > li > a' );
+            
+            //nav > ul > li > a를 클릭하면 함수 실행
+            $mainMenu.click( function() {
+               
+                //클릭한 것의 다음요소(서브메뉴)가 보이는 상태라면
+               
+                if( $(this).next().is( ':visible') ) {
+                    
+   // 보인다면 클릭한것의 다음요소(ul)을 slideUp->서브메뉴가 열려있을때 클릭하면 닫히도록 하는 동작
+                $(this).next().slideUp( "easeOutExpo" );
+                    
+              //클릭한것의 active클래스 제거 -클릭한 것의 화살표(아래방향->위방향 모양으로)가 바뀌어야하므로
+             $(this).removeClass( 'active' );
+                    
+           }else{
+           //그렇지 않으면 -안보이면 -> 아무것도 클릭을 하지 않은 상태에서
+                                                 클릭을 하면 보이게 만들어야함
+          //클릭한것의 다음요소를 slideDown-서브메뉴를 내려줌 
+      $(this).next().slideDown( "easeOutExpo" ); //따로움직이는것이기떄문에 어색X
+                    
+         //클릭한 것은 active클래스 추가 -클릭한 것의 화살표 방향을 (위->아래 모양으로)추가해줘야함
+          $(this).addClass('active');
+                  
+        }
+     });
+  });
+        
+    </script>
+
+10day hori_accordian에서 is 사용구문 
+  <script>
+        $( function() {
+           
+            //div ul li를 클릭하면 함수 실행
+            $( 'div ul li' ).mouseenter( function() {
+                
+                if( $('li').is( ':animated' ) ) return; //마우스커서가 li에 움직이고 있을때
+                //동작을 하면 안되므로 return 
+                //return 값 반환, 동작을 막아줌 (밑에 있는것들을 실행X)-분기점을 나눠짐
+                //동작이 빠르게 실행되어도 하나가 움직이는 동안에는 다른것들이 실행X,한번움직이고 끝남. 
+                
+                //클릭한 li의 넓이를 731px로 늘리는 애니메이션
+                $( this ).animate({ 'width' : 731 }, 1000, "easeOutExpo");
+                //li중에서 클릭하지 않은것은 넓이를 50px로 줄이는 애니메이션
+                $( 'li' ).not( this ).animate({ 'width' : 50 }, 1000, "easeOutExpo");
+            });
+        });
+    </script>
+
+-----------------------------vert_toggle ---------------------------
+넓이가 있을떄 가운데 배치
+양옆에 같은 값 주고 margin:auto
+toggle 동작 ->on/off 기능, 
+논리값을 이용해서 toggle버튼을 만들것임.

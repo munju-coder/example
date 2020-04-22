@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    
+    <link rel="stylesheet" href="css/jquery.bxslider.css">
+    <style>
+        body {
+            margin: 0;
+        }
+        
+        .bx-wrapper {
+            border: 0;
+            margin: 0;
+        }
+        
+        .mainVis { width: 100%; }
+        .mainVis .slider {
+            margin: 0 25%;
+        }
+        
+    </style>
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="js/jquery.bxslider.js"></script>
+    <script>
+        $( function() {
+           
+            var mainSlider = $('.slider').bxSlider({
+                slideWidth: 1920 ,
+                maxSlides: 3 ,
+                minSlides: 2 ,
+                moveSlides: 1
+            });
+            
+        });
+    </script>
+</head>
+
+<body>
+
+<section class="mainVis">
+    <ul class="slider">
+        <li><img src="http://placehold.it/1920x800/d42e2e/ffffff?text=1" alt="비주얼1"></li>
+        <li><img src="http://placehold.it/1920x800/d4ae2e/ffffff?text=2" alt="비주얼2"></li>
+        <li><img src="http://placehold.it/1920x800/6ed42e/ffffff?text=3" alt="비주얼3"></li>
+    </ul>
+</section>
+
+</body>
+
+</html>

@@ -1,0 +1,171 @@
+html,
+body {
+    height: 100%;
+}
+
+body,
+figure,
+p {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body {
+    background: url(../images/wood_bg.jpg);
+    background-size: cover;
+    border: 0 solid black;
+    box-sizing: border-box;
+}
+
+.instaArea {
+    width: 800px;
+    height: 355px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*background: red;*/
+}
+
+.instaArea figure {
+    width: 185px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-left: 20px;
+    float: left;
+    background-color: white;
+}
+
+.instaArea figure:first-child {
+    margin-left: 0;
+}
+
+.instaArea figure div {
+    width: 165px;
+    height: 165px;/*정사각형으로 들어갈 것이므로 */
+    overflow: hidden;
+}
+
+.instaArea figure div img {
+    display: block;
+    width: 100%;
+    transition: all 1s ease-out;
+}
+
+.instaArea figure div:hover img {
+    transform: scale(1.2);
+}
+
+.instaArea figure figcaption {
+    height: 150px;
+    margin-top: 20px;
+    font-size: small;
+    position: relative; /*안에서 배치할것이므로 */
+}
+
+.instaArea figure figcaption p {
+    position: relative;
+    line-height: 1rem; /*한 줄의 높이가 16px */
+    height: 5rem; /*5줄의 높이 한줄이 1rem이므로 */
+    overflow: hidden;
+}
+
+.instaArea figure figcaption p:after {
+    content: '...';
+    font-size: 13px;
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    width: 100%;
+    text-align: right;
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 90%, rgba(255, 255, 255, 1) 100%);
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 90%, rgba(255, 255, 255, 1) 100%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 90%, rgba(255, 255, 255, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=1);
+
+}
+
+
+.instaArea figure figcaption a {
+    /*LEARN MORE 부분 */
+    
+    position: absolute;/* figcaption 부모영역 따라갈것*/
+    bottom: 10px;
+    right: -20px;
+    padding: 7px 15px;
+    color: white;
+    background: rgb(255, 107, 146);
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#00b712+1,1b3dc4+100 */
+    background: rgb(0, 183, 18);
+    /* Old browsers */
+    background: -moz-linear-gradient(-45deg, rgba(0, 183, 18, 1) 1%, rgba(27, 61, 196, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(0, 183, 18, 1) 1%, rgba(27, 61, 196, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(0, 183, 18, 1) 1%, rgba(27, 61, 196, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00b712', endColorstr='#1b3dc4', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+
+}
+
+.instaArea figure figcaption a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: 0; /*오른쪽 끝에 붙어있을것이므로 */
+    top: -10px;
+    border-bottom: 10px solid rgb(36, 0, 75);
+    border-right: 10px solid transparent;
+}
+
+.bgArea {
+    /*팝업창*/
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;/*opacity -> 영역이 남아있기때문에 안됨, fadeIn, Out은 display영향을 많이 받기떄문, opacity로 주면 동작X, */
+}
+
+.bgArea .popup {
+    width: 600px;
+    background-color: white;
+    font-size: 13px;
+    padding: 50px;
+    box-sizing: border-box; /*넓이는 600에 맞출것이라 늘어나면 안되므로*/
+    position: absolute;
+    /*안에있는 내용만큼 가운데배치할것이므로(줄이 다다름 ) 50%로 작업*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    /*넓이나 높이값은 안에있는 내용에 영향을 많이 줌, scale을 사용해야 내용도 같이 줄면서 가운데로 배치됨,  */
+}
+
+.bgArea .popup figure {
+    margin-bottom: 20px;/*아이콘부분 여백줄것이므로*/
+}
+
+.bgArea .popup figure img {
+    width: 220px;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.bgArea .popup i {
+    font-size: 26px;
+}
+
+.bgArea .popup .fa-times-circle {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+}

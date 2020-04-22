@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> varney 배너  </title>
+	<script src="lib/jquery-1.11.1.min.js"></script>
+	<script src="lib/jquery.easing.1.3.js"></script>
+	<script>
+        
+        $(function(){
+                //선택자
+                var $bnnImg =$('.banner ul li');
+                var $btn =$('.btn ol li');
+                  //.banner ol li 를 클릭하면 해야 할 일
+            $btn.click( function(){
+                //클릭한 버튼과 index가 일치하는 배너 이미지의 위치값을 pos변수에 담아줌
+              var pos=$bnnImg.eq( $(this).index( ) ).position( ).left;
+                console.log( pos );
+                //banner의 가로 스크롤바 위치값을 pos위치로 이동하는 애니메이션
+                $('.banner').stop().animate({'scrollLeft': pos},1000,"easeOutExpo");
+                //bar의 위치를 클릭한 버튼의 위치로 이동하는 애니메이션
+                $('.bar').stop().animate({'left':$(this).position().left},1000,"easeOutExpo");
+            });
+
+            
+        });
+        
+   
+    
+    
+    </script>
+	<style>
+    
+        body{
+            background: url(images/bg.jpg) center center no-repeat fixed;
+            background-size: cover;
+        }
+        ul , ol{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .varney{
+            width: 800px;
+            margin: 150px auto;
+        } /*높이값은 안에 있는 내용만큼 들어갈것이므로 지정 X*/
+        /*화면 최대 높이 750~80정도 이므로, 150->가운데 배치*/
+        
+        .varney .banner{
+            width: 800px;
+            height: 400px; /* 이미지 사이즈에 맞춰서 400 이번에는 mask역할, 배너 사이즈만큼*/
+            overflow: auto;
+            position: relative; /*배너가 기준점이 될 수 있도록 위치 지정*/
+        }
+        .varney .banner ul{
+            position: relative;
+            width: 3200px; /*800사이즈 이미지가 옆으로 4장 들어갈것이므로*/            
+        }
+        .varney .banner ul li {
+            float: left;
+        } /*float으로 이어붙이므로 넓이나 다른 속성 필요 X, */
+        .varney .banner ul li a,  .varney .banner a img{
+            display: block;
+        }/*a태그는 영역을 만들어주기 위함, img태그는 밑에 뜨는 부분을 막기위함.*/
+        .varney .btn{
+            position:relative;
+        }/*바가 좌우로 움직일수 있어야하니까 묶어둔 영역이 부모역할을 해야하므로 position앱솔루트나 fixed가 들어가면 위치가 겹쳐들어갈 수 있으니까 relative를 준다.*/
+        
+        .varney .btn ol{ overflow: hidden;} /*float clear 안주면 높이값이 없으므로 바가 위에붙음, */
+        
+        .varney .btn ol li{
+            width: 200px;   /*메뉴하나당 넓이가 총 800이고 4개 들어가 있으므로*/
+            padding: 15px 0; /*글자가 위아래로 가운데 */
+            background-color: #111;
+            color: white;
+            text-align: center; 
+            float: left; /*옆으로 붙일려면 여백없이 붙여야하므로, 경계면이 존재X, 글자사이 간격이 안맞아보일 수 있으므로 밑에 경계선을 만들어준다. */
+            border-left: 1px solid #aaa; 
+            box-sizing: border-box; /*전체 800사이즈에 border가 들어가면 넓이가 모자라므로*/
+            
+        }
+        .varney .btn ol li:first-child { border: 0; }
+        .bar{
+            width: 200px;
+            height: 5px; 
+            position: absolute; /*부모를 기준으로 바닥에 붙인상태로 좌우로 움직일것이므로*/
+            bottom:0;
+            background-color: blue;/*현재페이지가 어디인지 나타냄*/
+        }
+        
+    </style>
+</head>
+
+<body>
+<div class="varney">
+    <div class="banner">
+       <ul>
+           <li><a href="#"><img src="images/banner1.jpg"></a></li>
+           <li><a href="#"><img src="images/banner2.jpg"></a></li>
+           <li><a href="#"><img src="images/banner3.jpg"></a></li>
+           <li><a href="#"><img src="images/banner4.jpg"></a></li>
+       </ul>
+    </div>
+    
+    <div class="btn">
+        <ol>
+            <li>Game of Trone</li>
+            <li>Girls</li>
+            <li>True Blood</li>
+            <li>NEWS Room</li>
+        </ol>
+        <div class="bar"></div> 
+    </div>
+</div>
+
+</body>
+</html>

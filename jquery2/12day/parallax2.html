@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	<style>
+    
+        
+        body{
+            margin: 0;
+            height: 3000px;
+            
+        }
+        
+        div{
+          width: 100px;
+            height: 100px;
+            position: fixed;
+            top: 0;
+            
+            font-size: 80px;
+            
+            
+            
+        }
+        #box1{ } 
+        #box2{ left:100px; }
+        #box3 { left:200px;  }
+        #box4 { left:300px;  }
+        #box5 { left:400px;  }
+        
+        h1{
+            position: fixed;
+            right: 0;
+            top: 0;
+            font-size: 80px;
+            
+        }
+    
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+        $( function (){
+          
+            var posTop=0;
+            
+            var posLeft2= 100;
+            var posLeft3= 200;
+            var posLeft4= 300;
+            var posLeft5= 400;
+       
+            
+            $(window).scroll( function(){
+              
+                $( 'h1' ).text( $(this).scrollTop() );
+                
+                $( '#box1' ).css({ 'top' : posTop+$(this).scrollTop() / 4 });
+                
+                $( '#box2' ).css({ 'top' : posTop+$(this).scrollTop() / 5,
+                                 'left':posLeft2+$(this).scrollTop()/10});
+                
+                $( '#box3' ).css({ 'top' : posTop+$(this).scrollTop() / 6,
+                                 'left':posLeft3+$(this).scrollTop()/6});
+                
+                $( '#box4' ).css({ 'top' : posTop+$(this).scrollTop() / 10,
+                                 'left':posLeft4+$(this).scrollTop()/5});
+                $( '#box5' ).css({ 
+                                 'left':posLeft5+$(this).scrollTop()/4});
+            });
+        });
+    
+    
+    </script>
+</head>
+
+<body>
+
+<h1></h1>
+
+<div id="box1">웹</div>
+<div id="box2">퍼</div>
+<div id="box3">블</div>
+<div id="box4">리</div>
+<div id="box5">셔</div>
+
+
+</body>
+</html>

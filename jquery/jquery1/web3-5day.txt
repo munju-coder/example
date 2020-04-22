@@ -1,0 +1,26 @@
+web3 
+5day
+jQuery
+인터넷이 연결 되어야함-웹에서 가져오는 작업이라서
+<script src="http://code.jQuery-latest.min.js> ->font-awsome- CDN코드처럼
+대소문자까지 정확하게 인식하고 있어야하는 -오류가많이 생길 수 있음.
+jQuuery -> $(달러)로 시작한다.
+jQuery에서의 선택자 =css 선택자
+
+$(선택자).이벤트 (function( ) {   ~~를 ~~하면 
+               $( 선택자 ). ~~       ~~를 ~~한다.
+});
+->형식 외울것
+
+대기함수 body안에 들어가 있는 내용들을 먼저 읽히게끔 만들어주는것->
+
+$(document). ready(function(){
+
+문서가 준비되면, -함수가 불려졌을때 실행해라.
+아래와 같이 축약, css와 똑같이 선택자를 작성함.
+-> $( function() {
+
+   });
+
+-jQuery연결은
+css보다는 아래, 모든 script보다는 항상 위에 작성해야한다.

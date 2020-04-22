@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> dunkin_banner </title>
+    
+    <style>
+    
+        .dunkin {
+            width: 1115px;
+            height: 352px;
+            margin: 150px auto;
+            box-shadow: 0 0 30px #ccc;
+        }
+        
+        ul, ol {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .btn {
+            width: 200px;
+            float: left;
+            position: relative;
+        }
+        
+        .btn ol li {
+            width: 200px;
+            height: 70.4px;
+            text-indent: -9999px;
+            background-image: url(images/menu.jpg);
+        }
+        .btn ol li:nth-child(2){ background-position: 0 -70.4px; }
+        .btn ol li:nth-child(3){ background-position: 0 -140.8px; }
+        .btn ol li:nth-child(4){ background-position: 0 -211.2px; }
+        .btn ol li:nth-child(5){ background-position: 0 -281.6px; }
+        
+        .btn ol li.active { background-position-x: -200px }
+        
+        .arrow {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-right: 15px solid white;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            top: 20px; 
+            right: 0;
+        }
+        
+        .banner {
+            width: 915px;
+            height: 352px;
+            float: left;
+            overflow: hidden;
+        }
+        
+        .banner ul { position: relative; }
+        
+        .banner img {
+            display: block; /*img 기본여백*/
+        }
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery.easing.1.3.js"></script>
+    <script>
+    
+        $( function() {
+           
+           var $btn = $('.btn ol li'); 
+           var $bnnImg = $('.banner ul li'); 
+            
+            $btn.click( function() {
+               
+                $(this).addClass( 'active' );
+                $btn.not( this ).removeClass( 'active');
+                
+                $( '.arrow' ).stop().animate({ 'top' : $(this).position().top + 20 });
+                
+                var pos = $bnnImg.eq( $(this).index() ).position().top;
+                
+                $('.banner').stop().animate({ 'scrollTop' : pos  }, 1000, "easeOutExpo")
+            });
+            
+        });
+        
+    </script>
+</head>
+
+<body>
+
+<div class="dunkin">
+    <div class="btn">
+        <ol>
+            <li class="active">menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+            <li>menu4</li>
+            <li>menu5</li>
+        </ol>
+        <div class="arrow"></div>
+    </div>
+    
+    <div class="banner">
+        <ul>
+            <li><a href="#"><img src="images/img1.jpg" alt="배너"></a></li>
+            <li><a href="#"><img src="images/img2.jpg" alt="배너"></a></li>
+            <li><a href="#"><img src="images/img3.jpg" alt="배너"></a></li>
+            <li><a href="#"><img src="images/img4.jpg" alt="배너"></a></li>
+            <li><a href="#"><img src="images/img5.jpg" alt="배너"></a></li>
+        </ul>
+    </div>    
+</div>
+
+
+
+</body>
+
+</html>

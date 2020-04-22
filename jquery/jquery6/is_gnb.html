@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> 세로형 메뉴 개별적-is이용 </title>
+   <style>
+    
+        nav {
+            width: 200px;
+            margin: 100px auto;
+        }
+        
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        nav > ul > li > a {
+            display: block; /* 밑으로 떨어지도록*/
+            height: 30px;
+            line-height: 30px;
+            font-size: 18px;
+            background-color: #eee;
+            color: #222;
+            padding: 5px;
+            position: relative;
+        }
+        nav > ul > li > a > span {
+            position: absolute; /*display 안바꿔줘도 넓, 높 들어감.*/
+            width: 15px;
+            height: 15px;
+            right: 10px;
+            top: 13px;
+            background: url(../7day/images/arrow.png);
+        }
+        nav ul li ul {display: none;} /*처음부터 보여질게 아니므로*/
+        nav ul li ul li {
+            padding: 5px 15px;
+        }
+        nav > ul > li > a.active > span {
+            background-position: -15px 0; /*클릭을 했을때 이미지의 화살표가 위로와야하므로*/
+        }
+        
+    </style>
+ <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+ <script src="lib/jquery.easing.1.3.js"></script>
+    
+    
+    <script>
+    
+        $( function(){
+           //각각의 메뉴를 클릭했을 때 개별적인 동작이 실행되도록
+   
+            var $mainMenu = $( 'nav > ul > li > a' );
+            
+            //nav > ul > li > a를 클릭하면 함수 실행
+            $mainMenu.click( function() {
+               
+                //클릭한 것의 다음요소(서브메뉴)가 보이는 상태라면
+               
+                if( $(this).next().is( ':visible') ) {
+                    
+                    // 보인다면 클릭한것의 다음요소(ul)을 slideUp->서브메뉴가 열려있을때 클릭하면 닫히도록 하는 동작
+                    $(this).next().slideUp( "easeOutExpo" );
+                    
+                    //클릭한것의 active클래스 제거 -클릭한 것의 화살표가 바뀌어야하므로
+                    $(this).removeClass( 'active' );
+                    
+                }else{
+                    //그렇지 않으면 -안보이면 -> 클릭했을 때 보이게 만들어야함
+                    //클릭한것의 다음요소를 slideDown-서브메뉴를 내려줌 
+                    $(this).next().slideDown( "easeOutExpo" ); //따로움직이는것이기떄문에 어색X
+                    
+                    //클릭한 것은 active클래스 추가 
+                    $(this).addClass('active');
+                    
+                }
+                
+                
+            });
+            
+        });
+        
+    </script>
+    
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="#">Menu1 <span></span></a>
+                <ul>
+                    <li><a href="#">sub-menu1 <span></span></a></li>
+                    <li><a href="#">sub-menu2 <span></span></a></li>
+                    <li><a href="#">sub-menu3 <span></span></a></li>
+                    <li><a href="#">sub-menu4 <span></span></a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Menu2 <span></span></a>
+                <ul>
+                    <li><a href="#">sub-menu1 <span></span></a></li>
+                    <li><a href="#">sub-menu2 <span></span></a></li>
+                    <li><a href="#">sub-menu3 <span></span></a></li>
+                    <li><a href="#">sub-menu4 <span></span></a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Menu3 <span></span></a>
+                <ul>
+                    <li><a href="#">sub-menu1 <span></span></a></li>
+                    <li><a href="#">sub-menu2 <span></span></a></li>
+                    <li><a href="#">sub-menu3 <span></span></a></li>
+                    <li><a href="#">sub-menu4 <span></span></a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Menu4 <span></span></a>
+                <ul>
+                    <li><a href="#">sub-menu1 <span></span></a></li>
+                    <li><a href="#">sub-menu2 <span></span></a></li>
+                    <li><a href="#">sub-menu3 <span></span></a></li>
+                    <li><a href="#">sub-menu4 <span></span></a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</body>
+
+</html>

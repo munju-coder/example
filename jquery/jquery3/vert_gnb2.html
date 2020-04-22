@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> vert.gnb2 </title>
+    
+    <style>
+    
+        nav {
+            width: 200px;
+            margin: 100px auto;
+        }
+        
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        nav > ul > li > a {
+            display: block; /* 밑으로 떨어지도록*/
+            height: 30px;
+            line-height: 30px;
+            font-size: 18px;
+            background-color: #eee;
+            color: #222;
+            padding: 5px;
+            position: relative;
+        }
+        nav > ul > li > a > span {
+            position: absolute; /*display 안바꿔줘도 넓, 높 들어감.*/
+            width: 15px;
+            height: 15px;
+            right: 10px;
+            top: 13px;
+            background: url(images/arrow.png);
+        }
+        nav ul li ul {display: none;} /*처음부터 보여질게 아니므로*/
+        nav ul li ul li {
+            padding: 5px 15px;
+        }
+        nav > ul > li > a.active > span {
+            background-position: -15px 0; /*클릭을 했을때 이미지의 화살표가 위로와야하므로*/
+        }
+        
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+    
+        $( function() {
+           
+            /*
+                메인메뉴를 클릭하면 클릭한 메뉴의 서브메뉴는 펼쳐지고
+                클릭하지 않은 서브메뉴는 접힘
+                
+                클릭한 메인메뉴는 active클래스를 추가하고
+                클릭하지 않은 서브메뉴들은 active클래스 제거
+            */
+            
+            //메인메뉴 선택자
+            var $mainMenu = $( 'nav > ul > li > a' );
+            
+            //nav > ul > li > a를 클릭하면 함수 실행
+            $mainMenu.click( function() {
+               
+                //클릭한 a태그에 active클래스 추가
+                $( this ).addClass( 'active' );
+                
+                //메인메뉴들 중에서 클릭한 a가 아닌것은active클래스 제거
+                $mainMenu.not( this ).removeClass('active');
+                
+                //클릭한 것의 다음요소는 slideDown
+                $(this).next().slideDown( 'slow' );
+                
+                //nav ul li ul중에서 클릭한 것의 다음요소가 아닌것은 slideUp
+                $( 'nav ul li ul' ).not( $(this).next() ).slideUp( 'slow' );
+                
+            });
+            
+        });
+    
+    </script>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="#">Menu1 <span></span></a>
+                <ul>
+                    <li><a href="#">sub-menu1 <span></span></a></li>
+                    <li><a href="#">sub-menu2 <span></span></a></li>
+                    <li><a href="#">sub-menu3 <span></span></a></li>
+                    <li><a href="#">sub-menu4 <span></span></a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Menu2 <span></span></a>
+                <ul>
+                    <li><a href="#">sub-menu1 <span></span></a></li>
+                    <li><a href="#">sub-menu2 <span></span></a></li>
+                    <li><a href="#">sub-menu3 <span></span></a></li>
+                    <li><a href="#">sub-menu4 <span></span></a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Menu3 <span></span></a>
+                <ul>
+                    <li><a href="#">sub-menu1 <span></span></a></li>
+                    <li><a href="#">sub-menu2 <span></span></a></li>
+                    <li><a href="#">sub-menu3 <span></span></a></li>
+                    <li><a href="#">sub-menu4 <span></span></a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Menu4 <span></span></a>
+                <ul>
+                    <li><a href="#">sub-menu1 <span></span></a></li>
+                    <li><a href="#">sub-menu2 <span></span></a></li>
+                    <li><a href="#">sub-menu3 <span></span></a></li>
+                    <li><a href="#">sub-menu4 <span></span></a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</body></html>

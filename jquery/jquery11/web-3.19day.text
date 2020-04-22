@@ -1,0 +1,63 @@
+web-3
+19day
+ZoomIn예제 과제풀이
+
+<script>
+        $( function() {
+           
+            $( '.zoomArea' ).draggable(
+                { 'containment' : 'parent' } ,
+                { start : function() { $('.zoomIn').fadeIn('slow'); } } ,
+                { drag : function() {
+                    
+                    //background-position: 100px 200px;   ->css 속성값 구분 -> 공백 O
+                    
+                    //x: a ~ b    0 ~ 252       x: c ~ d    0 ~ -840(스크롤바 오른쪽움직-보이는화면왼쪽)
+                    //y: a ~ b    0 ~ 378       y: c ~ d    0 ~ -1260
+                    
+                    var posX = ( -840 - 0 ) / ( 252 - 0 ) * ( $('.zoomArea').position().left - 0 ) + 0 ;
+                    
+                    var posY = ( -1260 - 0 ) / ( 378 - 0 ) * ( $('.zoomArea').position().top - 0 ) + 0 ;
+                    
+                    $( '.zoomIn' ).css({ 'background-position' : posX + 'px ' + posY + 'px' });
+                    //background-position->css 속성 , 
+                      css 속성 구분 -> 공백 px단위도 띄어쓰기로 구분, 마지막 px은 공백 줄 필요 없음(뒤에 없으므로)
+                    
+                } } ,
+                { stop : function() { $('.zoomIn').fadeOut('slow'); } } 
+            );
+            
+        });
+    
+    </script>
+----------------------------------------quick_menu.html-----------------------------------------------------------------
+
+예제 - 네이버 로그인 - 로그인창 바로 하단 부분 스크롤 클릭시 넘어가는 메뉴부분
+       - 쇼핑몰 오늘 본 상품, 넘기서 보여지는 이미지 메뉴 부분
+
+동작 2개 
+왼쪽과 오른쪽의 이동하는 방향이 달라짐 .
+달라짐 -> 변하는 것 -> 변수 필요-> 위치가 변경됨. 
+위치값 변수 지정하기. 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

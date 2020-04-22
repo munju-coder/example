@@ -1,0 +1,63 @@
+web4
+3day
+each_category
+
+한가지가 아닌 여러개로 중복해서 쓸 수 있는 
+class를 li태그 속성으로 넣어줌. 
+cate 숫자와 alt값이 일치하도록 맞춰줌.
+li 속성으로 넣은 class 값은 전체보기에는 
+숫자가 다 보여질 것이므로 all 을 전부다 넣고
+ 나머지는 숫자에 맞춰서 넣고 뺄것.
+
+
+$( function() {
+           
+            function category() {
+
+                //.listGroup ul li span 개별 실행
+                $( '.listGroup ul li span' ).each( function() {
+                   
+                    //top, left값을 부모의 위치로 지정
+                    $(this).stop().animate({ 
+                        'top' : $(this).parent().position().top ,
+                        'left' : $(this).parent().position().left
+                    });
+                    
+                });
+            }
+            
+            category();
+            
+            //브라우저 창의 크기가 변하면 category함수 호출
+            $(window).resize( category );
+           
+            //.btnGroup ul li를 클릭하면 함수 실행
+            $( '.btnGroup ul li' ).click( function() {
+               
+                //클릭한 li에 active클래스 추가
+                $(this).addClass( 'active' );
+                
+                //.btnGroup ul li중 클릭한 li가 아닌것은 active클래스 제거
+                $( '.btnGroup ul li' ).not( this ).removeClass('active');
+                
+                
+                var cateTxt = $(this).attr( 'data-cate');
+                
+                //.listGroup ul li 개별 실행
+                $( '.listGroup ul li' ).each( function() {
+                   
+                    //li에 data-cate값을 클래스로 가지고있으면
+                    if( $(this).hasClass( cateTxt ) ) {
+                        //li를 보임
+                        $(this).show();
+                    //클래스로 가지고있지 않으면
+                    }else{
+                        //li를 감춤
+                        $(this).hide();
+                    }
+                    
+                });
+                category();   
+                
+            });  
+        });

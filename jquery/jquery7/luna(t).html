@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    
+    <style>
+        html, body { height:  100%; }
+        
+        body { margin: 0; }
+        
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        header {
+            width: 200px;
+            height: 100%;
+            min-height: 760px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            position: absolute;
+            left: -200px;
+            z-index: 100;
+        }
+        
+        header .menuBtn {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            left: 200px;
+            /*background-color: brown;*/
+        }
+        
+        header .menuBtn span {
+            width: 30px;
+            height: 4px;
+            background-color: white;
+            margin: 0 10px;
+            position: absolute;
+        }
+        
+        header .menuBtn .t_stick { top: 13px; }
+        header .menuBtn .m_stick { top: 23px; }
+        header .menuBtn .b_stick { top: 33px; }
+        
+        header h1 { margin: 60px 20px;}
+        
+        header nav ul { padding: 30px; }
+        header nav ul li { 
+            padding: 10px 0; 
+            text-indent: 26px;
+        }
+        header nav ul li:nth-child(1) { background: url(images/icon1.png) left center no-repeat; }
+        header nav ul li:nth-child(2) { background: url(images/icon2.png) left center no-repeat; }
+        header nav ul li:nth-child(3) { background: url(images/icon3.png) left center no-repeat; }
+        header nav ul li:nth-child(4) { background: url(images/icon4.png) left center no-repeat; }
+        header nav ul li:nth-child(5) { background: url(images/icon5.png) left center no-repeat; }
+        
+        header p {
+            padding: 40px 30px;
+        }
+        
+        header p:last-child { 
+            font-size: 22px;
+            font-weight: 900;
+        }
+        
+        section h2 {
+            width: 260px;
+            height: 80px;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        
+        section div video {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: -1;
+            min-width: 100%;
+            min-height: 100%;
+        }
+        
+        footer {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            padding: 20px 0;
+            text-align: center;
+            color: white;
+        }
+    </style>
+    
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery.easing.1.3.js"></script>
+    <script src="lib/jquery.transit.min.js"></script>
+    <script>
+        $( function() {
+            
+            var onOff = false;          //화면 밖 false , 화면 안 true
+            
+            //.menuBtn을 클릭하면 함수 실행
+            $( '.menuBtn' ).click( function() {
+               
+                onOff = !onOff;
+                
+                if( onOff ) {
+                    
+                    $( 'header' ).stop().animate({ 'left' : 0 }, 1000, "easeOutExpo" );
+                    
+                    $( '.t_stick, .b_stick' )
+                        .animate({ 'top' : 23 }, 500, "easeOutExpo")
+                        .transition({ 'rotate' : '45deg' }, 500, "easeOutExpo");
+                    
+                    $( '.m_stick' ).delay(500).transition({ 'rotate' : '-45deg' }, 500, "easeOutExpo");
+                    
+                }else{
+                    
+                    $( 'header' ).stop().animate({ 'left' : -200 }, 1000, "easeOutExpo" );
+                 
+                    $( '.menuBtn span' ).stop().transition({ 'rotate' : 0 }, 500, "easeOutExpo");
+                    
+                    $( '.t_stick' ).animate({ 'top' : 13 }, 500, "easeOutExpo");
+                    $( '.b_stick' ).animate({ 'top' : 33 }, 500, "easeOutExpo");
+                    
+                }
+                
+            });
+            
+        });
+    </script>
+</head>
+<body>
+
+<header>
+    <div class="menuBtn">
+        <span class="t_stick"></span>
+        <span class="m_stick"></span>
+        <span class="b_stick"></span>
+    </div>
+    
+    <h1>
+        <a href="#"><img src="images/nav_logo.png" alt="LUNA"></a>
+    </h1>
+    
+    <nav>
+        <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">LUNA</a></li>
+            <li><a href="#">SPEC</a></li>
+            <li><a href="#">DESIGN</a></li>
+            <li><a href="#">DETAIL</a></li>
+        </ul>
+    </nav>
+    
+    <p>예약신청기간<br>9월 1일 (화) 9시<br>9월 3일 (목) 22시</p>
+    
+    <p>문의전화<br>1599-0224</p>
+</header>
+
+<section>
+    <h2><img src="images/luna_logo.png" alt="LUNA"></h2>
+    
+    <div>
+        <video autoplay loop muted>
+            <source src="media/luna.mp4">
+        </video>
+    </div>
+</section>
+
+<footer>
+    <p>COPYRIGHTS &copy; ALL RIGHTS RESERVED.</p>
+</footer>
+
+</body>
+
+</html>

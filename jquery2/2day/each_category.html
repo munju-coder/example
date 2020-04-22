@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> each_category </title>
+    <style>
+        
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;    
+        }
+        
+        .btnGroup ul{
+            margin: 100px 50px 70px;
+        }
+        .btnGroup ul li{
+            padding: 10px 20px;
+            background-color: #222;
+            color: white;
+            display: inline-block;
+        }
+        .btnGroup ul li.active {
+            background-color: orangered;
+        }
+        .listGroup{
+            padding: 0 50px;
+            
+        }
+        .listGroup ul li {
+            width: 200px;
+            height: 300px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            /*background-color: black;*/
+            float: left;
+        }
+        
+        .listGroup ul li span{
+            position: absolute;
+        }
+
+    </style>
+     <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery.easing.1.3.js"></script>
+    <script>
+    
+        $( function() {
+           
+            function category() {
+                //.listGroup ul li span 개별 실행
+                $( '.listGroup ul li span' ).each( function() {
+                   
+                    //top, left값을 부모의 위치로 지정
+                    $(this).stop().animate({ 
+                        'top' : $(this).parent().position().top ,
+                        'left' : $(this).parent().position().left
+                    });
+                    
+                });
+            }
+            
+            category();
+            
+            //브라우저 창의 크기가 변하면 category함수 호출
+            $(window).resize( category );
+           
+            //.btnGroup ul li를 클릭하면 함수 실행
+            $( '.btnGroup ul li' ).click( function() {
+               
+                //클릭한 li에 active클래스 추가
+                $(this).addClass( 'active' );
+                
+                //.btnGroup ul li중 클릭한 li가 아닌것은 active클래스 제거
+                $( '.btnGroup ul li' ).not( this ).removeClass('active');
+                
+                
+                var cateTxt = $(this).attr( 'data-cate');
+                
+                //.listGroup ul li 개별 실행
+                $( '.listGroup ul li' ).each( function() {
+                   
+                    //li에 data-cate값을 클래스로 가지고있으면
+                    if( $(this).hasClass( cateTxt ) ) {
+                        //li를 보임
+                        $(this).show();
+                    //클래스로 가지고있지 않으면
+                    }else{
+                        //li를 감춤
+                        $(this).hide();
+                    }
+                    
+                });
+                category();   
+                
+            });  
+        });
+    
+    </script>
+</head>
+
+<body>
+
+<div class="btnGroup">
+    <ul>
+        <li data-cate="all" class="active">전체보기</li>
+        <li data-cate="cate1">카테고리1</li>
+        <li data-cate="cate2">카테고리2</li>
+        <li data-cate="cate3">카테고리3</li>
+    </ul>
+</div>
+
+<div class="listGroup">
+    <ul>
+        <li class="all cate1 cate2 cate3"><span><img src="http://placehold.it/200x300/ff3a49/ffffff?text=1" alt="1"></span></li>
+        <li class="all cate2"><span><img src="http://placehold.it/200x300/e6868d/ffffff?text=2" alt="2"></span></li>
+        <li class="all cate3"><span><img src="http://placehold.it/200x300/de6a47/ffffff?text=3" alt="3"></span></li>
+        <li class="all cate1 cate3"><span><img src="http://placehold.it/200x300/8e8ee0/ffffff?text=1,3" alt="1,3"></span></li>
+        <li class="all cate1"><span><img src="http://placehold.it/200x300/ff3a49/ffffff?text=1" alt="1"></span></li>
+        <li class="all cate3"><span><img src="http://placehold.it/200x300/de6a47/ffffff?text=3" alt="3"></span></li>
+        <li class="all cate1"><span><img src="http://placehold.it/200x300/ff3a49/ffffff?text=1" alt="1"></span></li>
+        <li class="all cate2 cate3"><span><img src="http://placehold.it/200x300/ffd93a/ffffff?text=2,3" alt="2,3"></span></li>
+        <li class="all cate2"><span><img src="http://placehold.it/200x300/e6868d/ffffff?text=2" alt="2"></span></li>
+        <li class="all cate3"><span><img src="http://placehold.it/200x300/de6a47/ffffff?text=3" alt="3"></span></li>
+        <li class="all cate2"><span><img src="http://placehold.it/200x300/e6868d/ffffff?text=2" alt="2"></span></li>
+        <li class="all cate1 cate2"><span><img src="http://placehold.it/200x300/75ba61/ffffff?text=1,2" alt="1,2"></span></li>
+        <li class="all cate3"><span><img src="http://placehold.it/200x300/de6a47/ffffff?text=3" alt="3"></span></li>
+        <li class="all cate1"><span><img src="http://placehold.it/200x300/ff3a49/ffffff?text=1" alt="1"></span></li>
+        <li class="all cate2 cate3"><span><img src="http://placehold.it/200x300/ffd93a/ffffff?text=2,3" alt="2,3"></span></li>
+        <li class="all cate1 cate3"><span><img src="http://placehold.it/200x300/8e8ee0/ffffff?text=1,3" alt="1,3"></span></li>
+        <li class="all cate3"><span><img src="http://placehold.it/200x300/de6a47/ffffff?text=3" alt="3"></span></li>
+        <li class="all cate2"><span><img src="http://placehold.it/200x300/e6868d/ffffff?text=2" alt="2"></span></li>
+        <li class="all cate1 cate2"><span><img src="http://placehold.it/200x300/75ba61/ffffff?text=1,2" alt="1,2"></span></li>
+        <li class="all cate1 cate3"><span><img src="http://placehold.it/200x300/8e8ee0/ffffff?text=1,3" alt="1,3"></span></li>
+    </ul>
+</div>
+
+</body>
+
+</html>

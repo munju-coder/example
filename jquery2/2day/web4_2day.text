@@ -1,0 +1,171 @@
+web-4
+2day
+data_map
+kakao_map / 올리브영 버전으로 한번더 만듬.
+
+<ul>
+ <li data-stamp=" " data-key=" " ></li>
+</ul>
+
+li의 속성값 추가 data-map값과 data-key값 
+map에서 소스 가져오기에서 붙여넣기.
+
+            css부분
+        .wrap_controllers {
+            display: none;
+        }
+        -----> 지도 하단에 카카오맵 로고-지도 약도 부분 없애기 (F12 확인)
+
+   <script>
+        $(function() {
+
+            var stamp = "1565367125514"
+            var key = "uopr"
+
+            function mapDraw() {
+               /*지도 소스 가져올때 실행 스크립트 부분 그대로 잘라오기*/
+               처음 실행할 지점으로 넣어서 뿌려줄것이기 때문
+                new daum.roughmap.Lander({
+                    "timestamp": stamp,         -> 숫자와 변수 바꿔서 넣기
+                    "key": key,                      -> 숫자와 변수 바꿔서 넣기
+                    "mapWidth": "800",
+                    "mapHeight": "400"          -> 지도 사이즈에 맞춰 넣기
+                }).render();
+            }
+            mapDraw();                            ->함수 실행
+
+            $('.storeList ul li').click(function() {
+
+                stamp = $(this).attr('data-stamp');
+                key = $(this).attr('data-key');
+
+                $('.mapArea').html('<div id="daumRoughmapContainer' + stamp + '" class="root_daum_roughmap root_daum_roughmap_landing"</div>');
+
+                mapDraw();
+
+            });
+
+        });
+
+    </script>
+
+지도 하나로 여러 지점으로 뿌려줄 수 있음. 
+	* 한 페이지 내에 약도를 2개 이상 넣을 경우에는
+	* 약도의 수 만큼 소스를 새로 생성, 삽입해야 합니다.
+-> 지점 수 다 넣어줄 필요 없이 스크립트로 값만 바꿔서 넣어주면 됨.
+
+
+스크립트 부분
+ $('.mapArea').html('<div id="daumRoughmapContainer' + stamp + '" class="root_daum_roughmap root_daum_roughmap_landing"</div>');
+질문하기.
+
+
+--------------------------each 문--------------------------------------------------
+
+$( 선택자 ).each( function (index) {
+              개별 실행 할 내용; 
+});
+  -> index 번호를 매개변수로 받아와서 사용함. 
+  -> 선택자 모두를 개별적으로 실행시켜줌
+  ->index 매개 변수를 이용하여 선택자의 index번호 활용함. 
+( 필요 없으면 생략 가능함 ) 
+
+====================예제========================
+<script>
+        
+        
+        $(function(){
+          
+            /*
+            
+            $( 선택자 ).each( function (index) {
+                    개별 실행 할 내용;        
+            });
+            
+            -선택자 모두를 개별적으로 실행시켜줌
+            -index 매개 변수를 이용하여 선택자의 index번호 활용
+            (필요없으면 생락 가능)
+        
+            */
+            $( 'li' ).each( function( i ) {
+                console.log( $(this).text()+"의 index는"+ i +"입니다");
+            });
+        });
+        // li 갯수 만큼 index 번호에 맞는 것을 매칭시켜줄수가 있음, 개별적으로 따로따로 실행을 한다.
+    
+    </script>
+
+<body>
+<ul>
+    <li>List1</li>
+    <li>List2</li>
+    <li>List3</li>
+    <li>List4</li>
+</ul>
+
+
+-------------------------each_Btn.html---------------------------------------------------
+
+스크립트 부분
+<script>
+    
+        $(function (){
+          
+            var onOff=false;
+            $('.btn div').click( function(){
+              
+                onOff=!onOff;
+              클릭할때마다 반대로 실행해야하므로
+          실행할때마다 true랑 false가 번갈아가며 실행
+                if(onOff){
+          따로 개별적인 움직임을 실행할것이므로 index 번호인 i를 넣음
+                    $('ul li').each(function (i) {
+                      $(this).animate({'top': -120*( i+1) }); 
+            위로 올려줄것이니까 top으로 사용
+          위치값은 하나당 100px 이지만 여백 고려해서 120px로 
+         i라는 값은 index번호가 들어있음 0번부터 시작 
+       따라서 0*-120 하면 0 따라서 하나씩 위로 올려줄것이므로
+        +1을 넣어줌
+  
+                    });
+                }else{
+                    그렇지 않으면 원래자리로 돌아갈 수 있도록
+                        top 값을 다시 0으로 넣는다.
+                    $('ul li').each(function (i) {
+                      $(this).animate({'top': 0 });  
+                    });
+                }  
+            });
+        });
+      -------------> 버튼을 누르면 -120px 만큼 위로 올려줄것이기 때문에
+          한칸씩 위로 올려진 모습으로 나타나고 다시 누르면 원래로 돌아옴
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

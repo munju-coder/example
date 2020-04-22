@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	<style>
+    
+        html,body, section{ height: 100%;}
+        
+        body{
+            margin: 0;
+            overflow: hidden;
+        }
+        section{
+            width: 100%;
+            position: absolute;
+            top: 0;
+        }
+        .page1{ background-color: #b55f5f;}
+        .page2{ background-color: #7a05a5; left:100%}
+        .page3{ background-color: #32a6d9; left:200%}
+        .page4{ background-color: #d7e287; left:300%}
+        
+    
+    </style>
+   <script src="lib/jquery-1.11.1.min.js" ></script>
+    <script>
+    
+        $( function() {
+           
+            $( window ).keydown( function( e ) {
+                
+                console.log( e.keyCode );
+                
+                switch( e.keyCode ) {
+                        
+                    case 37 :
+                        $( 'html, body' ).stop().animate({ 'scrollLeft' : '-=' + $(this).width() }, 1000 );
+                        
+                        break;
+                    
+                    case 39 :
+                        $( 'html, body' ).stop().animate({ 'scrollLeft' : '+=' + $(this).width() }, 1000 );
+                        
+                        break;
+                        
+                }
+                
+                
+                
+            });
+            
+            
+            
+        });
+        
+    </script>
+</head>
+
+<body>
+<section class="page1"></section>
+<section class="page2"></section>
+<section class="page3"></section>
+<section class="page4"></section>
+
+</body>
+</html>

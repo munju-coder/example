@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	<style>
+        
+        body{
+            background-color: #f4edb6;
+        }
+        nav{
+            width: 250px;
+            height: 250px;
+            background-color: #573ed9;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -125px;
+            margin: auto;
+            transform: rotate(-75deg);
+        }
+        nav ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            position: absolute;
+            top: 125px;
+            left: 125px;
+            
+        }
+        nav ul li{
+            font-family: Impact;
+            font-size: 28px;
+            line-height: 30px;
+            height: 30px;
+            position: absolute;
+            transform-origin: left center;
+            padding-left: 0;
+            opacity: 0;
+        }
+        nav ul li a{
+            color: #573ed9;
+            text-decoration: none;
+            
+        }
+        
+       /* nav ul li:nth-child(1){ transform: rotate(0);}
+        nav ul li:nth-child(2){ transform: rotate(30deg);}
+        nav ul li:nth-child(3){ transform: rotate(60deg);}
+        nav ul li:nth-child(4){ transform: rotate(90deg);}
+        nav ul li:nth-child(5){ transform: rotate(120deg);}
+        nav ul li:nth-child(6){ transform: rotate(150deg);} */
+    
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+    
+        $( function() {
+ 
+             var degValue= 180 / $( 'nav ul li' ).length;
+            
+                //nav ul li를 개별실행
+                $( 'nav ul li' ).each( function( i ){
+                    
+                    // 메뉴하나당 회전할 각도값
+                    var realDeg = degValue*i;
+                    //개별 실행중인 li의 회전각을 각도값으로 지정
+                    $(this).css({'transform': 'rotate('+realDeg +'deg)'});
+                    
+                    //0.3초 대기시간을 두고 순차적으로 애니메이션
+                    $(this).delay( 300 * i ).animate({
+                        'padding-left': 150,
+                        'opacity':1
+                    },500);
+                });
+
+        });
+    
+    </script>
+</head>
+
+	<body>
+	<nav>
+	    <ul>
+	        <li><a href="#">Home</a></li>
+	        <li><a href="#">About</a></li>
+	        <li><a href="#">Portfolio</a></li>
+	        <li><a href="#">Community</a></li>
+	        <li><a href="#">Event</a></li>
+	        <li><a href="#">Contact</a></li>
+	    </ul>
+	</nav>
+
+</body>
+</html>

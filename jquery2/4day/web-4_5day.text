@@ -1,0 +1,148 @@
+web4
+5day
+each-category (3day)
+
+ <script>
+    
+        $( function() {
+ 
+             var degValue= 180 / $( 'nav ul li' ).length;
+            
+                //nav ul li를 개별실행
+                $( 'nav ul li' ).each( function( i ){
+                    
+                    // 메뉴하나당 회전할 각도값
+                    var realDeg = degValue*i;
+                    
+                    //개별 실행중인 li의 회전각을 각도값으로 지정
+                    $(this).css({'transform': 'rotate('+realDeg +'deg)'});
+                    
+                    //0.3초 대기시간을 두고 순차적으로 애니메이션
+                    $(this).delay( 300 * i ).animate({
+                        'padding-left': 150,
+                        'opacity':1
+                    },500);
+                });
+
+        });
+    
+    </script>
+---------------------setInterval_mainVis------------------------------------
+
+배너 순서대로 넘어가는거 -> fadeIn, fadeOut 사용
+setInterval( 실행코드, 지연시간);
+실행코드를 지연시간 이후 한번만 실행 후 종료
+
+두가지 동작 - 자동으로 넘어가야하고, 클릭했을 때도 넘어갈거 하나. 
+애니메이션은 하나인데 동작이 두개 들어가야하는것. 
+따라서 두개 작업하는 것 보다 함수로 지정해서 불러내야함. 
+
+
+var num =0;---> index 번호 변수 지정 몇번째로 넘어갈것인지. 
+
+자동으로 배너가 넘어갈것이기때문에 var timer= setInterval( bnncount, 5000);
+5초마다 bnnCount 함수 호출 할때 쓰이는 변수 지정
+
+보통 메인 배너 -> 7초~10초 사이로 씀 
+function bnnCount() {
+
+ bnnCount가 5초마다 실행되면 배너를 순차적으로 넘겨줄것이므로
+num 값을 1씩 증가 시켜준다. 
+(1, 2, 3, 4, -> 1, 2, 3, 4, 또 돌아야함. )
+num++;
+if (num>$('.btn li').length-1) num=0;
+//비교하는 번호는 num->index 번호의 변수 시작번호는 0번부터 시작 하니까
+갯수셀때는 1번부터 시작하므로 맞춰주려면 -1
+//num값이 총 갯수 -1보다 크면 num값을 0으로 초기화
+  
+}
+
+
+------------------setInterval_slide--------------------------------------------
+실행할 동작 
+1. 자동으로 넘어가는거
+2. 마우스커서 올렸을때 멈추는 것
+3. 마우스 리브 했을떄 다시 재실행하는것 
+
+css 로 float 지정 안하는이유
+1~10개까지의 위치값을 하나하나 잡아줘야하기 때문에
+스크립트 배열로 생성해서 넣어줘야함. 
+
+
+<script>
+        $(function() {
+
+            //배열생성(배치)
+            var saleList = new Array();
+            //선택자 함수 지정
+            var $List = $('.sale ul li');
+            //i->0~9(스크립트 이용해서 한꺼번에 처리)-
+
+                      //length-> 갯수
+       나중에 갯수가 늘어나거나 줄어들어도 작업하기 편리함
+for (var i = 0; i < $List.length; i++) {
+                
+                //push 값을 밀어넣음, index 번호가 i값과 일치하는 번호에 값을 밀어넣을것임.li를 넣고있는것
+                saleList.push($List.eq(i))
+
+                saleList[i].css({
+                    'left': 148 * i
+                });   //위치값지정완료
+            }
+            console.log(saleList); //배열확인
+            
+            //자동으로 돌아가는게 필요 setInterval 지정
+            var timer = setInterval(slideTimer, 2000);
+
+
+            function slideTimer() {
+            //shift 값을 한칸씩 왼쪽으로 밀어냄 ->목록이 이동하면서 첫번째 목록을 사라지게.
+                var firstList = saleList.shift();
+            //saleList 배열 안에서 첫번째 목록을 뒤에 다시 맨뒤로 가서 붙음 (배열순서에서만 확인가능)
+                saleList.push(firstList);
+                //화면상에서 확인가능하도록 재설정 필요
+
+                $List.each(function() {
+
+                    $(this).animate({
+                        //왼쪽으로 한칸씩 움직일것이므로 -이동하는 위치가 다다름
+                        // = -> 담기, -= 빼서 담아주기 (원래있던 위치보다 148작은값)
+                        'left': '-=148'
+                        
+                        //한칸씩 왼쪽으로 움직이고 나면 할일 
+                        //남아있는 목록을 이동하고 나면 다시 재정렬 -> 콜백함수 필요 
+                    }, 1500, "easeOutExpo", function() {
+                        //i 값 0부터 9까지 반복 
+                        for (var i = 0; i < $List.length; i++) {
+                            //다시 재정렬 (처음에 정렬해주는것과 똑같음)-> animate로 주면 맨뒤로 붙일때 과정이보임 따라서 css 로 줘야함. 
+                            saleList[i].css({
+                                'left': 148 * i
+                            });
+                        }
+
+                    });
+
+                });
+            }
+	// .sale 영역안에 마우스커서가 올려졌을떄 해야할 일
+            $( '.sale' ).mouseenter(function() {
+
+            //들어오면 동작이 멈춰야함. setInterval 멈추기 ->clearInterval
+                clearInterval(timer);
+            });
+
+            $( '.sale' ).mouseleave(function() {
+                //다시 timer 변수에  setInterval 재호출
+                timer = setInterval(slideTimer, 2000);
+            });
+        });
+
+    </script>
+     
+	css 부분에서 추가해줌
+	마우스를 올렸을 때 동작이 실행
+
+        .sale ul li:hover dl {
+            bottom: 20px;
+
+        }

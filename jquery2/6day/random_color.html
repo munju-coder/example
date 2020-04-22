@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    
+    <style>
+        body {
+            transition: all .7s ease;
+        }
+    
+        .box {
+            width: 500px;
+            height: 150px;
+            margin: 200px auto 50px;
+            display: table;
+        }
+        
+        .left ,
+        .right {
+            width: 250px;
+            height: 150px;
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+            border: 5px solid black;
+            border-radius: 75px 0 0 75px;
+            font-size: 40px;
+            font-weight: 900;
+            transition: all .7s ease;
+        }
+        
+        .right {
+            border: 0;
+            border-radius: 0 75px 75px 0;
+            background-color: black;
+            color: white;
+        }
+        
+        span { 
+            font-size: 16px;
+            display: block;
+            margin-top: 15px;
+        }
+        
+        button {
+            padding: 12px 20px;
+            display: block;
+            margin: auto;
+            background-color: black;
+            color: white;
+            border: 0;
+            border-radius: 20px;
+            transition: all .7s ease;
+        }
+    </style>
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $( function() {
+           
+            $( 'button' ).click( function() {
+               
+                var left_R = Math.floor( Math.random() * 256 );
+                var left_G = Math.floor( Math.random() * 256 );
+                var left_B = Math.floor( Math.random() * 256 );
+                
+                var right_R = Math.floor( Math.random() * 256 );
+                var right_G = Math.floor( Math.random() * 256 );
+                var right_B = Math.floor( Math.random() * 256 );
+                
+                var leftColor = 'rgb(' + left_R + ',' + left_G + ',' + left_B + ')';
+                var rightColor = 'rgb(' + right_R + ',' + right_G + ',' + right_B + ')';
+                
+                //console.log( leftColor + ' | ' + rightColor );
+                
+                $( 'body' ).css({ 'background-color' : leftColor });
+                
+                $( '.left' ).css({
+                    'border-color' : rightColor ,
+                    'color' : rightColor
+                });
+                
+                $( '.right , button' ).css({
+                   'background-color' : rightColor ,
+                    'color' : leftColor
+                });
+                
+            });
+            
+        });
+    </script>
+    
+</head>
+
+<body>
+
+<div class="box">
+    <div class="left">Left BG<span>color1</span></div>
+    <div class="right">right BG<span>color2</span></div>
+</div>
+
+<button type="button">Click</button>
+
+</body>
+
+</html>

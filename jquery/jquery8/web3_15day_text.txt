@@ -1,0 +1,168 @@
+web-3
+15day
+
+LUNA html, css, js 
+
+★피드백
+->css
+header { min-height: 760px; }
+안에 있는 내용이 잘리지 않고 (스크롤바 내리면 잘리지 않고 내용이 보여야하므로)
+다 보일 때가 최소 750 정도는 있어야하니까 넉넉하게 760으로 지정
+브라우저 화면 창의 높이 기준을 잡아야함 최소 높이를 지정하고
+모자라거나 남아서 스크롤이 생기지 않게끔 .
+header { z-index: 100; } 메뉴가 위에 보여야하므로 
+header nav ul li { text-indent: 26px; }
+아이콘이 ul li 의 글자와 겹치지 않게 떨어지게해준다. 
+
+section div video 에서
+
+section div video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: -1;   -> 기준점 설정 후 비디오가 화면에 꽉 차도록 넣어줘야하므로
+    min-width: 100%;
+    min-height: 100%;
+}
+*LUNA html에서 
+header nav ul li 안에 아이콘 이미지를 안넣는 이유는 글자와 나중에 간격 맞추기 어려워서
+css 에서 background: url로 넣을거임 
+
+*<video autoplay loop muted>
+            <source src="media/luna.mp4">
+        </video>
+autoplay-자동재생
+loop-반복재생
+muted-비디오 재생시 음성 없애기(배경으로만 쓸것이므로) 
+ ★루나 스크립트 피드백
+
+
+<script>
+        $( function() {
+            
+            var onOff = false;          //화면 밖 false , 화면 안 true
+            
+            //.menuBtn을 클릭하면 함수 실행
+            $( '.menuBtn' ).click( function() {
+               
+                onOff = !onOff;
+                
+                if( onOff ) {
+                    
+                    $( 'header' ).stop().animate({ 'left' : 0 }, 1000, "easeOutExpo" );
+               선택자 header에서 큐가 쌓이지 않게 stop()을 주고, left:0일때가 메뉴버튼을 클릭했을 떄 나오는것
+                    
+                    $( '.t_stick, .b_stick' )
+                        .animate({ 'top' : 23 }, 500, "easeOutExpo")
+                        .transition({ 'rotate' : '45deg' }, 500, "easeOutExpo");
+                 
+
+첫번째 , 세번쨰 선택자에 animate를 주는데 가운데 span에 겹치게 만들어주는것, 두번째 span태그의 위치값은
+23px 따라서 위치값을 먼저 23px 로 변경해주고, transition rotate 45도로 같이 돌려준다, 그래야 첫번쨰와 세번쨰 span태그가
+엑스자 모양을 할 수 있음. .
+ 나머지 두번째 span태그의 선택자에는 반대로 tansdition rotate -45도 를 돌려주면 header 의 메뉴부분을
+클릭했을 때
+ **transition -transform에서 stop이 들어가면 꾾기게됨, 안쓰는게 좋고 if-return 사용
+css 클래스로 addClass, removeClass 로 넣어주는게 편함.
+                    
+                    $( '.m_stick' ).delay(500).transition({ 'rotate' : '-45deg' }, 500, "easeOutExpo");
+                    ** .t_stick과 .b_stick이 .m_stick으로 모일동안 .m_stick은 움직이지 않고 
+                            대기해야하므로 delay 같은속도동안 해야 자연스러움.
+                }else{
+                    
+                    $( 'header' ).stop().animate({ 'left' : -200 }, 1000, "easeOutExpo" );
+                       -> header 의 left 부분이 -200일 경우 지정해 놓은 false 값의 형태로 돌아감. 
+                 
+                    $( '.menuBtn span' ).stop().transition({ 'rotate' : 0 }, 500, "easeOutExpo");
+                     -> 전체적으로 회전하지 않은 상태로 돌아가야하기 때문에 각각 주기 보다는 span태그 자체에 rotate:0으로 지정
+                    
+                    $( '.t_stick' ).animate({ 'top' : 13 }, 500, "easeOutExpo");
+                    $( '.b_stick' ).animate({ 'top' : 33 }, 500, "easeOutExpo");   
+                  
+                      -> 다시 원래 위치로 되돌려 놓기(이번에는 따로 줘야함. top에서부터의 위치값이 다르기때문에)
+                } 
+            });  
+        });
+transition이나 animate로 둘중 아무거나 써도 상관없으나 transition으로 쓰는것이 맞긴함, 중복 방지
+--------------->가장간단한 방법임, 포폴때에는 다양한 animation으로 응용해서 쓸것. --------------------------------------------------
+
+★eq 활용 index 순번
+.eq
+
+*index 번호는 0번 부터 시작한다. 
+*같은 태그가 아니더라도 부모 자식의 형태가 같아야 쓸 수 있음. 
+부모 자식5 부모 자식 5 갯수를 맞춰놓는 것이 좋다. 
+index번호를 매칭 시켜서 작업하려는 의도 .
+*단독으로 사용하는 경우는 거의 없음, 보통은 $(선택자).index( )와 $(선택자).eq(index번호) 같이씀.
+이름 뒤 괄호 열고 닫고 -> 값을 가져오는 것들.
+이름이 index니까 index 번호를 가져온다. 
+*스타벅스 메뉴같은것들을 만들때 사용 해당 배너 -아래쪽에 있는 바가 현재 페이지로 나타날 수 있도록 
+주로 쇼핑몰 메인 배너에 많이 들어가있음. 
+
+ $(function(){
+          
+            
+              $(선택자).index( )               -선택자의 index 번호를 가져옴
+             $(선택자).eq ( index번호 )   -선택자 중에서 index번호가 일치하는 것을 찾아줌(값을 찾아옴)
+      
+
+            $('ul li').click(function(){
+              console.log( $(this).index() );
+            -> 콘솔로 찍어보았을 때 클릭한 li의 index 번호를 가져옴.-각각의 li들을 클릭했을 때 0번부터 찍혀서 나옴.
+
+                $('p').eq( $(this).index() ).css({'background-color':'red'});
+            ->선택자는 p 태그로  클릭한 li 의 index 번호(this)가 일치하는 p태그를 찾아주는데 이때 (0부터 4까지가 나올것임)
+               css 는 배경색을 레드로 바꿔주겠다.(번호에 맞춰서 색상이 들어가는 것을 확인)
+                ex) p태그들 중에서 0번 index를 가진 것들을 찾을 수 있음. 부모기준이니까 -연결이된다.
+
+                $('p').not($('p').eq( $(this).index() )).css({'background-color':'transparent'});
+
+            -> 클릭한 ul li 의 index 번호(this)를 p태그와 일치하는 것을 찾아주는데 이때 일치하지 않는 (not) p태그는
+               css의 배경색을 투명색으로 바꿔 주겠다. (선택하는것 외에 색이 안들어가게, 색이 안들어가는게 아니라 기존색상을 지워주면됨
+               내가 선택한거 외에 다른것은 지워줄것임)
+
+               .not은 선택자 사용할때 첫번째 선택자는 범위가 되어야하므로 p태그들 중에서 내가 클릭한게 아닌것을 찾아와야하므로
+              p태그들 중에서 내가 선택한게 아닌것 not안에 들어가는것은 무조건 맞는것을 넣으면 됨, ( ) 괄호 안에 있는것들중에서 
+              아닌것을 찾아줘야하므로 
+            });
+        });
+<body>
+<ul>
+    <li>Menu1</li>
+    <li>Menu2</li>
+    <li>Menu3</li>
+    <li>Menu4</li>
+    <li>Menu5</li>
+</ul>
+<div>
+    <p>PAGE1</p>
+    <p>PAGE2</p>
+    <p>PAGE3</p>
+    <p>PAGE4</p>
+    <p>PAGE5</p>
+</div>
+</body>
+------------------------------varney.html --------------------------------------------------------------------
+각각의 배너 위치로 이동을 시켜줄것임. 
+클릭한 메뉴의 위치로 
+배너가 이동, 밑에 있는 바가 이동 -> 내가 메뉴를 클릭했을 때
+ 메뉴가 몇번째에 있는 지 알아야하므로 0123 까지 의 index 번호를 맞춰주는 작업이 필요하다. 
+바가 좌우로 이동 -위치값이동 -position속성을 이용해야함. 
+ul li*4 , ol li*4 -> 이런식으로 부모 자식 구조가 같아야한다는 말임. -> 그래야 index번호를 맞출수가 있다. 
+
+ol 안에 들어갈 수 있는 태그는 li 뿐이므로 밑에 바가 좌우로 이동해야하므로 div class 를 btn으로 만들어서 한번 더 묶어주어야
+그 안에서 좌 우로 움직일 수 있다. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

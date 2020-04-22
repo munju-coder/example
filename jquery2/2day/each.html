@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> each </title>
+	<script src="lib/jquery-1.11.1.min.js"></script>
+	<script>
+        
+        
+        $(function(){
+          
+            /*
+            
+            $( 선택자 ).each( function (index) {
+                    개별 실행 할 내용;        
+            });
+            
+            -선택자 모두를 개별적으로 실행시켜줌
+            -index 매개 변수를 이용하여 선택자의 index번호 활용
+            (필요없으면 생락 가능)
+        
+            */
+            $( 'li' ).each( function( i ) {
+                console.log( $(this).text()+"의 index는"+ i +"입니다");
+            });
+        });
+        // li 갯수 만큼 index 번호에 맞는 것을 매칭시켜줄수가 있음, 개별적으로 따로따로 실행을 한다.
+    
+    </script>
+</head>
+
+<body>
+<ul>
+    <li>List1</li>
+    <li>List2</li>
+    <li>List3</li>
+    <li>List4</li>
+</ul>
+</body>
+</html>

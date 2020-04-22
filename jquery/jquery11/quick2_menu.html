@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> 세로형 퀵메뉴 </title>
+	<style>
+        
+        #menu{
+            width:225px;
+            height: 275px;
+            margin: 150px auto;
+            position: relative;
+            border: 1px solid  #5c2a2a;
+            
+            
+        }
+        .upBtn, .downBtn{
+            width: 225px;
+            height: 25px;
+            background-color: #c95858;
+            padding-top: 5px;
+            box-sizing: border-box;
+            text-align: center; 
+            position: absolute;
+            top: 0;
+            user-select: none;
+        }
+        .downBtn{
+            top: auto;/*top도 0 초기화 */
+            bottom: 0;
+
+        }
+        .mask{
+            width: 225px;
+            height: 250px;
+            margin: auto;
+            background-color: #efebc3;
+            overflow: hidden;
+
+        }
+        .mask ul {
+            margin: 0;
+            padding: 20px 0;
+            box-sizing: border-box;
+            list-style: none;   
+            height: 3200px;
+            text-align: center;
+            
+
+        }
+        .mask ul li{
+            width: 200px;
+            padding: 10px;
+            box-sizing: border-box;
+
+        }
+        .mask ul li img{
+            width: 180px;
+            border: 1px dashed blue;
+            margin: 10px;
+            padding: 0;
+            margin: 10px;
+            
+            
+        }
+    
+    
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery.easing.1.3.js"></script>
+    <script>
+            
+         $(function (){
+          
+            var pos = 0;
+            
+            $('.upBtn').click( function() {
+                
+                 console.log(pos);
+                
+                if( pos >=3200 ){ 
+                    
+                    $(this).hide();
+                }else{
+                    $('.downBtn').show();
+                }
+                pos += 225;
+               
+                $('.mask').stop().animate({ 'scrollTop' : pos });
+                
+            });
+            
+            $('.downBtn').click( function() {
+                
+                if( pos <= 225){
+                    $(this).hide();
+                }else{
+                    $('.upBtn').show();
+                
+                }
+                
+                pos -=225;
+                console.log(pos);
+                $('.mask').stop().animate({ 'scrollTop' : pos });
+                
+            });         
+        });
+    
+    </script>
+</head>
+
+<body>
+<div id="menu">
+   <div class="upBtn"><img src="images/btn_up10.gif" alt="위"></div>
+   <div class="downBtn"><img src="images/btn_down10.gif" alt="아래"></div>
+    
+    <div class="mask">
+       <ul>
+           <li><img src="images/img_200x200_01.jpg" alt="메뉴"></li>
+           <li><img src="images/img_200x200_02.jpg" alt="메뉴"></li>
+           <li><img src="images/img_200x200_03.jpg" alt="메뉴"></li>
+           <li><img src="images/img_200x200_04.jpg" alt="메뉴"></li>
+           <li><img src="images/img_200x200_05.jpg" alt="메뉴"></li>
+           <li><img src="images/img_200x200_06.jpg" alt="메뉴"></li>
+           <li><img src="images/img_200x200_07.jpg" alt="메뉴"></li>
+           <li><img src="images/img_200x200_08.jpg" alt="메뉴"></li>
+           <li><img src="images/img_200x200_09.jpg" alt="메뉴"></li>
+           <li><img src="images/img_200x200_10.jpg" alt="메뉴"></li>
+           <li><img src="images/img_200x200_11.jpg" alt="메뉴"></li>
+           <li><img src="images/img_200x200_12.jpg" alt="메뉴"></li>
+           <li><img src="images/img_200x200_13.jpg" alt="메뉴"></li>
+           <li><img src="images/img_200x200_14.jpg" alt="메뉴"></li>
+           <li><img src="images/img_200x200_15.jpg" alt="메뉴"></li>
+           <li><img src="images/img_200x200_16.jpg" alt="메뉴"></li>
+           
+       </ul>
+        
+    </div>
+</div>
+
+</body>
+</html>

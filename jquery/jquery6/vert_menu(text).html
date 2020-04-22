@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> 가로형 메뉴 toggle 연습하기. </title>
+	<style>
+        html,body{
+            height: 100%; /*화면에 높이 100%*/
+        }
+        div{
+            height: 100%;
+            width: 300px;
+            position: absolute;
+            top: 0;
+            left: -300px;
+            background-color: indianred;
+        }
+        span {
+            padding: 80px 15px;
+            background-color: #f76161;
+            position: absolute;
+            top: 50%; /*화살표가 div 가운데에 있으므로*/
+            right: -46px;
+            transform: translateY(-50%);
+            user-select: none; 
+            color: white;
+        }
+        
+        
+   </style>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+      <script>
+           $(function(){
+          
+            var onOff=false;          
+            
+            
+            $('span').click( function(){
+              
+                onOff=!onOff; 
+                console.log(onOff);
+                
+                //onOff값이 true라면 (div 가 안으로 들어올때)
+                if( onOff ){
+                    $('div').stop().animate({'left':0},1000);
+                    $('div span').text('◀');
+                //onOff값이 false라면
+                }else{
+                     $('div').stop().animate({'left':-300},1000);
+                    $('div span').text('▶')
+                }
+            });
+            
+        });
+    
+    </script>
+</head>
+
+
+<body>
+<div>
+    <span>▶</span>
+</div>
+
+</body>
+</html>

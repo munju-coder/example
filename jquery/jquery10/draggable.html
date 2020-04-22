@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $('#txt').draggable(
+            { containment: 'parent'},
+                { snap: '#box' },
+                { start:function(){
+                    console.log("드래그 시작");
+                } },
+                { drag : function(){
+                   console.log("드래그 중"); 
+                } },
+                { stop : function(){
+                    console.log("드래그 종료");
+                }}
+            );
+
+        });
+    </script>
+    <style>
+        #box {
+            width: 600px;
+            height: 300px;
+            border: 4px solid red;
+            margin: 150px auto;
+        }
+
+        #txt {
+            width: 100px;
+            height: 100px;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="txt">Draggable</div>
+    </div>
+
+</body></html>

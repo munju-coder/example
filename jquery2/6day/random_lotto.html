@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+
+    <style>
+        body {
+            background-color: #333;
+        }
+
+        .number {
+            background: url(images/background.jpg);
+            width: 800px;
+            height: 150px;
+            margin: 200px auto;
+            padding: 50px 0;
+            box-sizing: border-box;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul li {
+            width: 50px;
+            height: 50px;
+            margin: 0 20px;
+            background-color: #80bf00;
+            color: #222;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 25px;
+            font-weight: 900;
+            float: left;
+        }
+
+        ul li:last-child {
+            margin-left: 190px;
+            background-color: #ff9d00;
+        }
+
+    </style>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(function() {
+
+            //lotto배열 생성
+            var lotto = new Array();
+
+            //1~45값을 lotto배열에 저장
+            for (var i = 1; i < 46; i++) {
+                lotto.push(i);
+            }
+
+           
+            //li들을 개별실행
+            $('li').each(function() {
+                //num변수에 0~방갯수 사이의 랜덤한 값을 담아줌
+                var num = Math.floor(Math.random() * lotto.length);
+
+                //lotto배열의 num번 방의 값을 li에 출력
+                $(this).text(lotto[num]);
+
+                //lotto배열의 num번 방에서부터 값을 1개 제거
+                lotto.splice(num, 1);
+                
+                 console.log(lotto);
+            });
+
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <div class="number">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>

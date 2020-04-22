@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> join </title>
+	<style>
+    
+        form{
+            width:300px;
+            padding: 15px;
+            border: 1px solid gray;
+            margin: 50px auto;
+        }
+        fieldset{
+            border: none;
+            margin: 20px 0; 
+        }
+        fieldset legend{
+             font-size: 24px;
+            font-weight: 700;
+            color: brown;
+        }
+        fieldset ul{
+            padding: 0;
+            list-style: none;
+        }
+        fieldset ul li {
+            margin: 15px;
+        }
+        fieldset ul li label{
+            display: block;
+            margin-bottom: 10px;
+        }
+         
+fieldset ul li input, fieldset ul li a
+        {
+            width:100%;
+            display: block;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 0;
+            border-bottom: 1px solid gray;
+        }
+        fieldset ul li :last-child{
+            padding-top: 30px;
+        }
+        fieldset ul li :last-child a, 
+        fieldset ul li :last-child input{
+            background-color: aquamarine;
+            
+        }   
+        fieldset ul li input::placeholder{
+            color: red;
+        }
+         
+            
+        
+       
+        
+
+    
+    </style>
+
+</head>
+
+	<body>
+	<form>
+	    <fieldset>
+	        <legend>회원가입</legend>
+	          <div>
+            <ul> 
+               <li>
+	               <label for="userID">ID</label>
+                       <input type="text" id="userID" placeholder="아이디">
+	            </li>
+	            
+	            <li>
+	               <label for="userPW">PASSWORD</label>
+	                <input type="password" id="userPW" placeholder="비밀번호">
+	            </li>
+	            
+	            <li>
+	               <label for="userPW">CONFIM PASSWORD</label>
+	                <input type="password" id="userRepW" placeholder="비밀번호 재입력">
+	            </li>
+	            
+	            <li>
+	                <label for="userPW">EMAIL ADDRESS</label>
+	               <input type="email" id="usermail" placeholder="이메일 주소">
+	            </li>
+	            </ul>
+	             </div>
+	            
+	            <ul>
+	                <li>
+	                <input type="submit" value="회원가입">
+	                <a href="#">아이디찾기</a>
+	                <a href="#">비밀번호찾기</a>
+                    </li>
+	            </ul>
+	          
+	        
+	    </fieldset>
+	    
+	</form>
+
+</body>
+</html>

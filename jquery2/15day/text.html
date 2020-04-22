@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	<script src="lib/jquery-1.11.1.min.js"></script>
+	<script>
+    
+        
+        $(function(){
+          
+            /*
+            
+            문자열.indexOf( '텍스트값' );
+            -문자열의 왼쪽에서부터 처음 나타나는 텍스트의 index번호를 반환
+            
+            문자열.indexOf( '텍스트값', index번호 );
+            -문자열의 index 번호부터 처음 나타나는 텍스트의 index 번호를 반환
+            
+            문자열.charAt( index번호 );
+            -문자열에서 index 번호에 있는 텍스트를 반환 (indexOf 와 반대되는개념)
+            
+            문자열.length
+            -글자의 갯수
+            
+            문자열.substring( 시작index번호, 끝 index번호 );
+            -시작 index 부터 끝 index 까지의 문자열을 반환(indexOf와 연동해서 사용)
+            
+            문자열.substr( 시작index번호, 갯수 );
+            -시작 index 부터 갯수만큼 문자열을 반환(length 와 연동해서 사용)
+            
+            문자열.split( '텍스트값' );
+            -문자열에서 텍스트값을 기준으로 문자열을 나누어 배열로 저장
+            */
+            
+            var txt="SBS아카데미 컴퓨터 아트 학원 032.432.0111 신현프라자 3층 c클래스";
+            
+            console.log( txt.indexOf( '.' )); //21
+            console.log( txt.indexOf( '.',22 ));//25 -22이후의 .
+            
+            console.log( txt.charAt( 27 ) ); //1 (문자값-검정) 27번에 해당하는 값인 1
+            
+            console.log( txt.substring( 18,29 )); // 18~29까지의 문자열반환 032.432.011
+            console.log( txt.substr(18,12 )); //18번부터 12글자 갯수만큼 문자열 반환 032.432.011
+            
+            console.log( txt.split( ' ' )); // 문자나 숫자값이 아닌 배열. 띄어쓰기만큼 
+            console.log( txt.split( ' ' )[5]); //방번호값을 넣으면 안에 있는 값이 나옴 
+            
+            
+        });
+    </script>
+</head>
+
+<body>
+
+SBS아카데미 컴퓨터 아트 학원 032.432.0111 신현프라자 3층 c클래스
+
+</body>
+</html>

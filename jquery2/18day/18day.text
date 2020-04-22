@@ -1,0 +1,99 @@
+web4_18day(중간부터 들음)-녹음본 없음.
+
+bx_full -이미지 bakground넣는거 풀페이지- 확인
+
+18day fullpage.html--------------------------------------------------------------------------------------------------
+               
+
+
+
+                anchors : ['앵커1' , '앵커2' , ... ]
+                menu : 메뉴영역 선택자
+                
+                css3 : true / false
+                easingcss3 : easing값
+                scrollspeed : ms단위
+                
+                looptop : true / false
+                loopbottom : true / false
+
+
+ <script>
+    
+        $( function() {
+       
+            $( '#wrap' ).fullpage({
+               
+                menu : '.menu' ,
+                anchors : [ 'page1' , 'page2' , 'page3' , 'page4' ],
+                loopTop : true ,         ->첫번째 배경에서 스크롤 위로하면 맨아래 배너로 이동
+                loopBottom : true ,    ->마지막 배경에서 스크롤 아래로 하면 맨 위의 배너로 이동
+                /*css3 : true ,
+                easingcss3 : 'ease-out' ,
+                scrollspeed : 3000*/
+                
+            });
+        });
+        
+    </script>
+
+
+
+multiscroll.html---------------------------------------------------------------------------------------------------------
+
+<style>
+        body{text-align: center;}
+        #canvas1{
+            width: 500px;
+            height: 400px;
+            border: 1px solid red;
+            margin-top:150px; /*낮은 버전 확인X*/
+        }
+    </style>
+    
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="script/line.js"></script>
+</head>
+
+<body>
+
+<canvas width="500" height="400" id="canvas1">
+    이 브라우저는 canvas 태그를 지원하지 않습니다.    
+ ->익스플로러는 i9부터 적용된 css 로나옴, 그 이하 버전은 지원X
+                                                          
+</canvas>
+
+</body>
+</html>
+
+
+19day canvas.html ----------------------------------------------------------------------------
+         line.js-------------------------------------------------------------------------------------
+
+일러스트레이터와 비슷
+
+$( function(){
+  
+    var canv = $( '#canvas1' )[0].getContext("2d");
+    ->아트보드 만드는 것과 비슷, x축, y축 2d, 방번호는 0번
+    
+    canv.fillStyle ="#155003";         //채우기색
+    canv.strokeStyle ="#62ff00";      //선색
+    canv.lineWidth ="10";             //선의 굵기
+    
+    // butt -좌표 밖, square - 좌표 안 , round - 둥글게
+    canv.lineCap = "round";         //선 끝 모양 
+    
+    //bevel - 접힘, miter -뾰족 , round - 둥글게
+    canv.lineJoin = "round";        //선의 꺾이는 부분
+    
+    canv.beginPath();              //패스 시작
+    canv.moveTo( 320, 20)     //시작점
+    canv.lineTo( 400, 20 );        //연결점
+    canv.lineTo( 360, 100 );        //연결점
+    
+    
+    
+    canv.stroke();                //선그리기
+    
+});

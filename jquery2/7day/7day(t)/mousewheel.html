@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> 마우스 휠 </title>
+    
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery.mousewheel.js"></script>
+    <script>
+    
+        $( function() {
+           
+            /* 
+                $( 선택자 ).mousewheel( function( e, delta) {
+                
+                    마우스 휠이 움직이면 실행 할 내용;
+                
+                });
+            
+                - delta 값은 휠을 위로 굴리면 양수값, 아래로 굴리면 음수값
+                - scroll이벤트와 함께 동작하므로 스크롤 이동 애니메이션 시 스크롤 이벤트는 막아놓고 작업해야 중복이 일어나지않는다.
+            
+            */
+            
+            $( window ).mousewheel( function( e, delta ) {
+                
+                console.log( delta );
+                
+                if( delta > 0 ) {
+                    $( 'h1' ).text( "마우스 휠 : 위로 굴리중" );
+                }else{
+                    $( 'h1' ).text( "마우스 휠 : 아래로 굴리중" );
+                }    
+                
+            });
+            
+            
+            
+        });
+    
+    </script>
+    
+</head>
+
+<body>
+
+<h1>마우스 휠 : </h1>
+
+
+</body>
+
+</html>

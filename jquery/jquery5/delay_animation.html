@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> 시간차 애니메이션 </title>
+    
+    <style>
+        .txtBox {
+            font-size: 100px;
+            background-color: turquoise;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate( -50%, -50% );
+        }
+        
+        .txtBox div {
+            float: left;
+            position: relative;
+        }
+        
+    </style>
+    
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+        $( function() {
+           
+            $( '.txtBox div:nth-child(1)' ).animate({ 'top' : -70 }).animate({ 'top' : 0 });
+            $( '.txtBox div:nth-child(2)' ).delay(100).animate({ 'top' : -70 }).animate({ 'top' : 0 });
+            $( '.txtBox div:nth-child(3)' ).delay(200).animate({ 'top' : -70 }).animate({ 'top' : 0 });
+            $( '.txtBox div:nth-child(4)' ).delay(300).animate({ 'top' : -70 }).animate({ 'top' : 0 });
+            $( '.txtBox div:nth-child(5)' ).delay(400).animate({ 'top' : -70 }).animate({ 'top' : 0 });
+            
+        });
+    </script>
+</head>
+
+<body>
+
+<div class="txtBox">
+    <div>애</div>
+    <div>니</div>
+    <div>메</div>
+    <div>이</div>
+    <div>션</div>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> float </title>
+	
+	<style>
+    
+        div{
+            border: 5px solid black;    
+           clear: both;
+            margin-top: 100px;
+        }
+        img{
+            border: 2px solid red;
+            opacity: 0.4;
+            float: left;
+        }
+        
+        ul{
+            padding: 0;
+            list-style: none;
+            border: 10px solid black;
+            border-bottom-color: blue;
+            overflow: hidden;
+            
+        }
+        ul: after{
+            content: '';
+            display: block;
+                clear:both;
+        }
+        ul li{
+            width: 100px;
+            height: 50px;
+            background-color: rgba(255, 0, 0, 0.28);
+            float: left;
+        }
+        
+        /*
+        
+        float 
+        
+        left    부모를 기준으로 가장 왼쪽
+        right    부모를 기준으로 가장 오른쪽 
+        
+        clear
+          -통상적으로는 both만 사용
+        
+        
+        left    float:left일 경우
+        right  float: right일 경우
+        both  둘다 사용할 경우
+        
+        
+        
+        */
+        
+    
+        p{
+            background-color:aqua; 
+        }
+    </style>
+</head>
+
+	<body>
+           <ul>
+    
+               <li><a href="#">Menu1</a></li>
+               <li><a href="#">Menu2</a></li>
+               <li><a href="#">Menu3</a></li>
+               <li><a href="#">Menu4</a></li>
+           </ul>
+
+<div>
+    <img src="http://placehold.it/150x150;" alt="image">
+    <p>
+        
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae aliquet nec ullamcorper sit amet. Sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Gravida arcu ac tortor dignissim convallis. Velit scelerisque in dictum non consectetur a erat. Pellentesque id nibh tortor id. Commodo elit at imperdiet dui accumsan sit amet. Amet nulla facilisi morbi tempus iaculis. Malesuada proin libero nunc consequat interdum varius sit amet. Iaculis eu non diam phasellus vestibulum lorem sed. Eget mi proin sed libero. Luctus accumsan tortor posuere ac ut. Tellus in metus vulputate eu. Mattis vulputate enim nulla aliquet. Id porta nibh venenatis cras sed. At elementum eu facilisis sed odio morbi quis commodo odio. Consectetur a erat nam at lectus urna duis. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+    </p>
+</div>
+</body>
+</html>

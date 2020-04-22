@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    
+    <style>
+        #popup {
+            width: 366px;
+            background-color: black;
+            box-shadow: 0 0 30px #666;
+        }
+        
+        #popup div {
+            position: relative;
+        }
+        
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        #cookieBtn {
+            display: inline-block;
+            padding: 10px;
+        }
+        
+        #closeBtn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        
+    </style>
+    
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery.cookie.js"></script>
+    <script>
+    
+        $( function() {
+           
+            /*
+            
+                기본형
+                
+                $.cookie( '쿠키의 이름' , '쿠키에 대한 값' );
+                
+                
+                확장형
+                
+                $.cookie( '쿠키의 이름' , '쿠키에 대한 값' {
+                
+                    expires : 7 ,
+                    path : '/' ,
+                    domain : 'sbsart.com' ,
+                    secure : false
+                
+                });
+            
+            
+                expires - 만료일
+                path - 경로
+                domain - 도메인 주소
+                secure - true인 경우 https프로토콜에만 적용, false 기본값
+            
+            
+                $.cookie( '쿠키 이름' ) = 쿠키값을 불러옴
+                $.cookie( '쿠키 이름' , null ) = 쿠키값을 지움
+            
+            */
+            
+            if( $.cookie("popup") == "ok" ) $('#popup').hide();
+                        
+            
+            $( '#closeBtn' ).click( function() {
+               
+                $( '#popup' ).hide();
+                
+            });
+            
+            $( '#cookieBtn' ).click( function() {
+               
+                $.cookie( "popup" , "ok" , { expires : 1 , path : '/' } );
+                
+                console.log( $.cookie( "popup" ));
+                
+                 $( '#popup' ).hide();
+                
+            });
+            
+            
+            
+        });
+        
+    </script>
+    
+</head>
+
+<body>
+
+<div id="popup">
+    <img src="images/20160525popup.jpg" alt="popup" id="popImg" >
+    
+    <div>
+        <a href="#" id="cookieBtn">오늘하루 보이지않기</a>
+        <a href="#" id="closeBtn">닫기</a>
+    </div>
+</div>
+
+
+</body>
+</html>

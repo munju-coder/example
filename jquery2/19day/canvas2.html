@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Title </title>
+    <style>
+        div {
+            width: 216px;
+            height: 252px;
+            margin: 200px auto;
+            background: url(images/stat.png);
+        }
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+        $(function() {
+            //캔버스 준비
+            var canv = $('#canvas2')[0].getContext("2d");
+
+            canv.fillStyle = "rgba(0, 0, 247, 0.5)";
+            canv.beginPath();
+            canv.moveTo(107, 127);
+            canv.lineTo(107, 127);
+            canv.lineTo(107, 127);
+            canv.lineTo(107, 127);
+            canv.lineTo(107, 127);
+            canv.lineTo(107, 127);
+            canv.lineTo(107, 127);
+            canv.closePath();
+
+            canv.fill();
+            canv.stroke();
+
+            var posX = [107, 107, 107, 107, 107, 107 ];
+            var posY = [127, 127, 127, 127, 127, 127];
+
+            var timeline = setInterval(canvasAni, 100 / 60);
+
+            function canvasAni() {
+
+                posX[0] += 0.02 * (107 - posX[0]);
+                posY[0] += 0.02 * (47 - posY[0]);
+
+                posX[1] += 0.02 * (183 - posX[1]);
+                posY[1] += 0.02 * (83 - posY[1]);
+
+                posX[2] += 0.02 * (183 - posX[2]);
+                posY[2] += 0.02 * (83 - posY[2]);
+
+                posX[3] += 0.02 * (142 - posX[3]);
+                posY[3] += 0.02 * (146 - posY[3]);
+
+                posX[4] += 0.02 * (42 - posX[4]);
+                posY[4] += 0.02 * (146 - posY[4]);
+
+                posX[5] += 0.02 * (35 - posX[5]);
+                posY[5] += 0.02 * (85 - posY[5]);
+
+                canv.clearRect(0, 0, 216, 252);
+
+                canv.lineWidth = "3";
+
+                canv.beginPath();
+                canv.moveTo(posX[0], posY[0]);
+                canv.lineTo(posX[1], posY[1]);
+                canv.lineTo(posX[2], posY[2]);
+                canv.lineTo(posX[3], posY[3]);
+                canv.lineTo(posX[4], posY[4]);
+                canv.lineTo(posX[5], posY[5]);
+                canv.lineTo(posX[6], posY[6]);
+                canv.closePath();
+
+
+            }
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <canvas id="canvas2" width="216" height="252"></canvas>
+</body></html>

@@ -1,0 +1,187 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title> Title </title>
+        <link rel="stylesheet" href="css/reset.css">
+        <style>
+            @font-face {
+                font-family: swg;
+                src: url(font/SDSwaggerTTF.eot);
+                src: local(※),
+                    url(font/SDSwaggerTTF.woff) format('woff'),
+                    url(font/SDSwaggerTTF.ttf) format('truetype')
+            }
+
+            body {
+                font-family: swg;
+            }
+
+            html,
+            body,
+            section {
+                height: 100%;
+                min-width: 1200px;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            header {
+                width: 100%;
+                position: fixed;
+                color: aliceblue;
+            }
+
+            header .join ul,
+            header nav div {
+                width: 1200px;
+                margin: auto;
+                position: relative;
+            }
+
+            header .join {
+                background-color: black;
+                padding: 15px 0;
+                text-align: right;
+            }
+
+            header .join ul li {
+                display: inline-block;
+                font-size: 20px;
+                margin-left: 20px;
+            }
+
+            header nav {
+                background-color: rgba(0, 0, 0, 0);
+                height: 120px;
+                transition: all .5s ease;
+            }
+
+            header nav.navi {
+                /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&1+0,0+100;Neutral+Density */
+                background: -moz-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+                /* FF3.6-15 */
+                background: -webkit-linear-gradient(top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+                /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+                /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#00000000', GradientType=0);
+                /* IE6-9 */
+
+            }
+
+            header nav.on {
+                background-color: black;
+            }
+
+            header nav div {
+                height: 120px;
+            }
+
+            header nav div h1,
+            header nav div ul {
+                position: absolute;
+                bottom: 0;
+                transition: all .5s ease;
+            }
+
+            header nav div ul {
+                right: 0;
+            }
+
+            header nav div ul li {
+                display: inline-block;
+                font-size: 30px;
+                height: 100px;
+                line-height: 100px;
+                margin-left: 40px;
+            }
+
+            nav.on h1 {
+                bottom: 40px;
+            }
+
+            nav.on ul {
+                bottom: 20px;
+            }
+
+            #mainVis {
+                background: url(images/14.jpg) center center;
+                background-size: cover;
+            }
+
+        </style>
+        <script src="lib/jquery-1.11.1.min.js"></script>
+        <script>
+            //브라우저 창의 스크롤이 움직이면 함수 실행
+            //세로스크롤바 위치가 200px 이상이면-> nav의 navi클래스를 제거하고
+            //nav, nav div에 on클래스 추가
+            //로고 이미지를 가로형 로고 이미지로 교체 
+
+            //그렇지 않으면 200px 보다 작으면 
+            //nav의 navi클래스 추가
+            //nav, nav div 에 on클래스 추가
+            //로고 이미지를 세로형 로고 이미지로 교체 
+            $(function() {
+              $(window).scroll(function() {
+                    console.log($(this).scrollTop());
+                    if ( $(window).scrollTop() >=200){
+                        $('nav').removeClass('navi');
+                        $('nav, nav div').addClass('on');
+                        $('h1 a img').attr('src', 'images/logo_h.png');
+                  
+                    } else {
+                       
+                            $('nav').addClass('navi');
+                            $('nav, nav div').removeClass('on');
+                            $('h1 a img').attr('src', 'images/logo_v.png');
+                    }
+                });
+            });
+
+        </script>
+    </head>
+
+    <body>
+
+        <header>
+
+            <div class="join">
+                <ul>
+                    <li><a href="#">회원가입</a></li>
+                    <li><a href="#">로그인</a></li>
+                </ul>
+            </div>
+
+            <nav class="navi">
+                <div>
+                    <h1><a href="#"><img src="images/logo_v.png" alt="로고"></a></h1>
+
+                    <ul>
+                        <li><a href="#">HTML</a></li>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">jQuery</a></li>
+                        <li><a href="#">웹표준</a></li>
+                        <li><a href="#">반응형 웹</a></li>
+                        <li><a href="#">크로스 브라우징</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+        </header>
+
+        <section id="mainVis"></section>
+        <section id="contents"></section>
+
+        <footer>Copyright &copy; All Rights Reserved</footer>
+
+    </body>
+
+    </html>

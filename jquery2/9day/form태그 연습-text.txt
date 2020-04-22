@@ -1,0 +1,39 @@
+폼태그, 회원가입 폼
+<body>
+<form>
+    
+    <fieldset>
+        <legend>회원가입</legend>
+        
+        <ul>
+            <li>
+                <label for="userId">ID</label>
+                <input type="text" id="userId" placeholder="아이디">
+            </li>
+            
+            <li>
+                <label for="userPw">PASSWORD</label>
+                <input type="password" id="userPw" placeholder="비밀번호">
+            </li>
+            
+            <li>
+                <label for="userRepw">CONFIM PASSWORD</label>
+                <input type="password" id="userRepw" placeholder="비밀번호 재입력">
+            </li>
+            
+            <li>
+                <label for="userMail">EMAIL ADDRESS</label>
+                <input type="email" id="userMail" placeholder="이메일 주소">
+            </li>
+            
+            <li>
+                <input type="submit" value="회원가입">
+                
+                <a href="#">아이디 찾기</a>
+                <a href="#">비밀번호 찾기</a>
+            </li>
+        </ul>
+    </fieldset>
+</form>
+
+</body>

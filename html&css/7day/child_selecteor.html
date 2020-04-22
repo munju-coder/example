@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> 자손 선택자와 후손 선택자 </title>
+	
+	<style>
+        
+        body> ul > li > a { 
+            color: red;
+            font-weight: 90d0;
+            font-size: 20px;
+        }
+        
+        div>h3{
+            color: blue;
+        }
+        h3{color: red;}
+        
+         dl dd{font-style: italic;}
+        
+    </style>
+	
+</head>
+
+	<body>
+	
+<h1>자손 선택자와 후손 선택자</h1> 
+
+<ul>
+    <li>
+        <a href="#">의류</a>
+        <ul>
+            <li><a href="#">아우터</a></li>
+            <li><a href="#">상의</a></li>
+            <li><a href="#">하의</a></li>
+            <li><a href="#">신발</a></li>
+        </ul>
+    </li>
+    
+    <li>
+        <a href="#">생활용품</a>
+        <ul>
+            <li><a href="#">주방용품</a></li>
+            <li><a href="#">욕실용품</a></li>
+            <li><a href="#">세안용품</a></li>
+            <li><a href="#">수납용품</a></li>
+        </ul>
+    </li>
+    
+     <li>
+        <a href="#">식품</a>
+        <ul>
+            <li><a href="#">유기농채소</a></li>
+            <li><a href="#">과일/견과</a></li>
+            <li><a href="#">음료</a></li>
+            <li><a href="#">가공식품</a></li>
+        </ul>
+    </li>
+    
+</ul>
+
+<h2>자손선택자와 후손선택자</h2>
+<p>목록1과 목록2에 각각 다른 글자색을 지정하고 내용1234에 기울기를 적용하시오.</p>
+
+<div>
+    <h3>목록1</h3>
+    
+    <dl>
+        <dt>제목1</dt>
+        <dd>내용1</dd>
+        <dd>내용2</dd>
+    </dl>
+    </div>
+    
+
+<h3>목록2</h3>
+   
+    <dl>
+        <dt>제목2</dt>
+        <dd>내용3</dd>
+        <dd>내용4</dd>
+    </dl>
+
+
+
+</body>
+</html>

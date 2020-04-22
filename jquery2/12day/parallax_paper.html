@@ -1,0 +1,74 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Title </title>
+	<style>
+    
+        
+       body { height: 3000px; }
+        
+        div {
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            background-color: white;
+            transform-origin: 0 0;
+        }
+        
+        #box1 { left : 0; }
+        #box2 { left : 100px; }
+        #box3 { left : 200px; }
+        #box4 { left : 300px; }
+        
+        div:nth-child(2n) {
+            transform: skewY( 0deg );
+            box-shadow:  10px 0 20px #ccc inset; 
+        }
+        div:nth-child(2n+1) {
+            transform-origin: 100% 0;
+            transform: skewY( 0deg );
+            box-shadow:  -10px 0 20px #ccc inset; 
+        }
+        
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+    
+    
+        $(function(){
+          
+            /*
+            
+            $( '선택자:even' )
+             - 짝수 index 번호  div:nth-child(2n+1) -반대로생각
+             
+            
+            $( '선택자:odd' )
+            -홀수 index 번호    div:nth-child(2n)
+            
+            
+            
+            */
+            $(window).scroll( function(){
+              
+                $( 'div:odd' ).css({ 'transform' : 'skewY('+ $(this).scrollTop() * 0.01 +'deg)' });
+                $( 'div:even' ).css({ 'transform' : 'skewY('+ -$(this).scrollTop() * 0.01 +'deg)' });
+                
+            });
+        });
+    
+    </script>
+</head>
+
+<body>
+
+<div id="box1"></div>
+<div id="box2"></div>
+<div id="box3"></div>
+<div id="box4"></div>
+
+</body>
+</html>

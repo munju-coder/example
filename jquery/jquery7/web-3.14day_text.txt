@@ -1,0 +1,110 @@
+web-3
+14day
+badfarmers css, script 마무리.  -브라캣 주석확인할것. 
+
+-----------------------------------------transit----------------------------------------- 
+transit 플러그인 사용 
+animate 속성 사용 - 중간값이용, 동작을 줄떄
+★ transform에 관련된 속성들은 
+그냥은 사용할 수 없고 transit이라는 플러그인과 함께 사용해야한다. 
+------>  <script src="lib/jquery.transit.min.js"></script>
+일반적인 + 기호를 사용했을 때에는 웹에서 위아래 여백이 크게 생기므로
+중심이 안맞음,  따라서 font_awsome 으로 써야 위아래 여백 생기지 않고 선택됨. 
+
+<script>
+        
+        $(function(){
+          //마우스 커서를 올려주면 해야 할 일 -함수를 실행해라 
+            $('i').mouseenter( function(){
+              //마우스커서가 들어온 i에 큐가 쌓이지 않게 하고 회전속성을 135도만큼 1초동안 회전
+                //deg도 단위도 문자 이므로 작은 따옴표 
+                $(this).stop().transition({'rotate':'135deg'},1000);
+            });
+            //반대로 마우스가 빠져나갔을 떄 해야할 일 
+            $('i').mouseleave( function(){
+                // 다시 제자리로 돌아가야하는 것이므로 회전하지 않았으므로 0도
+                $(this).stop().transition({'rotate':0},1000);
+            });
+        });//transit script 연결해야 실행이 된다. 
+      ★ transform transition 으로 작성한다. 
+      애니메이션 충돌이 일어날 수 있음 (일반적인 속성은 animate로 주고) 
+    </script>
+
+-------------------------------------transit2 속성 ------------------------------
+transform - transition transit
+
+SCALE  -> 1단위에서 소수점 단위로 사용 했었음 
+
+SKEW-> 기본값 -기울이지 않은상태 0
+
+ROTATE-> 기본값- 회전하지 않은 상태 0
+
+★script 작성하는 순서는 항상 제이쿼리가 모든 스크립트 중에서 가장 위에 작성 
+만드는 스크립트는 무조건 맨아래 작성하도록 한다. 
+(위에 있는 것들은 가져다 쓰는 것이므로 )
+
+  <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery.transit.min.js"></script>
+    <script>
+    </script>
+
+
+<script>
+사용할 이벤트 - 바의 왼쪽 마우스클릭하고 움직일때 (드래그 동작) 2가지 동작을 같이 쓸것.
+    //jquery script 가 제일처음에, 마지막이 쓰는 script
+    //position 부모기준, offset 화면기준 떨어진  위 아래 위치값
+
+    $(function(){
+      마우스 왼쪽 버튼을 누르고 있는 상태
+        $('#scaleBar').mousedown( function(){
+    스케일바-마우스를 누르고 있는 상태에서 마우스를 움직이고 있는 상태 -
+                         드래그 동작일떄 해야할일
+            $(this).mousemove( function(){
+                $('.box').stop().transition({'scale' : $(this).val()});
+      드래그 할때마다 value 값이 변하면서 박스 모양이 변할것
+       (스케일값의 벨류값으로 변할것이다.min값에서 max값까지 적용이 될것임. )
+            });
+        });
+
+        $('#skewBar').mousedown( function(){
+              
+            $(this).mousemove( function(){
+                    이때 박스의 스큐X 는 드래그를 할때마다 스큐바의 벨류값이 변할것이다.
+                  $('.box').stop().transition({'skewX' : $(this).val()});
+            });
+         });
+        $('#rotateBar').mousedown( function(){
+          $(this).mousemove( function(){
+            $('.box').stop().transition({'rotate' : $(this).val()}); 
+          });  
+        });
+    });
+
+    </script>
+-------------------------------------------★offset_position---------------------------------------
+
+자바스크립트에서 방향값은 top 과 left만 사용함 
+offset과 position은 비슷하지만 결과 값이 다름
+offset은 화면 기준(절대위치값), position은 부모요소 기준
+
+
+            $( 선택자 ).position().top
+            - 선택자의 부모로부터 위에서 떨어진 위치값
+            
+            $( 선택자 ).position().left
+            - 선택자의 부모로부터 왼쪽에서 떨어진 위치값
+
+        
+        
+            $( 선택자 ).offset().top
+            - 선택자가 위에서 떨어진 절대위치값
+            
+            $( 선택자 ).offset().left
+            - 선택자가 왼쪽에서 떨어진 절대위치값
+            //top 이나 left값에 ( )안씀.
+
+
+
+
+
+

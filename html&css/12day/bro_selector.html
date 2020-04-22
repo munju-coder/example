@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>  동위선택자(형제선택자)_ </title>
+	<style>
+    
+        ul +ul li   { color: red;
+            
+        }
+        h2~p{
+            background-color: coral;
+        }
+        
+        
+    </style>
+</head>
+
+	<body>
+<h1>동위 선택자 (형제선택자)</h1>
+
+<ul>
+    <li>Menu1</li>
+    <li>Menu2</li>
+    <li>Menu3</li>
+    <li>Menu4</li>
+</ul>
+
+<ul>
+    <li>Menu1</li>
+    <li>Menu2</li>
+    <li>Menu3</li>
+    <li>Menu4</li>
+</ul>
+
+<div>
+    <h2>제목1</h2>
+    <p>문단1</p>
+    <p>문단2</p>
+    
+    <h2>제목2</h2>
+    <p>문단3</p>
+    <p>문단4</p>
+</div>
+</body>
+</html>

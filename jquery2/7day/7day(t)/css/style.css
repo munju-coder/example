@@ -1,0 +1,252 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+html,
+body,
+#wrap,
+section {
+    height: 100%;
+    position: relative;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#section1 {
+    background: url(../images/Surface_J_Overview_1.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+#section2 {
+    background: url(../images/Surface_J_Overview_2.jpg) center bottom no-repeat;
+    background-size: 90vh;
+}
+
+#section3 {
+    background: url(../images/Surface_J_Overview_3.jpg) right bottom no-repeat;
+    background-size: 60%;
+}
+
+#section4 {
+    background-color: #f2f2f2;
+}
+
+.txtBox h2 {
+    font-size: 2vw;
+    font-weight: 900;
+}
+
+.txtBox p {
+    font-size: 1.2vw;
+    margin: 2.5vw 0;
+    line-height: 1.8vw;
+}
+
+.txtBox > a {
+    font-size: 1.2vw;
+    padding: 0.5vw 2vw;
+    background-color: #101010;
+    color: white;
+    font-weight: 700;
+    border-radius: 2.5vw;
+}
+
+#section1 .txtBox {
+    width: 30vw;
+    position: absolute;
+    bottom: 20%;
+    /*right: 2%;*/
+    right: -30vw;
+}
+
+#section1 .txtBox h2 {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+#section1 .txtBox p {
+    opacity: 0;
+    transition: opacity 1s ease-out .3s;
+}
+
+#section1 .txtBox a {
+    opacity: 0;
+    transition: opacity 1s ease-out .6s;
+}
+
+#section1 .on {
+    right: 2%;
+}
+
+#wrap section .on h2,
+#wrap section .on p,
+#wrap section .on a {
+    opacity: 1;
+}
+
+#section2 .txtBox {
+    width: 60vw;
+    position: absolute;
+    bottom: 70%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    transition: bottom 1s ease-out;
+}
+
+#section2 .txtBox h2 {
+    opacity: 0;
+    transition: opacity 1s ease-out .6s;
+}
+
+#section2 .txtBox p {
+    opacity: 0;
+    transition: opacity 1s ease-out .3s;
+}
+
+#section2 .txtBox a {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+#section2 .on {
+    bottom: 60%;
+}
+
+#section3 .txtBox {
+    width: 50vw;
+    position: absolute;
+    left: 10%;
+    bottom: 50%;
+    transition: bottom: 1s ease-out;
+}
+
+#section3 .txtBox h2 {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+#section3 .txtBox p {
+    opacity: 0;
+    transition: opacity 1s ease-out .3s;
+}
+
+#section3 .txtBox a {
+    opacity: 0;
+    transition: opacity 1s ease-out .6s;
+}
+
+#section3 .on {
+    bottom: 40%;
+}
+
+#section4 .txtBox {
+    width: 60vw;
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    transition: bottom 1s ease-out;
+}
+
+#section4 .txtBox h2 {
+    font-size: 5vw;
+    font-weight: 900;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+#section4 .txtBox h3 {
+    font-size: 3vw;
+    font-weight: 700;
+    margin-top: 4vw;
+    color: #777;
+    opacity: 0;
+    transition: opacity 1s ease-out .3s;
+}
+
+#section4 .txtBox p {
+    opacity: 0;
+    transition: opacity 1s ease-out .6s;
+}
+
+#section4 .txtBox ul {
+    padding: 0;
+    list-style: none;
+    opacity: 0;
+    transition: opacity 1s ease-out .9s;
+}
+
+#section4 .txtBox ul li {
+    display: inline-block;
+}
+
+#section4 .txtBox ul li a {
+    display: block;
+    padding: 0.8vw 0.5vw 0.5vw;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    background-color: #0062ff;
+    box-sizing: border-box;
+    font-size: 1.5vw;
+    color: white;
+}
+
+#section4 footer {
+    width: 100%;
+    font-size: 1.2vw;
+    text-align: right;
+    padding: 3vh 4vh;
+    box-sizing: border-box;
+    background-color: #222;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0;
+}
+
+#section4 footer a { margin: 0 1.2vw;}
+
+#section4 .on { bottom: 40%; }
+#section4 .on h3 ,
+#section4 .on ul { opacity: 1; }
+
+.pager {
+    width: 40px;
+    height: 90px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    margin: auto;
+}
+
+.pager a {
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-color: #333;
+    border-radius: 50%;
+    margin: 10px auto 0;
+    text-indent: -9999px;
+    transition: all 1s ease;
+}
+.pager a:first-child {margin-top: 0;}
+.pager a.active {
+    transform: scale(1.5);
+    background-color: white;
+    box-shadow: 0 0 0 3px #0062ff inset;
+}
+
+
+
+
+
+

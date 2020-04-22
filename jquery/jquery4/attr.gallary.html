@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> attr_gallary </title>
+	<style>
+    
+        #product{
+            width: 645px;
+            margin: 50px auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        #product ul {
+            margin: 0;
+            padding: 15px 0;
+            list-style: none;
+        }
+        #product ul li{
+            width: 36.8px;
+            display: inline-block; /*space 하나 정도의 여백이 있는 inline구조*/
+            border: 2px solid white;
+            
+        }
+        #product ul li:hover{
+            border: 2px solid black;
+        }
+        #product ul li img {
+            width: 100%;
+            display: block;
+        }
+        
+                   /* attr ( html 속성 )
+                      $( 선택자 ). attr( '속성이름' )
+                     -선택자의 html 속성값을 가져온다.
+        
+                     $( 선택자 ). attr( '속성이름', '속성값'  )
+                     -선택자의 html 속성값을 바꿈  */
+    </style>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script>
+    $( function(){
+        /* $(선택자).이벤트(function(){
+            
+        }); */
+        //작은 섬네일 이미지에 마우스 커서를 올려놓으면 함수 실행
+        $( '#product ul li img' ).mouseover(function(){
+            console.log( $(this).attr('src') ) //오류X 동작이 안됨->선택자 오류
+            
+            //큰섬네일 이미지에 마우스커서를 올려놓은 작은 섬네일 이미지로 바꿔줌
+            $('#product >img' ).attr( 'src', $(this).attr( 'src' ) )
+        });
+    });
+
+    </script>
+</head>
+
+
+<body>
+<div id="product">
+   <img src="images/1.jpg" alt="큰 섬네일">
+   
+   <ul>
+       <li><img src="images/1.jpg" alt="작은 섬네일"></li>
+       <li><img src="images/2.jpg" alt="작은 섬네일"></li>
+       <li><img src="images/3.jpg" alt="작은 섬네일"></li>
+       <li><img src="images/4.jpg" alt="작은 섬네일"></li>
+       <li><img src="images/5.jpg" alt="작은 섬네일"></li>
+       <li><img src="images/6.jpg" alt="작은 섬네일"></li>
+       <li><img src="images/7.jpg" alt="작은 섬네일"></li>
+       <li><img src="images/8.jpg" alt="작은 섬네일"></li>
+       <li><img src="images/9.jpg" alt="작은 섬네일"></li>
+       <li><img src="images/10.jpg" alt="작은 섬네일"></li>
+       <li><img src="images/11.jpg" alt="작은 섬네일"></li>
+       <li><img src="images/12.jpg" alt="작은 섬네일"></li>
+       <li><img src="images/13.jpg" alt="작은 섬네일"></li>
+       <li><img src="images/14.jpg" alt="작은 섬네일"></li>
+   </ul>
+    
+</div>
+
+
+</body>
+</html>

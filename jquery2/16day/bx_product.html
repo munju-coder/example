@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> bx_product </title>
+    
+    <link rel="stylesheet" href="css/jquery.bxslider.css">
+    <style>
+        .sale {
+            width: 80%;
+            max-width: 822px; /*274x3 */
+            margin: 50px auto;
+            box-shadow: 0 0 30px #ccc;
+        }
+        
+        .sale ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .sale ul li {
+            position: relative;
+        }
+        
+        .sale ul li a {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        
+        .bx-wrapper {
+            margin: 0;
+            border: 0;
+        }
+        
+    </style>
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="js/jquery.bxslider.js"></script>
+    <script>
+        $( function() {
+           
+            var slider = $( '.product' ).bxSlider({
+                pager : false ,
+                auto : true ,
+                slideWidth: 274 ,
+                maxSlides: 3 ,
+                minSlides: 2 ,
+                moveSlides: 1
+            });
+            
+        });
+    </script>
+</head>
+
+<body>
+
+<div class="sale">
+    <ul class="product">
+        <li>
+            <img src="images/item1.jpg" alt="제품">
+            <a href="#"><img src="images/more.png" alt="더보기"></a>
+        </li>
+        
+        <li>
+            <img src="images/item2.jpg" alt="제품">
+            <a href="#"><img src="images/more.png" alt="더보기"></a>
+        </li>
+        
+        <li>
+            <img src="images/item3.jpg" alt="제품">
+            <a href="#"><img src="images/more.png" alt="더보기"></a>
+        </li>
+        
+        <li>
+            <img src="images/item4.jpg" alt="제품">
+            <a href="#"><img src="images/more.png" alt="더보기"></a>
+        </li>
+        
+        <li>
+            <img src="images/item5.jpg" alt="제품">
+            <a href="#"><img src="images/more.png" alt="더보기"></a>
+        </li>
+        
+        <li>
+            <img src="images/item6.jpg" alt="제품">
+            <a href="#"><img src="images/more.png" alt="더보기"></a>
+        </li>
+    </ul>
+</div>
+
+
+</body>
+
+</html>
