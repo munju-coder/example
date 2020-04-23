@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<script>
+    /**
+     * @brief serializeObject
+     */
+    $.fn.serializeObject = function() {
+        var obj = null;
+        try {
+            if (this[0].tagName && this[0].tagName.toUpperCase() == "FORM") {
+                var arr = this.serializeArray();
+                if (arr) {
+                    obj = {};
+                    jQuery.each(arr, function() {
+                        obj[this.name] = this.value;
+                    });
+                }
+            }
+        } catch (e) {
+            alert(e.message);
+        } finally {
+        }
+    
+        return obj;
+    };
+
+    $(document).ready( function(){
+        $('#order_form').submit( function(e){
+           e.preventDefault();
+           var formObject = $(this).serializeObject();
+           //formObject['mb_name'] == '' name=mb_name 값이 공백일 때 조건문
+
+           if(formObject['mb_name'] == '') {
+               alert('주문하시는 분의 이름을 입력해주세요.');
+               return false //formObject['mb_name'] == '' 값이 들어가 있지않으면 submit을 false로 리턴함 true 일 경우 (return false를 쓰지 않을 경우)에는 값이 들어가 있어서 계속 경고창이 나옴 
+           }
+            if(formObject['mb_mobile'] == '') {
+               alert('주문하시는 분의 핸드폰 번호를 입력해주세요.');
+               return false
+           }
+
+           if(formObject['mb_addr_2'] == '') {
+               alert('주문하시는 분의 주소를 입력해주세요.');
+               return false
+           }
+
+           if(formObject['mb_addr_3'] == '') {
+               alert('주문하시는 분의 이메일을 입력해주세요.');
+               return false
+           }
+
+           if(formObject['r_name'] == '') {
+               alert('받으시는 분의 이름을 입력해주세요.');
+               return false
+           }
+
+           if(formObject['r_mobile'] == '') {
+               alert('받으시는 분의 핸드폰번호를 입력해주세요.');
+               return false
+           }
+           if(formObject['r_addr_2'] == '') {
+               alert('받으시는 분의 주소를 입력해주세요.');
+               return false
+           }
+        });
+
+        //주문자와 동일(#same input) 클릭 시 해야 할 일
+        $('#same').click( function(){
+            //#same input 을 클릭하면 주문하시는 분 input의 value 값을 받아와야함
+            //#same input의 체크 여부 변수설정
+            var sameChk = $('#same').is(":checked");
+            if(sameChk == true) {
+            //만약 sameChk 가 input이 체크된 상태라면 각각의 값을 each
+            $(".obm_order_box input").each( function(){
+                //주문하시는 분영역에 있는 input의 각각의 값을 가져와서 해야할 일
+                //.obm_order_box input의 아이디를 각각 가져와서 받으시는 분의 input들의 아이디와 동일하게 바꾼 후 (replace) val 값에 넣어준다.
+                $('#'+ $('.obm_order_box input').eq())
+            });
+            }
+
+        });
+
+    });
+</script>
+<body>
+    <div class="ob_middle">
+        <form id="order_form" name = "order_form">
+            <div class="obm_left col-sm-8">
+                <div class="obm_order_box">
+                    <div class="obm_box_subject f17 fw_600">
+                        주문하시는 분
+                    </div>
+
+                    <div class="obm_i_box">
+                        <div class="obmib_subject">이름</div>
+                        <div class="obmib_input">
+                            <input type="text" name="mb_name" id="mb_name" class = "w50" value = "" placeholder="이름 입력하세요.">
+                        </div>
+                    </div>
+
+                    <div class="obm_i_box">
+                        <div class="obmib_subject">핸드폰</div>
+                        <div class="obmib_input">
+                            <input type="text" name="mb_mobile" id="mb_mobile" class = "w50" value = "" placeholder="핸드폰 입력하세요.">
+                        </div>
+                    </div>
+
+                    <div class="obm_i_box">
+                        <div class="obmib_subject">주소</div>
+                        <div class="obmib_input">
+                            <input type="text" name="mb_addr_2" id="mb_addr_2" class = "w98" value = "" placeholder="주소 입력하세요.">
+                        </div>
+                    </div>
+
+                    <div class="obm_i_box">
+                        <div class="obmib_subject">E-mail</div>
+                        <div class="obmib_input">
+                            <input type="text" name="mb_addr_3" id="mb_addr_3" class = "w98" value = "" placeholder="이메일을 입력하세요.">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="obm_receiver_box">
+                    <div class="obm_box_subject f17 fw_600">
+                        받으시는 분
+                    </div>
+
+                    <div class="obm_i_box">
+                        <div class="obmib_subject">배송지 선택</div>
+                        <div class="obmib_input">
+                            <input type="checkbox" name="checkbox" id="same"> 주문자와 동일
+                        </div>
+                    </div>
+                    
+                    <div class="obm_i_box">
+                        <div class="obmib_subject">이름</div>
+                        <div class="obmib_input">
+                            <input type="text" name="r_name" id="r_name" class = "w50" value = "" placeholder="이름 입력하세요.">
+                        </div>
+                    </div>
+
+                    <div class="obm_i_box">
+                        <div class="obmib_subject">핸드폰</div>
+                        <div class="obmib_input">
+                            <input type="text" name="r_mobile" id="r_mobile" class = "w50" value = "" placeholder="핸드폰 입력하세요.">
+                        </div>
+                    </div>
+
+                    <div class="obm_i_box">
+                        <div class="obmib_subject">주소</div>
+                        <div class="obmib_input">
+                            <input type="text" name="r_addr_2" id="r_addr_2" class = "w98" value = "" placeholder="상세주소 입력하세요.">
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="obmr_btn_box">
+                <input type="submit" value="주문하기">
+                <input type="button" value="취소하기">
+            </div>
+        </form>
+</body>
+</html>

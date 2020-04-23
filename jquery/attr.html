@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <!--font Awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<script>
+    $(document).ready( function(){
+
+        /**
+         * @param string
+         * @brief caret-up_btn 클릭시 .mbmt_bottom toggle
+         */
+
+        $('.caret-up_btn').click( function(){
+
+            $('.mbmt_bottom').toggle();
+            
+            if($(".mbmt_bottom").css("display") == "block")
+            {
+                $('.caret-up_btn a i').attr('class','fa fa-caret-up');
+            }
+            else
+            {
+                $('.caret-up_btn a i').attr('class','fa fa-caret-down');
+            }
+        });
+    });
+</script>
+
+<body>
+    <div class="mb_middle">
+        <div class="mbm_top">
+            <div class="mbmt_top">
+                <div class="mbmt_left fw_600">
+                    <i class="far fa-user"></i> 조문주
+                </div>
+
+                <div class="mbmt_right">
+                    <ul>
+                        <li class="fw_600">보유포인트 : <span class="text_c_ff2b64">100,000</span> P</li>
+                        <li class="fw_600">보유쿠폰 : <span class="text_c_ff2b64">0</span> 개</li>
+                    </ul>
+                </div>
+                
+            </div>
+
+            <div class="mbmt_bottom">
+                <div class="mbmtb_info">
+                    <div class="mbmtb_info_div f14"><span class="fw_600">연락처:</span> 010-1234-5678</div>
+                    <div class="mbmtb_info_div f14"><span class="fw_600">E-Mail:</span> aaa@aaa.com</div>
+                    <div class="mbmtb_info_div f14"><span class="fw_600">최종접속일시:</span> 2020-04-16 08:47:36</div>
+                    <div class="mbmtb_info_div f14"><span class="fw_600">회원가입일시:</span> 2020-04-16 11:20:33</div>
+                    <div class="mbmtb_info_div f14 word_break"><span class="fw_600">주소:</span> (11111) 경기도 광명시 오리로619 11, 예원이케이빌딩 2층</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="caret-up_btn">
+            <a href="#"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="bgred">
+            <h1>red</h1>
+        </div>
+
+        <div class="upbtn">
+            <a href="#"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready( function(){
+        $('.upbtn a i').click( function(){
+            $('.bgred').toggle(); 
+            
+            // toggle 될 때마다 i의 속성이 바뀌게
+            if($('.bgred').css('display') == 'block') {
+                $('.upbtn a i').attr('class','fa fa-caret-down');
+            }else {
+                $('.upbtn a i').attr('class','fa fa-caret-up');
+            }
+        });
+    });
+</script>
+<style>
+    .wrap { border: 1px solid #ddd; width: 500px; }
+    .bgred { background-color: red; width: 200px; height: 100px; }
+    .bgred h1 { color: white; text-align: center; }
+    .upbtn a i { color: blue; font-size: 22px;  }
+
+</style>
+</html>

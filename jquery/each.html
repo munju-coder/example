@@ -12,14 +12,23 @@
     $(document).ready( function(){
 
         $('.sub_img img').each( function(){
-
+            //sub_img 의 img를 각각 가져와서 해야할 일
+            
             $(this).click( function(){
-
+            // sub_img를 클릭했을때 해야할 일
                 var img = $(this).attr('src');
                 $('.main_img > img').attr('src',img);
             });
         });
+
+        $('.sub_img img').mouseover( function(){
+            // console.log($(this).attr('src'))
+            //작은 이미지를 큰이미지 자리로 이동시켜야함 -> 큰이미지의 src를 바꿔줌
+            $('.main_img img').attr('src',$(this).attr('src'))
+        });
     });
+
+
 </script>
 
 <style>
