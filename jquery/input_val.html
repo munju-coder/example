@@ -71,18 +71,42 @@
            }
         });
 
-        //주문자와 동일(#same input) 클릭 시 해야 할 일
+
         $('#same').click( function(){
-            //#same input 을 클릭하면 주문하시는 분 input의 value 값을 받아와야함
-            //#same input의 체크 여부 변수설정
-            var sameChk = $('#same').is(":checked");
-            if(sameChk == true) {
-            //만약 sameChk 가 input이 체크된 상태라면 각각의 값을 each
-            $(".obm_order_box input").each( function(){
-                //주문하시는 분영역에 있는 input의 각각의 값을 가져와서 해야할 일
-                //.obm_order_box input의 아이디를 각각 가져와서 받으시는 분의 input들의 아이디와 동일하게 바꾼 후 (replace) val 값에 넣어준다.
-                $('#'+ $('.obm_order_box input').eq())
-            });
+
+            // var Chk = $(this).is(":checked");
+            // if(Chk == true) 
+            // {
+            //     $('.obm_order_box input').each( function(i){
+
+            //         // console.log($('.obm_order_box input').val());
+            //         $('#' + $('.obm_order_box input').eq(i).attr("id").replace('mb','r')).val($('.obm_order_box iput').eq(i).val());
+                    
+            //     });
+
+            // }
+            // else 
+            // { 
+            //     $('.obm_receiver_box input').each( function(i){
+            //         // console.log($('.obm_order_box input').eq(i).val());
+            //         $('#' + $('.obm_receiver_box input').eq(i).attr("id")).val('');
+            //     });
+
+            // }
+
+            var chk = $(this).is(":checked");
+
+            if(chk == true)
+            {
+                $('.obm_order_box input').each(function(i){
+                    $('#' + $('.obm_order_box input').eq(i).attr("id").replace('mb', 'r')).val($('.obm_order_box input').eq(i).val());
+                });
+            }
+            else
+            {
+                $('.obm_receiver_box input').each(function(i){
+                    $('#' + $('.obm_receiver_box input').eq(i).attr("id")).val('');
+                });
             }
 
         });
@@ -161,8 +185,12 @@
                         </div>
                     </div>
 
-
-
+                    <div class="obm_i_box">
+                        <div class="obmib_subject">E-mail</div>
+                        <div class="obmib_input">
+                            <input type="text" name="mb_addr_3" id="r_addr_3" class = "w98" value = "" placeholder="이메일을 입력하세요.">
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="obmr_btn_box">

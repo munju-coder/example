@@ -26,6 +26,23 @@
             //작은 이미지를 큰이미지 자리로 이동시켜야함 -> 큰이미지의 src를 바꿔줌
             $('.main_img img').attr('src',$(this).attr('src'))
         });
+
+        $( 'li' ).each( function( i ) {
+                console.log( $(this).text()+"의 index는"+ i +"입니다");
+                //List1의 index는 0입니다.
+        });
+
+            /*
+            
+            $( 선택자 ).each( function (index) {
+                    개별 실행 할 내용;        
+            });
+            
+            -선택자 모두를 개별적으로 실행시켜줌
+            -index 매개 변수를 이용하여 선택자의 index번호 활용
+            (필요없으면 생락 가능)
+        
+            */
     });
 
 
@@ -54,6 +71,12 @@
         <img src="../images/pr_img35.jpg" alt="">
     </div>
 
+    <ul>
+        <li>List1</li>
+        <li>List2</li>
+        <li>List3</li>
+        <li>List4</li>
+    </ul>
 
 
 </body>

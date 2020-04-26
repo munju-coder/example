@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> .is( ) </title>
+	<style>
+        
+        .box > div{
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px; /*세로로 가운데정렬(vertical align은 inline이니까 X)*/
+            font-weight: 900;
+            color: white;
+        }
+        .vis {
+            background-color: aqua;
+        }
+        .hid {
+            background-color: blueviolet;
+            display: none;
+        }
+        span{
+            display: block;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            font-weight: 900;
+            color: white;
+            background-color:brown;
+            position: relative; /*움직이는 애니메이션으로 만들것이기 떄문에*/
+        }
+    
+    
+    </style>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+    
+    $( function( ){
+      
+        $( 'li' ).click(function(){
+         // console.log( $(this).is( ':nth-child(2)' ) );
+             //클릭한 li가 두번째자손 인지를 검사->맞:참, 아니면 거짓
+            
+            if($(this).is( ':nth-child(2)' )) {  
+                $(this).css({'background-color': 'red'});
+            }else{
+                $(this).css({'background-color': 'blue'});
+            }
+        });
+        
+        //input을 클릭하면 클릭한 input태그가 password일때 빨간색배경 아니면 파란색배경
+         $( 'input' ).click( function() {
+               
+                if( $(this).is('[type=password]') ) {
+                    $(this).css({ 'background-color' : 'red' });
+                }else{
+                    $(this).css({ 'background-color' : 'blue' });
+                }
+            
+            });
+            //상태값을 이용해서 동작을 만들어줄떄
+        //each문 선택자를 개별적으로 실행할때 사용
+         $( '.box > div' ).each( function() {
+               //(':상태값')
+             //this가 화면상에 보이지 않는 상태인가-보이지 않는 상태라면 보여줄거고
+             //그렇지 않으면 감춰줄것이다.
+                if( $(this).is(':hidden') ) {
+                    $(this).show();
+                }else{
+                    $(this).hide();
+                }
+                
+            });
+            
+            //checkbox-체크된것, 안된것으로 두가지
+            //체크박스에 클릭을 하면 해야할일
+            $( 'input[type=checkbox]' ).click( function() {
+               //체크가 되어 있는지 아닌지를 검사. 체크가 되어 있으면 true
+                console.log( $(this).is( ':checked' ) )
+                
+            });
+            
+            $( 'span' ).animate({ 'left' : 500 }, 5000 );
+            //움직이는 상태인지 아닌지를 알아보고 싶을때
+            $( 'span' ).click( function() {
+                //만약this가 움직여지는 상태라면 콘솔에 움직이는 중이라뜨고, 아니면 멈춤
+                if( $(this).is( ':animated' ) ) {
+                    console.log( "움직이는 중!" );
+                }else{
+                    console.log( "멈춤!" );
+                }
+                
+            });
+            
+           
+            
+        });
+        
+    </script>
+</head>
+
+	<body>
+
+<h1>.is( )</h1>
+
+<p> $(선택자).is(선택자)- 선택자가 있으면 true를 반환하고 없으면 false를 반환</p>
+
+   <ul>
+    <li>Menu1</li>
+    <li>Menu2</li>
+    <li>Menu3</li>
+    <li>Menu4</li>
+</ul>
+
+<form>
+    <input type="text">
+    <input type="password">
+    <input type="button" value="버튼">
+    <input type="submit">
+</form>
+
+<p> $(선택자).is(상태값)-상태값이 있으면 true를 반환하고 없으면 false를 반환</p>
+
+<div class="box">
+    <div class="vis">VISIBLE</div>
+    <div class="hid">HIDDEN</div>
+    <div class="vis">VISIBLE</div>
+    <div class="hid">HIDDEN</div>
+</div>
+
+
+<input type="checkbox" id="chk1" name="chkGroup">
+<input type="checkbox" id="chk2" name="chkGroup">
+<input type="checkbox" id="chk3" name="chkGroup">
+<input type="checkbox" id="chk4" name="chkGroup">
+
+<span>animated</span>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> .eq </title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+	<script>
+        $(document).ready( function(){
+            /*
+              $(선택자).index( )               -선택자의 index 번호를 가져옴
+             $(선택자).eq ( index번호 )   -선택자 중에서 index번호가 일치하는 것을 찾아줌
+            */
+            //ul li를 클릭했을 때 div p 태그의 배경색을 index와 eq로 가져와서 바꾸시오
+            $('ul li').click( function(){
+            
+                $('p').eq($(this).index()).css({'background-color': 'red'});
+                $('p').not($('p').eq($(this).index())).css({'background-color': 'transparent'});
+            
+            });
+
+        });
+        
+    </script>
+</head>
+
+    <body>
+        <ul>
+            <li>Menu1</li>
+            <li>Menu2</li>
+            <li>Menu3</li>
+            <li>Menu4</li>
+            <li>Menu5</li>
+        </ul>
+
+        <div>
+            <p>PAGE1</p>
+            <p>PAGE2</p>
+            <p>PAGE3</p>
+            <p>PAGE4</p>
+            <p>PAGE5</p>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<script>
+    $(document).ready( function(){
+        
+        $('#checkall').click( function(){
+
+            var checkedAll = $('#checkall').is(':checked');
+            if(checkedAll == true ) {
+                $('.sub_input #sub').prop('checked',true);
+            }else {
+                $('.sub_input #sub').prop('checked',false);
+            }
+        });
+
+        $('.sub_input #sub').each( function(){
+            var eachCheck = $('.sub_input #sub').is(':checked');
+            $('.sub_input #sub').click( function(){
+                if(eachCheck == false) {
+                    $('#checkall').prop('checked',false);
+                }
+                else 
+                {
+                    $('#checkall').prop('checked',true);
+                }
+            });
+                    
+        });
+    });
+</script>
+<style>
+    .container { margin-bottom: 10px; }
+    .bottom .sub_input { float: left; width: 5%; }
+    .bottom::after { content: ''; display: block; overflow: hidden; clear: both; }
+</style>
+<body>
+    <div class="container">
+        <label for="">
+            모두체크<input type="checkbox" id="checkall">
+        </label>
+    </div>
+
+    <div class="bottom">
+        <div class="sub_input">
+            1.<input type="checkbox" id="sub">
+        </div>
+
+        <div class="sub_input">
+            2.<input type="checkbox" id="sub">
+        </div>
+
+        <div class="sub_input">
+            3.<input type="checkbox" id="sub">
+        </div>
+
+        <div class="sub_input">
+            4.<input type="checkbox" id="sub">
+        </div>
+    </div>
+</body>
+</html>
