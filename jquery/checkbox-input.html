@@ -21,6 +21,7 @@
                 //체크된 상태일때가 true
                 if(allCheck == true) {
                 // 메인인풋이 체크가 되었아면 서브인풋의 상태도 true = 체크됨
+                //.prop() element가 가지는 실지ㅔ적인 상태*활성화,체크, 선택여부 등)을 제어하는 역할 form 요소의 disabled, checked,selected 와 같은 송성값을 확인 또는 변경하는 경우는 .prop()을 사용. 
                     $('.sub_input #sub').prop('checked',true);
                 }else {
                 //그렇지 않을 경우에는 false라서 체크 해제
