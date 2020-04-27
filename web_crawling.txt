@@ -1,0 +1,119 @@
+*검색봇 - 웹을 돌아다니면서 정보를 수집하는 프로그램 (ex.구글이 사용하는 검색 봇 -> 구글봇)
+웹으로부터 문서를 수집하여 검색엔진을 위한 검색 가능한 색인을 만든다. 
+
+*색인(index) 검색을 빠르게 하기 위해 데이터를 저장하는 장소 
+색인의 과정이 없다면 검색엔진은 모든 문서에서 찾기때문에 시간이 많이 들고 메모리 소모가 심함.  
+특정 장소(문서)에 데이터를 저장하는 과정을 색인이라함. (indexing).
+
+*검색봇을 이용해 웹사이트 노출하기
+-구글, 다음 등 검색엔진에 사이트가 검색이 되도록 해야함.
+robots.txt를 루트 폴더에 만들어 검색로봇이 수집해가도록한다. 
+->html파일이 아닌 일반텍스트 파일로 도메인의 root에 있어야하며 반드시 robots.txt 로 
+저장이 되야함. 검색봇은 도메인의 root에 있는 robots.txt 파일만을 체크하기때문에
+하위 디렉토리에 있는 파일은 유효하지 않음.
+http://www.example.com/robots.txt -> 유효
+http://www.example.com/mysite/robots.txt -> 유효하지 않음.
+
+(단,회원정보가 있는 사이트에서는 보안때문에 모두 허용해서는 안됨.)
+--robots.txt 작성법--
+1. 모든 검색로봇 접근 허용
+User-Agent: *
+Allow: /
+2. 모든 검색로봇 접근 차단
+User-Agent: *
+Disallow: /
+3.모든 검색로봇 접근은 허용하나 지정한 폴더는 접근차단 (abc, def폴더를 차단할 경우)
+User-Agent: *
+Disallow: /abc/
+Disallow: /def/
+4. 특정 폴더만 접근허용 (abc, def 폴더만 허용할 경우)
+User-Agent: *
+Allow: /abc/
+Allow: /def/
+5. 특정 검색로봇만 허용 (구글봇과 네이버봇만 허용하고 나머지는 차단할 경우)
+검색봇 이름: 구글-> Googlebot, 네이버->Yetibot, 다음-> Daumaoa, 야후->Yahoo! Slurp.
+Microsoft-> Msnbot, Bing: Bingbot
+User-Agent: *
+Disallow: /
+User-Agent: Googlebot
+Allow: /
+User-Agent: Yetibot
+Allow: /
+
+*크롤링(crawling) -웹상에 존재하는 Contetns를 수집하는 작업
+html페이지를 가져와서 html, css 를 파싱하고 필요한 데이터만 추출하는 기법
+open API를 제공하는 서비스에 Open API를 호출해서 받은 데이터 중 필요한 데이터만 추출
+Selenium등 브라우저를 프로그래밍으로 조작해서 필요한 데이터만 추출하는 기법
+*파싱: 가공되지 않은 문자열에서 필요한 부분을 추출, 의미있는 데이터로 만드는 과정
+
+*open grahp 태그 링크를 붙여 넣을 때 생기는 미리보기 제목, 설명, 이미지
+-사용자 클릭 전에 미리 해당 웹사이트를 크롤러가 방문하여 html head 의 메타 데이터를
+크롤링 하여 미리보기 화면생성
+Open Graph 제목
+<meta property="og:title" content="메인제목">
+설명
+<meta property="og:description" content="서브문구"
+<br>가장 쉽고 편리한 앱....(중략)">
+이미지
+<meta property="og:image" content="https://,url주소>
+직접 표기해주어야하는 이유- 크롤러는 하나의 소프트웨어 프로그램이기 때문에 html 문서를 
+보면 자동으로 어떤게 제목인지 무슨내용에대한 요약인지, 대표이미지가 무엇인지는 
+100%자동으로 판별하기 어렵기 때문에 웹사이트가 직접 적어서 알려주어야함. 
+
+과정
+1, 사용자가 링크를 입력창에 입력함.
+2. 카카오톡이나 블로그 등의 입력창의 문자열이 링크라는 것을 파악함. 
+(정규표현식으로 해당 문자열이 링크라는 것을 알아냄.)_
+3.링크라는 것이 판단되면 카카오톡, 블로그의 크롤러는 미리 웹사이트를 방문해서
+html head 의 오픈그래프 메타 데이터를 긁어옴.
+4.이중에서도 og:title, og:description,og:image og:url 이 각각 제목,설명,이미지,표준링크의 정보를 나타냄.
+5.정보들을 바탕으로 미리보기 화면을 생성해줌.
+
+*캐싱(caching)
+-반복적으로 호출되는 특정한 데이터를 캐시 메모리에 임시로 저장하여 다음번 호출때 더빨리 
+해당데이터를 공급해주는 것을 말함.
+데이터베이스에 저장된 정보를 한번 불러온 후 캐시메모리에 저장해놓은 경우-> Memcahed,Redis
+html,css,javascript로 이루어진 웹문서 전체 혹은 이미지 전체 캐싱 -> cdn
+
+*크롤링과 인덱싱의 차이
+크롤러-> 사이트와 사이트 사이의 링크를 다니면서 문서를 수집하는 역할만함. 
+인덱서-> 수집된 문서를 검색엔진이 사용자에게 결과물을 빠르게 제공될 수 있도록 인덱스함.
+크롤링 제어는 robots.txt
+인덱싱 제어는 <meta name="robots.txt content="noindex">
+사용가능한 content -> index, noindex / follow, nofollow
+< meta name="robots" content="index,follow" />
+< meta name="robots" content="index,nofollow" />
+< meta name="robots" content="noindex,follow" />
+< meta name="robots" content="noindex,nofollow" />
+
+ex) 크롤러는 허용하나 인덱스는 차단할 경우
+
+User-agent: *
+Disallow:
+
+< meta name="robots" content="noindex" />
+->크롤러는 문서만 수집할 뿐 검색엔진에 문서의 인덱스 여부는 meta robots 태그가 결정함. 
+그러므로 이와같은 경우에는 크롤러가 방문을 해서 수집하기는 하지만 meta robots 태그에서
+인덱스를 차단한 것을 인지하고 인덱스 하지 않으며, 혹시라도 인덱스가 되어있으면 자동삭제함.
+
+반대의 경우
+크롤러는 차단, 인덱스는 허용할 경우 크롤러는 사이트의 robots.txt파일을 먼저 읽기 때문에
+크롤러는 컨텐츠를 읽을 수 없음.(인덱스가 허용됐는지 안됐는지 크롤러는 알수 없음)
+-다른 사이트에서 들어오는 인바운드 링크에 의해 인덱스가 만들어진 경우, 대부분의 검색엔진들이
+실제 페이지를 크롤링하지 않고도 링크를 통해서 색인을 만들 수 있기때문에 가능함. 
+검색결과의 타이틀에는 문서의 타이틀 대신 url이 나오며 스니펫(검색결과의 문서요약)에는 아무것도 
+나오지 않음. 크롤링을 차단한다고 해도 검색결과에 문서가 인덱스 되는것을 차단시키지는 못하며, 
+인덱스를 허용해 놓아도 완벽하게 인덱싱 하지 못함. 
+
+
+User-agent: *
+Disallow: /
+< meta name="robots" content="index" />
+
+*검색엔진에서 인덱스를 없애기 위한 좋은 방법은 크롤러를 허용하고 인덱스를 차단하는것
+크롤러가 인덱스 차단을 감지하고 검색결과에 반영함.
+
+
+
+
+

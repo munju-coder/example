@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>type of string , Number, Boolean</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<script>
+    
+    /* 
+        -변수에 저장할 수 있는 자료형(Data type)으로는 문자형(string), 숫자형(Number),논리형(Boolean), 빈데이터(Undefined)
+        var 변수 = 숫자; 또는 Number("문자형숫자");
+
+        -논리형 데이터(Boolean) 주로 2개의 데이터를 비교할 때 , 
+        var 변수 = true or false; 또는 Boolean(데이터);
+        Boolean(); 0, null, undefined, 빈문자('')를 제외한 모든 데이터에 대해 true를 반환함
+
+        변수선언 시 주의 사항
+        -변수명 첫 글자와 첫 글자 다음으로는 $, _(언더바), 영문자만 올 수 있음
+        -변수명으로 예약어는 사용할 수 없음 (자바스크립트에서 이미 사용중인 단어) ex)var document = 1; (X)
+        -대소문자 구분 
+    */
+    var num = "100"
+    var str = 100;
+
+    var a = 200;
+    var b = Number("200"); //"200"문자를 Number 를 사용해서 숫자형으로 변환함
+
+    var c ="200"
+    var d = String(200); //200숫자를 string을 사용해서 문자형으로 변환함 
+    
+    document.write(typeof num, "<br>");
+    document.write(typeof str, "<br>"); //number
+    document.write(typeof d, "<br>"); //string
+
+    $(document).ready( function(){
+        
+        /*Boolean(); 0, null, undefined, 빈문자('')를 제외한 모든 데이터에 대해 true를 반환함*/
+        var s = true;
+        var t = 10 >= 100; //false
+        var k = Boolean("hello"); //true
+        
+        var m = Boolean(0); //false
+        // console.log(m);
+
+        
+    });
+</script>
+<body>
+    
+</body>
+</html>

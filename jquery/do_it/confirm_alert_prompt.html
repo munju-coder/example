@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>confirm(확인창), alert(경고창),propmt(입력창) </title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<script>
+    /*
+    confirm(확인창)
+    -확인, 취소
+    
+    alert(경고창)
+    -경고문구
+    
+    prompt(입력창)
+    -input 창에 입력
+    -prompt('입력창 텍스트','기본 값 문자열');
+
+    */
+var result = confirm("정말로 탈퇴 하시겠습니까?");
+if(result){
+    document.write("탈퇴처리되었습니다.");
+}else {
+    document.write("탈퇴 취소 되었습니다.");
+}
+
+$(document).ready( function(){
+
+    var a = 10;
+    if( a >= 10) {
+        alert('아이디를 입력하시오');
+    }
+
+
+
+});
+
+var walkAmount = prompt("당신의 하루 걷는 양은 몇 보인가요?","0");
+    //prompt('입력창 텍스트','기본 값 문자열');
+
+    if ( walkAmount >= 10000 ) {
+        document.write("매우 좋은 습관을 지니고 계시군요!","<br>");
+    }else {
+        document.write("좀 더 분발하세요!");
+    }
+    
+</script>
+<body>
+    
+</body>
+</html>

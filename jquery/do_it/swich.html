@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<script>
+
+    /*
+    선택문
+    switch문
+    -변수에 저장된 값과 switch문에 있는 경우(case) 값을 검사하여 변수와 경우의 값에서
+    일치하는 값이 있을 때 그에 해당하는 코드를 실행함.
+    -만일 경우(case)의 값 중에 일치하는 데이터가 없으면 마지막 default에 있는 코드를 실행하고 종료함.
+    -여러 경우의 값 중 일치하는 데이터를 찾아 코드를 실행시킬 떄 사용함.
+    
+    var 변수 = 초기값;
+    switch(변수) {
+        caer값 : 코드1;
+        break;
+        caer값 : 코드2;
+        break;
+        caer값 : 코드3;
+        break;
+        caer값 : 코드4;
+        break;
+
+        default: 코드5
+    }
+        
+        
+
+    */
+
+    var site = prompt("네이버,다음,구글 중\n즐겨 사용하는 검색사이트는?",""); // \n 줄바꿈 
+    var url;
+
+    switch(site) {
+        case "구글":url = "www.google.com";
+        break;
+
+        case "다음":url = "www.daum.net";
+        break;
+
+        case "네이버":url = "www.naver.com";
+        break;
+        
+        case "네이트":url = "www.nate.com";
+        break;
+        default: alert("보기중에 없는 사이트입니다.");
+
+    }
+        if(url) location.href = "http://" + url;
+
+
+</script>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while문 반복문</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<script>
+
+    /*
+
+        반복문 
+        while문 
+        -조건식을 만족할 때까지 코드를 여러회 반복하여 실행
+        1. 조건식을 검사하고 만족하면 
+        2. 중괄호 안에 있는 코드와 증감식을 실행
+        3. 다시 조건식 검사
+
+        var 변수 = 초기값;
+        while(조건식) {
+            자바스크립트 코드;
+            증감심;
+        }
+
+        do while문
+        -반드시 한 번은 코드를 실행하고 조건식을 검사함
+        var 변수 = "초깃값";
+        do {
+            자바스크립트 코드;
+            증감식;
+        }while (조건식)
+        
+        
+
+    */
+
+    var i = 1;
+    while( i <= 10 ) {
+        document.write('안녕하세요'+ i, "<br/>");
+        i++;
+    }
+    document.write("====end=====", "<br />");
+    /*
+    while문의 조건식 i<= 10 을 만족(true)하면 중괄호 코드를 실행하고 변수 i의 값이 1만큼 증가됨, while문은 i가 11이 될때까지 실행.
+    */
+
+    //while문을 사용하여 1부터 30까지의 숫자 중 2의 배수이면서 6의 배수인 숫자만 출력하시오.
+
+    var i = 1;
+    while( i <= 30 ) {
+        if( i % 2 == 0 && i % 6 == 0 ){
+            document.write(i, "<br />");
+        }
+        i++;
+    }  
+
+    var e = 10;
+    do{
+        document.write("Hello");
+    }while ( e < 3 );
+    //거짓이지만 한번은 실행함
+</script>
+<body>
+    
+</body>
+</html>
