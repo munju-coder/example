@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function_return</title>
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<script>
+
+    /*
+
+        함수 return문
+        데이터를 반환하고 강제 종료하는 return문
+        
+        function 함수명(){
+            자바스크립트코드1;
+            return 데이터(값);
+
+            자바스크립트코드2;
+        }
+        var 변수 = 함수명();
+
+    */
+
+    // function A(a,b) {
+    //     add = a + b;
+    //     // return add;
+    //     return 20;
+    // }
+    // document.write(A(1,2));
+
+    // function getRectArea(width, height) {
+    //     if (width > 0 && height > 0) {
+    //         return width * height;
+    //     }
+    //     return 0;
+    // }
+
+    // console.log(getRectArea(3, 4));
+    // // expected output: 12
+
+    // console.log(getRectArea(-3, 4));
+    // // expected output: 0
+
+    function result(left,right) {
+        return left + right;
+    }
+    document.write(result(1,2), '<br>');
+    //결과값을 돌려주고 멈춘다. left 값에는 1, right값에는 2가 들어가서 3 
+    //리턴을 통해 출력되고 멈춤.
+
+
+    
+
+
+
+</script>
+<body>
+    
+</body>
+</html>

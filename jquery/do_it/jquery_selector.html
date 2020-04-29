@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 선택자</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<script>
+    /*
+
+        1. 선택한 요소에 지정한 스타일을 적용함
+            $('css 선택자').css("스타일 속성명","값");
+        2. 선택한 요소에 지정한 속성을 적용함
+            $('css 선택자').css("속성명", "값");
+
+        -기본 선택자
+            $(*) 전체선택자로 모든 요소를 선택함.
+            $("선택1,선택2,선택3") 그룹선택자로 지정된 요소들을 한번에 선택함.
+            $('p.txt1_1') 종속선택자로 p 태그 중에서도 클래스가 txt_1인 요소를 선택함. (아이디도 동일함)
+
+            $('요소선택').parent() 부모요소 선택자로 선택한 요소의 부모요소를 선택함.
+            $('요소선택').parents() 상위요소 선택자로 선택한 요소의 상위 요소를 모두 선택함.
+            $('요소선택').closest('div') 가장 가까운 상위 요소 선택자로 선택한 요소의 상위 요소 중 가장 가까운 <div>만 선택함.
+            $('요소선택 하위요소') 선택한 요소에 지정한 하위 요소를 선택함.
+            $('요소선택 ')
+
+    */
+
+    $(document).ready( function(){
+
+        $('#title').css("color","red").css('font-weight','600');
+        $('p').parent().css('border','1px solid red');
+        $('P').parents().css('background-color','powderblue');
+        $('P').closest('div').css('background-color','white');
+
+        
+    });
+
+</script>
+<body>
+    <header>
+        <div>
+            <div>
+                가장 가까운 상위요소 선택자하기
+                <p id="title">선택자는 $()에 문자형 데이터로 css 선택자를 입력함.</p>
+            </div>
+        </div>
+    </header>
+</body>
+</html>

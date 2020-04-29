@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전역함수 지역함수</title>
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<script>
+
+    /*
+        전역변수(global variable)과 지역변수(Local variable)
+        -전역과 지역을 나누면 충돌을 막을 수 있음. 
+        
+        기본형
+        (function() {
+            자바스크립트코드;
+        }
+        ());
+
+        var = 변수명;       ----> 전역변수
+        (function() {
+            var = 변수명;    ----> 지역변수
+
+            function 함수명() {   
+                자바스크립트코드;
+            }   ----> 지역함수
+        }
+        ());
+
+
+    */
+
+    //전역변수를 사용할 경우 alert창에는 100이 출력됨, 첫번째 함수는 제거되고 마지막 함수에서 실행되는 값이 나옴( 함수명이 같아서 )
+
+    var num = 100;
+    function menu() {
+        num += 100;
+        alert(num);
+    }
+    menu();
+
+    function menu() {
+        alert(num);
+    }
+
+
+
+    
+
+
+
+</script>
+<body>
+    
+</body>
+</html>

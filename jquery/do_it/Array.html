@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Object</title>
+</head>
+
+<script>
+    /*
+        배열 객체
+        - 변수에서는 원래 한개의 데이터만 저장됨
+        - 하나의 저장소를 나눠서 데이터를 열거함 ( 여러개의 데이터를 하나의 저장소에 저장할 때 사용)
+
+        예를 들어 
+        var 1 = 1;, var 2 = 2; , var 3 = 3; , var 4 = 4;, var 5 = 5; 5개의 변수를 이용해 5개의 데이터를 저장할 수 있으나, 
+        배열 객체를 이용하면 하나의 배열 객체로 5개의 데이터를 저장 할 수 있음. 
+        
+        var 참조 변수 = new Array();
+        var num = new Array (1,2,3,4,5); 
+        
+        <기본형>
+        1. var d = new Array();
+            d[0] = 30; 
+            d[1] = "hello";
+            d[2] = true;
+        2. var d = new Array [ 30, "hello",true ];
+        3. var d = [ 30, "hello" , true ];
+
+    */
+
+    // var arr = [30,"hello", true];
+    // document.write("<h3>배열값 가져오기1</h3>");
+    // document.write( arr [0] , "<br/>");
+    // document.write( arr [1] , "<br/>");
+    // document.write( arr [2] , "<br/>");
+
+    // document.write("<h3>배열값 가져오기2</h3>");
+    // for ( var i = 0; i < arr.length; i++){
+    //     document.write(arr[i], "<br>");
+    // }
+
+    // document.write("<h3>배열값 가져오기3</h3>");
+    // for (i in arr) {
+    //     document.write(arr[i],"<br>");
+    // }
+
+    /*
+        배열 객체 메서드
+        join(연결문자) -배열객체의 데이터를 연결 문자 기준으로 하나의 문자열 데이터로 반환함
+        reverse() -배열객체의 데이터 순서를 거꾸로 바꾼 후 반환함
+        sort() -배열 객체의 데이터를 오름차순으로 정렬함
+        slice(index1,index2) -반환되는 배열은 처음과 끝을 명시하며, 첫번째 전달인자가 지정하는 위치부터 두번째 전달인자가 지정하는 위치를 제외한 사이의 원소를 포함함
+        splice() -배열객체의 지정데이터를 삭제하고 그 구간에 새 데이터를 삽입함
+        concat() -두개의 배열객체를 하나로 결합
+        pop() -배열에 저장된 데이터 중 마지막 인덱스에 저장된 데이터
+        push(new data) -배열 객체의 마지막 인덱스에 새 데이터를 삽입힘
+        shift() -배열의 첫번째 데이터를 제거함
+        unshift(new data) -배열 객체의 가장 앞의 인덱스에 새 데이터를 삽입함
+        length =배열에 저장된 총 데이터의 갯수를 반환함
+
+    */
+
+    //join 예제
+    var arr_1 = ['사당', '방배', '강남'];
+    var result = arr_1.join('-');
+    document.write(result,"<br>");
+    
+    //reverse 예제
+    var t = [1,2,3,4,5];
+    var u = t.reverse();
+    document.write(u, "<br>");
+
+    //sort 예제
+    var s = [2,4,5,3,1];
+    var r = s.sort();
+    document.write(r,"<br>");
+
+    //slice 예제
+    var a = [1,2,3,4,5];
+    var b = a.slice(0,3);
+    document.write(b, "<br>");
+    
+    //splice 예제
+    var a = [0,1,2,3,4,5];
+    var b = a.splice(2,3);
+    document.write(a , "<br>");
+    document.write(b , "<br>"); //a를 잘라낸값
+    
+    //concat 예제
+    var c = [1,2,3,4,5];
+    var d = [6,7,8,9,10];
+    var f = c.concat(d);
+    document.write(f,"<br>");
+    
+    //pop예제
+    var k = [1,2,3];
+    var g = k.pop();
+    document.write(g , "<br>");
+
+    //push(new data)예제
+    var p = [1,2,3];
+    p.push(4,5,6);
+    document.write(p, "<br>");
+
+    //shift예제
+    var j = [1,2];
+    j.shift();
+    document.write(j, "<br>");
+    
+    //unshift(new data)예제
+    var m = [7,8];
+    m.unshift(6);
+    document.write(m , "<br>");
+    
+    //length 예제
+    var B = [1,2,3,4,5,6,7,8,9,10];
+    document.write(B.length);
+
+
+</script>
+<body>
+    
+
+</body>
+</html>
