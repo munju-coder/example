@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리 배열 관련 메소드</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<script>
+    /*
+
+        each()/$.each() 메소드
+        -선택자로 선택한 요소를 배열에 순서대로 저장됨, each()와 $.each()메소드는 배열에
+        저장된 요소를 순서대로 하나씩 선택하면서 인덱스 정보를 가져옴.
+        
+        $('요소 선택').each(function(매개변수1, 매개변수2){})
+        $.each($('요소 선택'),function(매개변수1, 매개변수2){})
+
+        $('요소 선택').each( function() {$(this)})
+        $.each($('요소 선택'), function() {$(this)})
+        --> 배열에 저장된 요소의 개수만큼 메서드를 반복 실행함, 메소드를 실행할 때마다 매개변수1, 매개변수2 에는 
+        배열에 저장된 요소와 인덱스의 값이 배열에 오름차순으로 대입됨.    
+
+        $.map()/$.grep()메소드
+        -$.map() 메소드는 배열에 저장된 데이터 수만큼 메소드를 반복 실행한다. 그리고 메소드에서 반환된 데이터는
+        새 배열에 저장되고 그 배열 객체를 반환한다.
+
+        $.map(Array,function(매개변수1,매개변수2){
+            return 데이터;
+        });
+
+        -$.grep() 메소드는 배열에 저장된 데이터 수만큼 메소드를 반복 실행하는데 인덱스 오름차순으로 배열의 데이터를
+        불러오며, 메소드의 반환값이 true면 새 배열에 저장되고 배열을 반환한다. 
+        
+        $.grep(Array,function(){
+            return[true | false];
+        });
+
+
+    */
+    $(document).ready( function(){
+
+        // $(function(){
+
+        //     var obj = [{
+        //         'area':'서울',
+        //     },{
+        //         'area':'부산',
+        //     },{
+        //         'area':'전주'
+        //     }]
+
+        //     $(obj).each( function(i,o){
+
+        //         console.log(i+':',o);
+        //     });
+        //     console.log('====The end====');
+
+        //     $.each($('#menu1 li'), function(i,o){
+        //         console.log(i+':',o);
+        //     });
+        //     console.log('====The end====');
+
+        //     $.each($('#menu2 li'), function(i){
+        //         console.log(i+':',$(this));
+        //     });
+        // });
+
+        $(function(){
+
+            var arr1 = [{
+                "area" : "서울",
+                "name" : "무대리",
+            },{
+                "area" : "부산",
+                "name" : "홍과장",
+            },{
+                "area" : "대전",
+                "name" : "박사장", 
+            },{
+                "area" : "울산",
+                "name" : "김대리"
+            }]
+
+            var arr2 = $.map(arr1,function(a,b){
+
+                if(a.area == "서울") {
+                    return a;
+                }
+            });
+            console.log(arr2);
+            console.log("===first end===");
+
+            var arr3 = $.grep(arr1,function(a,b){
+
+                if(a.area == "서울") {
+                    return true;
+                }else {
+                    return false;
+                }
+            });
+            console.log(arr3);
+            console.log("===second end===");
+            
+        });
+
+
+    });
+</script>
+<body>
+    <h1>탐색 선택자</h1>
+    <ul id="menu1">
+        <li>내용 1-1</li>
+        <li>내용 1-2</li>
+        <li>내용 1-3</li>
+    </ul>
+
+    <ul id="menu2">
+        <li>내용 1-1</li>
+        <li>내용 1-2</li>
+        <li>내용 1-3</li>
+    </ul>
+</body>
+</html>
