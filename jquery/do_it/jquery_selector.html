@@ -24,7 +24,7 @@
             $('요소선택').parents() 상위요소 선택자로 선택한 요소의 상위 요소를 모두 선택함.
             $('요소선택').closest('div') 가장 가까운 상위 요소 선택자로 선택한 요소의 상위 요소 중 가장 가까운 <div>만 선택함.
             $('요소선택 하위요소') 선택한 요소에 지정한 하위 요소를 선택함.
-            $('요소선택 ')
+            $('.box_1').siblings class의 값이 div_1인 요소의 형제요소 전체를 선택함.
 
     */
 
@@ -37,6 +37,15 @@
 
         
     });
+    
+    $(function(){
+
+        var style1 = {
+            "background-color":"red",
+            "border":"2px dashed #ddd"
+        }
+        $('.box1').siblings().css(style1); //.box1의 형제요소는 .box2 이므로 자신을 제외한 형제요소 모두를 선택함.
+    });
 
 </script>
 <body>
@@ -48,5 +57,11 @@
             </div>
         </div>
     </header>
+
+    <section>
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+    </section>
 </body>
 </html>
