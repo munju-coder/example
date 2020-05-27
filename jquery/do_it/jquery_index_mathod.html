@@ -68,21 +68,28 @@
 
         $(function(){
 
-            var arr1 = [{
+            var arr1 = [
+            {
                 "area" : "서울",
-                "name" : "무대리",
-            },{
+                "name" : "무대리"
+            },
+            {
                 "area" : "부산",
-                "name" : "홍과장",
-            },{
+                "name" : "홍과장"
+            },
+            {
                 "area" : "대전",
-                "name" : "박사장", 
-            },{
+                "name" : "박사장" 
+            },
+            {
                 "area" : "울산",
                 "name" : "김대리"
-            }]
+            }
+        ];
 
-            var arr2 = $.map(arr1,function(a,b){
+
+
+            var arr2 = $.map(arr1,function(a){
 
                 if(a.area == "서울") {
                     return a;

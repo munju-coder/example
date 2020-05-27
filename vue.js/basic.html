@@ -13,20 +13,30 @@
                 <span v-if="msg_active">hide</span>
                 <span v-else>show</span>
             </button>
-            
-            
         </div>
 
-        <div v-if="msg_active">
-            {{msg}}
-        </div>
+        <msg-holder v-bind:msg="msg" 
+                    v-bind:msg_active="msg_active">
+        </msg-holder>
+        
+        
+        <!-- <div v-if="msg_active">{{msg}}</div> -->
     </div>
 
     
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
+        Vue.component ('msg-holder',{
+            props : [ 'msg', 'msg_active'],
+            template : '<div v-if="msg_active">{{msg}}</div>'
+        });
 
-        new Vue ({
+        Vue.component ('input-holder',{
+            props : [ 'msg', 'msg_active','button_handler'],
+            template : '<div v-if="msg_active">{{msg}}</div>'
+        });
+
+        var vueApp = new Vue ({
             'el' : '#vue_app',
             'data' : {
                 'msg' : 'vue.js',
