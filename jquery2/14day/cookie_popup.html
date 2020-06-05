@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> Title </title>
-    
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <style>
         #popup {
             width: 366px;
@@ -34,9 +34,160 @@
         }
         
     </style>
+
+
+    <script>
+        var COMMON = {};
+
+        /**
+         * @brief cookie Object
+         */
+        COMMON.cookie = {
+            /**
+             * @brief 쿠키값 가져오기
+             * @param {string} cName 쿠키 지정 값
+             * @returns {string} unescape value
+             */
+            getCookie : function (cName)
+            {
+                cName = cName + '=';
+                var cookieData = document.cookie;
+                var start = cookieData.indexOf(cName);
+                var cValue = '';
+
+                if(start != -1)
+                {
+                    start += cName.length;
+                    var end = cookieData.indexOf(';', start);
+                    if(end == -1)end = cookieData.length;
+                    cValue = cookieData.substring(start, end);
+                }
+                return unescape(cValue);
+            },
+            /**
+             * @brief cookie setting
+             * @param {string} cName 
+             * @param {string} cValue   
+             * @param {number} cDay 지속일
+             */
+            setCookie : function (cName, cValue, cDay)
+            {
+                let expire = new Date();
+
+                expire.setDate(expire.getDate() + cDay);
+                cookies = cName + '=' + escape(cValue) + '; path=/ '; // 한글 깨짐을 막기위해 escape(cValue)를 합니다.
+
+                if(typeof cDay != 'undefined')
+                {
+                    cookies += ';expires=' + expire.toGMTString() + ';';
+                }
+
+                document.cookie = cookies;
+            },
+            /**
+             * @brief cookie delete
+             * @param {string} name 
+             */
+            delCookie : function (name)
+            {
+                let today = new Date();
+
+                today.setTime(today.getTime() - 1);
+                let value = get_cookie(name);
+                if(value != "")
+                {
+                    document.cookie = name + "=" + value + "; path=/; expires=" + today.toGMTString();
+                }
+            }
+        };
+
+
+        var munju = {
+            age : 10,
+            height : 170,
+            weight : 200,
+            munjuMerong : function(name)
+            {
+                var name = name + "바보 메롱";
+                name += "&nbsp;나이는 " + this.age;
+                name += "&nbsp;키는 : " + this.height;
+                name += "&nbsp;몸무게는 : " + this.weight + " KG";
+                return name;
+            },
+            plus : function (a, b)
+            {
+                var sum = a + b;
+
+                return sum;
+            },
+            weightChk : function ()
+            {
+                if(this.weight > 150)
+                {
+                    
+                }
+            }
+        };
+
+
+        $("document").ready(function(){
+
+            console.log(munju.munjuMerong("문주"));
+
+
+            console.log(munju.plus(1, 1));
+            console.log(munju.plus(2, 1));
+            console.log(munju.plus(3, 1));
+            console.log(munju.plus(4, 1));
+            console.log(munju.plus(5, 1));
+
+            var close = COMMON.cookie.getCookie("close");
+
+            console.log(close);
+
+            console.log(typeof(COMMON.cookie));
+
+            $("#cookieBtn").click(function(){
+                COMMON.cookie.setCookie("close", true, 1);
+
+                $("#popup").hide();
+
+                console.log(COMMON.cookie.getCookie("close"));
+            });
+
+            
+            if(close == "true")
+            {
+                $("#popup").hide();
+            }
+            else
+            {
+                $("#popup").show();
+            }
+
+
+        });
+
+
+    function setCookie (cName, cValue, cDay)
+    {
+        let expire = new Date();
+
+        expire.setDate(expire.getDate() + cDay);
+        cookies = cName + '=' + escape(cValue) + '; path=/ '; // 한글 깨짐을 막기위해 escape(cValue)를 합니다.
+
+        if(typeof cDay != 'undefined')
+        {
+            cookies += ';expires=' + expire.toGMTString() + ';';
+        }
+
+        document.cookie = cookies;
+    }
+
+    </script>
     
-    <script src="lib/jquery-1.11.1.min.js"></script>
-    <script src="lib/jquery.cookie.js"></script>
+    <!-- <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery.cookie.js"></script> -->
     <script>
     
         $( function() {
@@ -71,7 +222,7 @@
             
             */
             
-            if( $.cookie("popup") == "ok" ) $('#popup').hide();
+            /* if( $.cookie("popup") == "ok" ) $('#popup').hide();
                         
             
             $( '#closeBtn' ).click( function() {
@@ -88,7 +239,7 @@
                 
                  $( '#popup' ).hide();
                 
-            });
+            }); */
             
             
             
