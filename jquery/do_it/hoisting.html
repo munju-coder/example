@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<script>
+    
+    /*
+
+    hoisting 호이스팅
+    -변수 선언 이전에도 변수를 사용할 수 있는 현상
+    (변수를 스코프의 맨위로 끌어올리는 것과 같다)
+    let: 호이스팅 X
+    var: 호이스팅 O
+
+    */
+
+
+
+    /* console.log(letVariable);
+    let letVariable;
+    letVariable = 123;
+    console.log(letVariable); */ // 출력: 123
+
+    /* console.log(varVariable); 
+    var varVariable;
+    varVariable = 456;
+    console.log(varVariable);  */
+
+    /* showName();
+    function showName() {
+        // console.log(name);
+        var name = "David";
+        console.log(name);
+    } */
+
+    //c();
+    function b ()
+    {
+        console.log("zzz");
+    }
+    c();
+    function c ()
+    {
+        b();
+        console.log("aaa");
+    }
+
+
+    
+</script>
+<body>
+    
+</body>
+</html>

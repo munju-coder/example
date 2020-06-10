@@ -28,13 +28,14 @@
     --> let, var 전역에 존재한다면 어디서든 사용가능.
     
     */
-    var letVariable = 10; //10 , 중괄호 바깥에 있는 전역변수이기 때문
+    // var letVariable = 10; 
+    //10 , 중괄호 바깥에 있는 전역변수이기 때문
     
-    function fuc () 
-    {
-        let letVariable = 123;
-        var varVariavle = 456;
-    }
+    // function fuc () 
+    // {
+    //     let letVariable = 123;
+    //     var varVariavle = 456;
+    // }
 
     /* console.log(letVariable); //ReferenceError 오류
 
@@ -52,9 +53,9 @@
     console.log(i); */ //ReferenceError 오류 -> let 으로 선언한(for 초기식) 변수는 for 스코프에 속하므로 바깥에서 사용할 수 없음.
     
     for ( var i= 0; i < 3; i++ ) {
-        console.log(i); // 012
+        console.log(i);
     }
-    console.log(i); // 3
+    console.log(i); 
 
     for(var i = 0; i < 3; i++)
     {
@@ -62,6 +63,8 @@
     }
 
     console.log(i);
+
+
 
 
 
