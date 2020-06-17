@@ -1,41 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title> Array 배열 </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Array 배열 </title>
 </head>
 
 <body>
-<script>
+    <script>
+        //    var arr =[ 1, "A", true ];
+        //   // console.log( arr );
+        //   //sdf
+        //    
+        //    var arr2 = new Array();
+        //    
+        //    arr2[1]= 1;
+        //    arr2[2]= "A";
+        //    arr2[3]= true;
+        //    
+        //    // console.log( arr2 ); 0,1,2->1,2,3
+        //    
+        //    var ex =[ "c", "a" ,"d", "b" ];
+        //    
+        //    ex.push( "e" );       //배열의 마지막 위치에 값을 추가
+        //    ex.pop();              //배열의 마지막 값을 제거
+        //    ex.shift();             //배열의 첫번째 값을 제거, 반환 
+        //    ex.reverse();         //배열의 순서를 역순으로 정렬
+        //    ex.sort();             //배열의 순서에 맞게 정렬
+        //    ex.splice( 1, 2 );    //배열의 index번호부터 갯수만큼 제거-1번에서부터 1번 포함/2개를 잘라냄;-제거
+        //    
+        //    console.log ( ex );
 
 
-    var arr =[ 1, "A", true ];
-   // console.log( arr );
-   //sdf
-    
-    var arr2 = new Array();
-    
-    arr2[1]= 1;
-    arr2[2]= "A";
-    arr2[3]= true;
-    
-    // console.log( arr2 ); 0,1,2->1,2,3
-    
-    var ex =[ "c", "a" ,"d", "b" ];
-    
-    ex.push( "e" );       //배열의 마지막 위치에 값을 추가
-    ex.pop();              //배열의 마지막 값을 제거
-    ex.shift();             //배열의 첫번째 값을 제거, 반환 
-    ex.reverse();         //배열의 순서를 역순으로 정렬
-    ex.sort();             //배열의 순서에 맞게 정렬
-    ex.splice( 1, 2 );    //배열의 index번호부터 갯수만큼 제거-1번에서부터 1번 포함/2개를 잘라냄;-제거
-    
-    console.log ( ex );
-    
-    
-</script>
+        //    var A = [ 'a', 'b', 'c' ];
+        //    concole.log( A [ 2 ] );
+        //    A[ 2 ] = false;
+        //    console.log ( A[ 2 ] );
 
-</body>
-</html>
+        // var fibonacci = [1, 2, 3, 5, 8, 13];
+
+        // console.log(fibonacci[4]); // 결과 : 8
+ 
+        // fibonacci[4] = false;
+
+        // console.log(fibonacci[4]); // 결과 : false
+
+        //배열과 반복문 
+        function get_member () {
+            return [ 'A', 'B' ,'C','d' ];
+        }
+        members = get_member();
+        for ( var i = 0; i < members.length; i++ ) {
+            document.write (members[i].toUpperCase()+ "<br/>");
+        }
+        console.log(members.length);
+
+        /*
+            .toUpperCase = > 기본적으로 자바스크립트가 제공해주는 함수를 내장함수라고 함. (소문자->대문자)
+            배열이란 연관된 정보를 하나의 그룹으로 관리하기 위해서 사용하고, 그 정보를 처리할 때는 반복문을 이용한다. 
+            배열과 반복문을 함께 쓰면 가변적으로 length 의 값은 바뀌고, 배열에 담긴 원소들의 갯수에 따라 탄력적으로 바뀐다.
+        */
+
+    </script>
+
+</body></html>
