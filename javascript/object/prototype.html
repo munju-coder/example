@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    /*
+    
+    자바스크립트의 모든 객체는 프로토타입(prototype)이라는 객체를 가지고 있다.
+    모든 객체는 그들의 프로토타입으로부터 프로퍼티와 메소드를 상속받는다.
+    이처럼 자바스크립트의 모든 객체는 최소한 하나 이상의 다른 객체로부터 상속을 받으며, 이때 상속되는 정보를 제공하는 객체를 프로토타입(prototype)이라고 한다.
+    */
+    var obj = new Object();    //객체 프로퍼티 Object.prototype
+    var arr = new Array();     //객체 프로퍼티 Array.prototype
+    var date = new Date();     // 객체 프로토타입은 Date.prototype
+
+    var date = new Date(); // 이 객체는 Date.prototype 뿐만 아니라 Object.prototype도 프로토타입으로 가진다.
+
+    //객체 프로퍼티와 메소드, prototype 프로퍼티를 이용하면 현재 존재하는 프로토타입에 새로운 프로퍼티나 메소드를 추가함.
+    /*
+        1. hasOwnProperty() 특정 프로퍼티가 해당 객체에 존재하는지 검사함.
+        해당 객체에서 직접 선언된 프로퍼티만을 검사하며, 같은 이름의 프로퍼티라도 상속받은 프로퍼티는 false 값을 반환한다.
+    
+    
+    */
+
+    function Dog(color, name, age, family) {
+        this.color = color;
+        this.name = name;
+        this.age = age;
+        this.family = family;
+        this.breed = function() {
+            return this.color + " " + this.family;
+        }
+    }
+    var myDog = new Dog("검정색", "곰", 3, "불독");
+    myDog.hasOwnProperty("color"); // true
+    myDog.hasOwnProperty("breed"); // true
+    myDog.hasOwnProperty("class"); // 상속받은 프로퍼티이므로, false를 반환함.
+
+    
+
+</script>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            window 객체 -> 웹브라우저의 창을 나타내는 객체로 
+            자바스크립트의 모든 객체, 전역함수, 전역 변수들은 자동으로 window 객체의 프로퍼티가 된다. 
+            ( window 객체의 메소드는 전역함수이며, window 객체의 프로퍼티는 전역변수가 된다. )
+            문서 객체 모델의 요소들도 모두 window 객체의 프로퍼티임
+
+           1. 브라우저의 창크기 구하기
+            window.innerHeight
+            window.innerWidth
+
+
+        */
+
+        var windowWidth = window.innerWidth
+        var windowHeight = window.innerHeight
+        document.write("웹 브라우저의 너비는 " + windowWidth + "픽셀이고, 높이는 " + windowHeight + "픽셀이다. <br>");
+
+        // alert("전역 함수 호출시 window 접두사 생략 가능함!");                // 전역 함수
+        document.write("현재 브라우저의 수평 위치는 " + screenX + "이다.<br>"); // 전역 변수
+        document.write("현재 브라우저의 수직 위치는 " + screenY + "이다.<br>"); // 전역 변수
+        document.write(document.title);                                       // 전역 객체
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
