@@ -27,8 +27,46 @@
             
         });
         
+        
+        // function test() {
+        //     console.log(1);
+
+        // }
+        // window.addEventListener('resize',test);
+
+        // function debounce(func, wait, immediate) {
+        //     var timeout;
+        //     return function() {
+        //         var context = this, args = arguments;
+        //         var later = function() {
+        //             timeout = null;
+        //             if (!immediate) func.apply(context, args);
+        //         };
+        //         var callNow = immediate && !timeout;
+        //         clearTimeout(timeout);
+        //         timeout = setTimeout(later, wait);
+        //         if (callNow) func.apply(context, args);
+        //     };
+        // };
+
+        // var myEfficientFn = debounce(function() {
+        //     // All the taxing stuff you do
+        //     console.log('1');
+
+        // }, 250);
+        // window.addEventListener('resize', myEfficientFn);
+        function resizeDone(){
+            console.log('1');
+        }
+
+        $(window).on('resize', function(){ // resize 후 한번만 실행 
+            clearTimeout( timer ); 
+            timer = setTimeout( resizeDone, 150 );
+         });
+
+
+
    
-    
     
     </script>
 	<style>

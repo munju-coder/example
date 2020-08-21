@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--jquery library-->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <!--fancybox-->
+    <!-- <script type="text/javascript" src="../source/jquery.fancybox.js"></script> -->
+    <link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.7" type="text/css" media="screen" />
+    <script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.7"></script>
+    <!--mousewheel-->
+    <!-- <script type="text/javascript" src="jquery.mousewheel.js"></script> -->
+    <script type="text/javascript" src="/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+    <!-- Optionally add helpers - button, thumbnail and/or media -->
+    <link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+    <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+    <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+    <link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+    <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+</head>
+
+<script>
+$(document).ready(function (){
+    $('.fancybox').attr('rel', 'gallery').fancybox({
+            type : "image", // force type of content to image
+            helpers: {
+                title: { type: 'inside' },
+                overlay: {
+                    opacity: 0.3
+                } // overlay
+            } // helpers
+    }); // fancybox
+}); // ready
+</script>
+<body>
+    <a href="image.jpg" data-fancybox data-caption="Caption for single image">
+        <img src="thumbnail.jpg" alt="" />
+    </a>
+       
+
+</body>
+</html>
