@@ -10,7 +10,12 @@
 </head>
 
 <script>
-      
+
+    /* 
+        resize 한번만 실행할때  debounce 이벤트실행
+        0.4초 느리게 반응하여 화면에 찍기 때문에 한번만 실행 할 수 있음. 
+        
+    */
     $(document).ready(function(){
       
         var $win = $(window);
