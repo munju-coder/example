@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<script language="JavaScript">
+    $('document').ready( function(){
+        myFunctionName() {
+            if (document.myForm.myText.value == ''){
+                return false;
+            }else{
+                
+                return true;
+            }
+ 
+        }
+               
+    });
+
+  </script>  
+<body>    
+    <form name="myForm" onSubmit="return myFunctionName()">
+        <input type="text" name="myText">
+        <input type="submit" value="Click Me">
+    </form>
+
+</body>
+</html>
