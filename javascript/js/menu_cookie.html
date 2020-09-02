@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ADMIN</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!----다양한 브라우저 상호 운용성 테스트를 정기적으로 유지 관리--->
+    <meta http-equiv="imagetoolbar" content="no" /> <!---이미지저장박스 안뜨도록--->
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="pragma" content="no-cache" /> <!---캐쉬가 되지 않도록한다--->
+    <link rel="icon" type="image/png" sizes="32x32" href="http://recovershop.co.kr/images/favicon/favicon-32x32.png">
+    <link rel="stylesheet" href="http://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!-- jquery -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://recovershop.co.kr/js/jquery-ui.min.js"></script>
+    <!-- jquery -->        
+
+    <link rel="stylesheet" href="http://recovershop.co.kr/css/jquery-ui.css" />
+    <link rel="stylesheet" href="http://recovershop.co.kr/admin/css/style.css" />
+    <script src="http://recovershop.co.kr/admin/js/header.js"></script>
+    <script src="http://recovershop.co.kr/js/COMMON.js"></script>
+
+    <script>
+        //javascript 전역 변수 설정		
+        var URL			 = "http://recovershop.co.kr";
+        var ADMIN_URL 	 = "http://recovershop.co.kr/admin";
+        var INCLUDE_URL  = "http://recovershop.co.kr/include";
+        var IMAGES_URL 	 = "http://recovershop.co.kr/uploads";
+        var API_KEY		 = "123456789";
+        
+        //member info
+        var ADMIN_ID 	 = "admin";
+        
+        //get parameter variable
+        var w   = COMMON.url.urlParameter("w") == "" ? null : COMMON.url.urlParameter("w");
+        var sfl = COMMON.url.urlParameter("sfl") == "" ? null : COMMON.url.urlParameter("sfl");
+    </script>
+
+</head>
+<style>
+    body {margin:0; padding:0; font-size: 12px;}
+div, ul {overflow:hidden;}
+table { width:100%; border-collapse: collapse;}
+table th {padding: 10px 0px;}
+table td {border: 1px solid #c1d2da; padding: 8px; color:#333; border-left: none; }
+textarea {width:99%; height:200px;}
+table th {background-color:#b9cad4;}
+input[type=submit], input[type=button] {cursor:pointer;}
+a {text-decoration:none; color:#111111;}
+ul {list-style:none;}
+ul, li, p {margin:0px;padding:0px;}
+select { border:1px solid #b9cad4; border-radius:5px; padding:5px; outline: none; }
+.white_color { color: white; }
+button, input { outline: none; }
+
+/**Common*/
+.Find_pd_hits input[type=text]{border:1px solid #c1d2da; padding:3px 5px; background-color: #c1d2da;}
+.fa-sort {margin-left:3px; color:#fc637d;}
+.text_23_b {font-size:23px; font-weight:bold;}
+.text_23 {font-size:23px;}
+.text_20_b {font-size:20px; font-weight:bold;}
+.text_20 {font-size:20px;}
+.mt10px { margin-top: 10px; }
+.margin10px { margin: 10px; }
+.text_c {text-align:center;}
+.text_r {text-align:right;}
+.text_l {text-align:left;}
+.cursor {cursor:pointer;}
+.color_00c752 {color:#fc637d;}
+.btn_excel { color: #ffffff; background-color: #373f56; border: none; padding: 5px 13px; border-radius:5px; }
+
+/** board list background color */
+.bg_1 { background-color:#ebf0f3; } 
+.bg_c_88d079 {background-color: #88d079;}
+.bg_c_90c1cc {background-color: #90c1cc;}
+.bg_c_fc637d {background-color: #fc637d;}
+.bg_c_242a3a {background-color: #242a3a;}
+.icon_img {position:relative; top:5px; padding-right:10px;}
+.wb_active {background-color: #029cf9;}
+
+/** button css common */
+.btn {border:none; padding:3px 5px; color:#ffffff; border-radius:5px; cursor:pointer;}
+.zip_btn {background-color:#0c8484; }
+.pwInit_btn {background-color:#ff5400;}
+.agent_btn {background-color:#029cf9;}
+.naver_btn {background-color:#04cf5c; width:100px; text-align:center;}
+.btn_u, .btn_d {border:none; color:#ffffff; padding:5px 10px; border-radius: 5px; }
+.btn_u {background-color: #8396a5;}
+.btn_d {background-color: #ff5055;}
+.btn_w {background-color: #ff5055;}
+.pd_modify_icon {font-size:25px; cursor:pointer; color: #ff6883; }
+
+/** width */
+.w_50 {width:50%;}
+.w_30 {width:30% !important;}
+.w_10 {width:10% !important;}
+
+/**wrap*/
+.wrap {width:100%; min-width:1200px;}
+
+/**header*/
+.wrap .header { width:100%; height:50px; background-color: #242a3a; }
+.wrap .header .hd_img { float: left; width: 177px; padding-bottom: 10px; line-height: 0; }
+.wrap .header .hd_menu_box { float: right; width: 29%; background-color: #ff6883; padding-bottom: 10px; padding-right: 20px; }
+.wrap .header .hd_menu_box .hbm_menu { float: right; margin-top: 23px; margin-right: 10px; font-size: 13px;}
+.wrap .header .hd_menu_box .hbm_menu ul li { float: left; padding-left: 20px; font-weight: 600; color: white;  }     
+.wrap .header .hd_img img { width: 80%; padding: 15px 0; margin-left: 16px; }
+
+/**content*/
+.wrap .content { width: 100%; min-height: 1020px; }
+.wrap .content .left_content { position: absolute; width: 200px; height: 100%; min-height: 1000px; background-color:#373f56; }
+.menu_btn.active { background-color: #ff6883; padding-bottom: 8px; }
+.wrap .content .left_content .left_menu .menu_box .menu_btn.active .fas { color: white; }
+.wrap .content .left_content .left_menu .menu_box { width: 100%; padding-top: 10px; }
+.wrap .content .left_content .left_menu .menu_box:first-child { padding-top: 0; }
+.wrap .content .left_content .left_menu .menu_box img { position: relative;  top: 5px; margin-right: 5px; padding-left: 16px; }
+.wrap .content .left_content .left_menu .menu_box img.pl19px { padding-left: 19px; }
+.wrap .content .left_content .left_menu .menu_box .fa-chevron-down { padding-left: 5px;}
+.wrap .content .left_content .left_menu .menu_box .fas { padding-left: 10px; font-size: 12px; color: #9b9faa; }
+.wrap .content .left_content .left_menu .menu_box .i_space .fas { padding-left: 44px; } 
+.wrap .content .left_content .left_menu .menu_btn,
+.wrap .content .left_content .left_menu .menu_box ul li { cursor: pointer; }
+.wrap .content .left_content .left_menu .menu_box ul li:hover { color:#fc637d; font-weight: bold; padding-bottom: 8px; }
+/* .wrap .content .left_content .left_menu .menu_btn:first-child { padding-top: 3px; } */
+.wrap .content .left_content .left_menu .menu_btn { font-size: 17px; color:#ffffff; user-select: none; }
+.wrap .content .left_content .left_menu .menu_hide { font-size: 13px; color:#ffffff; display:none; margin-top: 10px; margin-left: 39px; }
+.wrap .content .left_content .left_menu .menu_hide ul li { padding:  5px 0; padding-left: 15px;  }
+.wrap .content .left_content .left_menu .menu_hide ul li a { color:#ffffff;}
+
+
+</style>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="hd_img">
+                <a href="http://recovershop.co.kr/admin"><img src="http://recovershop.co.kr/admin/images/recover_logo.png" alt="recover_logo"></a>
+            </div>
+            
+            <div class="hd_menu_box">
+                <div class="hbm_menu">
+                    <ul>
+                        <li><a href="http://recovershop.co.kr"  target = "_blank" class = "white_color">리커버몰 바로가기</a></li>
+                        <li>admin</li>
+                        <li class = "logout cursor">로그아웃</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class = "modal_background"></div>
+        <div class = "modal_box"></div>            
+        <div class="content">
+
+                            <div class="left_content">
+                <div class="left_menu">
+
+                                            <div class="menu_box">
+                        <div class="menu_btn i_space active">
+                            <img src="http://recovershop.co.kr/admin/images/icon_0.png" alt="chart_icon">
+                            통계
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="menu_hide">
+                            <ul>
+                                <li><a href="http://recovershop.co.kr/admin/board/chart_mb.php">회원</a></li>
+                                <li><a href="http://recovershop.co.kr/admin/board/chart_order.php">주문</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="menu_box">
+                        <div class="menu_btn">
+                            <img src="http://recovershop.co.kr/admin/images/icon_1.png" alt="setting_icon">
+                            기본설정
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="menu_hide">
+                            <ul>
+                                <li><a href="http://recovershop.co.kr/admin/board/adm_set_modify.php?w=u&seq=1">기본설정</a></li>
+                                <li><a href="http://recovershop.co.kr/admin/board/admin_list.php">관리자목록</a></li>
+                                <li><a href="http://recovershop.co.kr/admin/board/category_list.php">카테고리</a></li>
+                                <li><a href="http://recovershop.co.kr/admin/board/promotion_list.php">프로모션</a></li>
+                                <li><a href="http://recovershop.co.kr/admin/board/banner_list.php">배너관리</a></li>
+                                <!-- <li><a href="http://recovershop.co.kr/admin/board/aligo_info.php">Aligo</a></li> -->
+                                <li><a href="http://recovershop.co.kr/admin/board/server_disk_chk.php">HDD</a></li>
+                                <li><a href="http://recovershop.co.kr/admin/board/server_top_chk.php">HardWare</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="menu_box">
+                        <div class="menu_btn">
+                            <img src="http://recovershop.co.kr/admin/images/icon_2.png" alt="member_icon">
+                            회원관리
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="menu_hide">
+                            <ul>
+                                <li><a href="http://recovershop.co.kr/admin/board/mb_list.php">전체</a></li>
+                                <!-- <li><a href="http://recovershop.co.kr/admin/board/mb_g5_point_list.php">포인트</a></li>
+                                <li><a href="http://recovershop.co.kr/admin/board/cash_log_list.php">캐쉬</a></li> -->
+                                <li><a href="http://recovershop.co.kr/admin/board/mb_over_list.php">OverMember</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="menu_box">
+                        <div class="menu_btn">
+                            <img class="pl19px" src="http://recovershop.co.kr/admin/images/icon_3.png" alt="product_icon">
+                            상품관리
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="menu_hide">
+                            <ul>
+                                <li><a href="http://recovershop.co.kr/admin/board/product_list.php">전체</a></li>
+                                                                    <li><a href="http://recovershop.co.kr/admin/board/product_qa_list.php">문의</a></li>
+                                                                </ul>
+                        </div>
+                    </div>
+
+                    <div class="menu_box">
+                        <div class="menu_btn">
+                            <img src="http://recovershop.co.kr/admin/images/icon_4.png" alt="order_icon">
+                            주문관리
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="menu_hide">
+                            <ul>
+                                <li><a href="http://recovershop.co.kr/admin/board/order_list.php">전체</a></li>
+                                <li><a href="http://recovershop.co.kr/admin/board/order_list.php?pay_type=카드">카드</a></li>
+                                <li><a href="http://recovershop.co.kr/admin/board/order_list.php?pay_type=무통장">무통장</a></li>
+                                                                    <li><a href="http://recovershop.co.kr/admin/board/order_health_list.php">건강검진</a></li>
+                                <li><a href="http://recovershop.co.kr/admin/board/order_private_list.php">개인결제</a></li>
+                                                                </ul>
+                        </div>
+                    </div>
+
+                    <!-- <div class="menu_box">
+                        <div class="menu_btn">
+                            <img src="http://recovershop.co.kr/admin/images/icons_7.png" alt="">
+                            정산
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="menu_hide">
+                            <ul>
+                                <li><a href="http://recovershop.co.kr/admin/board/order_calculate.php">정산</a></li>
+                            </ul>
+                        </div>
+                    </div> -->
+
+                                            <div class="menu_box">
+                        <div class="menu_btn i_space">
+                            <img src="http://recovershop.co.kr/admin/images/icon_5.png" alt="board_icon">
+                            보드
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="menu_hide">
+                            <ul>
+                                <li><a href="http://recovershop.co.kr/admin/board/board_notice_list.php">공지사항</a></li>
+                                <li><a href="http://recovershop.co.kr/admin/board/board_qna_list.php">Q&A</a></li>
+                                <li><a href="http://recovershop.co.kr/admin/board/board_faq_list.php">FAQ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="menu_box">
+                        <div class="menu_btn">
+                            <img src="http://recovershop.co.kr/admin/images/icon_6.png" alt="board_icon">
+                            내용관리
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="menu_hide">
+                            <ul>
+                                <li><a href="http://recovershop.co.kr/admin/board/content_list.php">전체</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="menu_box">
+                        <div class="menu_btn i_space">
+                            <img src="http://recovershop.co.kr/admin/images/icon_7.png" alt="log_icon">
+                            LOG
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="menu_hide">
+                            <ul>
+                                <li><a href = "http://recovershop.co.kr/admin/board/order_fail_log_list.php">주문로그</a></li>
+                                <li><a href = "http://recovershop.co.kr/admin/board/send_log_list.php">기타로그</a></li>
+                                                                    <li><a href = "http://recovershop.co.kr/admin/board/change_log_list.php">변경로그</a></li>
+                                <li><a href = "http://recovershop.co.kr/admin/board/point_log_list.php">포인트</a></li>
+                                                                </ul>
+                        </div>
+                    </div>
+
+                    <div class="menu_box">
+                        <div class="menu_btn">
+                            <img src="http://recovershop.co.kr/admin/images/icon_8.png" alt="popup_icon">
+                            팝업관리
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="menu_hide">
+                            <ul>
+                                <li><a href="http://recovershop.co.kr/admin/board/popup_list.php">전체</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="menu_box">
+                        <div class="menu_btn i_space">
+                            <img src="http://recovershop.co.kr/admin/images/icon_9.png" alt="board_icon">
+                            기타
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="menu_hide">
+                            <ul>
+                                <li><a href = "http://recovershop.co.kr/admin/board/product_kim.php">네이버 가격비교</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="menu_box">
+                        <div class="menu_btn">
+                            <img src="http://recovershop.co.kr/admin/images/icon_10.png" alt="happycoupon_icon">
+                            해피쿠폰
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="menu_hide">
+                            <ul>
+                                <li><a href = "http://recovershop.co.kr/admin/board/hp_seller_list.php">가맹점</a></li>
+                                <li><a href = "http://recovershop.co.kr/admin/board/hp_seller_list.php">포인트내역</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="menu_box">
+                        <div class="menu_btn i_space">
+                            <img src="http://recovershop.co.kr/admin/images/icon_11.png" alt="bottom_icon">
+                            하위
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="menu_hide">
+                            <ul>
+                                <li><a href = "http://recovershop.co.kr/admin/board/agent_list.php">관리</a></li>
+                                <li><a href = "http://recovershop.co.kr/admin/board/agent_product_list.php">상품</a></li>
+                                <li><a href = "http://recovershop.co.kr/admin/board/hp_seller_list.php">주문</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="menu_box">
+                        <div class="menu_btn i_space">
+                            <img src="http://recovershop.co.kr/admin/images/icon_12.png" alt="cash_icon">
+                            캐쉬
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="menu_hide">
+                            <ul>
+                                <li><a href = "http://recovershop.co.kr/admin/board/cash_withdrawal_list.php">출금요청</a></li>
+                                <li><a href = "http://recovershop.co.kr/admin/board/cash_log_list.php">캐쉬 전환 로그</a></li>
+                                <li><a href = "http://recovershop.co.kr/admin/board/mb_g5_point_list.php">포인트 로그</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="menu_box">
+                        <div class="menu_btn">
+                            <img src="http://recovershop.co.kr/admin/images/icon_13.png" alt="board_icon">
+                            판매관리
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+
+                        <div class="menu_hide">
+                            <ul>
+                                <li><a href = "http://recovershop.co.kr/admin/board/pd_seller_list.php">판매사 관리</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                                        </div>
+            </div>
+           
+                <div class="rc_bottom">
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+
+        
+    </div>
+</body>
+</html>
