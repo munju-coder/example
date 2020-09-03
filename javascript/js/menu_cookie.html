@@ -129,6 +129,93 @@ button, input { outline: none; }
 
 
 </style>
+<script>
+    $(document).ready( function(){
+
+        var src = [];
+    var chk_before = null;
+    $(".menu_btn").each(function(i){
+        $(this).click(function(){
+            //before init
+            $(".menu_btn").children(".fas").attr('class', 'fas fa-chevron-down').css('color','white');
+            $('.menu_btn').removeClass('active');
+            $(this).addClass('active');
+            $(".menu_hide").hide();
+            $('.menu_hide').next().show();
+            
+            //this change
+            src[i] = $(this).find('img').attr("src").split("/");
+            $(this).find('img').attr("src", ADMIN_URL + "/images/" + "w_" + src[i][5]);
+            $(this).children(".fas").attr('class', 'fas fa-chevron-up').css('color','white');
+            $(this).next().toggle();
+            COMMON.cookie.setCookie("menu_active", "ma_" + i, "undefined");
+
+
+            if(chk_before != null)
+            {
+                // b_IMG  before_IMG 클릭 이전에 크릭된 값이 있는지 체크하여 값을 찾아온다.
+                var b_IMG = $(".menu_btn").eq(chk_before).find("img").attr("src");
+
+                // b_IMG 값일 있는경우 문자열 변환하여 값을 변경해준다.
+                var c_IMG = b_IMG.replace("w_", "");
+                $(".menu_btn").eq(chk_before).find("img").attr("src", c_IMG);
+                      
+            }
+
+            chk_before = i;
+        });
+    });
+
+    var menuActive =  COMMON.cookie.getCookie("menu_active");
+    var activeEQ = menuActive.split("_");
+
+
+    if(menuActive != "")
+    {
+        $('.menu_btn').removeClass('active');
+        $(".menu_btn").eq(activeEQ[1]).addClass('active');
+        $('.menu_btn').eq(activeEQ[1]).children(".fas").attr('class', 'fas fa-chevron-up').css('color','#ffffff');
+        $(".menu_btn").eq(activeEQ[1]).next().show();
+        $(".menu_btn").eq(activeEQ[1]).find('img').attr("src", ADMIN_URL + "/images/" + "w_icon_"+activeEQ[1]+".png");
+   
+
+    }
+
+    $(".menu_hide > ul > li").each(function(i){
+        $(this).click(function(){
+
+            $(".menu_hide > ul > li").css("color", "#ffffff");
+            $('.menu_box .fas').css('color','#ffffff');
+            $(this).css("color","#fc637d").css("font-weight","bold");
+            COMMON.cookie.setCookie("menu_sub_active", "mas_" + i, "undefined");
+
+            var link = $(this).children().attr("href");
+            location.href = link;
+            src[i] = $(this).find('img').attr("src").split("/");
+            $(this).find('img').attr("src", ADMIN_URL + "/images/" + "w_" + src[i][5]);
+            if(chk_before != null)
+            {
+                var b_IMG = $(".menu_btn").eq(chk_before).find("img").attr("src");
+                var c_IMG = b_IMG.replace("w_", "");
+                $(".menu_btn").eq(chk_before).find("img").attr("src", c_IMG);
+                      
+            }
+
+            chk_before = i;
+        });
+    });
+
+    var menuSubActive =  COMMON.cookie.getCookie("menu_sub_active");
+    var activeSubEQ = menuSubActive.split("_");
+
+    //console.log(menuSubActive);
+    
+    if(menuSubActive != "")
+    {
+        $(".menu_hide > ul > li").eq(activeSubEQ[1]).find("a").css("color","#fc637d").css("font-weight","bold");
+    }       
+    });
+</script>
 <body>
     <div class="wrap">
         <div class="header">
