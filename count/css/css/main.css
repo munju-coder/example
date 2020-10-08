@@ -1,0 +1,174 @@
+/*common*/
+a { color: initial; text-decoration: none; }
+a:hover,a:active,a:visited ,a:link { text-decoration: none; }
+.over_hidden { overflow: hidden; }
+input,button { outline: none; }
+.mlr32px { margin: 0 32px; }
+.fw_bold { font-weight: 600; }
+.cursor_pointer { cursor: pointer; }
+
+.w100 { width: 100%; }
+.w31 { width: 31%; }
+.w20 { width: 20%; }
+.w24 { width: 24%; }
+.w50 { width: 50%; }
+.w70 { width: 70%; }
+
+.f46 { font-size: 46px; }
+.f25 { font-size: 25px; }
+.f30 { font-size: 30px; }
+.f32 { font-size: 32px; }
+
+.white_color { color: white; }
+.t_right { text-align: right; }
+.t_center { text-align: center; }
+.t_left { text-align: left; }
+.mb10px { margin-bottom: 10px; }
+.bg_0 { background-color: #f2f2f2; } 
+
+table {width:100%; border-collapse: collapse; margin-top: 0; margin-bottom: 60px; }
+table th {color:#412e8a;font-size:20px; font-weight:bold;  padding:15px 5px;}
+table td {color:#111111; font-size:15px; padding:12px; }
+.mr20px { margin-right: 20px; }
+
+/*main(menu)*/
+header { background-color: #7251e6; }
+header .h_wrap { padding: 50px 0; }
+header .h_wrap h1 { float: left; margin-top: 0; margin-bottom: 0; }
+header .h_wrap::after { content: ''; display: block; overflow: hidden; clear: both; }
+header .h_wrap ul { float: right; }
+
+.wrap { width: 640px; overflow: hidden; margin: 0 auto; }
+/* .wrap .contents .c_middle .cm_wrap .main_list .w_list_icon  { display: none; } */
+.wrap .contents .c_middle .cm_wrap .main_list img { float: left; }
+.wrap .contents .c_middle .cm_wrap .main_list::after { content: ''; display: block; overflow: hidden; clear: both; }
+.wrap .contents .c_middle .cm_wrap .main_list:first-child { margin-top: 50px; }
+.wrap .contents .c_middle .cm_wrap .main_list { margin-bottom: 50px; border: 1px solid #7251e6; padding: 24px 50px; border-radius: 50px; font-size: 30px; text-align: center; cursor: pointer; }
+/* .wrap .contents .c_middle .cm_wrap .main_list span a { color: white; } */
+/* .wrap .contents .c_middle .cm_wrap .main_list.active { background-color: #7251e6; color: white; } */
+/* .wrap .contents .c_middle .cm_wrap .main_list.active .w_list_icon { display: block; } */
+/* .wrap .contents .c_middle .cm_wrap .main_list.active .list_icon { display: none; } */
+
+.wrap footer { width: 100%; padding-top: 60px; }
+.wrap footer .ft_wrap { position: fixed; width: 640px; right:0; left: 0; bottom: 0; z-index: 100; margin: 0 auto;  background-color: #dee0e2; padding-top: 15px; }
+.wrap footer .ft_wrap ul li { float: left; width: 25%; text-align: center; }
+.wrap footer .ft_wrap ul li p { margin-top: 10px; font-size: 20px; color:#333; }
+.wrap footer .ft_wrap ul::after { content: ''; display: block; overflow: hidden; clear: both; }
+.wrap footer .ft_wrap ul li.active a p { color: #412e8a; }
+
+/*list*/
+.wrap .list_contents .l_middle .lm_wrap .list_box ul { float: left; padding: 80px 0; width: 50%; text-align: center; border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; }
+.wrap .list_contents .l_middle .lm_wrap .list_box ul:last-child { border-right: 0; }
+.wrap .list_contents .l_middle .lm_wrap .list_box ul li:first-child { margin-bottom: 40px; }
+.wrap .list_contents .l_middle .lm_wrap .list_box::after { content: ''; display: block; overflow: hidden; clear: both; } 
+
+/*card_approval(카드승인)*/
+.wrap .card_contents { margin-bottom: 20px; padding-bottom: 50px; }
+.wrap .card_contents .cc_middle { margin-top: 70px; border-bottom: 1px solid #ddd; padding-bottom: 50px; }
+.wrap .card_contents .cc_middle .ccm_txt ul { float: left; width: 50%; font-size: 23px; padding: 20px 30px; margin-right: 30px; }
+.wrap .card_contents .cc_middle .ccm_txt ul li { float: left; }
+.wrap .card_contents .cc_middle .ccm_txt ul li:first-child { width: 60%; }
+.wrap .card_contents .cc_middle .ccm_txt ul::after { content: ''; display: block; overflow: hidden; clear: both; }
+.wrap .card_contents .cc_middle .ccm_txt::after { content: ''; display: block; overflow: hidden; clear: both; }
+.wrap .card_contents .cc_middle .ccm_txt .count_box { float: right; }
+.wrap .card_contents .cc_middle .ccm_txt .count_box .count_input { padding: 4px 10px; border: 1px solid #ddd; margin-top: 16px; }
+.wrap .card_contents .cc_middle .ccm_txt .count_box .count_input input[type="button"] { border: none; font-weight: 600; background-color: white; color: #7251e6; font-size: 20px; }
+.wrap .card_contents .cc_middle .ccm_txt .count_box .count_input input[type="text"] { width: 100px; border: none; font-size: 22px; text-align: center; }
+.wrap .card_contents .cc_bottom { margin: 40px 32px; }
+.wrap .card_contents .cc_bottom .ccb_top { margin-bottom: 30px; }
+.wrap .card_contents .cc_bottom .ccb_top ul li:first-child { font-size: 28px; font-weight: 600; }
+.wrap .card_contents .cc_bottom .ccb_top ul li { float: left; }
+.wrap .card_contents .cc_bottom .ccb_top ul li:last-child { float: right; color: #7251e6; font-weight: 600;  }
+.wrap .card_contents .cc_bottom .ccb_top ul::after { content: ''; display: block; overflow: hidden; clear: both; }
+.wrap .cc_bottom .cc_btn button { width: 100%; border: none;  background-color: #7251e6; padding: 25px; color: white; font-size: 38px; }
+.wrap .card_contents .cc_bottom .cc_btn .credit_btn { background-color: #35314e; }
+/* .wrap .card_contents .cc_bottom .cc_btn { width: 100%; background-color: #7251e6; margin-top: 10px; } */
+
+/*calculate_list(정산관리),pay_list(지급관리),order_list(거래내역),card_approval(카드승인)*/
+.wrap .contents .c_middle table tr th, .wrap .contents .c_middle table tr td { vertical-align: middle; font-size: 22px; }
+.wrap .contents .c_middle .order_table tr th, .wrap .contents .c_middle .order_table tr td { vertical-align: middle; font-size: 18px; }
+
+header .calcul_wrap { padding-bottom: 0; }
+/* georuler */         
+.search_box {width:100%; overflow:hidden; padding:30px 7px; background-color: #7251e6;}
+.search_box div { float: left; color:#ffffff; font-size:20px; font-weight:bold; }
+.search_box .search_txt { margin-left: 32px; }
+.search_box form { float: right; margin-right: 32px; }
+.search_box::after { content: ''; display: block; overflow: hidden; clear: both; }
+.search_box form span, .search_box form input {float:left; padding-right:10px;}
+.search_box form span, .search_box form input[type=submit] {margin-left:10px;}
+.search_box form input[type=text] { padding: 5px 3px; }
+.search_box form input[type=submit] { border: none; padding: 7px 10px; background-color: #544393; color: white; }
+
+.price_box {/* padding:20px 7px; */ padding: 20px 0; padding-bottom: 15px; font-size:25px; background-color: #412e8a;}
+.price_box div:last-child { float: right; }
+.price_box div:first-child { float: left; margin-left: 20px; font-size: 28px; margin-right: 15px; }
+/* .price_box div:nth-child(2) { margin-right: 15px; margin-top: 2px; } */
+.price_box div:nth-child(3) { margin-top: 2px; }
+.price_box .total_price { float: right; }
+.price_box::after { content: ''; display: block; overflow: hidden; clear: both; }
+
+/*login*/
+.wrap .header .login_header { padding-top: 50px; padding-bottom: 60px; }
+.wrap .header .login_header h1 { float: left; font-size: 43px; margin-top: 0; margin-left: 38%; margin-bottom: 0; }
+.wrap .header .login_header::after { content: ''; display: block; overflow: hidden; clear: both; }
+.wrap .header .login_header img { float: right; }
+.wrap .header .info_txt { background-color: #ccc7ff; padding: 30px 0; }
+.wrap .header .info_txt p { font-size: 27px; color: white; }
+.wrap .login_box { padding: 180px 32px; }
+
+.wrap .login_box .log_chk { position: relative; }
+.wrap .login_box .log_chk .log_label input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
+.wrap .login_box .log_chk .log_label .checkmark { position: absolute; top: 0; left: 0; height: 30px; width: 30px; border: 2px solid #7251e6; margin-top: 6px; }
+.wrap .login_box .log_chk .log_label .checkmark:after { content: ""; position: absolute; display: none; }
+.wrap .login_box .log_chk .log_label input:checked ~ .checkmark:after { display: block; }
+.wrap .login_box .log_chk .log_label .checkmark:after {
+    left: 9px;
+    top: 6px;
+    width: 8px;
+    height: 10px;
+    border: solid #7251e6;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.wrap .login_box .log_chk .log_label .login_txt { display: inline-block; margin-top: 4px; margin-left: 60px; font-size: 28px; }
+.wrap .login_box #mb_id { margin-bottom: 20px; }
+.wrap .login_box input { padding: 16px 10px; border: 1px solid #868686; font-size: 24px; } 
+.wrap .login_box .log_chk { margin-top: 60px; }
+.wrap .log_btn { background-color: #7251e6; padding: 20px 0; margin: 0 32px; margin-bottom: 180px; }
+.wrap .log_btn a { font-size: 38px; color: white; }
+
+/*calculate_list , pay_list 2020-10-07 munju*/
+.wrap .contents .price_box section { float: left; width: 50%; font-size: 22px; }
+.wrap .contents .price_box section div { font-size: 22px; margin-left: 10px; margin-right: 10px; margin-top: 0; }
+/*pay_list 2020-10-07 munju추가*/
+.wrap .contents .c_middle .pay_table { margin-bottom: 0; }
+.wrap .contents .c_middle .pay_btn { font-size: 20px; background-color: #ddd; padding: 10px 0; }
+.wrap .contents .c_middle .pay_btn div { margin-right: 20px; margin-top: 10px; }
+.wrap .contents .c_middle .pay_btn div,.wrap .contents .c_middle .pay_btn button  { float: right; }
+.wrap .contents .c_middle .pay_btn::after { content: ''; display: block; overflow: hidden; clear: both; }
+.wrap .contents .c_middle .pay_btn button { margin-right: 20px; border: none; background-color: #7251e6; padding: 10px; color: white; border-radius: 5px; }
+
+
+/** geo add 201007 */
+.ct_btn_box {width:100%; overflow:hidden; padding:10px 0px;}
+.ct_btn_box button {float:right; padding:5px 10px; background-color: #7251e6;; border:none; color:#ffffff; font-weight:bold;}
+
+/*nfc_payment*/
+.wrap .nfc_contents .nfcm_top { border-bottom: 2px solid #7251e6; }
+.wrap .nfc_contents ul { margin-bottom: 30px; }
+.wrap .nfc_contents ul:last-child { padding-bottom: 20px; }
+.wrap .nfc_contents ul li { float: left;  }
+.wrap .nfc_contents ul li:first-child { margin-right: 20px; }
+.wrap .nfc_contents ul:last-child li:first-child { margin-top: 7px; }
+.wrap .nfc_contents ul::after { content: ''; display: block; overflow: hidden; clear: both; }
+.wrap .nfc_contents .nfc_middle { margin: 50px 0; }
+.wrap .nfc_contents { margin-bottom: 20px; padding-bottom: 50px; }
+.wrap .nfc_contents .nfcm_middle { margin-top: 50px; }
+.wrap .nfc_contents .nfcm_middle ul li:first-child { font-size: 30px; color: #7251e6; margin-top: 7px; }
+.wrap .nfc_contents .nfcm_middle ul li:last-child { font-size: 40px; }
+.wrap .nfc_contents .nfcm_middle div { margin: 50px 0; }
+.wrap .nfc_contents .nfcm_middle p:first-of-type { font-size: 33px; color: #7251e6; margin: 30px 0; }
+.wrap .nfc_contents .nfcm_middle p:last-of-type { font-size: 19px; }
