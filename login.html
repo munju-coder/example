@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> FLS </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <!--jquery-->
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="js/main.js"></script>
+        <!--goolge webfont-->
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+        <!--css-->
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/grid.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <!--wrap {-->
+        <div class="wrap">
+            <section class="header">
+                <div class="login_header mlr32px t_center">
+                    <h1 class="">로그인</h1>
+                    <img class="cursor_pointer" src="images/close_btn.png" alt="close button icon">
+                </div>
+
+                <div class="info_txt">
+                    <p class="t_center">아이디와 패스워드를 입력 해주세요.</p>
+                </div>
+            </section>
+
+            <section class="login_box t_center">
+                <div><input type="text" class="w100" name="mb_id" id="mb_id" placeholder="아이디를 입력하세요."></div>
+                <div><input type="password" class="w100" name="mb_passwd" id="mb_passwd" placeholder="패스워드를 입력하세요."></div>
+
+                <div class="log_chk t_left">
+                    <!-- <input type="checkbox">
+                    <span>로그인 유지</span> -->
+                    <label class="log_label">
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                        <span class="login_txt">로그인유지</span>
+                    </label>
+                </div>
+            </section>
+
+            <div class="log_btn t_center"><a href="#">로그인</a></div>
+        </div>
+
+        <script>
+            $("document").ready(function(){
+                $(".log_btn > a").click(function(e){
+                    e.preventDefault();
+
+                    var mb_id = $("#mb_id").val();
+                    var mb_passwd = $("#mb_passwd").val();
+                    var aHref;
+
+                    if(!mb_id)
+                    {
+                        alert("아이디를 입력하세요.");
+                        return false;
+                    }
+
+                    if(!mb_passwd)
+                    {
+                        alert("비밀번호를 입력하세요.");
+                        return false;
+                    }
+
+                    if(mb_id == "aaa")
+                    {
+                        aHref = "./business/main.html";
+                    }
+                    else if(mb_id == "bbb")
+                    {
+                        aHref = "./freelancer/main.html";
+                    }
+
+                    if(mb_passwd != "1234")
+                    {
+                        alert("비밀번호를 확인하세요.");
+                        return false;
+                    }
+
+                    location.href = aHref;
+
+                });
+            });
+        </script>
+
+        <!--} wrap-->
+    </body>
+</html

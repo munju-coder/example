@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> FLS </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <!--jquery-->
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="../js/main.js"></script>
+        <!--goolge webfont-->
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+        <!--css-->
+        <link rel="stylesheet" href="../css/reset.css">
+        <link rel="stylesheet" href="../css/grid.css">
+        <link rel="stylesheet" href="../css/main.css">
+    </head>
+    <script>
+        function card_approval(){
+            window.location = "../business/card_approval.html";
+        }
+    </script>
+    <body>
+        <!--wrap {-->
+        <div class="wrap">
+            <!--header {-->
+            <header>
+                <div class="h_wrap mlr32px">
+                    <h1 class="f46 white_color">NFC 간편결제</h1>
+                    <ul>
+                        <li class="t_right mb10px"><a href="main.html"><img src="../images/logo.png" alt="FLS logo image"></a></li>
+                        <li><span class="f25 white_color">2020 / 09 / 17 / wed</span></li>
+                    </ul>
+                </div>
+            </header>
+            <!--} header-->
+
+            <!--contents {-->
+            <section class="contents mlr32px nfc_contents">
+                <!-- <div class="c_top">
+                </div> -->
+
+                <div class="c_middle nfc_middle">
+                    <div class="nfcm_top">
+                        <ul>
+                            <li class="f25 w20 t_right">가맹점</li>
+                            <li class="f32 w70 fw_bold">온오프</li>
+                        </ul>
+
+                        <ul class="pb20px">
+                            <li class="f25 w20 t_right">결제일시</li>
+                            <li class="f32 w70 fw_bold">2020년 10월 10일 12:00:00</li>
+                        </ul>
+                    </div>
+
+                    <div class="nfcm_middle">
+                        <ul>
+                            <li class="fw_bold">결제금액</li>
+                            <li class="fw_bold"><span>300,000</span>원(일시불)</li>
+                        </ul>
+                        <div class="t_center"><img src="../images/nfc_img.png" alt="nfc image"></div>
+                        <p class="t_center">카드를 휴대폰 뒷면에 접촉해 주세요.</p>
+                        <p class="t_center">휴대폰의 뒷면과 신용/체크카드를 그림과 같이 1~3초 접촉합니다.</p>
+                    </div>
+                </div>
+
+                <div class="cc_bottom">
+                    <div class="cc_btn t_center cursor_pointer" onclick="card_approval()">
+                        <button class="last_payment">취소</button>
+                    </div>
+                </div>
+
+            </section>
+            <!--} contents-->
+
+            <!--footer {-->
+            <footer>
+                <div class="ft_wrap mlr32px">
+                    <ul>
+                        <li class="">
+                            <a href="#">
+                                <img class="gray_img" src="../images/c_bottom_icon1.png" srcc="../images/bottom_icon1.png" alt="footer icon image">
+                                <p>투데이정산</p>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#">
+                                <img class="gray_img" src="../images/c_bottom_icon2.png" srcc="../images/bottom_icon2.png"  alt="footer icon image">
+                                <p>공지사항</p>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#">
+                                <img class="gray_img" src="../images/c_bottom_icon3.png" srcc="../images/bottom_icon3.png"  alt="footer icon image">
+                                <p>질문/답변</p>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#">
+                                <img class="gray_img" src="../images/c_bottom_icon4.png" srcc="../images/bottom_icon4.png"  alt="footer icon image">
+                                <p>마이페이지</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+            <!--} footer-->
+        </div>
+        <!--} wrap-->
+    </body>
+</html>

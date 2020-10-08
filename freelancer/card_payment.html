@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> FLS </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <!--jquery-->
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <!--goolge webfont-->
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+        <!--css-->
+        <link rel="stylesheet" href="../css/reset.css">
+        <link rel="stylesheet" href="../css/grid.css">
+        <link rel="stylesheet" href="../css/main.css">
+    </head>
+    <script>
+        $(document).ready( function(){
+            /**
+            * @brief footer img click event
+            */
+            $('.ft_wrap ul li a').each(function(i){
+                $(this).click(function(e){
+                    e.preventDefault();
+                    var src = $(this).find("img").attr("srcc");
+
+                    console.log(src);
+                    $(this).find("img").attr("src", src);
+                });
+            });
+        
+        });
+    </script>
+    <body>
+        <!--wrap {-->
+        <div class="wrap">
+            <!--header {-->
+            <header>
+                <div class="h_wrap calcul_wrap mlr32px">
+                    <h1 class="f46 white_color">카드결제</h1>
+                    <ul>
+                        <li class="t_right mb10px"><a href="main.html"><img src="../images/logo.png" alt="FLS logo image"></a></li>
+                        <li><span class="f25 white_color">2020 / 09 / 17 / wed</span></li>
+                    </ul>
+                </div>
+            </header>
+            <!--} header-->
+
+            <!--contents {-->
+                <section class="contents register_contents">
+                    <div class="c_top">
+                        <div class="search_box">
+                        </div>
+                    </div>
+    
+                    <div class="c_middle">   
+                        <form action="">
+    
+                            <style>
+                                /*card_payment*/
+                                
+                                .wrap .register_contents { margin-bottom: 20px; padding-bottom: 50px; }
+                                .wrap .register_contents .cm_regi { border-bottom: 1px solid #ddd; padding: 50px 0; margin-bottom: 30px;  }
+                                .wrap .register_contents .cm_regi .cm_regi_wrap { margin-right: 32px; margin-left: 32px; }
+                                .wrap .register_contents .cm_contents .cmc_box .cmc_subject { float: left; font-size: 25px; text-align: left; width: 33%; margin-right: 25px; margin-bottom: 26px; }
+                                .wrap .register_contents .cm_contents .cmc_box .cmc_input { float: left; width: 60%; }
+                                .wrap .register_contents .cm_contents .cmc_box .cmc_txt_box { width: 100%; }
+                                .wrap .register_contents .cm_contents .cmc_box::after { content: ''; display: block; overflow: hidden; clear: both; }
+                                .wrap .register_contents .cm_contents .cmc_box .cmc_input input { border: none; padding: 10px; background-color: #ddd; }
+                                .wrap .register_contents .cm_contents .cmc_box .cmc_input .period_input { width: 48%; } 
+                                .wrap .register_contents .cm_contents .cmc_box .cmc_input select { border: 1px solid #ddd; padding: 10px; }
+                                .wrap .register_contents .cm_contents .cmc_box .cmc_txt_box textarea { padding-top: 13%; height: 200px; border: 2px solid #7251e6; }
+                                .wrap .register_contents .cm_contents .cmc_box .cmc_txt_box textarea::placeholder { font-size: 30px; text-align: center; }
+                            </style>
+                            <div class="cm_contents cm_regi mb20px">
+                                <div class="cm_regi_wrap">
+                                    <div class="cmc_box">
+                                        <span class="cmc_subject">카드종류</span>
+                                        <div class="cmc_input">
+                                            <select name="" id="" class="w50">
+                                                <option value="">선택하세요</option>
+                                                <option value="">산힌</option>
+                                                <option value="">기업</option>
+                                                <option value="">히니</option>
+                                                <option value="">우리</option>
+                                            </select>
+                                        </div>
+                                    </div>
+        
+                                    <div class="cmc_box">
+
+                                        <span class="cmc_subject">카드번호</span>
+                                        <div class="cmc_input">
+                                            <input type="text" class="w24">
+                                            <input type="text" class="w24">
+                                            <input type="text" class="w24">
+                                            <input type="text" class="w24">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="cmc_box mb10px">
+                                        <span class="cmc_subject">유효기간</span>
+                                        <div class="cmc_input">
+                                            <input type="number" class="period_input"> / <input type="number" class="period_input">
+                                        </div>
+                                    </div>
+
+                                    <div class="cmc_box mb10px">
+                                        <span class="cmc_subject">할부방법</span>
+                                        <div class="cmc_input">
+                                            <select name="" id="" class="w100">
+                                                <option value="">선택하세요</option>
+                                                <option value="">일시불</option>
+                                                <option value="">3개월</option>
+                                                <option value="">6개월</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="cmc_box mb10px">
+                                        <span class="cmc_subject">합계금액</span>
+                                        <div class="cmc_input">
+                                            <input type="number" class="w100">
+                                        </div>
+                                    </div>
+
+                                    <div class="cmc_box mb10px">
+                                        <span class="cmc_subject">결제금액</span>
+                                        <div class="cmc_input">
+                                            <input type="number" class="w100">
+                                        </div>
+                                    </div>
+
+                                    <div class="cmc_box mb10px">
+                                        <div class="cmc_input cmc_txt_box">
+                                            <textarea name="" id="" cols="30" rows="10" class="w100" placeholder="서명란"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                        </form>        
+                    </div>
+    
+                    <div class="cc_bottom">
+                        <div class="cc_btn t_center mlr32px">
+                            <div><button class="last_payment">결제</button></div>
+                        </div>
+                    </div>
+    
+    
+                </section>
+                <!--} contents-->
+
+            <!--footer {-->
+            <footer>
+                <div class="ft_wrap mlr32px">
+                    <ul>
+                        <li class="">
+                            <a href="#">
+                                <img class="gray_img" src="../images/c_bottom_icon1.png" srcc="../images/bottom_icon1.png" alt="footer icon image">
+                                <p>투데이정산</p>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#">
+                                <img class="gray_img" src="../images/c_bottom_icon2.png" srcc="../images/bottom_icon2.png"  alt="footer icon image">
+                                <p>공지사항</p>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#">
+                                <img class="gray_img" src="../images/c_bottom_icon3.png" srcc="../images/bottom_icon3.png"  alt="footer icon image">
+                                <p>질문/답변</p>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#">
+                                <img class="gray_img" src="../images/c_bottom_icon4.png" srcc="../images/bottom_icon4.png"  alt="footer icon image">
+                                <p>마이페이지</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+            <!--} footer-->
+        </div>
+        <!--} wrap-->
+    </body>
+</html>

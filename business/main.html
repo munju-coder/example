@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> FLS </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <!--jquery-->
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="../js/main.js"></script>
+        <!--goolge webfont-->
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+        <!--css-->
+        <link rel="stylesheet" href="../css/reset.css">
+        <link rel="stylesheet" href="../css/grid.css">
+        <link rel="stylesheet" href="../css/main.css">
+    </head>
+
+    <script>
+        
+        $("document").ready(function(){
+
+            $(".card_approval").click(function(){
+                $(".list_box > ul").css("background-color","#ffffff");
+                $(this).css("background-color","#dddddd");
+                location.href = "../business/card_approval.html";
+            });
+
+            $(".order_list").click(function(){
+                $(".list_box > ul").css("background-color","#ffffff");
+                $(this).css("background-color","#dddddd");
+                location.href = "../business/order_list.html";
+            });
+
+            $(".order_list_free").click(function(){
+                $(".list_box > ul").css("background-color","#ffffff");
+                $(this).css("background-color","#dddddd");
+                location.href = "../business/order_list_free.html";
+            });
+
+            $(".calculate_list").click(function(){
+                $(".list_box > ul").css("background-color","#ffffff");
+                $(this).css("background-color","#dddddd");
+                location.href = "../business/calculate_list.html";
+            });
+
+            $(".pay_list").click(function(){
+                $(".list_box > ul").css("background-color","#ffffff");
+                $(this).css("background-color","#dddddd");
+                location.href = "../business/pay_list.html";
+            });
+
+            $(".list").click(function(){
+                $(".list_box > ul").css("background-color","#ffffff");
+                $(this).css("background-color","#dddddd");
+                location.href = "../business/list.html";
+            });
+
+            $(".setting").click(function(){
+                $(".list_box > ul").css("background-color","#ffffff");
+                $(this).css("background-color","#dddddd");
+                alert("준비중입니다.");
+            });
+            
+        });
+    </script>
+    <body>
+        <!--wrap {-->
+        <div class="wrap">
+
+            <!-- <div class="bg_background" style = "display:none; position:fixed; width:100%; height:1000px; background-color: #ffffff; "></div>
+            <img src="../images/loading.gif" style="display:none; position:fixed; top:200px; left:41%;" id="loading" /> -->
+
+            <!--header {-->
+            <header>
+                <div class="h_wrap mlr32px">
+                    <h1 class="f46 white_color">온오프</h1>
+                    <ul>
+                        <li class="t_right mb10px"><a href="main.html"><img src="../images/logo.png" alt="FLS logo image"></a></li>
+                        <li><span class="f25 white_color">2020 / 09 / 17 / wed</span></li>
+                    </ul>
+                </div>
+            </header>
+            <!--} header-->
+
+            <!--contents {-->
+            <section class="contents list_contents">
+                <div class="c_middle l_middle">
+                    <div class="cm_wrap lm_wrap">
+                        <div class="list_box">
+                            <ul class="cursor_pointer card_approval" >
+                                <li><img src="../images/icon1.png" alt="list icon image"></li>
+                                <li class="f30">거래승인</li>
+                            </ul>
+
+                            <ul class="cursor_pointer list" >
+                                <li><img src="../images/icon5.png" alt="list icon image"></a></li>
+                                <li class="f30">프리랜서관리</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="list_box">
+                            <ul class="cursor_pointer order_list">
+                                <li><img src="../images/icon2.png" alt="list icon image"></li>
+                                <li class="f30">원장 거래내역</li>
+                            </ul>
+
+                            <ul class="cursor_pointer order_list_free">
+                                <li><img src="../images/icon2.png" alt="list icon image"></li>
+                                <li class="f30">프리랜서 거래내역</li>
+                            </ul>
+                            
+                        </div>
+
+                        <div class="list_box">                            
+                            <ul class="cursor_pointer calculate_list" >
+                                <li><img src="../images/icon3.png" alt="list icon image"></li>
+                                <li class="f30">정산관리</a></li>
+                            </ul>
+
+                            <ul class="cursor_pointer pay_list" >
+                                <li><img src="../images/icon4.png" alt="list icon image"></a></li>
+                                <li class="f30">출금관리</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <!--} contents-->
+
+            <!--footer {-->
+            <footer>
+                <div class="ft_wrap mlr32px">
+                    <ul>
+                        <li class="">
+                            <a href="#">
+                                <img class="gray_img" src="../images/c_bottom_icon1.png" srcc="../images/bottom_icon1.png" alt="footer icon image">
+                                <p>투데이정산</p>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#">
+                                <img class="gray_img" src="../images/c_bottom_icon2.png" srcc="../images/bottom_icon2.png"  alt="footer icon image">
+                                <p>공지사항</p>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#">
+                                <img class="gray_img" src="../images/c_bottom_icon3.png" srcc="../images/bottom_icon3.png"  alt="footer icon image">
+                                <p>질문/답변</p>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#">
+                                <img class="gray_img" src="../images/c_bottom_icon4.png" srcc="../images/bottom_icon4.png"  alt="footer icon image">
+                                <p>마이페이지</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+            <!--} footer-->
+        </div>
+        <!--} wrap-->
+    </body>
+</html>
