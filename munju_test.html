@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MunJu TEST</title>
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<script>
+/* 
+
+<단답형>
+*하기 문제는 자바스크립트 or 제이쿼리를 사용하시오.
+1. input:text name=chk 에 있는 value값을 배열에 담으시오.
+2. input:text name=chk 에 있는 value값을 전부 더하시오.
+3. input:text name=chk 에 있는 value값이 홀수인것만 출력하시오.
+4. input:text name=chk 에 있는 value값이 짝수인것만 출력하시오.
+5. input:text name=chk 에 있는 value값이 홀수인것만 더하시오.
+6. input:text name=chk 에 있는 value값이 짝수인것만 더하시오.
+
+<서술형>
+1. 자료형에 대해 설명하시오
+2. 배열에 대해 설명하시오.
+3. if, for문에 대해 설명하시오.
+4. <form> 태그에 대해 설명하시오.
+5. get, post에 대해 설명하시오.
+6. parameter에 대해 설명하시오.
+7. Object에 대해 설명하시오.
+*/
+
+</script>
+
+
+<script>
+    // var arr = new Array(10, "문자열", false);
+
+    // document.write((typeof arr) + "<br>");    // object
+    // document.write((typeof arr[0]) + "<br>"); // number
+    // document.write((typeof arr[1]) + "<br>"); // string
+    // document.write(typeof arr[2]);            // boolean
+    // var chk = [];
+    // var input = $('input').val();
+    // console.log(input); 
+    // for(var i = 1; i < 11; i++ ){
+    //     chk.push(i);
+    // }
+    // console.log(chk);
+</script>
+
+<script>
+    $(document).ready( function(){
+        var chk_array =[];
+        var inps = $('input');
+        for (var i = 0; i <inps.length; i++) {
+            chk_array.push(inps[i].value);
+        }
+        console.log(chk_array);
+        console.log(chk_array[3]);
+    });
+    
+
+</script>
+
+<body>
+    <!--wrap {-->
+    <div class="wrap">
+        <input type="text" name="chk[]" id="input" value = "1">
+        <input type="text" name="chk[]" id="input" value = "2">
+        <input type="text" name="chk[]" id="input" value = "3">
+        <input type="text" name="chk[]" id="input" value = "4">
+        <input type="text" name="chk[]" id="input" value = "5">
+        <input type="text" name="chk[]" id="input" value = "6">
+        <input type="text" name="chk[]" id="input" value = "7">
+        <input type="text" name="chk[]" id="input" value = "8">
+        <input type="text" name="chk[]" id="input" value = "9">
+        <input type="text" name="chk[]" id="input" value = "10">
+    </div>
+    <!--} wrap-->
+</body>
+</html>

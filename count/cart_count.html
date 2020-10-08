@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURM GALLERY</title>
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="../count/js/COMMON_geo.js"></script>    
+    <!--goolge webfont-->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <!--font Awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!--css-->
+    <link rel="stylesheet" href="../count/css/reset.css">
+    <link rel="stylesheet" href="../count/css/gird.css">
+</head>
+
+<!-- <script>
+    var num=1;
+
+
+    function numPlus(){
+        num++;
+        document.getElementById('cnt').value = num;
+    }
+    function numMinus(){
+        if (num>1) {
+            num--;
+            document.getElementById('cnt').value = num;
+        }
+
+    }
+</script> -->
+<style>
+
+.over_hidden { overflow: hidden; }
+.wrap { width: 640px; overflow: hidden; margin: 0 auto; }
+/*common*/
+a { color: initial; text-decoration: none; }
+a:hover,a:active,a:visited ,a:link { text-decoration: none; }
+input { outline: none; }
+.cursor_pointer { cursor: pointer; }
+.f18 { font-size: 18px; }
+.f23 { font-size: 23px; }
+.f25 { font-size: 25px; }
+.f28 { font-size: 28px; }
+.f30 { font-size: 30px; }
+.f35 { font-size: 35px; }
+.mb20px { margin-bottom: 20px; }
+.mb30px { margin-bottom: 30px; }
+
+/*text-align*/
+.t_center { text-align: center; }
+.t_left { text-align: left; }
+.t_right { text-align: right; }
+/*color*/
+.smart_f_color { color: #043543; }
+.mlr_32px { margin: 0 32px; }
+.fw_bold { font-weight: 600; }
+.wrap { position: relative; }
+.wrap .header_wrap { border-bottom: 1px solid #ddd; padding-bottom: 10px;  padding-top: 30px; }
+.wrap .header_wrap header .h_middle, .h_left { float: left; }
+.h_right { float: right; }
+.wrap .header_wrap header .h_middle { margin-left: 180px; width: 46%; }
+.wrap .header_wrap header .h_right a:first-child { margin-right: 10px; }
+.wrap .header_wrap header::after { content: ''; display: block; overflow: hidden; clear: both; }
+
+.wrap aside { position: absolute; width: 477px; top: 0; right: 0; background-color: #113f4d; opacity: 0.95; display: none; }
+.wrap aside ul li { padding: 20px 0 20px 30px; border-bottom: 1px solid #ddd; }
+.wrap aside ul li:first-child { padding-top: 40px; }
+.wrap aside .close_btn { position: absolute; top: 28px; right: 478px; display: inline-block; }
+.wrap aside ul li a { color: #ffffff; font-size: 25px; }
+
+.wrap .contents .menu_top ul li { float: left; margin-right: 33px;  padding-top: 30px; padding-bottom: 16px; }
+.wrap .contents .menu_top ul li:first-child { margin-left: 10px; }
+.wrap .contents .menu_top ul li:last-child { margin-right: 0; }
+.wrap .contents .menu_top ul li a { font-size: 22px; color: #7c7c7c; font-weight: 600; }
+
+.wrap .contents .product_list .proList_contents { margin-bottom: 60px; }
+.wrap .contents .product_list .proList_contents h2 { padding-top: 50px; padding-bottom: 20px; color: #043543; }
+.wrap .contents .product_list .proList_contents div ul li { font-size: 22px; }
+.wrap .contents .product_list .proList_contents div ul li:first-child { margin-bottom: 10px; }
+.wrap .contents .product_list .proList_contents div { overflow: hidden; }
+.wrap .contents .product_list .proList_contents div ul li:last-child { font-weight: 600; font-size: 25px; }
+.wrap .contents .product_list .proList_contents div .pro_box { float: left; width: 47%;  border: 1px solid #ddd; margin-bottom: 40px; cursor: pointer; }
+.wrap .contents .product_list .proList_contents div::after { content: ''; display: block; overflow: hidden; clear: both; }
+.wrap .contents .product_list .proList_contents div .pro_box:nth-child(odd) { margin-right: 30px; }
+.wrap .contents .product_list .proList_contents div .pro_box img { width: 100%; }
+.wrap .contents .product_list .proList_contents div .pro_box ul { margin-left: 24px; margin-bottom: 20px; }
+
+
+    /*product_view*/
+    .f23 { font-size: 23px; }
+    .f25 { font-size: 25px; }
+    .f28 { font-size: 28px; }
+    .f35 { font-size: 35px; }
+    .mb30px { margin-bottom: 30px; }
+    input { outline: none; }
+    .wrap .header_wrap header .h_middle { width: 67%; margin-left: 150px; }
+    .wrap .pro_contents .pro_txt h2 { padding: 40px 32px; border-bottom: 1px solid #ddd; }
+    .wrap .pro_contents .pro_txt h2 p:first-child { float: left; font-size: 30px; }
+    .wrap .pro_contents .pro_txt h2 p:last-child { float: right; font-size: 35px; }
+    .wrap .pro_contents .pro_txt h2::after { content: ''; display: block; overflow: hidden; clear: both; }
+    
+    .wrap .pro_contents .pro_txt .desert_option { border-bottom: 1px solid #ddd; padding: 30px 32px; }
+    .wrap .pro_contents .pro_txt .desert_option div p:first-child { float: left; }
+    .wrap .pro_contents .pro_txt .desert_option div p:last-child { float: right; }
+    .wrap .pro_contents .pro_txt .desert_option div::after { content: ''; display: block; overflow: hidden; clear: both; }
+    .wrap .pro_contents .pro_txt .desert_option div p input[type='radio']:checked { background-color: white; border: 5px solid #00de8d; }
+    .wrap .pro_contents .pro_txt .desert_option div p input[type='radio'] ,.wrap .pro_contents .pro_txt .desert_option div p input[type='radio']:checked {
+        -ms-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        width: 16px; 
+        height: 16px; 
+        border-radius: 100%;
+        outline: none;
+    }
+    .wrap .pro_contents .pro_txt .desert_option div p input[type='radio'] { background-color:white; border: 4px solid #ddd; }
+
+    .wrap .pro_contents .pro_txt .pro_mount { padding: 50px 32px; border-bottom: 1px solid #ddd; }
+    .wrap .pro_contents .pro_txt .pro_mount p { float: left; }
+    .wrap .pro_contents .pro_txt .pro_mount .count_box { float: right; }
+    .wrap .pro_contents .pro_txt .pro_mount::after { content: ''; display: block; overflow: hidden; clear: both; }
+    .wrap .pro_contents .pro_txt .pro_mount .count_box .count_input { border: 1px solid #ccc; padding: 5px 10px; border-radius: 24px; }
+    .wrap .pro_contents .pro_txt .pro_mount .count_box .count_input input[type="button"] { border: none; background-color: white; font-size: 24px; }
+    .wrap .pro_contents .pro_txt .pro_mount .count_box .count_input #cnt { width: 94px; border: none; text-align: center; font-size: 16px; }
+    
+    .wrap .pro_contents .pro_txt .total_price { border-bottom: 1px solid #ddd; background-color: #f7f7f7; padding: 20px 32px; }
+    .wrap .pro_contents .pro_txt .total_price ul li { float: left; }
+    .wrap .pro_contents .pro_txt .total_price ul li:last-child { float: right; }
+    .wrap .pro_contents .pro_txt .total_price ul::after { content: ''; display: block; overflow: hidden; clear: both; }
+
+    .wrap .pro_contents .pro_txt .protxt_bottom { margin: 32px; margin-bottom: 70px; }
+    .wrap .pro_contents .pro_txt .protxt_bottom div { float: left; width: 49%; text-align: center; padding: 16px 0; }
+    .wrap .pro_contents .pro_txt .protxt_bottom div a { color: white; }
+    .wrap .pro_contents .pro_txt .protxt_bottom::after { content: ''; display: block; overflow: hidden; clear: both; }
+    .wrap .pro_contents .pro_txt .protxt_bottom .cart_submit { background-color: #00de8d; margin-right: 10px; }
+    .wrap .pro_contents .pro_txt .protxt_bottom .order_submit { background-color: #043543; }
+
+
+    .wrap footer .ft_top { margin-bottom: 20px;  }
+    .wrap footer .ft_top ul li { float: left; width: 30%; border-right: 1px solid #ddd; padding-right: 10px; }
+    .wrap footer .ft_top ul li:last-child { border-right: 0; padding-left: 10px; }
+    .wrap footer .ft_top ul li a { font-size: 21px; color: #043543; }
+    .wrap footer .ft_middle { background-color: #043543; color: white; padding: 40px 55px;  font-size: 22px; word-break: keep-all; }
+    .wrap footer .ft_middle ul li { margin-bottom: 10px; }
+</style>
+
+<script>
+    $(document).ready( function(){
+
+    });
+</script>
+<body>
+    <!--wrap {-->
+    <div class="wrap">
+        <div class="header_wrap"> 
+            <header class="mlr_32px">
+                <div class="h_left"><a href="#"><img src="../count/images/header_left_arrow.png" alt="header left icon"></a></div>
+                <div class="h_middle logo_middle"><a href="#"><img src="../count/images//logo.png" alt="main logo image" class="t_center"></a>
+                <div class="h_right">
+                    <a href="#"><img src="../count/images/cart_icon.png" alt="cart icon image"></a>
+                    <a href="#" class="t_right" id="menu_btn"><img src="../count/images/menu_btn.png" alt="menu icon"></a>    
+                </div>
+            </header>
+        </div>
+
+        <!--contents {-->
+        <div class="contents">
+            <section class="menu_top mlr_32px over_hidden">
+                <ul>
+                    <li><a href="#">신메뉴</a></li>
+                    <li><a href="#">커피</a></li>
+                    <li><a href="#">음료</a></li>
+                    <li><a href="#">아이스크림/디저트</a></li>
+                    <li><a href="#">베이커리</a></li>
+                </ul>
+            </section>
+
+            <div class="main_banner">
+                <img src="../count/images/pr_view.png" alt="product image">
+                
+            </div>
+            
+            <div class="pro_contents">
+                <section class="pro_txt">
+                    <h2>
+                        <p>플레인아이스크림</p>
+                        <p class="smart_f_color fw_bold"><span>2,000</span>원</p>
+                    </h2>
+    
+                    <div class="desert_option">
+                        <p class="f23 fw_bold mb30px">디저트 옵션</p>
+                        <div class="mb30px">
+                            <p class="f23">매장에서</p>
+                            <p class="f25 fw_bold"><span>0</span>원 <input type="radio" checked></p>
+                        </div>
+    
+                        <div>
+                            <p class="f23">포장하기</p>
+                            <p class="f25 fw_bold"><span>0</span>원 <input type="radio"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="pro_mount">
+                        <p class="f23">수량</p>
+                        <div class="count_box over_hidden">
+                            <div class="count_input over_hidden"> 
+                                <input type="button" value="-" id="minus">
+                                <input type="text" id="cnt" name="amount[]" class="cnt_input" value="1" readonly="">
+                                <input type="button" id="plus" value="+">
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="total_price">
+                        <ul>
+                            <li class="f28 fw_bold">총 주문금액</li>
+                            <li class="f28 smart_f_color fw_bold"><span>2,000</span>원</li>
+                        </ul>
+                    </div>
+    
+                    <div class="protxt_bottom">
+                        <div class="cart_submit"><a href="#" class="f25">장바구니 담기</a></div>
+                        <div class="order_submit"><a href="#" class="f25">주문하기</a></div>
+                    </div>
+    
+                </section>
+            </div>
+            
+           
+        </div>
+        <!--} contents-->
+
+        <!--footer {-->
+        <footer>
+            <div class="ft_top over_hidden mlr_32px t_center">
+                <ul>
+                    <li><a href="#">고객센터</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                </ul>
+            </div>
+
+            <div class="ft_middle">
+                <ul class="t_center">
+                    <li><strong>아우름카페</strong> 서은교</li>
+                    <li>주소: 경기도 광명시 오리로길 619번길 11 (하안동 232번지) 예원빌딩</li>
+                    <li>팩스 : 02-897-8952 개인정보 보호책임자 : 김완수</li>
+                    <li>Copyright © 2019 갤러리아우름. All Rights Reserved.</li>
+                </ul>
+            </div>
+        </footer>
+        <!--} footer-->
+    </div>
+    <!--} wrap-->
+    
+</body>
+</html>
