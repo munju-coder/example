@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MunJu TEST</title>
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<script>
+/* 
+
+<단답형>
+*하기 문제는 자바스크립트 or 제이쿼리를 사용하시오.
+1. input:text name=chk 에 있는 value값을 배열에 담으시오.
+2. input:text name=chk 에 있는 value값을 전부 더하시오.
+3. input:text name=chk 에 있는 value값이 홀수인것만 출력하시오.
+4. input:text name=chk 에 있는 value값이 짝수인것만 출력하시오.
+5. input:text name=chk 에 있는 value값이 홀수인것만 더하시오.
+6. input:text name=chk 에 있는 value값이 짝수인것만 더하시오.
+
+<서술형>
+1. 자료형에 대해 설명하시오
+-변수-> 데이터의 저장을 위해 할당된 메모리 공간의 이름 -> ex)정수를 저장하려면 몇 바이트를 사용할까요?-> 4바이트의 이름은 num인 정수를 저장하고싶다 -> 자료형이 int 변수 num
+-자료형은 변수의 종류를 의미하는데 변수에 값을 담기 이전에, 정수, 실수, 문자, 문자열 등 어떤 값을 지닐 수 있는지 미리정해주여야한다.
+-자료형(Data Type)은 데이터를 표현하는 방법으로 시스템, 컴파일러 ,사람 등이 인식 가능한 자료형태로 컴퓨터 내에서 특정 비트들이 그룹핑 되어 연산되는 방식이다. 
+-일정 크기(길이)의 메모리에 저장된 정보를 해석하는 방법.
+자료형  
+->정수형
+       char    1byte(8bite) -128이상 -127이하 데이터의 종류 2의8승 = 256개
+       short   2byte()
+
+
+
+->같은 자료형이라 하더라고 사용되는 바이트 크기가 클수록 표현할 수 있는 값의 범위가 넓어진다.
+
+2. 배열에 대해 설명하시오.
+3. if, for문에 대해 설명하시오.
+4. <form> 태그에 대해 설명하시오.
+5. get, post에 대해 설명하시오.
+6. parameter에 대해 설명하시오.
+7. Object에 대해 설명하시오.
+*/
+
+</script>
+
+
+<script>
+    // var arr = new Array(10, "문자열", false);
+
+    // document.write((typeof arr) + "<br>");    // object
+    // document.write((typeof arr[0]) + "<br>"); // number
+    // document.write((typeof arr[1]) + "<br>"); // string
+    // document.write(typeof arr[2]);            // boolean
+    // var chk = [];
+    // var input = $('input').val();
+    // console.log(input); 
+    // for(var i = 1; i < 11; i++ ){
+    //     chk.push(i);
+    // }
+    // console.log(chk);
+</script>
+
+<script>
+    $(document).ready( function(){
+        var chk_array =[];
+        var inps = $('input');
+        for (var i = 0; i <inps.length; i++) {
+            chk_array.push(inps[i].value);
+        }
+        console.log(chk_array);
+        console.log(chk_array[3]);
+    });
+    
+
+</script>
+
+<body>
+    <!--wrap {-->
+    <div class="wrap">
+        <input type="text" name="chk[]" id="input" value = "1">
+        <input type="text" name="chk[]" id="input" value = "2">
+        <input type="text" name="chk[]" id="input" value = "3">
+        <input type="text" name="chk[]" id="input" value = "4">
+        <input type="text" name="chk[]" id="input" value = "5">
+        <input type="text" name="chk[]" id="input" value = "6">
+        <input type="text" name="chk[]" id="input" value = "7">
+        <input type="text" name="chk[]" id="input" value = "8">
+        <input type="text" name="chk[]" id="input" value = "9">
+        <input type="text" name="chk[]" id="input" value = "10">
+    </div>
+    <!--} wrap-->
+</body>
+</html>
