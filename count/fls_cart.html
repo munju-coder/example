@@ -82,55 +82,55 @@
                 
                             <tbody>
                                 <tr class = "bg_0">
-                                    <td class="t_center"><input type="checkbox" name="chk[]" class="each_input"></td>
-                                    <td class="t_center">20/10/10</td>
-                                    <td class="t_center">970,000</td>
-                                    <td class="t_center">10%</td>
-                                    <td class="t_center">97,000</td>
-                                    <td class="t_center payment_status">출금완료</td>
-                                </tr>
-                
-                                <tr class = "bg_1">
-                                    <td class="t_center"><input type="checkbox" name="chk[]" class="each_input"></td>
+                                    <td class="t_center"><input type="checkbox" name="chk[]"></td>
                                     <td class="t_center">20/10/10</td>
                                     <td class="t_center">970,000</td>
                                     <td class="t_center">10%</td>
                                     <td class="t_center withdrawal_val">97,000</td>
-                                    <td class="t_center payment_status">출금가능</td>
-                                </tr>
-                
-                                <tr class = "bg_0">
-                                    <td class="t_center"><input type="checkbox" name="chk[]" class="each_input"></td>
-                                    <td class="t_center">20/10/10</td>
-                                    <td class="t_center">970,000</td>
-                                    <td class="t_center">10%</td>
-                                    <td class="t_center">97,000</td>
-                                    <td class="t_center payment_status">출금완료</td>
+                                    <td class="t_center payment_chk">출금완료</td>
                                 </tr>
                 
                                 <tr class = "bg_1">
-                                    <td class="t_center"><input type="checkbox" name="chk[]" class="each_input"></td>
+                                    <td class="t_center"><input type="checkbox" name="chk[]"></td>
                                     <td class="t_center">20/10/10</td>
                                     <td class="t_center">970,000</td>
                                     <td class="t_center">10%</td>
-                                    <td class="t_center">97,000</td>
-                                    <td class="t_center payment_status">출금가능</td>
+                                    <td class="t_center withdrawal_val">97,000</td>
+                                    <td class="t_center payment_chk">출금가능</td>
                                 </tr>
                 
                                 <tr class = "bg_0">
-                                    <td class="t_center"><input type="checkbox" name="chk[]" class="each_input"></td>
+                                    <td class="t_center"><input type="checkbox" name="chk[]"></td>
                                     <td class="t_center">20/10/10</td>
                                     <td class="t_center">970,000</td>
                                     <td class="t_center">10%</td>
-                                    <td class="t_center">97,000</td>
-                                    <td class="t_center payment_status">출금가능</td>
+                                    <td class="t_center withdrawal_val">97,000</td>
+                                    <td class="t_center payment_chk">출금완료</td>
+                                </tr>
+                
+                                <tr class = "bg_1">
+                                    <td class="t_center"><input type="checkbox" name="chk[]"></td>
+                                    <td class="t_center">20/10/10</td>
+                                    <td class="t_center">970,000</td>
+                                    <td class="t_center">10%</td>
+                                    <td class="t_center withdrawal_val">97,000</td>
+                                    <td class="t_center payment_chk">출금가능</td>
+                                </tr>
+                
+                                <tr class = "bg_0">
+                                    <td class="t_center"><input type="checkbox" name="chk[]"></td>
+                                    <td class="t_center">20/10/10</td>
+                                    <td class="t_center">970,000</td>
+                                    <td class="t_center">10%</td>
+                                    <td class="t_center withdrawal_val">97,000</td>
+                                    <td class="t_center payment_chk">출금가능</td>
                                 </tr>
                             </tbody>
                         </table> 
                         
                         <div class="pay_btn">
                             <button type="submit" class="fw_bold">출금요청</button>
-                            <div class="fw_bold"><span>0</span>원</div>
+                            <div class="fw_bold"><span id = "total_price">0</span>원</div>
                         </div>
                     </form>              
                 </div>
@@ -140,31 +140,155 @@
             </section>
             <!--} contents-->
 
-            <script>
+            <!-- <script>
                 //출금 가능일때만 input 값을 클릭하면 총 합계를 반영하는 script
                 $(document).ready( function(){
                     var InputEach_arr = [];     //더해줄 각각의 가격값
-                    var Probable_arr = []; //출금이 가능한 것만 배열에 담음
-                    var Total_prce = 0;    //총 가격 초기화 -> all_input을 클릭하지 않았을 때는 총가격 0원
+                    var payment_chk_arr = []; //출금이 가능한 것만 배열에 담음
+                    var total_price = 0;    //총 가격 초기화 -> all_input을 클릭하지 않았을 때는 총가격 0원
+                    var chkBox = []; //각각의 인풋이 체크됐는지 확인하는 배열
                     var Input_chk = false; //각각의 인풋이나, all_input을 클릭하지 않았을 때 alert창 띄우기 위한 변수
 
-                    $('#all_input').click( function(){
-                        if($("#all_input").prop('checkd')){
-                            input_chk = true;
+                    $('#all_chk').click( function(){
+                        total_price = 0; 
+                        if($("#all_chk").prop('checked')){
+                            Input_chk = true;
                             $("input:checkbox[name='chk[]']").prop('checked',true);
+
                             $("input:checkbox[name='chk[]']").each( function(i){
-                                InputEach_arr[i] = parseInt(COMMON.form.str_num($(this).parents().siblings('.each_input').text()));
-                                Probable_arr[i] = parseInt(COMMON)
+                                InputEach_arr[i] = parseInt(COMMON.form.str_num($(this).parents().siblings('.withdrawal_val').text()));
+                                payment_chk_arr[i] = COMMON.form.trim($(this).parents().siblings('.payment_chk').text());
                                 
                             });
+
+                            //payment_status 에서 출금가능일때만 총합을 가져와야 하므로
+                            for(var k = 0; i < payment_chk_arr.length; k++){
+                                if(payment_chk_arr[k] == '출금가능'){
+                                    total_price += InputEach_arr[k];
+                                }
+                            }
                         
+
                         }else{
+                            Input_chk = false;
+                            InputEach_arr = [];
+                            payment_chk_arr = [];
+                            total_price = 0;
+                            $("input:checkbox[name='chk[]']").prop('checked',false);
 
                         }
+                        $('#total_price').text(COMMON.form.comma(total_price));
                     });
 
                 }); 
-            </script>
+            </script> -->
+            <script>
+                $("document").ready( function(){
+
+                    var withdrawal_val_arr  = [];                    
+                    var payment_chk_arr     = [];
+                    var chkBox              = [];
+                    var total_price         = 0;
+                    var c_chk = false;
+
+
+                    $('#all_chk').click(function(){
+
+                        total_price = 0;
+                                    
+                        if($("#all_chk").prop("checked")) 
+                        {
+                            c_chk = true;
+                            $("input:checkbox[name='chk[]']").prop("checked",true);
+
+                            $("input:checkbox[name='chk[]']").each(function(i){
+                                withdrawal_val_arr[i] = parseInt(COMMON.form.str_num($(this).parents().siblings(".withdrawal_val").text()));
+                                payment_chk_arr[i] = COMMON.form.trim($(this).parents().siblings(".payment_chk").text());
+
+                            });
+
+                            for(var k = 0; k < payment_chk_arr.length; k++)
+                            {
+                                if(payment_chk_arr[k] == "출금가능")
+                                {
+                                    total_price += withdrawal_val_arr[k];
+                                }
+                                /* else
+                                {
+                                    $("input:checkbox[name='chk[]']").eq(k).prop("checked",false);
+                                } */
+                            }
+                        }
+                        else 
+                        {
+                            c_chk = false;
+                            withdrawal_val_arr = [];
+                            payment_chk_arr = [];          
+                            total_price = 0;
+
+                            $("input:checkbox[name='chk[]']").prop("checked",false);
+                        }
+
+                        $("#total_price").text(COMMON.form.comma(total_price));
+
+                    });
+                    
+
+                    //each
+                    $("input:checkbox[name='chk[]']").each(function(i){
+                        $(this).click(function(){
+                            chkBox[i] = $(this).is(":checked");
+                            var payment_chk = $(this).parents().siblings(".payment_chk").text();
+
+                            if(payment_chk == "출금가능")
+                            {
+                                if(chkBox[i] == true)
+                                {
+                                    c_chk = true;
+                                    payment_chk_arr[i] = parseInt(COMMON.form.str_num($(this).parents().siblings(".withdrawal_val").text()));
+                                    total_price += payment_chk_arr[i];
+                                    $("#total_price").text(COMMON.form.comma(total_price));
+                                }
+                                else
+                                {
+                                    c_chk = false;
+                                    payment_chk_arr[i] = parseInt(COMMON.form.str_num($(this).parents().siblings(".withdrawal_val").text()));
+                                    total_price -= payment_chk_arr[i];
+                                    $("#total_price").text(COMMON.form.comma(total_price));
+                                }
+                            }
+                            else
+                            {
+                                alert("선택하신 정산내역은 출금완료 처리되어 출금 할 수 없습니다.");
+                                $(this).prop("checked",false);
+                            }
+                        });
+                    });   
+
+                    $("#pay_form").submit(function(e){
+                        e.preventDefault();
+
+                        if(c_chk == false)
+                        {
+                            alert("출금하실 정산내역을 선택하세요.");
+                            return false;
+                        }
+                        else
+                        {
+                            var conf = confirm("선택하신 정산내역을 출금하시겠습니까?");
+
+                            if(conf == true)
+                            {
+                                alert("출금되었습니다");
+                                return false;
+                            }
+                            
+                        } 
+                    });
+                                       
+                });
+            </script>  
+
             <!-- <script>
                 $("document").ready( function(){
 
@@ -272,7 +396,7 @@
                 });
             </script>             -->
            <!--footer {-->
-            <footer>
+            <!-- <footer>
                 <div class="ft_wrap mlr32px">
                     <ul>
                         <li class="">
@@ -304,7 +428,7 @@
                         </li>
                     </ul>
                 </div>
-            </footer>
+            </footer> -->
             <!--} footer-->
         </div>
         <!--} wrap-->

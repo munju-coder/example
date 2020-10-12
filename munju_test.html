@@ -238,7 +238,7 @@ for(var i = 0; i < 10; i++){
 반복조건인 i < 10이 실행된다 i의 값은 0이므로 참이고, 반복조건이 참이면 중괄호 안의
 내용이 실행된다. i의 값이 0이기 때문에 중괄호 안에 있는 텍스트가 출력된다. 
 i++는 현재 i의 값에 1을 더하라는 의미로 i<10이라서 참이며, i의 값에 1을 더해서 i는 1이고,
-이 과정에서 i의 값은 반복 될 때마다 1씩 증가한다. 결국 i의 값이 10이 되는 순간 i<10을 
+이 과정에서 i의 값은 반복 될 때마다 1씩 증가한다. 결국 i의 값이 10이 되는 순간 i < 10 을 
 충족시키지 못하기 때문에 반복문은 9까지만 출력되고 종료된다.
 
 for (var i = 0; i < 10; i++){
@@ -464,17 +464,43 @@ global(특정한 객체에 속하지 않는 함수와 속성들)이다.
 
 <script>
     $(document).ready( function(){
+        // 1. input:text name=chk 에 있는 value값을 배열에 담으시오.
         var chk_array =[];
         var inps = $('input');
-        for (var i = 0; i <inps.length; i++) {bb
+        for (var i = 0; i < inps.length; i++) {
             chk_array.push(inps[i].value);
         }
-        console.log(chk_array);
-        console.log(chk_array[3]);
+        console.log(chk_array); 
+
+        // 2. input:text name=chk 에 있는 value값을 전부 더하시오.
+        // $("input:checkbox[name='chk[]']").change(function(i){
+        //     sum = $(this).val();
+        //     alert(sum);
+        // });
+
+        $("input:checkbox[name='chk[]']").blur( function(){
+            var sum = 0;
+            $("input:checkbox[name='chk[]']").each( function(){
+                sum += Number($(this).val());
+            });
+
+            console.log($('#input_sum').val(sum));
+        });
+
+        // $("#total").click( function(){
+        //     for (var k = 0; k < inps.length; k++){
+                
+        //     }
+        //     console.log(chk_array[k]);
+
+        //     var sum = parseInt(chk_array[i].val()) + parseInt($("input").val());
+        //     alert(sum);
+        // });
 
     });
-   
     
+       
+
 </script>
 
 <body>
@@ -492,7 +518,13 @@ global(특정한 객체에 속하지 않는 함수와 속성들)이다.
         <input type="text" name="chk[]" id="input" value = "10">
     </div>
     <!--} wrap-->
+    <button id="input_sum">click</button>
 
-    
+    <form action="/action_page.php">
+        <label for="birthday">Birthday:</label>
+        <input type="date" id="birthday" name="birthday">
+        <input type="submit" value="Submit">
+      </form>
+      
 </body>
 </html>
