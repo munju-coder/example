@@ -139,57 +139,14 @@
                 </div>
             </section>
             <!--} contents-->
-
-            <!-- <script>
-                //출금 가능일때만 input 값을 클릭하면 총 합계를 반영하는 script
-                $(document).ready( function(){
-                    var InputEach_arr = [];     //더해줄 각각의 가격값
-                    var payment_chk_arr = []; //출금이 가능한 것만 배열에 담음
-                    var total_price = 0;    //총 가격 초기화 -> all_input을 클릭하지 않았을 때는 총가격 0원
-                    var chkBox = []; //각각의 인풋이 체크됐는지 확인하는 배열
-                    var Input_chk = false; //각각의 인풋이나, all_input을 클릭하지 않았을 때 alert창 띄우기 위한 변수
-
-                    $('#all_chk').click( function(){
-                        total_price = 0; 
-                        if($("#all_chk").prop('checked')){
-                            Input_chk = true;
-                            $("input:checkbox[name='chk[]']").prop('checked',true);
-
-                            $("input:checkbox[name='chk[]']").each( function(i){
-                                InputEach_arr[i] = parseInt(COMMON.form.str_num($(this).parents().siblings('.withdrawal_val').text()));
-                                payment_chk_arr[i] = COMMON.form.trim($(this).parents().siblings('.payment_chk').text());
-                                
-                            });
-
-                            //payment_status 에서 출금가능일때만 총합을 가져와야 하므로
-                            for(var k = 0; i < payment_chk_arr.length; k++){
-                                if(payment_chk_arr[k] == '출금가능'){
-                                    total_price += InputEach_arr[k];
-                                }
-                            }
-                        
-
-                        }else{
-                            Input_chk = false;
-                            InputEach_arr = [];
-                            payment_chk_arr = [];
-                            total_price = 0;
-                            $("input:checkbox[name='chk[]']").prop('checked',false);
-
-                        }
-                        $('#total_price').text(COMMON.form.comma(total_price));
-                    });
-
-                }); 
-            </script> -->
             <script>
                 $("document").ready( function(){
 
-                    var withdrawal_val_arr  = [];                    
-                    var payment_chk_arr     = [];
-                    var chkBox              = [];
-                    var total_price         = 0;
-                    var c_chk = false;
+                    var withdrawal_val_arr  = [];   //더해줄 각각의 가격값                  
+                    var payment_chk_arr     = [];   //출금이 가능한 것만 배열에 담음
+                    var chkBox              = [];   //각각의 인풋이 체크됐는지 확인하는 배열
+                    var total_price         = 0;    //총 가격 초기화 -> all_input을 클릭하지 않았을 때는 총가격 0원
+                    var c_chk = false;              //각각의 인풋이나, all_input을 클릭하지 않았을 때 alert창 띄우기 위한 변수
 
 
                     $('#all_chk').click(function(){
@@ -206,7 +163,7 @@
                                 payment_chk_arr[i] = COMMON.form.trim($(this).parents().siblings(".payment_chk").text());
 
                             });
-
+                            //payment_status 에서 출금가능일때만 총합을 가져와야 하므로
                             for(var k = 0; k < payment_chk_arr.length; k++)
                             {
                                 if(payment_chk_arr[k] == "출금가능")
