@@ -1,0 +1,82 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Ajax 간단 테스트</title>
+ 
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<!--
+    Ajax(비동기식 자바스크립트 XML Asynchronous Javascript And XML)
+    -리로드 없이 웹서버에게 정보를 요청해서 부분적으로 정보를 갱신해주는 기술로, html만으로
+    어려운 다양한 작업을 웹페이지에서 구현해 이용자가 웹페이지와 자유롭게 상호 작용할 수 있도록 하는 기술, 
+    별도 프로그램을 설치하거나 웹페이지를 다시 로딩하지 않고도 메뉴 등 화면상의 객체를 자유롭게 움직이고
+    다룰 수 있다. 
+    =별도의 웹페이지를 호출하지 않아도 클라이언트의 화면을 유지한 채 다른 페이지를 호출 할 수 있다. 
+
+    ex_) 네이버 메일의 경우 삭제할 메일을 체크하고 삭제버튼을 누르면 선택한 메일이 삭제됨, 
+    -> 주소변화 없음, 삭제가 되었을 때에는 메일리스트 부분만 새로고침됨, 페이징도 동일함. 
+    -> 만약 Ajax를 사용하지 않았을 경우에는 페이지에 직접 요청하여 링크가 변경되고, 
+    매번 복잡한 로직과 화면의 새로고침을 보게됨(메일을 삭제해도 화면이 깜빡이고, 다른곳으로 넘겨도 깜빡이게됨, )
+
+
+
+    type               -> http 전송 method를 지정한다(통신타입). GET, POST
+    url                -> 호출 url,GET 방식일 경우 URL뒤에 파라미터를 붙여서 사용해도 된다./ 요청할 url 기입
+    data Type          ->  Ajax를 통해 호출한 페이지를 리턴, 형식에 따라 XML, json, html, text 등을 사용(응답받을 데이터의 타입을 기입)
+    error              -> 에러 났을때의 처리 부분.
+    success            -> 성공했을 때의 처리 부분, 보통 해당 부분에서 데이터 핸들링을 하면 된다
+
+
+    cf) 
+    event handler -특정 요소에서 발생하는 이벤트를 처리하기 위해 사용하는 이벤트 핸들러 , 함수를 작성하여 연결함. 
+                  -이벤트 핸들러가 연결된 특정 요소에서 지정된 타입의 이벤트가 발생하면 , 웹브라우저는 연결된 이벤트를 실행함
+
+-->
+ 
+<script type="text/javascript" language="javascript">
+ 
+    $(document).ready(function(){
+         
+         
+        $.ajax({
+             
+            type : "GET",
+            url : "ajaxData.jsp?type=1",
+            dataType : "text",
+            error : function(){
+                alert('통신실패!!');
+            },
+            success : function(data){
+                alert("통신데이터 값 : " + data) ;
+                $("#dataArea").html(data) ;
+            }
+             
+        });
+         
+         $('button').on({
+            mouseenter: function(){
+                $('#text').append("마우스 버튼 위로 진입<br>");
+            },
+            click: function(){
+                $('#text').append('마우스 버튼 클릭<br>');
+            },
+            mouseleave: function(){
+                $('#text').append('마우스 버튼 위로 탈출<br>');
+            }
+         });
+ 
+    });
+ 
+</script>
+ 
+</head>
+<body>
+ 
+    <div id="dataArea"></div>
+    <button>이벤트핸들러</button>
+    <div id="text"></div>
+ 
+</body>
+</html>

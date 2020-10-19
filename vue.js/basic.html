@@ -6,48 +6,33 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="vue_app">
-        <div>
-            <input type="text" v-model="msg"> 
-            <button @click="button_handler">
-                <span v-if="msg_active">hide</span>
-                <span v-else>show</span>
-            </button>
-        </div>
-
-        <msg-holder v-bind:msg="msg" 
-                    v-bind:msg_active="msg_active">
-        </msg-holder>
-        
-        
-        <!-- <div v-if="msg_active">{{msg}}</div> -->
+    <div id="app">
+        <div>{{message}}</div>
+        <h1>{{description}}</h1>
     </div>
-
     
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
     <script>
-        Vue.component ('msg-holder',{
-            props : [ 'msg', 'msg_active'],
-            template : '<div v-if="msg_active">{{msg}}</div>'
-        });
 
-        Vue.component ('input-holder',{
-            props : [ 'msg', 'msg_active','button_handler'],
-            template : '<div v-if="msg_active">{{msg}}</div>'
+        /*
+            vue 기본형태
+            el  -> 어떠한 id를 가진 html태그에 종송될 것인지 표기
+            
+            Vue인스턴스를 특정 태그에 종속시키면 Vue 인스턴스 내부에 있는 데이터를 화면으로 뿌려줄 수 있고 
+            
+            또 동기화가 되어 Vue 인스턴스 데이터가 바뀔 때마다 화면에 표시되는 내용이 바뀌게 만들 수 있다.
+            Vue 인스턴스가 없었다면, {{message}}가 출력되지만, 스크립트 내부에 Vue인스턴스가 있으므로 
+            message의 속성의 값을 화면으로 가져옴, 
+            만일 Vue 인스턴스 내부의 값이 바뀌면 화면에 표기된 내용도 동시에 바뀌게 된다. 
+        */
+        var app = new Vue({
+          el: '#app',
+          data: {
+            message: '안녕하세요 Vue!',
+            description: '반갑습니다',
+          },
         });
-
-        var vueApp = new Vue ({
-            'el' : '#vue_app',
-            'data' : {
-                'msg' : 'vue.js',
-                'msg_active': true
-            },
-            methods: {
-                button_handler : function () {
-                    this.msg_active = !this.msg_active;
-                }
-            }
-        });
-    </script>
+      </script>
 </body>
 </html>  
