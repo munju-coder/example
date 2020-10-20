@@ -11,13 +11,30 @@
         <h1>{{description}}</h1>
     </div>
     
+    <!--이벤트 청취-->
+    <div id="example-1">
+      <button v-on:click="counter += 1">Add 1</button>
+      <p>위 버튼을 클릭한 횟수는 {{counter}}번 입니다.</p>
+    </div>
+
+    <!--메소드 이벤트 핸들러-->
+    <div id="example-2">
+      <button v-on:click="greet">Greet</button>
+    </div>
+
+    <!--인라인 메소드 핸들러-->
+    <div id="example-3">
+      <button v-on:click="say('hi')">Say hi</button>
+      <button v-on:click="say('what')">Say what</button>
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <script>
 
         /*
             vue 기본형태
-            el  -> 어떠한 id를 가진 html태그에 종송될 것인지 표기
+            el  -> 어떠한 id를 가진 html태그에 종속될 것인지 표기
             
             Vue인스턴스를 특정 태그에 종속시키면 Vue 인스턴스 내부에 있는 데이터를 화면으로 뿌려줄 수 있고 
             
@@ -25,6 +42,10 @@
             Vue 인스턴스가 없었다면, {{message}}가 출력되지만, 스크립트 내부에 Vue인스턴스가 있으므로 
             message의 속성의 값을 화면으로 가져옴, 
             만일 Vue 인스턴스 내부의 값이 바뀌면 화면에 표기된 내용도 동시에 바뀌게 된다. 
+
+            v-on 디렉티브를 사용하여 DOM이벤트를 듣고 트리거 될 때 javascript를 실행할 수 있다. 
+            하지만 많은 이벤트 핸들러의 로직은 더 복잡할 것이므로, v-on 속성 값으로 보관하는 것보다
+            v-on 이 호출하고자 하는 메소드의 이름을 받는것이 수월함.
         */
         var app = new Vue({
           el: '#app',
@@ -33,6 +54,46 @@
             description: '반갑습니다',
           },
         });
-      </script>
+
+        var example = new Vue({
+          el: '#example-1',
+          data: {
+            counter: 0
+          }
+        });
+
+        var example2 = new Vue({
+          el: '#example-2',
+          data: {
+            name: 'Vue.js'
+          },
+          
+          //메소드는 'method'객체 안에 정의함
+          methods: {
+            greet: function(event){
+              //메소드 안에서 사용하는 this는 Vue 인스턴스를 가르킴
+              alert('Hello' + this.name + '!')
+              //event는 native DOM 이벤트
+              if(event){
+                alert(event.target.tagName);
+              }
+            }
+          } 
+        
+        })
+        //method안에 있는 객체 호출
+        example2.greet();
+
+        //메소드 이름을 직접 바인딩 하는 대신 인라인 javascript 구문에 메소드를 사용
+        new Vue ({
+          el: '#example-3',
+          methods:{
+            say: function(message){
+              alert(message)
+            }
+          }
+        });
+        
+    </script>
 </body>
 </html>  
