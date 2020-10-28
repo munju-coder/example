@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="../css/jquery.transit.min.js"></script>
+</head>
+<style>
+    .module_ty {
+        position: relative;
+    }
+    .btn_arrow {
+        display: inline-block;
+        color: #0098c2;
+        font-size: 16px;
+        transition: all 0.4s;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .btn_arrow span {
+        display: inline-block;
+        position: relative;
+        padding-right: 17px;
+    }
+    .btn_arrow span:after {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        width: 16px;
+        height: 16px;
+        margin-top: -7px;
+        border: solid #0098c2;
+        border-width: 3px 3px 0 0;
+        box-sizing: border-box;
+        transform: rotate(45deg) scale(0.5);
+        content: "";
+        transition: all 0.4s;
+    }
+</style>
+<body>
+    <ul class="module_ty">
+        <li class="li">
+            <div class="img">
+                <a href="/kr/ai-rpa/brity-rpa.html" class="md_link">
+                    <span class="img_p imgLiquid_bgSize imgLiquid_ready" style="background-image: url(&quot;https://image.samsungsds.com/kr/ai-rpa/__icsFiles/afieldfile/2020/08/26/img_realated.jpg?queryString=20201020053031&quot;); background-size: cover; background-position: center center; background-repeat: no-repeat;"><img src="https://image.samsungsds.com/kr/ai-rpa/__icsFiles/afieldfile/2020/08/26/img_realated.jpg?queryString=20201020053031" alt="" style="display: none;"></span>
+                </a>
+            </div> 
+            <div class="txt">
+                <strong class="md_tit tit_s"><a href="/kr/ai-rpa/brity-rpa.html" class="md_link">Brity RPA</a></strong>
+                <p class="md_txt">AI기반 RPA 솔루션 Brity RPA로 기업의 업무생산성을 혁신해보세요. Brity RPA로 구현한 Bot이 단순, 반복, 비생산적인 업무를 수행하는 동안 직원들은 보다 창의적이고 핵심적인 업무에 집중할 수 있습니다.</p>
+                <div class="md_btn">
+                    <a href="/kr/ai-rpa/brity-rpa.html" class="btn_arrow"><span>자세히 보기</span></a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</body>
+</html>
