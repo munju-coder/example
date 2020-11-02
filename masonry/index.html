@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>masonry.js 플로그인 예제</title>
+	<style>
+		.grid-item { width: 23%; margin: 30px 1%;}
+		.grid-item > img { width: 100%; }
+		
+		@media all and (max-width: 800px){
+			.grid-item { width: 48%; margin: 30px 1%;}
+		}
+	</style>
+	<script src ="js/jquery-3.2.1.min.js"></script>
+	<script src ="js/masonry.pkgd.min.js"></script>
+	<script>
+		$(function(){
+			$('.grid').masonry({
+			  itemSelector: '.grid-item',
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="grid">
+		<div class="grid-item">
+			<img src="images/img1.jpg" alt="img">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.</p>
+		</div>
+
+		<div class="grid-item">
+			<img src="images/img2.jpg" alt="img">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.</p>
+		</div>
+
+		<div class="grid-item">
+			<img src="images/img3.jpg" alt="img">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.</p>
+		</div>
+
+		<div class="grid-item">
+			<img src="images/img1.jpg" alt="img">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.</p>
+		</div>
+
+		<div class="grid-item">
+			<img src="images/img4.jpg" alt="img">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.</p>
+		</div>
+
+		<div class="grid-item">
+			<img src="images/img2.jpg" alt="img">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.</p>
+		</div>
+
+		<div class="grid-item">
+			<img src="images/img3.jpg" alt="img">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.</p>
+		</div>
+
+		<div class="grid-item">
+			<img src="images/img1.jpg" alt="img">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.</p>
+		</div>
+
+		<div class="grid-item">
+			<img src="images/img2.jpg" alt="img">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.</p>
+		</div>
+
+		<div class="grid-item">
+			<img src="images/img3.jpg" alt="img">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.</p>
+		</div>
+
+		<div class="grid-item">
+			<img src="images/img1.jpg" alt="img">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.</p>
+		</div>
+
+		<div class="grid-item">
+			<img src="images/img4.jpg" alt="img">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.</p>
+		</div>
+
+		<div class="grid-item">
+			<img src="images/img2.jpg" alt="img">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, recusandae.</p>
+		</div>
+	</div>
+</body>
+</html>

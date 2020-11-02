@@ -3,41 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-
-
-.log_chk { position: relative; }
-.log_chk .log_label input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
-.log_chk .log_label .checkmark { position: absolute; top: 0; left: 0; height: 30px; width: 30px; border: 2px solid #7251e6; margin-top: 6px; }
-.log_chk .log_label .checkmark:after { content: ""; position: absolute; display: none; }
-.log_chk .log_label input:checked ~ .checkmark:after { display: block; }
-.log_chk .log_label .checkmark:after {
-    left: 9px;
-    top: 6px;
-    width: 8px;
-    height: 10px;
-    border: solid #7251e6;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-.log_chk .log_label .login_txt { display: inline-block; margin-top: 4px; margin-left: 60px; font-size: 28px; }
-#mb_id { margin-bottom: 20px; }
-input { padding: 16px 10px; border: 1px solid #868686; font-size: 24px; } 
-.log_chk { margin-top: 60px; }
-    </style>
+    <title>input style1</title>
+    
 </head>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&subset=greek-ext');
+    .t_center { text-align: center; }
+    span { display: block; color: white; text-transform: uppercase; font-size: 23px; margin: -50px 0 80px 0; }
+    .box { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background-color: rgba(0,0,0,0.89); border-radius: 3px; padding: 70px 100px; }
+    .input-container { position: relative; margin: 25px 0; }
+    .input-container label { position: absolute; top: 0; left: 0; font-size: 16px; color: white; transition: all .5s ease-in-out; pointer-events: none;  }
+    .input-container input { width: 100%; border: none; border-bottom: 1px solid #555; background-color: transparent; padding: 8px 0 5px 0; font-size: 16px; color: white; }
+    .input-container input:focus { border: none; outline: none; border-bottom: 1px solid #e74c4c; }
+    .btn { border: none; color: white; background-color: #e74c4c; outline: none; border-radius: 2px; margin-top: 50px; cursor: pointer; position: relative; padding: 10px 20px; }
+    .input-container input:focus ~ label, .input-container input:valid ~ label { top: -12px; font-size: 12px; }
+</style>
 <body>
-    <div class="log_chk t_left">
-        <!-- <input type="checkbox">
-        <span>로그인 유지</span> -->
-        <label class="log_label">
-            <input type="checkbox" checked="checked">
-            <span class="checkmark"></span>
-            <span class="login_txt">로그인유지</span>
-        </label>
+    <div class="box">
+        <form>
+            <span class="t_center">login</span>
+
+            <div class="input-container">
+                <input type="text" required="">
+                <label>Full Name</label>		
+            </div>
+
+            <div class="input-container">		
+                <input type="mail" required="">
+                <label>Email</label>
+            </div>
+            
+            <button type="button" class="btn">submit</button>
+        </form>	
     </div>
 </body>
 </html>
