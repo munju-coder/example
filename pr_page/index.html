@@ -14,6 +14,7 @@
     <title>munju</title>
     <script>
 
+
 //work
 function worksUI(){
 	var el = $('.works');
@@ -41,29 +42,29 @@ function worksUI(){
 	}
 	timer = setInterval(time, 1000);
 
-	// $(window).scroll(function(){
-	// 	var win = $(window);
-	// 	var winT = win.scrollTop();
-	// 	var winH = win.height();
+	$(window).scroll(function(){
+		var win = $(window);
+		var winT = win.scrollTop();
+		var winH = win.height();
 		
-	// 	if(winT < $(".works .secConts").eq(0).offset().top){
-	// 		$('#nowTime').show();
-	// 		$('.worksYear').hide();
-	// 		$('.mainTxt').removeClass('hide')
-	// 	}
+		if(winT < $(".works .secConts").eq(0).offset().top){
+			$('#nowTime').show();
+			$('.worksYear').hide();
+			$('.mainTxt').removeClass('hide')
+		}
 
-	// 	$(".works .secConts").each(function(){
-	// 		var top = $(this).offset().top;
+		$(".works .secConts").each(function(){
+			var top = $(this).offset().top;
 
-	// 		if(winT + winH - winH/2 + 55 > top){
-	// 			var year = $(this).find('h2').text();
-	// 			//console.log(year)
-	// 			$('#nowTime').hide();
-	// 			$('.worksYear').show().text(year);
-	// 			$('.mainTxt').addClass('hide');
-	// 		}
-	// 	});
-	// });
+			if(winT + winH - winH/2 + 55 > top){
+				var year = $(this).find('h2').text();
+				//console.log(year)
+				$('#nowTime').hide();
+				$('.worksYear').show().text(year);
+				$('.mainTxt').addClass('hide')
+			}
+		});
+	});
 }
 	
 //work 텍스트
@@ -91,110 +92,137 @@ function alwaysMsg(){
 }
 
 //about
-// function aboutUI(){
-// 	var el = $('.about');
+function aboutUI(){
+	var el = $('.about');
 
-// 	if(el.length <= 0){
-// 		return
-// 	}
+	if(el.length <= 0){
+		return
+	}
 	
-// 	$.event.add(window,"load",function(){
-// 		var phW = $('.photoLine li:last-child').offset().left;
-// 		var txtW = $('.txtLine').width() + 520;
-// 		var lastLiW = $('.photoLine li:last-child').width();
-// 		var allW = phW + lastLiW + 100; //100 우측 여백
-// 		var isitMove = false;
-// 		var playStart;
+	$.event.add(window,"load",function(){
+		var phW = $('.photoLine li:last-child').offset().left;
+		var txtW = $('.txtLine').width() + 520;
+		var lastLiW = $('.photoLine li:last-child').width();
+		var allW = phW + lastLiW + 100; //100 우측 여백
+		var isitMove = false;
+		var playStart;
 
-// 		el.find('.photoLine').width(allW);
-// 		el.find('.txtLine').width(txtW);
+		el.find('.photoLine').width(allW);
+		el.find('.txtLine').width(txtW);
 		
-// 		$.jInvertScroll(['.scroll'],
-// 			{
-// 			height: allW,
-// 			onScroll: function(percent, e) {
-// 				if(percent >= 1){
-// 					$('body, html').stop(true,false);
-// 				}
-// 			}
-// 		});
-// 	});
-// }
+		$.jInvertScroll(['.scroll'],
+			{
+			height: allW,
+			onScroll: function(percent, e) {
+				if(percent >= 1){
+					$('body, html').stop(true,false);
+				}
+			}
+		});
+	});
+
+	/*
+	scrollAni();
+	function scrollAni(){
+		clearInterval(playStart);
+
+		var speed = ($('body')[0].clientHeight - window.pageYOffset) * 1.8;
+		$('body, html').stop().animate({
+			scrollTop : allW
+		}, speed , 'linear');
+
+		isitMove = true;
+	}
+
+	$(window).off('mousewheel.mwEvt').on('mousewheel.mwEvt' , function(e, delta){
+		$('body, html').stop(true,false);
+		
+		if(isitMove == true){
+			clearInterval(playStart);
+			playStart = setInterval(function(){
+				scrollAni();
+			}, 800);
+			isitMove = false;
+		}
+		
+	})
+	*/
+}
 
 //textarea
-// var cloneCSSProperties = [
-// 	'lineHeight', 'textDecoration', 'letterSpacing',
-// 	'fontSize', 'fontFamily', 'fontStyle', 
-// 	'textTransform', 'textAlign', 
-// 	'direction', 'wordSpacing', 'fontSizeAdjust', 
-// 	'whiteSpace', 'wordWrap'
-// ];
+var cloneCSSProperties = [
+	'lineHeight', 'textDecoration', 'letterSpacing',
+	'fontSize', 'fontFamily', 'fontStyle', 
+	'textTransform', 'textAlign', 
+	'direction', 'wordSpacing', 'fontSizeAdjust', 
+	'whiteSpace', 'wordWrap'
+];
 
-// var textareaCSS = {
-// 	overflow: "hidden",
-// 	position: "absolute",
-// 	top: "0",
-// 	left: "0",
-// 	height: "100%"
-// };
+var textareaCSS = {
+	overflow: "hidden",
+	position: "absolute",
+	top: "0",
+	left: "0",
+	height: "100%"
+};
 
-// var preCSS = {
-// 	margin:"0",
-// 	padding:"20px",
-// 	display: "block",
-// 	visibility: "hidden",
-// 	fontWeight:"500"
-// };
+var preCSS = {
+	margin:"0",
+	padding:"20px",
+	display: "block",
+	visibility: "hidden",
+	fontWeight:"500"
+};
 
-// var containerCSS = {
-// 	position: "relative"
-// };
+var containerCSS = {
+	position: "relative"
+};
 
-// var initializedDocuments = { };
+var initializedDocuments = { };
 
-// function resize(textarea) {  
-// 	$(textarea).parent().find("span").text(textarea.value);
-// }
+function resize(textarea) {  
+	$(textarea).parent().find("span").text(textarea.value);
+}
 
-// function initialize(document) {
-// 	// Only need to initialize events once per document
-// 	if (!initializedDocuments[document]) {
-// 		initializedDocuments[document] = true;
+function initialize(document) {
+	// Only need to initialize events once per document
+	if (!initializedDocuments[document]) {
+		initializedDocuments[document] = true;
 		
-// 		$(document).delegate(
-// 			".expandingText textarea", 
-// 			"input onpropertychange", 
-// 			function () {
-// 				resize(this);
-// 			}
-// 		);
-// 	}
-// }
+		$(document).delegate(
+			".expandingText textarea", 
+			"input onpropertychange", 
+			function () {
+				resize(this);
+			}
+		);
+	}
+}
 
-// $.fn.expandingTextarea = function () {
-// 	return this.filter("textarea").each(function () {
+$.fn.expandingTextarea = function () {
+	return this.filter("textarea").each(function () {
 		
-// 		initialize(this.ownerDocument || document);
+		initialize(this.ownerDocument || document);
 		
-// 		var textarea = $(this);
+		var textarea = $(this);
 
-// 		textarea.wrap("<div class='expandingText'></div>");
-// 		textarea.after("<pre class='textareaClone'><span></span><br /></pre>");
+		textarea.wrap("<div class='expandingText'></div>");
+		textarea.after("<pre class='textareaClone'><span></span><br /></pre>");
 
-// 		var container = textarea.parent().css(containerCSS);
-// 		var pre = container.find("pre").css(preCSS);
+		var container = textarea.parent().css(containerCSS);
+		var pre = container.find("pre").css(preCSS);
 
-// 		textarea.css(textareaCSS);
+		textarea.css(textareaCSS);
 	
-// 		$.each(cloneCSSProperties, function (i, p) {
-// 			pre.css(p, textarea.css(p));
-// 		});
+		$.each(cloneCSSProperties, function (i, p) {
+			pre.css(p, textarea.css(p));
+		});
 		
-// 		resize(this);
-// 	});
-// };
+		resize(this);
+	});
+};
 
-// $.fn.expandingTextarea.initialSelector = "textarea.expanding";
+$.fn.expandingTextarea.initialSelector = "textarea.expanding";
 
 
 $(function(){
@@ -235,11 +263,19 @@ $(function(){
 	});
 	
 	// textarea
-	// $($.fn.expandingTextarea.initialSelector).expandingTextarea();
+    $($.fn.expandingTextarea.initialSelector).expandingTextarea();
+    
+    $(window).scroll( function(){
+        console.log($(this).scrollTop());
+
+        if ( $(window).scrollTop() >= 500){
+            $('.mainTxt').hide();
+        } else {
+            $('.mainTxt').show();
+        }
+    });
 
 });
-
-
 
 
     </script>
@@ -326,10 +362,10 @@ $(function(){
         #nowTime{display:inline-block;font-family:'OpenSans-Bold';font-weight:700;font-size:22px;transform:rotate(90deg);transform-origin:right 0;position:fixed;right:55px;top:50%;margin-top:44px;line-height: 1;z-index:100}
         .pdfDown{display:inline-block;font-family:'OpenSans-SemiBold';font-size:14px;color:#000;transform:rotate(90deg);transform-origin:right bottom;position:fixed;right:80px;bottom:50px;line-height: 1;z-index:100}
         .pdfDown span{display:inline-block;vertical-align:middle;font-weight:700;margin-right:7px;}
-        .pdfDown:after{display:inline-block;content:"";width:42px;height:30px;background:url("../images/pdf_down.png") no-repeat 0 0;vertical-align:middle;}
+        .pdfDown:after{display:inline-block;content:"";width:42px;height:30px;background:url("../pr_page/images/pdf_down.png") no-repeat 0 0;vertical-align:middle;}
 
         /* mainTxt  */
-        .mainTxt{position:fixed;top:50%;left:0%;right:0;width:100%;height:110px;margin-top:-55px;text-align:center;cursor:none;}
+        .mainTxt{position:fixed;top:50%;left:0%;right:0;width:100%;height:110px;margin-top:-55px;text-align:center;cursor:none;transition: all 0.5s ease 0s;}
         .mainTxt > .midTxt{width:1040px;margin:0 auto;font-size:0;position: relative;z-index:2}
         .mainTxt span{display:inline-block;vertical-align:middle;width:50%;}
         .mainTxt .alwaysMsg{font-size:160px;color: #ff5514;font-family:'OpenSans-Bold';font-weight:700;line-height:1;margin-top:-50px;}
@@ -400,7 +436,7 @@ $(function(){
 					vertical-align: middle;
 					margin-bottom: 1px;
 				}
-				.workArea { margin-top: 100vh; }
+				.workArea { width: 100%; max-width: 1600px; margin: 0 auto; margin-top: 100vh; }
 
 			</style>
 			
@@ -414,30 +450,23 @@ $(function(){
                 <span class="alwaysMsg">loved</span>
             </div>
 		</div>
-		
-		<script>
-			// $(document).ready( function(){
-			//    $(window).mousewheel( function(e,delta){
-			//         // console.log(delta); //마우스 휠을 위로 올리면 1, 아래로 내리면 -1
-			//         if(delta > 0 ){
-			//             $('.mainTxt').show();
-			//         }else{
-			//             $('.mainTxt').hide();
-			//         }
-			//    });
-			// });
-		</script>
 
         <div class="workArea">
             <div class="workArea_wrap">
 				<ul class="">
-					<li><img src="http://placehold.it/768x768/ed2f2f/ffffff?text=1"></li>
-					<li><img src="http://placehold.it/768x768/ed2f2f/ffffff?text=2"></li>
-					<li><img src="http://placehold.it/768x768/ed2f2f/ffffff?text=3"></li>
-					<li><img src="http://placehold.it/768x768/ed2f2f/ffffff?text=4"></li>
+					<li><img src="http://placehold.it/760x750/ed2f2f/ffffff?text=1"></li>
+					<li><img src="http://placehold.it/760x750/ed2f2f/ffffff?text=2"></li>
+					<li><img src="http://placehold.it/760x750/ed2f2f/ffffff?text=3"></li>
+					<li><img src="http://placehold.it/760x750/ed2f2f/ffffff?text=4"></li>
 				</ul>
             </div>
         </div>
+
+        <footer>
+            <div class="ft_wrap">
+                <p>more project</p>
+            </div>
+        </footer>
 
     </div>
 </body>

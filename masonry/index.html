@@ -14,6 +14,176 @@
 	<script src ="js/jquery-3.2.1.min.js"></script>
 	<script src ="js/masonry.pkgd.min.js"></script>
 	<script>
+		<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>jQuery Masonry 플러그인</title>
+<style>
+    * {
+        margin : 0px;
+        padding : 0px;
+    }
+
+    body {
+        background-color : #525252;
+    }
+
+    .item  {
+        width : 150px;
+        margin : 10px;  
+        background-color : #FFFFFF;
+        border-radius : 4px;
+        float : left;
+        box-shadow : 5px 5px 10px #000000;
+    }
+
+    .big { width: 320px; }
+    .big > img { width: 320px; }
+
+    .item > .bottom {
+
+        padding-left : 10px;
+        padding-right : 10px;
+        position : relative;
+        bottom : 10px;
+    }
+
+    .item > .bottom > img  {
+
+        position : relative;
+        left : 21px;
+    }
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="masonry.pkgd.min.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+
+        // masonry플러그인을 적용합니다.
+        jQuery("#masonry_container").masonry({
+              itemSelector : ".item"
+            , columnWidth : 170
+            , isAnimated : true
+        });
+
+        // 이벤트를 연결합니다.
+        jQuery(".item").on("click", function() {
+
+            // 클릭한 대상을 제거합니다.
+            jQuery("#masonry_container").masonry("remove", jQuery(this));
+            jQuery("#masonry_container").masonry("reload");
+        });
+
+        jQuery("#add_button").click(function() {
+
+            // 2배로 복제합니다.
+            var item = jQuery("#masonry_container").children().clone();
+            jQuery("#masonry_container").append(item).masonry("appended", item, true);
+        });
+    });
+</script>
+</head>
+<body>
+    <div id = "add_button">
+        <img src = "./image/CJ.gif"/>
+    </div>
+    <div id = "masonry_container">
+        <div class = "item">
+            <img src = "./image/cj1.jpg"/>
+            <div class = "bottom">
+                <img src = "./image/top.png"/>
+                <p>consectetur adipiscing elit</p>              
+            </div>
+        </div>
+        <div class = "item">
+            <img src = "./image/cj2.jpg"/>
+            <div class = "bottom">
+                <img src = "./image/top.png"/>
+                <p>Lorem ipsum dolor sit amet</p>
+            </div>
+        </div>
+        <div class = "item big">
+            <img src = "./image/cj3.jpg"/>
+            <div class = "bottom">
+                <img src = "./image/top.png"/>
+                <p>Vivamus tempus molestie sagittis. Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
+            </div>
+        </div>
+        <div class = "item">
+            <img src = "./image/cj4.jpg"/>
+            <div class = "bottom">
+                <img src = "./image/top.png"/>
+                <p>et mollis diam pretium quis</p>
+            </div>
+        </div>
+        <div class = "item">
+            <img src = "./image/cj5.jpg"/>
+            <div class = "bottom">
+                <img src = "./image/top.png"/>
+                <p>Quisque imperdiet, libero vitae</p>
+            </div>
+        </div>
+        <div class = "item">
+            <img src = "./image/cj6.jpg"/>
+            <div class = "bottom">
+                <img src="./image/top.png"/>
+                <p>dignissim vestibulum, neque dui pharetra odio</p>
+            </div>
+        </div>
+        <div class = "item big">
+            <img src = "./image/cj7.jpg"/>
+            <div class = "bottom">
+                <img src = "./image/top.png"/>
+                <p>dignissim, sem justo dictum mauris, non fringilla urna</p>
+            </div>
+        </div>
+        <div class = "item">
+            <img src = "./image/cj8.jpg"/>
+            <div class = "bottom">
+                <img src = "./image/top.png"/>
+                <p>ligula tortor fringilla purus, varius faucibus mauris sem eget diam.</p>
+            </div>
+        </div>
+        <div class = "item">
+            <img src = "./image/cj9.jpg"/>
+            <div class = "bottom">
+                <img src = "./image/top.png"/>
+                <p>Lorem ipsum</p>
+            </div>
+        </div>
+        <div class = "item">
+            <img src = "./image/cj10.jpg"/>
+            <div class = "bottom">
+                <img src = "./image/top.png"/>
+                <p>vel mauris. Donec vitae ipsum at risus</p>
+            </div>
+        </div>
+        <div class = "item">
+            <img src = "./image/cj11.jpg"/>
+            <div class = "bottom">
+                <img src = "./image/top.png"/>
+                <p>Nulla posuere, neque vel bibendum dignissim, sem justo dictum mauris,</p>
+            </div>
+        </div>
+        <div class = "item">
+            <img src = "./image/cj12.jpg"/>
+            <div class = "bottom">
+                <img src = "./image/top.png"/>
+                <p>consectetur porta id at diam. Maecenas malesuada, tortor et fringilla consequat,</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="./image/cj13.jpg"/>
+            <div class="bottom">
+                <img src="./image/top.png"/>
+                <p>Praesent nec faucibus dui. Vestibulum ante ipsum primis </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+출처: https://wickedmagic.tistory.com/557 [사악미소의 현대마법의 공방]
 		$(function(){
 			$('.grid').masonry({
 			  itemSelector: '.grid-item',
