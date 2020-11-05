@@ -24,6 +24,11 @@
     <div id="app">
         <input type="text" v-model="name">{{name}}
     </div>
+
+    <div id="app1">
+        <h1>hello,{{ title }}</h1>
+        <input type="text" v-model="title">
+    </div>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -33,6 +38,13 @@
         el: "#app",
         data: {
             name: "munju"
+        }
+    })
+
+    new Vue({
+        el: "#app1",
+        data: {
+            title: "단방향 데이터"
         }
     })
     

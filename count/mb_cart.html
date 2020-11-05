@@ -53,7 +53,7 @@
                                 
                                 <div class="w50">
                                     <ul class="mtb10px">
-                                        <li class="mb10px"><a href="" class="f14 white_space word_break">롯데 360˚ 입체회전 에어써큘레이터 CM-CF770</a></li>
+                                        <li class="mb10px"><a href="#" class="f14 white_space word_break">롯데 360˚ 입체회전 에어써큘레이터 CM-CF770</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -61,52 +61,83 @@
                             <script>
                                 $(document).ready( function(){
 
-                                    var all_price = 0; 
-                                    var amount = [];
-                                    var chkBox = [];
-                                    var product_price = [];
-                                    var each_price = [];
+                                    // var all_price = 0; 
+                                    // var amount = [];
+                                    // var chkBox = [];
+                                    // var product_price = [];
+                                    // var each_price = [];
 
-                                    var each_product_price = 0;
+                                    // var each_product_price = 0;
+                                    // var deliveryPrice = 3000; //배송비
+                                    // var deliveryChkPrice = 29999; //배송비 확인 
+                                    var total_price = 0; //총합
+                                    var input_chk = false;
+                                    var each_val_arr = [];     //더해줄 각각의 가격값 배열
+                                    var chkBox = [];           //각각의 인풋이 체크 됐는지 확인하는 배열 (체크할때 값을 더해서 넣어주고, 체크를 하기 위함)
                                     var deliveryPrice = 3000; //배송비
-                                    var deliveryChkPrice = 29999; //배송비 확인 
-                                     
-                                    //input value 값 초기화
-                                    $('.cnt_input').val(1);
+
                                     
                                     $('#pd_all_input').click( function(){
+                                        total_price = 0; //총합 0으로 초기화
+                                        input_chk = true; //전체 인풋을 클릭했을 때 true값으로 지정
                                         
+                                        //전체 인풋을 클릭했을때 각각 인풋의 상태값 변환
+                                        var allCheck = $('#pd_all_input').is(":checked");
+                                    
+                                        if(allCheck == true) {
+                                            //각각의 인풋 체크 상태로 바꿈
+                                            $('.each_chk').prop('checked',true);
+
+                                             //전체인풋을 클릭했을 때 각각의 인풋들이 각각해야 할 일 
+                                             $("input:checkbox[name='chk[]']").each( function(i){
+                                                each_val_arr[i] = parseInt(COMMON.form.str_num($(this).parents().siblings('.pd_price').text())); 
+                                                console.log(each_val_arr[i]);
+
+                                            });
+                                        }else {
+                                            //각각의 인풋 체크 상태 해제
+                                            $('.each_chk').prop('checked',false);
+                                        }
+                                        
+                                        
+                                        // if($('#pd_all_chk').prop('checked')) {
+
+                                           
+
+                                        // }else {
+
+                                        // }
+                                        
+                                        
+                                        
+
+
                                         //각각 돌릴것이므로 배열안에 넣고 초기화 시킴.
                                         //초기화
-                                        amount = [];
-                                        chk_box = [];
-                                        product_price = [];
-                                        each_price = [];
-                                        each_product_price = [];
+                                        // amount = [];
+                                        // chk_box = [];
+                                        // product_price = [];
+                                        // each_price = [];
+                                        // each_product_price = [];
 
-                                        total_price = 0;
-                                        each_product_price = 0;
+                                        // total_price = 0;
+                                        // each_product_price = 0;
+
                                         
-                                        // var allCheck = $('#pd_all_input').is(":checked");
-                                    
-                                        // if(allCheck == true) {
-                                        //     $('.each_chk').prop('checked',true);
-                                        // }else {
-                                        //     $('.each_chk').prop('checked',false);
-                                        // }
                                     }); 
                                 });
                             </script>
     
                             <div class="cart_table w10 count_box mtb10px t_center cart_count">
-                                <div class="count_input">
+                                <div class="count_box">1</div>
+                                <!-- <div class="count_input">
                                     <input type="text" id="cnt" class="cnt_input outline_none w40" value="1">
-                                </div>
+                                </div> -->
     
-                                <div class="count_button">
+                                <!-- <div class="count_button">
                                     <input type="button" class="outline_none mb3px plus" value="▲">
                                     <input type="button" class="outline_none minus" value="▼">
-                                </div>
+                                </div> -->
                             </div>
     
                             <div class="cart_table w20 t_center mtb10px cart_point" ><span>1,000</span>P</div>
@@ -132,14 +163,15 @@
                             </div>
     
                             <div class="cart_table w10 count_box mtb10px t_center cart_count">
-                                <div class="count_input">
+                                <div class="count_box">1</div>
+                                <!-- <div class="count_input">
                                     <input type="text" id="cnt" class="cnt_input outline_none w40" value="1">
-                                </div>
+                                </div> -->
     
-                                <div class="count_button">
+                                <!-- <div class="count_button">
                                     <input type="button" class="outline_none mb3px plus" value="▲">
                                     <input type="button" class="outline_none minus" value="▼">
-                                </div>
+                                </div> -->
                             </div>
     
                             <div class="cart_table w20 t_center mtb10px cart_point" ><span>1,000</span>P</div>
