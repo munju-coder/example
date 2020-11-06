@@ -560,8 +560,6 @@
 
                                         $(document).ready( function(){
 
-
-
                                             var option_val = $("#pd_option").val();
                                             var option_name, option_val_chk; //옵션명, 옵션val 변수
                                             var option_exists = false; //옵션유무
@@ -599,7 +597,7 @@
                                             $('#pd_option').change( function(){
 
                                                 option_name = $("#pd_option option:selected").text(); //선택된 옵션의 상품명 text을 가져온다
-                                                option_val= $("#pd_option").val(); //선택된 옵션의 상품명 text을 가져온다
+                                                option_val= $("#pd_option").val(); //선택된 옵션의 value값을 가져온다
 
                                                 // alert(count);
                                                 if(option_name != "선택하세요."){ //선택된 옵션이 "선택하세요"의 옵션아니라면 해야 할 일
@@ -608,10 +606,11 @@
 
                                                     count++;
                                                     // console.log(each_option_val);
-                                                   
+
                                                     if((option_1_selected == 'Y' && option_val=="0") ||(option_2_selected == 'Y' && option_val=="36000")){
-                                                        
+
                                                         alert("해당 옵션을 이미 선택하였습니다.");
+                                                        // $('#pd_option option[value=""]').prop('selected','true');
                                                         return false;
                                                     }
 
@@ -627,37 +626,45 @@
                                                         '</div>'+
                                                         '<div class="count_box_right">'+
                                                         '    <span class="fw_bold total_sub_price" id="sub_total_'+ count +'">'+ option_price +'</span>원'+
-                                                        '    <i class="far fa-times-circle cursor ml10px" onClick="remove_append('+ count +')"></i>'+
+                                                        '    <i class="far fa-times-circle cursor ml10px" onClick="remove_append('+ count +','+ option_price +')"></i>'+
                                                         '</div>'+
                                                     '</div>'+
                                                     '<div id="option_box" class="w100"></div>'+
                                                     '</div>';
 
                                                     if(option_val=="0"){
+                                                      
                                                       option_1_selected = 'Y';
-                                                    }else if(option_val=="3600"){
+                                                    
+                                                    }else if(option_val=="36000"){
+                                                      
                                                       option_2_selected = 'Y';
+                                                    
                                                     }
 
                                                     $('#option_div').append(option_html);
+
                                                     total_sum(count);
                                                 }
-
                                             });
-
                                         });
                                     //append 태그 삭제
-                                    function remove_append(rnum){
+                                    function remove_append(rnum,option){
                                         //append_count.push(count);
                                         $('#append_div_'+ rnum).remove();
-                                        option_val= $("#pd_option").val();
 
-                                        if(option_val=="0"){
+                                        if(option=="42"){
+                                        
                                           option_1_selected = 'N';
-                                        }else if(option_val=="3600"){
+
+                                        }else if(option=="78"){
+                                        
                                           option_2_selected = 'N';
+                                        
                                         }
+
                                         $('#pd_option option[value=""]').prop('selected','true');
+                                        
                                         total_sum(); //제거 후 총합
                                     }
 
