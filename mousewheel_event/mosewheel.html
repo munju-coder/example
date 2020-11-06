@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 휠</title>
+    <!--jquery-->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="../mousewheel_event/js/jquery.mousewheel.js"></script>
+    <script src="../mousewheel_event/js/jquery.easing.1.3.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<script>
+    $(document).ready( function(){
+        /*
+        
+            $('선택자').mousewheel( function(e,delta){
+                마우스 휠이 움직이면 실행할 내용;
+            });
+            -delta 값은 마우스 휠을 위로 굴리면 양수값, 아래로 굴리면 음수값
+            -scroll 이벤트와 함께 동작하므로, 스크롤 이동 애니메이션 시 스크롤 이벤트는 막아놓고 작업해야 중복이 일어나지 않는다. 
+        
+        */
+    //    $(window).mousewheel( function(e,delta){
+    //         // console.log(delta); //마우스 휠을 위로 올리면 1, 아래로 내리면 -1
+    //         if(delta > 0 ){
+    //             $('h1').text('마우스 휠 위로 굴리는 중');
+    //         }else{
+    //             $('h1').text('마우스 휠 아래로 굴리는 중');
+    //         }
+    //    });
+    });
+</script>
+
+<style>
+    body { margin: 0; overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    html, body, #wrap, section { height: 100%; position: relative; }
+    #section1 { background: url(../mousewheel_event/images/Surface_J_Overview_1.jpg) center center no-repeat; background-size: cover; }
+    #section2 { background: url(../mousewheel_event/images/Surface_J_Overview_2.jpg) center bottom no-repeat; background-size: 90vh; }
+    #section3 { background: url(../mousewheel_event/images/Surface_J_Overview_3.jpg) center bottom no-repeat; background-size: 60%; }
+    #section4 { background-color: #f2f2f2; }
+    .txtBox h2 { font-size: 2vw; font-weight: 900; }
+    .txtBox p { font-size: 1.2vw; margin: 2.5vw 0; line-height: 1.8vw; }
+    .txtBox > a { font-size: 1.2vw; padding: 0.5vw 2vw; background-color: #101010; color: white; font-weight: 700; border-radius: 2.5vw; }
+    #section1 .txtBox{ width: 30vw; position: absolute; bottom: 20%; /*right: 2%;*/ right: -30vw; }
+    #section1 .txtBox h2{ opacity: 0; transition: opacity 1s ease-out; }
+    #section1 .txtBox p { opacity: 0; transition: opacity 1s ease-out .3s; }
+    #section1 .txtBox a{ opacity: 0; transition: opacity 1s ease-out .6s; }
+    #section1 .on{ right:2%; } 
+    #wrap section .on h2, #wrap section .on p, #wrap section .on a { opacity: 1; }
+    #section2 .txtBox{ width: 60vw; position: absolute; bottom: 70%; left: 0; right: 0; margin: auto; text-align: center; transition: bottom 1s ease-out; }
+    #section2 .txtBox h2{ opacity: 0; transition: opacity 1s ease-out .6s; }
+    #section2 .txtBox p{ opacity: 0; transition: opacity 1s ease-out .3s; }
+    #section2 .txtBox a{ opacity: 0; transition: opacity 1s ease-out; }
+    #section2 .on{ bottom: 60%; }
+    #section3 .txtBox{ width: 50vw; position: absolute; left: 10%; bottom: 50%; transition: bottom 1s ease-out; }
+    #section3 .txtBox h2{ opacity: 0; transition: opacity 1s ease-out; }
+    #section3 .txtBox p{ opacity: 0; transition: opacity 1s ease-out .3s; }
+    #section3 .txtBox a{ opacity: 0; transition: opacity 1s ease-out .6s; }
+    #section3 .on{ bottom: 40%; }
+    #section4 .txtBox{ width: 60vw; position: absolute; bottom: 50%; left: 0; right: 0; margin: auto; transition: bottom 1s ease-out; text-align: center; }
+    #section4 .txtBox h2{ font-size: 5vw; font-weight: 900; opacity: 0; transition: opacity 1s ease-out; }
+    #section4 .txtBox h3{
+        font-size: 3vw;
+        font-weight: 700;
+        margin-top: 4vw;
+        color: #777;
+        opacity: 0;
+        transition: opacity 1s ease-out .3s;
+    }
+    #section4 .txtBox p{ opacity: 0; transition: opacity 1s ease-out .6s; }
+    #section4 .txtBox ul { padding: 0; list-style: none; opacity: 0; transition: opacity 1s ease-out .9s; }
+    #section4 .txtBox ul li { display: inline-block; }
+    #section4 .txtBox ul li a{
+        display: block;
+        padding: 0.8vw 0.5vw 0.5vw;
+        width: 3vw;
+        height: 3vw;
+        border-radius: 50%;
+        background-color: cadetblue;
+        box-sizing: border-box;
+        font-size: 1.5vw;
+        color: white;
+    }
+    #section4 footer{
+        width: 100%;
+        font-size: 1.2vw;
+        text-align: right;
+        padding: 3vh 4vh;
+        box-sizing: border-box;
+        background-color:dodgerblue;
+        color: white;
+        position: absolute;
+        bottom: 0;
+    }
+    #section4 footer a { margin: 0 1.2vw; }
+    #section4 .on { bottom: 40%; }
+    #section4 .on,
+    #section4 .on h3, 
+    #section4 .on ul { opacity: 1; }
+    .pager{
+        width: 40px;
+        height: 90px;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 20px;
+        margin: auto;
+    }
+    .pager a {
+        display: block;
+        width: 15px;
+        height: 15px;
+        background-color: #333;
+        border-radius: 50%;
+        margin: 10px auto 0;
+        text-indent: -9999px;
+        transition: all 1s ease;
+    }
+    .pager a:first-child {margin-top: 0;}
+    .pager a.active { transform: scale(1.5); background-color: white; box-shadow: 0 0 0 3px #0062ff inset; }
+</style>
+
+<script>
+ $(document).ready( function(){
+
+    var moveTop;
+    var indexNum;
+
+    $('#section1 .txtBox').addClass('on');
+
+    $('section').each(function () {
+        $(this).mousewheel(function (e, delta) {
+
+            if (delta > 0) {
+
+                if ($(this).prev()[0] != undefined) {
+
+                    moveTop = $(this).prev().offset().top;
+                    indexNum = $(this).prev().index();
+
+                    $('.pager a').eq(indexNum).addClass('active');
+                    $('.pager a').not($('.pager a').eq(indexNum)).removeClass('active');
+                    $('section').eq(indexNum).find('.txtBox').addClass('on');
+                    $('.txtBox').not($('section').eq(indexNum).find('.txtBox')).removeClass('on');
+                }
+
+            } else {
+
+                if ($(this).next()[0] != undefined) {
+
+                    moveTop = $(this).next().offset().top;
+                    indexNum = $(this).next().index();
+
+                    $('.pager a').eq(indexNum).addClass('active');
+                    $('.pager a').not($('.pager a').eq(indexNum)).removeClass('active');
+                    
+                    $('section').eq(indexNum).find('.txtBox').addClass('on');
+                    $('.txtBox').not($('section').eq(indexNum).find('.txtBox')).removeClass('on');
+                }
+                
+            }
+            
+            console.log( indexNum );
+
+            $( 'html, body' ).stop().animate({ 'scrollTop' : moveTop }, 1000, "easeOutExpo");
+        });
+    });
+ });
+
+</script>
+    <body>
+        <div id="wrap">
+            <section id="section1">
+                <div class="txtBox">
+                    <h2>놀라울 정도로 강력한 노트북</h2>
+                    <p>부드럽고 효율적인 업무 흐름, 어디서든 높은 생산성을 발휘합니다. 얇고 가벼우면서도 강력한 Surface Pro는 모든 데스크톱 앱을 지원하며 사용자가 선호하는 창작 도구도 편리하게 사용할 수 있습니다.</p>
+                    <a href="#">자세한 내용</a>
+                </div>
+            </section>
+            
+            <section id="section2">
+                <div class="txtBox">
+                    <h2>창의성을 높여주는 생동감 넘치는 디스플레이</h2>
+                    <p>놀라운 색상과 선명한 해상도를 자랑하는 12.3" PixelSense™ 디스플레이를 통해 새로운 Surface Pen*와 터치에 반응하며 아이디어가 실현되는 모습을 지켜보세요.</p>
+                    <a href="#">자세한 내용</a>
+                </div>
+            </section>
+            
+            <section id="section3">
+                <div class="txtBox">
+                    <h2>최고의 휴대성.</h2>
+                    <p>언제 어디서나 창의성을 발휘하고, 공부하고, 일하고, 즐겨보세요. 뛰어난 성능을 자랑하는 초경량 Surface Pro는 최고의 모바일 생산성, 하루 종일 유지되는 배터리 사용 시간1은 물론, 둥글게 처리된 모서리로 어디서나 휴대하기 간편한 디자인이 특징입니다.</p>
+                    <a href="#">자세한 내용</a>
+                </div>
+            </section>
+            
+            <section id="section4">
+                <div class="txtBox">
+                    <h2>FALLOW THIS PAGE</h2>
+                    <h3>뛰어난 파워와 성능.</h3>
+                    <p>Surface Pro에는 강력한 인텔® 코어™ 프로세서가 탑재되어 있어 더 빠른 속도와 성능을 자랑합니다.</p>
+                    
+                    <ul>
+                        <li><a href="#" class="fab fa-facebook-f"></a></li>
+                        <li><a href="#" class="fab fa-twitter"></a></li>
+                        <li><a href="#" class="fab fa-youtube"></a></li>
+                    </ul>
+                </div>
+                
+                <footer>
+                    문의처 (고객 지원 센터 : 1577-9700) 
+                    <a href="#">개인정보처리방침</a>
+                    <a href="#">사용약관</a>
+                    <a href="#">상표</a>
+                    <a href="#">광고</a>
+                    <a href="#">정보</a>
+                    &copy; Microsoft 2019
+                </footer>
+            </section>
+        </div>
+
+        <nav class="pager">
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+        </nav>
+
+    </body>
+</html>

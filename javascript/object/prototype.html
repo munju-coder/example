@@ -21,6 +21,10 @@
     //객체 프로퍼티와 메소드, prototype 프로퍼티를 이용하면 현재 존재하는 프로토타입에 새로운 프로퍼티나 메소드를 추가함.
     /*
         1. hasOwnProperty() 특정 프로퍼티가 해당 객체에 존재하는지 검사함.
+        =객체가 특정 프로퍼티에 대한 소유 여부를 반환함
+
+
+
         해당 객체에서 직접 선언된 프로퍼티만을 검사하며, 같은 이름의 프로퍼티라도 상속받은 프로퍼티는 false 값을 반환한다.
     
     
@@ -40,7 +44,6 @@
     myDog.hasOwnProperty("breed"); // true
     myDog.hasOwnProperty("class"); // 상속받은 프로퍼티이므로, false를 반환함.
 
-    
 
 </script>
 <body>

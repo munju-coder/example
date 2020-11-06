@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input capture = "camera"</title>
+</head>
+<style>
+    form { margin-bottom: 30px; }
+</style>
+<script>
+    /*
+        Definition and Usage
+        The <input type="file"> defines a file-select field and a "Browse" button for file uploads.
+        To define a file-sel
+        ect field that allows multiple files to be selected, add the "multiple" attribute.
+
+    */
+</script>
+<body>
+    <!-- <label class="cameraButton">Take a picture
+        <input type="file" accept="image/*" capture="camera">
+    </label> -->
+
+    <form action="">
+        <label for="imageFile">Select File</label>
+        <input type="file" id="imageFile" name="images">
+        <input type="submit">
+    </form>
+
+    <form action="">
+        <label for="imageFile_multi">Select File</label>
+        <input type="file" id="imageFile_multi" name="images" multiple>
+        <input type="submit">
+    </form>
+</body>
+</html>

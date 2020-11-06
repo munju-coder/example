@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input style1</title>
+    
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&subset=greek-ext');
+    .t_center { text-align: center; }
+    span { display: block; color: white; text-transform: uppercase; font-size: 23px; margin: -50px 0 80px 0; }
+    .box { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background-color: rgba(0,0,0,0.89); border-radius: 3px; padding: 70px 100px; }
+    .input-container { position: relative; margin: 25px 0; }
+    .input-container label { position: absolute; top: 0; left: 0; font-size: 16px; color: white; transition: all .5s ease-in-out; pointer-events: none;  }
+    .input-container input { width: 100%; border: none; border-bottom: 1px solid #555; background-color: transparent; padding: 8px 0 5px 0; font-size: 16px; color: white; }
+    .input-container input:focus { border: none; outline: none; border-bottom: 1px solid #e74c4c; }
+    .btn { border: none; color: white; background-color: #e74c4c; outline: none; border-radius: 2px; margin-top: 50px; cursor: pointer; position: relative; padding: 10px 20px; }
+    .input-container input:focus ~ label, .input-container input:valid ~ label { top: -12px; font-size: 12px; }
+</style>
+<body>
+    <div class="box">
+        <form>
+            <span class="t_center">login</span>
+
+            <div class="input-container">
+                <input type="text" required="">
+                <label>Full Name</label>		
+            </div>
+
+            <div class="input-container">		
+                <input type="mail" required="">
+                <label>Email</label>
+            </div>
+            
+            <button type="button" class="btn">submit</button>
+        </form>	
+    </div>
+</body>
+</html>

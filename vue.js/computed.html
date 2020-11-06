@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산된 속성 computed </title>
+</head>
+<script>
+    /*
+        VueJS 의 자동 계산된 속성 computed
+        -> 계산식을 계산해서 값을 return해주는 "계산된 속성"
+        - 버튼을 클릭하면 count가 1씩 증가하고 "10보다 큽니다" 문장 출력
+    */
+</script>
+<body>
+    <div id= "app">
+        {{ isLargerThanTen  }} <!-- 클릭횟수 -->
+        <button v-on:click="count ++">클릭</button>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+    /*
+        computed 객체 안에 isLargerThanTen 이라는 함수를 선언해주고, count에 3을 곱한 값이 10보다 큰경우
+        "10보다 큽니다" 라는 문자열을, 그 외의 경우에는 "10보다 작거나 같습니다" 를 return
+        4번 이상을 클릭하면 "10보다 큽니다" 출력됨
+    */
+    new Vue ({
+        el: "#app",
+        data: {
+            count: 0
+        },
+        computed: {
+            isLargerThanTen : function() {
+                return this.count * 3 > 10 ? "10보다 큽니다" : "10보다 작거나 같습니다."
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--jquery-->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<script>
+    /*
+        scroll event 등록
+        -$('이벤트대상 선택').scroll( function(){자바스크립트 코드; });
+        -$('이벤트대상 선택').on("scroll",function(){자바스크립트코드; });
+
+        scroll event 생성
+        -$('이벤트대상').scroll();
+    */
+   $(window).scroll( function(){
+        var sc_top = $(this).scrollTop();
+        var sc_left = $(this).scrollLeft();
+        $('.top').text(sc_top);
+        $('.left').text(sc_left);
+   });
+</script>
+<style>
+    body { width: 5000px; height: 10000px; }
+    #wrap { position: fixed; top: 10px; left: 10px; }
+
+</style>
+<body>
+    <div id="wrap">
+        <p>scrollTop: <span class="top">0</span>px</p>
+        <p>scrollLeft: <span class="left">0</span>px</p>
+    </div>
+
+</body>
+</html>

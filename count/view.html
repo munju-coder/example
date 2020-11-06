@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리커버몰</title>
+    <!--jquery-->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!--font Awesome-->
+    <link rel="stylesheet" href="http://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!--goolge webfont-->
+    <link href="http://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
+    <!-- swiper slide -->
+    <link rel="stylesheet" href="http://recovershop.co.kr/template/recover_flower/template/_html/css/swiper.min.css">
+    <script src="http://recovershop.co.kr/template/recover_flower/template/_html/js/swiper.js"></script>
+    <!--js-->
+    <script src="http://recovershop.co.kr/js/COMMON.js"></script>
+
+    <script src="http://recovershop.co.kr/template/recover_flower/template/_html/js/common.js"></script>
+    <script src="http://recovershop.co.kr/template/recover_flower/template/_html/js/main.js"></script>
+
+    <script src="http://recovershop.co.kr/template/recover_flower/template/js/header.js"></script>
+
+
+    <!--style sheet-->
+    <link rel="stylesheet" href="http://recovershop.co.kr/template/recover_flower/template/_html/css/import.css">
+    <link rel="stylesheet" href="http://recovershop.co.kr/template/recover_flower/template/_html/css/main.css">
+
+    <meta name="description" content="리커버몰" />
+    <link rel="canonical" href="http://recovershop.co.kr/template/recover_flower/template">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="리커버몰">
+    <meta property="og:keywords" content="리커버몰">
+    <meta property="og:description" content="리커버몰">
+    <meta property="og:image" content="http://recovershop.co.kr/template/recover_flower/template/images/common/mall_logo.png">
+
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="http://recovershop.co.kr/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://recovershop.co.kr/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://recovershop.co.kr/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://recovershop.co.kr/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://recovershop.co.kr/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://recovershop.co.kr/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://recovershop.co.kr/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://recovershop.co.kr/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://recovershop.co.kr/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="http://recovershop.co.kr/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://recovershop.co.kr/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="http://recovershop.co.kr/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://recovershop.co.kr/images/favicon/favicon-16x16.png">
+
+
+    <script>
+        //global variable
+        var URL = "http://recovershop.co.kr";
+        var MB_ID = "admin";
+        var INCLUDE_URL = "http://recovershop.co.kr/include";
+        var IMAGES_URL = "http://recovershop.co.kr/uploads";
+        var API_KEY = "123456789";
+        var IS_MOBILE = COMMON.basic.isMobile();
+
+        /**
+         * @brief deliver price variable
+         */
+        /* var DELIVERY_PRICE  = 3000;     //기본배송비
+        var DELIVERY_ADD_PRICE = 4000;  //추가배송비
+        var DELIVERY_ADD_CHK = false;   //도서 지역인지 체크
+        var DELIVERY_CHK_PRICE = 30000; //배송비 체크 금액 */
+
+
+        /**
+         * @brief productList variable
+         * @see COMMON.ajax.productList()
+         */
+        var count = null;
+        var total_page = null;
+        var sca = COMMON.url.urlParameter("sca") == "" ? null : COMMON.url.urlParameter("sca");
+        var sfl = COMMON.url.urlParameter("sfl") == "" ? null : COMMON.url.urlParameter("sfl");
+        var stx = COMMON.url.urlParameter("stx") == "" ? null : COMMON.url.urlParameter("stx");
+        var sst = COMMON.url.urlParameter("sst") == "" ? null : COMMON.url.urlParameter("sst");
+        var sod = COMMON.url.urlParameter("sod") == "" ? null : COMMON.url.urlParameter("sod");
+        var page = 1;
+        var limit = 20;
+
+        //promotion & category
+        var p_seq = COMMON.url.urlParameter("p_seq") == "" ? null : decodeURI(COMMON.url.urlParameter("p_seq"));
+        var pd_category = COMMON.url.urlParameter("pd_category") == "" ? null : COMMON.url.urlParameter("pd_category");
+        var pd_sub_category = COMMON.url.urlParameter("pd_sub_category") == "" ? null : decodeURI(COMMON.url.urlParameter("pd_sub_category"));
+
+    </script>
+
+</head>
+
+<body>
+    <!--wrap {-->
+    <div class="wrap">
+
+        <div class="wrap-loading display-none">
+            <div><img src="http://recovershop.co.kr/images/loading.gif" /></div>
+        </div>
+
+        <div class="modal_background"></div>
+        <div class="modal_box"></div>
+
+        <!--menu click bg call-->
+        <div class="menu_bg"></div>
+        <!--header {-->
+
+        <header>
+            <div class="header_wrap dw_1400px">
+                <!--mobile menu 변경-->
+                <div class="header_M_left">
+                    <!-- <div > --><a id="search_icon" href="#"><img src="http://recovershop.co.kr/template/recover_flower/template/_html/images/search_icon.png" alt="search_icon"></a><!-- </div> -->
+                </div>
+
+                <div class="header_left t_left">
+                    <a href="http://recovershop.co.kr"><img src="http://recovershop.co.kr/uploads/images/logo/20200625_1593046633496359.png" alt="recoverflower_logo"></a>
+                </div>
+
+                <script language="JavaScript">
+                    /**
+                     * @brief recovermall search input value check
+                     * 2020-08-31 munju
+                     */
+
+                    function searchInput(type) {
+
+                        if (type == "mobile") {
+
+                            var check_val = document.getElementById("mstx").value;
+
+                        } else if (type == "web") {
+
+                            var check_val = document.getElementById("stx").value;
+                        }
+
+                        if (check_val == '') {
+                            alert('검색어를 입력해주세요');
+                            return false;
+
+                        } else {
+                            return true;
+
+                        }
+                    }
+
+                </script>
+
+                <div class="header_middle t_center">
+                    <form action="http://recovershop.co.kr/product/product.php" method="get" onSubmit="return searchInput('web')" name="myForm">
+                        <input type="hidden" name="sfl" value="name">
+                        <div class="search_input" id="search_input"><input type="text" class="search_box" name="stx" id="stx" value=""></div>
+                        <div class="search_button" id="search_button">
+                            <button type="submit" id="sch_submit" class="cursor">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="header_right t_right">
+                    <a href="#" class='logout header_login header_a'>로그아웃</a>
+                    <a class="mypage_icon" href="http://recovershop.co.kr/member/mypage.php"><img src="http://recovershop.co.kr/template/recover_flower/template/_html/images/mypage_icon.png" alt="mypage_icon"></a>
+                    <a class="mr10px header_cart" href="http://recovershop.co.kr/member/cart.php"><img src="http://recovershop.co.kr/template/recover_flower/template/_html/images/cart_icon.png" alt="cart_icon"></a>
+                    <a class="menu_icon" href="#"><img src="http://recovershop.co.kr/template/recover_flower/template/_html/images/menu_icon.png" alt="menu_icon"></a>
+                </div>
+
+                <!--mobile menu 변경-->
+                <div class="header_bottom main_menu-container">
+                    <div class="search_wrap t_center">
+                        <form name="fr" action="http://recovershop.co.kr/product/product.php" onSubmit="return searchInput('mobile')">
+                            <div class="search_input">
+                                <input type="hidden" name="sfl" value="pd_name">
+                                <a class="left_arrow_btn" href="http://recovershop.co.kr/index.php"><img src="http://recovershop.co.kr/template/recover_flower/template/_html/images/left_arrow.png" alt="left_arrow"></a>
+                                <input type="text" class="search_box" id="mstx" name="stx">
+                                <button type="submit" id="sch_submit" class="cursor f14">
+                                    <img src="http://recovershop.co.kr/template/recover_flower/template/_html/images/search_icon.png" alt="search_icon">
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="hb_menu swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="http://recovershop.co.kr/product/product_today.php?p_seq=5" style="color:#f25d70;">
+                                투데이특가 </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="http://recovershop.co.kr/product/product.php?p_seq=2">
+                                리커버위크 </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="http://recovershop.co.kr/product/product.php?p_seq=3">
+                                생활가전 </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="http://recovershop.co.kr/product/product.php?p_seq=6">
+                                건강검진 이벤트 </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="http://recovershop.co.kr/product/product.php?p_seq=1">
+                                리커버랭킹 </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="http://recovershop.co.kr/product/product.php?p_seq=4">
+                                해외직구 </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+        <!--} header-->
+
+        <!--{ aside left_menu-->
+        <aside class="left_menu">
+            <div class="close_btn">
+                <!-- <a href="#"><i class="fas fa-times"></i></a> -->
+                <a href="#"><img src="http://recovershop.co.kr/template/recover_flower/template/_html/images/menu_times.PNG" alt="times_icon"></a>
+            </div>
+
+            <!--left_menu_wrap {-->
+            <div class="left_menu_wrap">
+                <div class="login_wrap t_center">
+                    <div class="login_form_wrap">
+
+
+                        <!-- 로그인 후 적용해야할 폼 -->
+                        <div class="after_login">
+                            <div class="al_top">
+                                <div class="alt_right">
+                                    <img src="http://recovershop.co.kr/template/recover_flower/template/_html/images/no_profile.gif" alt="profile image">
+                                    <a href="#"><img src="http://recovershop.co.kr/template/recover_flower/template/_html/images/set.png" alt="set_icon"></a>
+                                </div>
+
+                                <div class="alt_left">
+                                    <p>최고관리자</p>
+                                    <button type="text" class="logout">로그아웃</button>
+                                </div>
+                            </div>
+
+                            <div class="al_bottom">
+                                <div class="alb_right">
+                                    <div class=""><img src="http://recovershop.co.kr/template/recover_flower/template/_html/images/won.png" alt="won_icon"></div>
+                                    <span class="f12">
+                                        23,610
+                                    </span>
+                                </div>
+
+                                <div class="alb_middle">
+                                    <div class=""><img src="http://recovershop.co.kr/template/recover_flower/template/_html/images/database.png" alt="database_icon"></div>
+                                    <span class="f12">1,090,026</span>
+                                </div>
+
+                                <div class="alb_left">
+                                    <div class=""><img src="http://recovershop.co.kr/template/recover_flower/template/_html/images/share.png" alt="share_icon"></div>
+                                    <span class="f12">0</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!--catego_menu {-->
+                <div class="catego_menu t_center">
+                    <div class="left_tab_subject">
+                        <ul class="mb10px">
+                            <li class="left_tablinks f14 cursor catego_active" tab_name="left_tab1"><a href="#">카테고리</a></li>
+                            <li class="left_tablinks f14 cursor" tab_name="left_tab2"><a href="#">프로모션</a></li>
+                            <li class="left_tablinks f14 cursor" tab_name="left_tab3"><a href="#">마이페이지</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="left_tab left_tab_active" id="left_tab1">
+                        <ul class="t_left">
+                            <li class="mb5per f14 fs_cate">
+                                <a href="http://recovershop.co.kr/product/product.php?pd_category=4">식품</a>
+
+                                <ul>
+                                    <li><a href="http://recovershop.co.kr/product/product.php?pd_category=4&pd_sub_category=1">농수산</a></li>
+                                    <li><a href="http://recovershop.co.kr/product/product.php?pd_category=4&pd_sub_category=2">가공</a></li>
+                                    <li><a href="http://recovershop.co.kr/product/product.php?pd_category=4&pd_sub_category=3">반찬</a></li>
+                                    <li><a href="http://recovershop.co.kr/product/product.php?pd_category=4&pd_sub_category=4">음료</a></li>
+                                    <li><a href="http://recovershop.co.kr/product/product.php?pd_category=4&pd_sub_category=5">축산</a></li>
+                                </ul>
+                            </li>
+                            <li class="mb5per f14 fs_cate">
+                                <a href="http://recovershop.co.kr/product/product.php?pd_category=5">건강</a>
+
+                                <ul>
+                                    <li><a href="http://recovershop.co.kr/product/product.php?pd_category=5&pd_sub_category=1">건강검진</a></li>
+                                    <li><a href="http://recovershop.co.kr/product/product.php?pd_category=5&pd_sub_category=2">건강식품</a></li>
+                                </ul>
+                            </li>
+                            <li class="mb5per f14 ">
+                                <a href="http://recovershop.co.kr/product/product.php?pd_category=2">뷰티</a>
+
+                            </li>
+                            <li class="mb5per f14 ">
+                                <a href="http://recovershop.co.kr/product/product.php?pd_category=3">생활가전</a>
+
+                            </li>
+                            <li class="mb5per f14 ">
+                                <a href="http://recovershop.co.kr/product/product.php?pd_category=7">잡화</a>
+
+                            </li>
+                            <li class="mb5per f14 ">
+                                <a href="http://recovershop.co.kr/product/product.php?pd_category=8">생활용품</a>
+
+                            </li>
+                            <li class="mb5per f14 ">
+                                <a href="http://recovershop.co.kr/product/product.php?pd_category=6">인테리어</a>
+
+                            </li>
+
+                        </ul>
+
+                        <script>
+                            $(document).ready(function() {
+
+                                $('.fs_cate > a').click(function(e) {
+                                    e.preventDefault();
+                                    $(this).next().slideDown('slow');
+                                    $('.catego_menu .left_tab ul li ul').not($(this).next()).slideUp('slow');
+                                });
+                            });
+
+                        </script>
+                    </div>
+
+                    <div class="left_tab" id="left_tab2">
+                        <ul class="t_left">
+                            <li class="mb5per f14"><a href="http://recovershop.co.kr/product/product_today.php?p_seq=5">투데이특가</a></li>
+                            <li class="mb5per f14"><a href="http://recovershop.co.kr/product/product.php?p_seq=2">리커버위크</a></li>
+                            <li class="mb5per f14"><a href="http://recovershop.co.kr/product/product.php?p_seq=3">생활가전</a></li>
+                            <li class="mb5per f14"><a href="http://recovershop.co.kr/product/product.php?p_seq=6">건강검진 이벤트</a></li>
+                            <li class="mb5per f14"><a href="http://recovershop.co.kr/product/product.php?p_seq=1">리커버랭킹</a></li>
+                            <li class="mb5per f14"><a href="http://recovershop.co.kr/product/product.php?p_seq=4">해외직구</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="left_tab" id="left_tab3">
+                        <ul class="t_left">
+                            <li class="mb5per f14"><a href="http://recovershop.co.kr/member/mypage.php">마이페이지</a></li>
+                            <li class="mb5per f14"><a href="http://recovershop.co.kr/member/order_list.php">주문내역</a></li>
+                            <!-- <li class="mb5per f14"><a href="#">주문배송조회</a></li> -->
+                            <li class="mb5per f14"><a href="http://recovershop.co.kr/board/notice.php">공지사항</a></li>
+                            <li class="mb5per f14"><a href="http://recovershop.co.kr/board/qna_write.php">문의사항</a></li>
+                            <!-- <li class="mb5per f14"><a href="#">입금계좌안내</a></li>
+                                <li class="f14"><a href="#">증빙서류신청/출력</a></li>  -->
+                        </ul>
+                    </div>
+
+                </div>
+                <!--} catego_menu-->
+
+            </div>
+            <!--} left_menu_wrap-->
+        </aside>
+        <!--} aside menu-->
+        <script src="http://recovershop.co.kr/template/recover_flower/template/product/js/view.js"></script>
+
+
+        <input type="hidden" id="category_chk" value="4">
+        <input type="hidden" id="category_sub_chk" value="1">
+        <!--product_contents {-->
+        <div class="contents product_contents contents_border mb3per">
+            <div class="pro_top pt20px member_top">
+                <div class="dw_1400px">
+                    <div class="f24">
+                        <a href="http://recovershop.co.kr/product/product.php">식품</a>
+                        <!-- >
+                    <a href="../product/product_list.html">기념일</a>  -->
+                    </div>
+                </div>
+            </div>
+            <!--product_wrap {-->
+            <div class="member_wrap pro_wrap dw_1400px">
+
+                <!--pro_middle { -->
+                <div class="c_middle pro_middle">
+                    <!--{ 상품섬네일 시작-->
+                    <div class="cm_top">
+                        <div class="cm_left">
+                            <div class="main_img">
+                                <a href="#"><img class="main_img" id="main_img" src="http://recovershop.co.kr/uploads/images/product/640/20201019134817_1603082897641196.jpg" alt="product detail image"></a>
+                            </div>
+
+                            <div class="sub_img">
+                                <ul>
+                                    <li><a href="#"><img src="http://recovershop.co.kr/uploads/images/product/640/20201019134817_1603082897641196.jpg" alt="product detail image1"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--} 상품섬네일 끝-->
+
+                        <!--{ 상품정보 시작-->
+                        <form class="product_form">
+                            <input type="hidden" id="promotion_today_seq" name="promotion_today_seq" value="">
+                            <input type="hidden" id="pd_seq" name="pd_seq[]" value="2816">
+                            <input type="hidden" id="pd_amount" name="pd_amount[]" value="99">
+                            <input type="hidden" id="pd_price" name="pd_price[]" value="42000">
+                            <input type="hidden" id="pd_min_quantity" name="pd_min_quantity" value="1">
+                            <input type="hidden" id="pd_max_quantity" name="pd_max_quantity" value="5">
+                            <style>
+                                .cmrt_name ul li {
+                                    list-style: none;
+                                    float: left;
+                                }
+
+                                .cmrt_name ul li:last-child {
+                                    float: right;
+                                }
+
+                                @media (max-width: 768px) {
+                                    .cmrt_name ul li:last-child {
+                                        float: left;
+                                    }
+                                }
+
+                            </style>
+                            <div class="cm_right">
+                                <div class="cmr_top">
+                                    <div class="cmrt_title mb10px">
+
+                                        <div class="cmrt_name">
+                                            <p class="fw_bold f22">
+                                                <ul>
+                                                    <li class="fw_bold f22">[2020년산 햅쌀] 수향미 10kg 골든퀸3호</li>
+                                                    <li>
+                                                        <a id="kakao-link-btn" href="javascript:;">
+                                                            <img style="width:30px;" src="http://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </p>
+
+                                            <!--kakao link { -->
+                                            <script src="http://developers.kakao.com/sdk/js/kakao.min.js"></script>
+                                            <!-- <strong style = "float:left;">
+                                                <a id="kakao-link-btn" href="javascript:;">
+                                                    <img style = "width:50px;padding:10px 10px;" src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
+                                                </a>
+                                            </strong> -->
+
+                                            <script type='text/javascript'>
+                                                $("document").ready(function() {
+                                                    $("#kakao-link-btn").click(function() {
+                                                        if (IS_MOBILE == true) {
+                                                            var name = "[2020년산 햅쌀] 수향미 10kg 골든퀸3호";
+                                                            var thumb = "http://recovershop.co.kr/uploads/images/product/640/20201019134817_1603082897641196.jpg";
+                                                            var url = "http://recovershop.co.kr/product/view.php?seq=" + "2816";
+                                                            //<![CDATA[
+                                                            // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+                                                            Kakao.init('8f762111c2dccd30a886beff4c9b1b62');
+                                                            // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+                                                            Kakao.Link.createDefaultButton({
+                                                                container: '#kakao-link-btn',
+                                                                objectType: 'feed',
+                                                                content: {
+                                                                    title: name,
+                                                                    imageUrl: thumb,
+                                                                    link: {
+                                                                        mobileWebUrl: url
+                                                                    }
+                                                                },
+                                                                buttons: [{
+                                                                    title: '상품 상세 보기',
+                                                                    link: {
+                                                                        mobileWebUrl: url
+                                                                    }
+                                                                }]
+                                                            });
+                                                            //]]>
+                                                        } else {
+                                                            alert("모바일에서만 사용가능합니다.");
+                                                        }
+                                                    });
+                                                });
+
+                                            </script>
+
+                                            <!-- } kakao link -->
+                                        </div>
+
+                                        <!-- <div class="favorite_icon">
+                                        <i class="far fa-heart red_color"></i>
+                                        <i class="fas fa-heart red_color"></i>
+                                    </div>
+
+                                    <div class="cart_icon">
+                                        <i class="fas fa-shopping-basket"></i>
+                                    </div> -->
+
+                                    </div>
+
+                                    <!-- <div class="mb10px">
+                                    <a class="f12" href="#"><img class="mr10px" src="../images/s_star5.png" alt="">164개 상품평</a>
+                                </div> -->
+                                </div>
+
+                                <ul class="sticker_outer_box">
+                                    <li class="sticker">
+                                        <div class="sticker_box">
+                                            <div class="best">베스트</div>
+                                            <div class="double">더블포인트</div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <div class="cmr_middle chk_null">
+
+                                    <ul class="mt20px product_info_table over_hidden">
+                                        <!-- <li><span>10%<del class="red_color">49,000원</del></span></li> -->
+                                        <li class="f12"><strong class="mr10px f24 fw_bold product_price">42,000원</strong></li>
+                                        <li>
+                                            <div>가용 포인트</div>
+                                            <div><span>3,000</span> P</div>
+                                        </li>
+                                        <li>
+                                            <div>리턴 캐쉬</div>
+                                            <div><span>3,000</span> 원</div>
+                                        </li>
+                                        <li>
+                                            <div>공유 포인트</div>
+                                            <div><span>0</span> P</div>
+                                        </li>
+                                        <li>
+                                            <div>판매자</div>
+                                            <div><span>띠앗</span> </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                배송비</div>
+                                            <div>무료배송 </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="c_option mt5per">
+                                    <ul>
+                                        <li class="fw_bold mb10px f17">선택옵션</li>
+                                        <li class="mb20px">
+                                            <select id='pd_option' name='pd_option'>
+                                                <option value="" selected="selected">선택하세요.</option>
+                                                <option value="0">10kg&nbsp;(+ 0원)</option>
+                                                <option value='36000' opt_amount='99'>20kg&nbsp;(+ 36,000 원)</option>
+                                            </select>
+                                        </li>
+                                    </ul>
+                                    <script>
+
+                                    var option_1_selected ='N';
+                                    var option_2_selected ='N';
+
+                                        $(document).ready( function(){
+
+                                            var option_val = $("#pd_option").val();
+                                            var option_name, option_val_chk; //옵션명, 옵션val 변수
+                                            var option_exists = false; //옵션유무
+
+                                            var chk_amount = parseInt($("#cnt").val());         //재고 수량 체크
+                                            var pd_price = parseInt($("#pd_price").val());      //상품가격
+                                            var total_price = parseInt(COMMON.form.str_num($(".total_price").text()));  //전체 가격
+                                            var count = 0; // 추가되는 횟수
+
+                                            var pd_min_quantity = parseInt($("#pd_min_quantity").val());    //최소 구매수량   1
+                                            var pd_max_quantity = parseInt($("#pd_max_quantity").val());    //최대 구매수량   5
+
+                                            //option value chk count  옵션을 이미 선택했을 경우 each
+                                            var each_option_val = $("#pd_option")[0].childElementCount -1; //선택하세요의 옵션은 사용하지 않을 것이므로 -1
+
+                                            // $("#pd_option > option").each(function(i){
+                                            //     var option_common = $(this).val();
+                                            //     //option value값이 있으면 1더함
+                                            //     if(option_common){
+                                            //         each_option_val += 1;
+                                            //         console.log(each_option_val);
+                                            //     }
+                                            // });
+
+                                            //선택하세요 옵션이 항상 selected 되어 있어야하므로, 초기화
+                                            $('#pd_option option[value=""]').prop('selected','true');
+
+                                            //최소 구매수량이 0으로 등록되었을때 1로 초기화 시킴. 수량이 정해지지 않았을 경우 초기값세팅
+                                            if(pd_min_quantity == 0){
+
+                                                pd_min_quantity = 1;
+                                            }
+
+                                            //옵션이 바뀔때마다 해야 할 일
+                                            $('#pd_option').change( function(){
+
+                                                option_name = $("#pd_option option:selected").text(); //선택된 옵션의 상품명 text을 가져온다
+                                                option_val= $("#pd_option").val(); //선택된 옵션의 value값을 가져온다
+
+                                                // alert(count);
+                                                if(option_name != "선택하세요."){ //선택된 옵션이 "선택하세요"의 옵션아니라면 해야 할 일
+                                                    option_val_chk =  parseInt($("#pd_option option:selected").val()) + pd_price;  //선택된 옵션의 val값을 숫자로 변환하여 저장한 변수
+                                                    option_price = COMMON.form.comma(option_val_chk);  //선택된 옵션의 숫자 val값을 comma를 추가한 숫자변수
+
+                                                    count++;
+                                                    // console.log(each_option_val);
+
+                                                    if((option_1_selected == 'Y' && option_val=="0") ||(option_2_selected == 'Y' && option_val=="36000")){
+
+                                                        alert("해당 옵션을 이미 선택하였습니다.");
+                                                        // $('#pd_option option[value=""]').prop('selected','true');
+                                                        return false;
+                                                    }
+
+                                                    var option_html = '<div class="amount" id="append_div_'+ count +'">'+
+                                                    '<div class="count_box">'+
+                                                        '<div class="count_box_left">' + option_name + '</div>'+
+                                                        '<div class="count_box_center">'+
+                                                            '<div class="t_right count_input">'+
+                                                            '    <input type="button" value="-" class="minus" onClick="minus_sum('+ count +', '+ pd_min_quantity +')">'+
+                                                            '    <input type="text" id="cnt_'+ count +'" name="amount[]" class="cnt_input w70px" value="1" readonly>'+
+                                                            '    <input type="button" value="+" class="plus mb3px" onClick="plus_sum('+ count +', '+ pd_max_quantity +')">'+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                        '<div class="count_box_right">'+
+                                                        '    <span class="fw_bold total_sub_price" id="sub_total_'+ count +'">'+ option_price +'</span>원'+
+                                                        '    <i class="far fa-times-circle cursor ml10px" onClick="remove_append('+ count +','+ option_price +')"></i>'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                    '<div id="option_box" class="w100"></div>'+
+                                                    '</div>';
+
+                                                    if(option_val=="0"){
+                                                      
+                                                      option_1_selected = 'Y';
+                                                    
+                                                    }else if(option_val=="36000"){
+                                                      
+                                                      option_2_selected = 'Y';
+                                                    
+                                                    }
+
+                                                    $('#option_div').append(option_html);
+
+                                                    total_sum(count);
+                                                }
+                                            });
+                                        });
+                                    //append 태그 삭제
+                                    function remove_append(rnum,option){
+                                        //append_count.push(count);
+                                        $('#append_div_'+ rnum).remove();
+
+                                        if(option=="42"){
+                                        
+                                          option_1_selected = 'N';
+
+                                        }else if(option=="78"){
+                                        
+                                          option_2_selected = 'N';
+                                        
+                                        }
+
+                                        $('#pd_option option[value=""]').prop('selected','true');
+                                        
+                                        total_sum(); //제거 후 총합
+                                    }
+
+                                    //plus
+                                    function plus_sum(count, max_val){
+
+                                        var cnt_value = $("#cnt_" + count).val(); //value값 가져오기
+                                        var cnt_value_plus =  parseInt(cnt_value) + 1; //수량 +1
+
+                                        if(cnt_value >= max_val){
+
+                                            alert("최대 구매 수량을 초과하였습니다.");
+                                            return false;
+                                        }
+
+                                        // console.log(cnt_value_plus);
+                                        $("#cnt_" + count).val(cnt_value_plus );
+
+                                        var sub_total_value_once = parseInt(removeComma($("#sub_total_" + count).html())) / cnt_value;
+                                        final_sub_value = parseInt(removeComma($("#sub_total_" + count).html())) + parseInt(sub_total_value_once);
+
+                                        $("#sub_total_" + count).html(COMMON.form.comma(final_sub_value));
+                                        total_sum();
+
+                                    }
+
+                                    //minus
+                                    function minus_sum(count, min_val){
+
+                                        var cnt_value = $('#cnt_' + count).val();
+                                        var cnt_value_minus =  parseInt(cnt_value) - 1; //수량 -1
+
+                                        if(cnt_value_minus < min_val){
+
+                                            alert("최소 구매수량은 "+ min_val + "개입니다.");
+                                            return false;
+
+                                        }else {
+                                            $("#cnt_" + count).val(cnt_value_minus); //수량
+
+                                            // console.log(cnt_value_minus);
+                                            var sub_total_value_once = parseInt(removeComma($("#sub_total_" + count).html())) / cnt_value;
+
+                                            final_sub_value = parseInt(removeComma($("#sub_total_" + count).html())) - parseInt(sub_total_value_once);
+
+                                            //총합
+                                            $("#sub_total_" + count).html(COMMON.form.comma(final_sub_value));
+                                            total_sum();
+                                        }
+                                    }
+
+                                    //total
+                                    function total_sum(){
+
+                                        var total_sum_value = 0; //초기화
+
+                                        //옵션마다 각각 총합을 구하기 위함
+                                        $(".total_sub_price").each(function() {
+
+                                            total_sum_value = parseInt(total_sum_value) + parseInt(removeComma($(this).html()));
+
+                                        });
+
+                                        var final_total_sum_value = COMMON.form.comma(total_sum_value);
+                                        $("#total_price").html(COMMON.form.comma(final_total_sum_value)); //각각의 합을 더한 값을 총합에 넣음
+                                    }
+
+                                    //콤마제거
+                                    function removeComma(str){
+                                        n = parseInt(str.replace(/,/g,""));
+
+                                        return n;
+                                    }
+
+                                    </script>
+
+                                    <style>
+                                        /* **************************************** *
+                                        * GLOBAL
+                                        * **************************************** */
+                                        .ml10px { margin-left: 10px; }
+                                    </style>
+
+                                   <div id="option_div"></div>
+
+                                    <ul class="p_price fw_bold w90 mt30px">
+                                        <li class="w50 f22 t_left">총금액</li>
+                                        <li class="w50 price_list f22 t_right"><span class="fw_bold total_price_2" id="total_price">42,000</span>원</li>
+                                    </ul>
+
+                                    <div class="c_btn f18 t_center cursor mt5per w90">
+                                        <div class="middle_btn fw_bold">
+                                            <div class="order_now">바로구매</div>
+                                        </div>
+
+                                        <div class="right_btn fw_bold">
+                                            <div class="cart_i">장바구니</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </form>
+                        <!--} 상품정보 끝-->
+                    </div>
+
+                    <!--{ cm_bottom 시작-->
+                    <div class="cm_bottom">
+                        <!--{ product tab menu-->
+                        <div class="tab1" id="ptab1">
+                            <div class="cmb_tab mtb2per">
+                                <ul>
+                                    <li><a class="tab_main menu_active tab_block" href="#" chk="product_detail">상품정보</a></li>
+                                    <li><a class="tab_main" href="#" chk="product_de">배송정보</a></li>
+                                    <li><a class="tab_main" href="#" chk="product_re">교환정보</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="ptab_contents tab_block cmb_contents menu_active" id="product_detail">
+                                <img src="http://www.recovershop.co.kr/uploads/images/editor/20201019134650_1603082810889816.png" title="20201019134650_1603082810889816.png"><br style="clear:both;"><br> </div>
+                        </div>
+
+                        <div class="cmb_contents mb3per" id="product_de">
+                            <div class="p_delivery ptab_contents">
+                                <h3 class="fw_bold mb20px">배송 안내</h3>
+                                <table class="w100 f14">
+                                    <tr>
+                                        <th class="pd1per">배송유형</th>
+                                        <th>내용</th>
+                                        <th>배송비</th>
+                                    </tr>
+
+                                    <tbody>
+                                        <tr>
+                                            <th class="pd1per">택배배송</th>
+                                            <td class="t_left">
+                                                <div class="d_info">
+                                                    <ul class="mb3">
+                                                        <li><strong class="fw_bold">업체 및 산지에서 택배로 배송</strong></li>
+                                                        <li>일요일/공휴일 포함 시 추가 배송기일 소요</li>
+                                                        <li>설치 상품의 경우 업체에서 사전연락</li>
+                                                        <li>주문제작 상품 및 상품 재고상황, 택배사 사정에 의해 배송 지연 될 수 있음</li>
+                                                        <li>희망발송일 등 고객 별도 요청에 의해 배송기일과 배송비 변경될 수 있음</li>
+                                                        <li>도서산간 지역일 경우에는 배송비가 추가로 발생할 수 있습니다.</li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+
+                                            <td class="t_left">
+                                                <div class="d_info td_p">상품상세 상단 배송비 참조</div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="cmb_contents" id="product_re">
+                            <div class="p_return_info ptab_contents">
+                                <h3 class="fw_bold mb20px">교환 및 반품 안내</h3>
+                                <table class="w100 f14">
+                                    <tr>
+                                        <th class="pd1per">교환/반품/신청기간</th>
+                                        <td class="t_left">
+                                            <ul>
+                                                <li>교환/취소/반품/교환/환불은 배송 완료 후 7일 이내에 가능합니다.</li>
+                                                <li>고객님이 받으신 상품의 내용이 표시 광고 및 계약 내용과 다른 경우 상품을 수령하신 날로부터 7일 이내가능합니다.
+                                                <li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th class="pd1per">교환/반품 회수(배송) 비용</th>
+                                        <td class="t_left">
+                                            <ul>
+                                                <li>상품의 불량/하자 및 표시광고 및 계약 내용과 다른 경우 해당 상품 회수(배송)비용은 무료이나,</li>
+                                                <li>고객님의 단순변심 및 색상/사이즈 불만에 관련된 교환/반품의 경우 택배비는 고객님 부담입니다.</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th class="pd1per">교환/반품 불가 안내</th>
+                                        <td class="t_left">
+                                            <ul class="p_info_detail">
+                                                <li>고객님이 상품 포장을 개봉하여 사용 또는 설치 완료되어 상품의 가치가 훼손된 경우 (단, 내용 확인을 위한 포장개봉의경우는 예외)</li>
+                                                <li>고객님의 단순변심으로 인한 교환/반품 신청이 상품 수령한 날로부터 7일이 경과한 경우</li>
+                                                <li>고객님의 사용 또는 일부 소비에 의해 상품의 가치가 훼손된 경우</li>
+                                                <li>시간 경과에 따라 상품 등의 가치가 현저히 감소하여 재판매가 불가능한 경우</li>
+                                                <li>복제가 가능한 재화 등의 포장을 훼손한 경우(DVD, CD, 도서 등 복제 가능한 상품)</li>
+                                                <li>설치상품으로 고객님이 이상 여부를 확인한 후 설치가 완료된 상품의 경우(가전, 가구, 헬스기구 등)</li>
+                                                <li>고객님의 요청에 따라 개별적으로 주문제작되는 상품으로 재판매가 불가능한 경우(이니셜 표시상품, 사이즈맞춤상품 등</li>
+                                                <li>구매한 상품의 구성품이 누락된 경우(화장품 세트, 의류부착 악세서리, 가전제품 부속품, 사은품 등)</li>
+                                                <li>기타, 상품의 교환, 환불 및 상품 결함 등의 보상은 소비자분쟁해결기준(공정거래위원회 고시)에 의함</li>
+                                                <li>A/S 문의는 제조사로 먼저 문의 시 빠르게 처리 가능하며, 이마트/트레이더스 매장 상품에 한해 점포의고객만족센터를방문하시면 A/S 접수 가능</li>
+                                                <li>(영수증, 고객주문서 등 증빙서류 지참) / 자세한 문의는 하단 고객센터 번호로 문의</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!--} cm_bottom 끝-->
+                </div>
+                <!--} pro_middle-->
+            </div>
+            <!--product_wrap 끝-->
+        </div>
+        <!--} contents-->
+        <script type="text/javascript" src="http://wcs.naver.net/wcslog.js"></script>
+        <script type="text/javascript">
+            if (!wcs_add) var wcs_add = {};
+            wcs_add["wa"] = "25ab39af32c240";
+            wcs_do();
+
+        </script>
+
+
+        <!--footer_fixed {-->
+        <div class="footer_fixed">
+            <ul>
+                <li><a href="http://recovershop.co.kr"><img src="http://recovershop.co.kr/images/home_icon.png" alt="footer_bottom_icon"></a></li>
+                <li><a href="#" class="mypage_icon"><img src="http://recovershop.co.kr/images/my_page_icon.png" alt="footer_bottom_icon"></a></li>
+                <li><a href="http://recovershop.co.kr/member/cart.php"><img src="http://recovershop.co.kr/images/cart_icon.png" alt="footer_bottom_icon"></a></li>
+                <li class="ftop_btn"><a href="#"><img src="http://recovershop.co.kr/images/top_arrow_icon.png" alt="footer_bottom_icon"></a></li>
+            </ul>
+        </div>
+        <!--} footer_fixed-->
+
+        <!--footer {-->
+        <footer>
+            <!--ft_wrap {-->
+            <div class="ft_wrap dw_1400px">
+                <div class="ft_top t_center ft_menu-container">
+                    <div class="ft_menu swiper-wrapper pt20px pb20px t_left">
+                        <div class="swiper-slide"><a href="http://recovershop.co.kr/content/content.php?type=company">회사소개</a></div>
+                        <div class="swiper-slide"><a href="http://recovershop.co.kr/content/content.php?type=terms">서비스이용약관</a></div>
+                        <div class="swiper-slide"><a href="http://recovershop.co.kr/content/content.php?type=personal">개인정보처리방침</a></div>
+                    </div>
+                </div>
+
+                <div class="ft_middle">
+                    <div class="ftm_middle col-xs-12 col-md-6 ">
+                        <ul class="ftmm_top">
+                            <li><strong>리커버몰</strong></li>
+                            <li>주소: 경기도 광명시 오리로길 619번길 11 (하안동 232번지) 예원빌딩</li>
+                            <li>사업자 등록번호 : 835-87-00673 대표 : 박정임</li>
+                            <li>팩스 : 02-897-8952 개인정보 보호책임자 : 부가통신사업신고번호 : 제2017-경기광명-0300호</li>
+                            <li>Copyright © 2018 주식회사 예원엠앤디. All Rights Reserved.</li>
+                        </ul>
+                    </div>
+
+                    <div class="ftm_right col-xs-12 col-md-6 t_right">
+                        <ul>
+                            <li class="f22 fw_bold mb20px">
+                                <p>고객만족센터</p>
+                            </li>
+                            <li class="f16 mb20px">평일: 9:00 - 18:00 / 점심시간 12:00 - 13:00 </li>
+                            <li class="f18">문의전화 <strong>02-2616-8952</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!--} ft_wrap-->
+        </footer>
+        <!--} footer-->
+    </div>
+    <!--} wrap-->
+
+</body>
+
+</html>
