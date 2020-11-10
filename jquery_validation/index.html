@@ -8,12 +8,11 @@
 	<link rel="stylesheet" href="reset.css">
 	<script src="jquery-3.2.1.min.js"></script>
 	<script src="jquery.validate.min.js"></script>
+	<script src="../modal/js/jquery.easing.1.3.js"></script>
 	<style>
 		.form { position: absolute; width: 20%; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 40px; border: 1px solid #ddd;}
 		.form p { position: relative; width: 100%; height: 50px; margin-bottom: 40px;}
 		.form input { height: 50px; line-height: 50px; }
-		/* .form input:valid { background-color:red; } */
-		/*The :valid selector selects form elements with a value that validates according to the element's settings.*/
 		.form p:last-child { margin-bottom: 0; }
 		.form p .button { width: 100%; height: 50px; line-height: 50px; cursor: pointer; }
 		.form span.error { color:tomato;  width:100%; position: absolute; bottom: -20px; z-index: 10; font-size: 12px; padding: 0 20px; box-sizing: border-box; }
@@ -76,7 +75,6 @@
 	<body>
 		<form class="form" action="#" method="POST" novalidate>
 			<fieldset>
-				<legend>실시간 유효성 검사 테스트 폼</legend>
 				<p class="clearfix">
 					<label for="name" class="text_hidden">이름</label>
 					<input type="text" id="name" name="name" placeholder="이름">

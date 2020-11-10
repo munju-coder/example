@@ -16,19 +16,9 @@
   font-size: 17px;
 }
 .tab::after { content: ''; display: block; overflow: hidden; clear: both; }
-
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #fdc7c7;
-}
-.tab button:hover {
-  background-color: rgb(63, 17, 17);
-  color: white;
-} 
-
+.tab { overflow: hidden; border: 1px solid #ccc; background-color: #fdc7c7; }
+.tab button:hover { background-color: rgb(63, 17, 17); color: white; } 
 .tabcontent {  display: none; padding: 6px 12px; border: 1px solid #ccc; border-top: none; }
-
 .tab_active { display: block; }
 .bg_active { background-color: rgb(63, 17, 17); color: white; }
 
@@ -39,7 +29,7 @@
         $('.tablinks').each( function(){
             $(this).click( function(){
                 
-				$(".tablinks").removeClass("bg_active");
+				$(".tablinks").removeClass("bg_active"); //처음들어간것을 빼기위해 전체removeClass()로 초기화
 				$(this).addClass("bg_active");
 
 				$(".tabcontent").removeClass("tab_active");
@@ -92,6 +82,69 @@
             <li>d</li>
             <li>a</li>
         </ul>
+    </div>
+
+    <script>
+        $(document).ready( function(){
+            $('tabButton').each( function(){
+                $(this).click( function(){
+                    $('.tabButton').removeClass('BG_active');
+                    $(this).addClass('BG_active');
+
+                    $('.tabContents').removeClass('tabContents_active');
+                    $('.tabContents').css('display','none');
+
+                    var tab = $(this).attr('tab_name');
+                    $('#' + tab).css('display','block');
+
+                });
+            });
+        });
+    </script>
+
+    <style>
+        .tabContents { display: none; }
+
+        .BG_active { background-color: red; color: white; }
+        .tabContents_active { display: block; }
+
+    </style>
+    <div id="tab">
+        <div class="tab_box">
+            <button class="tabButton BG_active" tab_name="button1">카테고리</button>
+            <button class="tabButton" tab_name="button2">마이페이지</button>
+            <button class="tabButton" tab_name="button3">오늘본상품</button>
+        </div>
+
+        <div class="tabContents tabContents_active" id="button1">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+
+        <div class="tabContents" id="button2">
+            <ul>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+            </ul>
+        </div>
+
+        <div class="tabContents" id="button3">
+            <ul>
+                <li>a</li>
+                <li>s</li>
+                <li>g</li>
+                <li>f</li>
+                <li>w</li>
+            </ul>
+        </div>
     </div>
 
 </body>
