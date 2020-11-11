@@ -15,6 +15,11 @@
 <script>
 
     /*
+        props 대소문자 구분(camelCase VS kebab-case)
+        -HTML attribute는 대소문자 구분이 없기때문에 브라우저는 대문자를 소문자로 변경하여 읽는다
+        그렇기때문에 카멜케이스(대소문자혼용)으로 prop의 이름을 정한 경우에 DOM 템플릿안에서는 케밥케이스(하이픈으로 연결된 구조)를 
+        사용해야 올바르게 작동한다.
+        -
         props 속성은 상위 컴포넌트에서 하위컴포넌트로 데이터를 전달할 때 사용하는 속성
         하위 컴포넌트속성 정의방식
         Vue.component('child-component',{

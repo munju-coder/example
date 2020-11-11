@@ -54,11 +54,13 @@
             $('.tablinks').each( function(){
 
                 $(this).click( function(){
+                    
                     $('.tablinks').removeClass('current');
                     $(this).addClass('current');
 
                     $('.tabcontent').removeClass('active');
-                    
+                    $('.tabcontent').css('display','none');
+
                     var activeTab = $(this).attr('data-tab');
                     $('#' + activeTab).css('display','block');
 
