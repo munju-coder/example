@@ -10,6 +10,18 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <script>
+    /*
+        속성(attribute) html요소의 추가적인 정보를 가지고 있는 이름과 값의 한 쌍을 의미하는데, 
+        ex) input 요소는 checked라는 속성(attribute)을 가지고 있으며 속성값은 checked이다
+        <input type = "chekbox" name="chk" checked="checked">
+
+        프로퍼티(property) 위와 같은 속성을 객체화 하였을 시의 HTML DOM트리 내부에서의 값을 가리킨다
+        만약 해당 체크박스가 체크되면 checked프로퍼티 값은 true이다
+        <input type= "checkbox" name="chk" checked="checked">
+        =>속성은 HTML문서에 존재하고 값이 변하지 않으며, 프로퍼티는 HTML DOM트리에 존재하고 그 값이 변할 수 있다.
+        사용자가 HTML 문서에 있는 <input>요소를 체크하거나, 값을 변경하면 속성값은 변하지 않지만 프로퍼티의 값은 변하게되는 것이다.
+
+    */
     $(document).ready( function(){
 
         /**
@@ -21,12 +33,9 @@
 
             $('.mbmt_bottom').toggle();
             
-            if($(".mbmt_bottom").css("display") == "block")
-            {
+            if($(".mbmt_bottom").css("display") == "block"){
                 $('.caret-up_btn a i').attr('class','fa fa-caret-up');
-            }
-            else
-            {
+            }else {
                 $('.caret-up_btn a i').attr('class','fa fa-caret-down');
             }
         });
@@ -34,38 +43,6 @@
 </script>
 
 <body>
-    <div class="mb_middle">
-        <div class="mbm_top">
-            <div class="mbmt_top">
-                <div class="mbmt_left fw_600">
-                    <i class="far fa-user"></i> 조문주
-                </div>
-
-                <div class="mbmt_right">
-                    <ul>
-                        <li class="fw_600">보유포인트 : <span class="text_c_ff2b64">100,000</span> P</li>
-                        <li class="fw_600">보유쿠폰 : <span class="text_c_ff2b64">0</span> 개</li>
-                    </ul>
-                </div>
-                
-            </div>
-
-            <div class="mbmt_bottom">
-                <div class="mbmtb_info">
-                    <div class="mbmtb_info_div f14"><span class="fw_600">연락처:</span> 010-1234-5678</div>
-                    <div class="mbmtb_info_div f14"><span class="fw_600">E-Mail:</span> aaa@aaa.com</div>
-                    <div class="mbmtb_info_div f14"><span class="fw_600">최종접속일시:</span> 2020-04-16 08:47:36</div>
-                    <div class="mbmtb_info_div f14"><span class="fw_600">회원가입일시:</span> 2020-04-16 11:20:33</div>
-                    <div class="mbmtb_info_div f14 word_break"><span class="fw_600">주소:</span> (11111) 경기도 광명시 오리로619 11, 예원이케이빌딩 2층</div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="caret-up_btn">
-            <a href="#"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
-        </div>
-    </div>
 
     <div class="wrap">
         <div class="bgred">
