@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>형제요소의 선택</title>
+    <!--jquery-->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<script>
+    /*
+        DOM트리에서 특정요소의 형제(siblings)요소, 같은 선상에 있는 요소를 선택하기 위한 메소드로
+        .siblings() 메소드 : 선택한 요소의 형제요소 중에서 지정한 선택자에 해당하는 요소를 모두 선택함
+        .next() : 선택한 요소의 바로 다음에 위치한 형제요소를 선택함.
+        .nextAll() : 선택한 요소의 다음에 위치한 형제요소를 모두 선택함.
+        .nextUntill() : 선택한 요소의 형제 요소 중에서 지정한 선택자에 해당하는 요소 바로 직전까지의 모든 요소를 선택함
+        .prev() : 선택한요소의 바로 이전에 위치한 형제요소를 선택
+        .prevAll() : 선택한 요소의 이전에 위치한 형제요소를 모두 선택
+        .prevUntil() : 선택한 요소의 형제요소 중에서 지정한 선택자에 해당하는 요소 바로 다음까지의 요소를 모두 선택
+
+    */
+
+    $(document).ready( function(){
+        $('.me').siblings().css('background-color','red');
+        $('.me').next().css('border','1px solid blue');
+        $('.me').nextAll().css('background-color','yellow');
+        $('.me').prev().css('color','powderblue');
+    });
+</script>
+<body>
+    <ul>ul 부모태그
+        <li>li (형제태그)</li>
+        <li>li (형제태그)</li>
+        <li class="me">li (나)</li>
+        <li>li (형제태그)</li>
+        <li>li (형제태그)</li>
+    </ul>
+</body>
+</html>

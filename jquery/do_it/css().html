@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <!--font Awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<script>
+    /*
+        .css() 메소드는 선택한 요소의 스타일 속성값을 반환하거나,선택한 요소의 스타일 속성을 인수로 전달받은 값으로 설정한다. 
+
+    
+    */
+    $(document).ready( function(){
+        $('p').css('background-color','red');
+        $('p').css({'font-size': '30px',"color": 'white'}); //여러스타일 한번에 설정
+    });
+</script>
+
+<body>
+    <p>css 메소드를 사용하면 선택한 요소의 스타일을 바꿀 수 있다. </p>
+</body>
+</html>

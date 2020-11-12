@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탐색 메소드 add(),each(),end(),offsetParent()</title>
+    <!--jquery-->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<script>
+    /*
+        .add() : 선택한 요소에 다른요소를 추가로 선택한다 
+        .addBack() : 선택한 요소의 집합 바로 전에 선택했던 요소를 추가한다 
+        .each() : 선택한 요소들을 각요소마다 전달받은 콜백함수를 반복실행한다
+        .end() : 마지막으로 실행한 메소드의 실행 전 상태로 선택한 요소의 집합을 복원한다
+        .offsetParent() : DOM트리에 존재하는 부모요소들 중 위치(position)요소를 기준으로 가장가까운 요소를 찾아서 선택함
+        .contents() : 선택한 요소의 자식( child )요소를 모두 선택한다
+
+    */
+
+    $(document).ready( function(){
+        //p태그도 선택되고, div요소도 선택되어 스타일이 변경된다
+        $('p').add('div').css('border','1px solid red'); //선택한 요소에 다른요소를 추가하여 선택하는 것이지 새로운 요소를 추가하여 넣는 메소드가 아니다. 
+        //새로운 요소를 추가할 때에는 .append(),.preppend() 등을 사용한다
+
+        $('#after').find('p').addBack().css('background-color','aqua');
+        //p태그를 찾아서 선택하고, (p태그도 해당되고) 추가로 div#after도 선택되는것 
+        
+        $('li').each( function(index){
+            if( index % 2 == 0) {
+                $(this).addClass('even');
+            }
+        });
+
+
+    });
+</script>
+<style>
+    .even { color: tomato; }
+</style>
+<body>
+    <p>기타 탐색 요소 메소드 알아보기</p>
+    <span>탐색메소드입니다</span>
+    <div>hello jqeury</div>
+
+    <div id="after">
+        <p>.addBack() 적용후</p>
+        <p>안녕하세요</p>
+    </div>
+
+    <ul>
+        <li>첫번째</li>
+        <li>두번째</li>
+        <li>세번째</li>
+    </ul>
+
+</body>
+</html>
