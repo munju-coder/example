@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main banner event</title>
+    <!--jqeury cdn-->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+
+</head>
+<script>
+    $(document).ready( function(){
+        // GNB bgon
+        var scroll = $(window).scrollTop();
+        if (scroll < 10) {
+            console.log(scroll);
+            $('.header').removeClass('bgon');
+        }else {
+            $('.header').addClass('bgon');
+        }
+
+        $(window).on('scroll', function(){
+            scroll = $(window).scrollTop();
+            if (scroll < 10) {
+                if ($('.header').hasClass('bgon')) {$('.header').removeClass('bgon');}
+            }else {
+                if (!$('.header').hasClass('bgon')) {$('.header').addClass('bgon');}
+            }
+        });
+    });
+</script>
+<style>
+    html, body {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 400;
+    }
+    .header { width: 100%; min-width: 1200px; position: fixed; top: 0; z-index: 100; padding: 40px 4% 0; box-sizing: border-box; transition: padding .5s, background .5s, box-shadow .5s; }
+    .logo { display: block; /* width: 87px; */ float: left; position: relative; margin: 7px 5px 0; cursor: pointer; }
+    .header.dark .gnb_link.on, .header.dark .gnb_link:hover { color: #eee; }
+    .header.dark .gnb_link { color: #aaa; }
+    .header .gnb_wrap { float: right; }
+    .header.bgon.dark {
+        background: rgba(0,0,0,0.9);
+    }
+    .header.bgon {
+        padding: 13px 4%;
+        background: rgba(255,255,255,0.9);
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .header::after { content: ''; display: block; overflow: hidden; clear: both; }
+    .gnb { display: inline-block; margin-left: 20px; }
+    .gnb_inner { font-size: 0; text-align: right; }
+    .gnb_link { display: inline-block; padding: 10px; font-family: 'Amiri', serif; font-size: 20px; line-height: 1; color: #555; transition: color 0.3s; cursor: pointer; position: relative; }
+    .gnb_link:after { content: ''; display: block; width: calc(100% - 20px); height: 1px; position: absolute; left: 10px; bottom: 3px; transition: background 0.3s; }
+    .gnb_link.gnb_link_r { position: relative; top: -2px; padding: 10px 23px; font-family: 'Noto Sans KR', sans-serif; font-size: 13px; border: solid 1px; color: #6a6b77; box-sizing: border-box; }
+    .gnb_link_subtxt {
+        display: block;
+        width: 180px;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        opacity: 0;
+        transform: translate(-50%,20px);
+        transition: opacity 0.3s, transform 0.3s, color 0.3s;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 300;
+        font-size: 14.5px;
+        line-height: 1.35;
+        text-align: center;
+        color: #555;
+        word-break: keep-all;
+        text-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .logo_img1 { opacity: 0; display: none; }
+    .logo_img2 { opacity: 1; }
+    .sc1 {
+        width: 100%;
+        min-width: 1200px;
+        height: 100%;
+        position: relative;
+        padding-bottom: 500px;
+        background: #000;
+        overflow: hidden;
+    }
+
+    .intro_wrap {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 2;
+        overflow: hidden;
+    }
+
+    .intro1 {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: #000;
+    }
+
+    .intro1_bg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0%;
+        top: 0%;
+        transform-origin: center center;
+        transform: scale(1) rotate(0deg);
+        animation: ani_intro1_bg 8s ease 1 both;
+        animation-delay: 0.3s;
+        background-image: url(images/intro1_bg.jpg);
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: cover;
+    }
+
+    .intro1_bg_inner {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+    }
+
+    .intro1_bg_wrap {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+    }
+    .intro_subtit {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 43%;
+        transform: translateY(-50%);
+        margin-top: -4vw;
+        text-align: center;
+        text-shadow: 0 0 1vw rgba(0,0,0,0.5);
+        font-family: 'Amiri', serif;
+        font-size: 1.14583333vw;
+        letter-spacing: -0.05vw;
+        line-height: 1;
+        color: #b58e70;
+    }
+
+    .intro1_txt {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 43%;
+        text-align: center;
+        /* opacity: 0; */
+        transform: translateY(-50%);
+        text-shadow: 0 0 1vw rgba(0,0,0,0.5);
+        font-weight: 300;
+        font-size: 1.87500vw;
+        letter-spacing: -0.13vw;
+        line-height: 1.5;
+        color: rgba(236,236,236,0.84);
+        animation: ani_intro1_txt 1s ease 1 both;
+        animation-delay: 0.2s;
+    }
+
+    /* .btn_scroll {
+        display: block;
+        height: 20vh;
+        width: 1px;
+        position: absolute;
+        left: 50%;
+        bottom: 0px;
+        opacity: 0.7;
+        transition: opacity 0.5s;
+    } */
+
+    .scroll_l1 {
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgba(151,134,92,0.33);
+        overflow: hidden;
+    }
+
+    .scroll_l2 {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: #a9986d;
+        transform: translateY(-100%);
+        animation: ani_scroll 4s linear infinite;
+    }
+</style>
+<body>
+    <div class="wrap">
+        <header class="header dark">
+            <h1 class="logo">
+                <img src="images/iloom_logo.png" alt="logo image" class="logo_img logo_img1">
+                <img src="images/logo_b.png" alt="logo image" class="logo_img logo_img2">
+            </h1>
+
+            <nav class="gnb_wrap">
+                <ul class="gnb_inner">
+                    <li class="gnb"><span class="gnb_link on">View PLACER <span class="gnb_link_subtxt">디지털 쇼룸을 경험하세요</span></li>
+                    <li class="gnb"><span class="gnb_link">Learn PLACER </span></li>
+                    <li class="gnb"><span class="gnb_link">Gallery of PLACER </span></li>
+                    <li class="gnb"><span class="gnb_link gnb_link_r ">체험신청</span></li>
+                    <li class="gnb"><span class="gnb_link gnb_link_r ">예약확인</span></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="sc1">
+            <div class="intro_wrap">
+                <div class="intro1">
+                    <div class="intro1_bg_wrap">
+                        <div class="intro1_bg_inner"><div class="intro1_bg"></div></div>
+                    </div>
+                    <p class="intro_subtit">PLACER Motion Lounge Bed</p>
+                    <p class="intro1_txt">
+                        마치 퍼스트클래스를 탄 것 같은, <br>처음 만나는 모션 라운지베드 생활
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
