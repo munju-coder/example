@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실행컨텍스트 개념</title>
+</head>
+
+<script>
+
+    /*
+        현재실행되는 컨텍스트에서 관련없는 코드가 실행되면, 새로운 컨택스트가 생성되어 스택에 들어가고 제어권이 그 컨텍스트로 이동한다.
+
+    */
+
+    console.log('This is global context');
+    
+    function ExContext1(){
+        console.log('This is ExContext1');
+    };
+
+    function ExContext2(){
+        ExContext1();
+        console.log('This is ExContext2');
+    };
+    ExContext2();
+
+    function excute(param1,param2){
+        var a = 1, b = 2;
+        function func(){
+            return a + b;
+        }
+        return param1 + param2 + func();
+    }
+    excute(3,4);
+</script>
+<body>
+    
+</body>
+</html> 

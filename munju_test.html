@@ -62,7 +62,7 @@ ex) int level;
 -변수가 하나의 데이터를 저장하기 위한 것이라면, 배열은 여러개의 데이터를 통으로 모아 하나의
 변수에 저장하기 위한 것이라고 할 수 있다.
 
-ex) var array = ['박보검','박서준','유아인']
+ex) var array = ['a'','b','c']
     alert(array[0]);
     alert(array[1]);
     alert(array[2]);
@@ -74,14 +74,14 @@ ex) var array = ['박보검','박서준','유아인']
 -만약 배열이 없다면,
 
     function get_members1(){
-        return '박보검';
+        return 'a';
     }
     document.write(get_members1());
 
-->하나의 함수는 하나의 값만을 반활할 수 있기 때문에 위와 같이 반환하는 함수를 만들었다. 하지만 배열을 쓰면 간단하게 만들 수 있다.
+->하나의 함수는 하나의 값만을 반환할 수 있기 때문에 위와 같이 반환하는 함수를 만들었다. 하지만 배열을 쓰면 간단하게 만들 수 있다.
 
     function get_members(){
-        return ['박보검','박서준','유아인'];
+        return ['a','b','c'];
     }
     var members = get_members();
     document.write(members[0]);

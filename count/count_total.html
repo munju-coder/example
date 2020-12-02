@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURM GALLERY</title>
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="js/COMMON_geo.js"></script>
+    <!--goolge webfont-->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <!--font Awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!--css-->
+    <link rel="stylesheet" href="css/reset.css">
+</head>
+<script>
+    $(document).ready( function(){
+        /*menu btn click event*/
+        $('#menu_btn').click( function(){
+            $('aside').toggle();
+            
+        });
+
+        $('.close_btn').click( function(){
+            $('aside').toggle();
+        });
+    });
+</script>
+
+<body>
+    <!--wrap {-->
+    <div class="wrap">
+        <div class="header_wrap">
+            <header class="mlr_32px">
+                <div class="h_middle"><a href="index.html" class="t_center"><img src="images/logo.png" alt="aurm logo"></a></div>
+                <div class="h_right">
+                    <a href="#"><img src="images/cart_icon.png" alt="cart icon image"></a>
+                    <a href="#" class="t_right" id="menu_btn"><img src="images/menu_btn.png" alt="menu icon"></a>    
+                </div>
+            </header>
+        </div>
+
+        <aside>
+            <a href="javascript:;" class="close_btn"><img src="images/close_btn.png" alt="cloase btn"></a>
+            <ul>
+                <li><a href="#">브랜드스토리</a></li>
+                <li><a href="#">신메뉴</a></li>
+                <li><a href="#">전체메뉴</a></li>
+                <li><a href="#">뉴스/이벤트</a></li>
+                <li><a href="#">갤러리아우름소식</a></li>
+                <li><a href="#">창업안내</a></li>
+            </ul>
+
+        </aside>
+
+        <!--contents {-->
+        <div class="contents">
+            <div class="menu_top mlr_32px over_hidden">
+                <ul>
+                    <li><a href="#">신메뉴</a></li>
+                    <li><a href="#">커피</a></li>
+                    <li><a href="#">음료</a></li>
+                    <li><a href="#">아이스크림/디저트</a></li>
+                    <li><a href="#">베이커리</a></li>
+                </ul>
+            </div>
+
+            <div class="main_banner">
+                <a href="#"><img src="images/main_banner.png" alt="main banner image"></a>
+            </div>
+
+            <style>
+                .over_hidden { overflow: hidden; }
+                .wrap { width: 640px; overflow: hidden; margin: 0 auto; }
+                /*common*/
+                a { color: initial; text-decoration: none; }
+                a:hover,a:active,a:visited ,a:link { text-decoration: none; }
+                /*margin*/
+                .mb30px { margin-bottom: 30px; }
+                /*text-align*/
+                .t_center { text-align: center; }
+                .t_left { text-align: left; }
+                .t_right { text-align: right; }
+                /*color*/
+                .smart_f_color { color: #043543; }
+                .mlr_32px { margin: 0 32px; }
+                .fw_bold { font-weight: 600; }
+                .wrap { position: relative; }
+                .wrap .header_wrap { border-bottom: 1px solid #ddd; padding-bottom: 10px;  padding-top: 30px; }
+                .wrap .header_wrap header div { float: left; }
+                .wrap .header_wrap header .h_middle { margin-left: 174px; width: 52%; }
+                .wrap .header_wrap header .h_right a:first-child { margin-right: 10px; }
+                .wrap .header_wrap header::after { content: ''; display: block; overflow: hidden; clear: both; }
+
+                .wrap aside { position: absolute; width: 477px; top: 0; right: 0; background-color: #113f4d; opacity: 0.95; display: none; }
+                .wrap aside ul li { padding: 20px 0 20px 30px; border-bottom: 1px solid #ddd; }
+                .wrap aside ul li:first-child { padding-top: 40px; }
+                .wrap aside .close_btn { position: absolute; top: 28px; right: 478px; display: inline-block; }
+                .wrap aside ul li a { color: #ffffff; font-size: 25px; }
+
+                .wrap .contents .menu_top ul li { float: left; margin-right: 33px;  padding-top: 30px; padding-bottom: 16px; }
+                .wrap .contents .menu_top ul li:first-child { margin-left: 10px; }
+                .wrap .contents .menu_top ul li:last-child { margin-right: 0; }
+                .wrap .contents .menu_top ul li a { font-size: 22px; color: #7c7c7c; font-weight: 600; }
+                .wrap .contents .menu_top ul li:nth-child(2) a { color: #043543; }
+
+                .wrap .contents .product_list .proList_contents { margin-bottom: 60px; }
+                .wrap .contents .product_list .proList_contents h2 { padding-top: 50px; padding-bottom: 20px; color: #043543; font-size: 28px; }
+                .wrap .contents .product_list .proList_contents div { overflow: hidden; }
+                .wrap .contents .product_list .proList_contents div .pro_box { float: left; width: 47%;  border: 1px solid #ddd; margin-bottom: 40px; cursor: pointer; }
+                .wrap .contents .product_list .proList_contents div::after { content: ''; display: block; overflow: hidden; clear: both; }
+                .wrap .contents .product_list .proList_contents div .pro_box:nth-child(odd) { margin-right: 30px; }
+                .wrap .contents .product_list .proList_contents div .pro_box img { width: 100%; }
+                .wrap .contents .product_list .proList_contents div .pro_box ul { margin-left: 24px; margin-bottom: 20px; }
+
+                .wrap footer .ft_top { margin-bottom: 20px;  }
+                .wrap footer .ft_top ul li { display: inline-block; margin-right: 21px; margin-left: 35px; }
+                .wrap footer .ft_top ul li:last-child { border-right: 0; padding-left: 10px; margin-left: 8px; }
+                .wrap footer .ft_top ul li a { font-size: 21px; color: #043543;}
+                .wrap footer .ft_middle { background-color: #043543; color: white; padding: 40px 55px;  font-size: 22px; word-break: keep-all; }
+                .wrap footer .ft_middle ul li { margin-bottom: 10px; }
+
+                @media(max-width:500px){
+                .wrap .contents .product_list .proList_contents { margin-bottom: 20px; }
+                }
+                /* **************************************** *
+                * 2020-11-23 ~ 2020-11-24
+                * index 수정
+                * munju
+                * **************************************** */
+                body { font-family: 'IBM Plex Sans KR'; }
+                .product_list .proList_contents .proL_box { border: 1px solid #ddd; }
+                .product_list .proList_contents .proL_box .proLb_left { float: left; }
+                .product_list .proList_contents .proL_box::after { content: ''; display: block; overflow: hidden; clear: both; }
+                .product_list .proList_contents .proL_box .proLb_right { float: right; width: 47%; padding-top: 32px; }
+                .proLb_right ul li { margin-bottom: 16px; }
+                .proLb_right ul li:last-child { margin-bottom: 0; }
+                .proLb_right ul .pro_title { font-size: 28px; color: #1b4464; font-weight: 600;  }
+                .proLb_right ul .pro_txt { color: #818181; font-size: 20px; margin-bottom: 10px; }
+                .proLb_right ul .pr_price { margin-top: 21px; margin-bottom: 16px; }
+                .proLb_right ul .pr_price p,.proLb_right ul .pr_count p { float: left; font-size: 22px; }
+                .proLb_right ul .pr_price p:last-child { float: right; margin-right: 20px; }
+                .proLb_right ul .pr_price::after { content: ''; display: block; overflow: hidden; clear: both; }
+
+                .proLb_right ul .pr_count p:last-child { float: right; }
+                .proLb_right ul .pr_count::after { content: ''; display: block; overflow: hidden; clear: both; }
+                .proLb_right ul .pr_count .count_box { float: right; }
+                .wrap .contents .product_list .proList_contents div ul li:first-child { margin-bottom: 20px; }
+
+                .proTotal_box { position: fixed; width: 640px; bottom: 0;  color: white; background-color: #3c707f; user-select: none; }
+                .proTotal_box_wrap { color: white;  margin-left: 43px; /* padding: 10px 0;  */}
+                .proTotal_box_wrap::after { content: ''; display: block; overflow: hidden; clear: both; }
+                .proTotal_box button { border: none;  border-radius: 10px; font-size: 30px; font-weight: 600; background-color: #043543; border: 3px solid white; padding: 5px 37px; margin-top: 10px; color: white; }
+                .proTotal_box_wrap .proTotal_txt { font-size: 28px; float: left; width: 35%; margin-top: 20px; }
+                .proTotal_price { width: 33%; margin-right: 20px; }
+                .cnt_input { width: 50px; border: none;  border-right: 1px solid #b3b3b3; border-left: 1px solid #b3b3b3; font-size: 23px; }
+                .count_box { margin-right: 20px; border: 1px solid #b3b3b3; }
+                .count_box input[type="button"] { border: none; background-color: white; font-size: 23px; font-weight: 600; outline: none; }
+                .wrap footer .ft_top { margin-top: 40px; }
+
+            </style>
+            
+            <form class="product_form">
+                <!-- <input type="hidden" id="pd_amount" name="pd_amount[]" value="99">
+                <input type="hidden" id="pd_price" name="pd_price[]" value="3000">
+                <input type="hidden" id="pd_min_quantity" name="pd_min_quantity" value="1">
+                <input type="hidden" id="pd_max_quantity" name="pd_max_quantity" value="5"> -->
+                <!--product_list {-->
+                <div class="product_list">
+                    <div class="proList_contents mlr_32px">
+                        <h2 class="t_center fw_bold">커피</h2>
+
+                        <div class="proL_box mb30px">
+                            <div class="proLb_left"><a href="javascript:;"></a><img src="images/coffee_1.png" alt="coffee image"></a></div>
+                            <div class="proLb_right">
+                                <ul>
+                                    <li class="pro_title">아메리카노</li>
+                                    <li class="pro_txt">갤러리아우름만의 맛과</li>
+                                    <li class="pro_txt">향을 더한 로스팅 원두로</li>
+                                    <li class="pro_txt">깊고 진한 맛의 아메리카노</li>
+                                    <li class="pr_price">
+                                        <p class="">가격</p>
+                                        <p class="fw_bold"><span id="pd_price" class="unitprice" data-unitprice="3000">3,000</span>원</p>
+                                    </li>
+                                    <li class="pr_count">
+                                        <p class="">수량</p>
+                                        <div class="count_box">
+                                            <div class="t_right count_input"> 
+                                                <input type="button" id="minus" class="minus" value="-">
+                                                <input type="text" id="cnt" class="cnt_input t_center" value="0" readonly="">
+                                                <input type="button" id='plus' class="plus" value="+">
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="proL_box mb30px">
+                            <div class="proLb_left"><a href="javascript:;"><img src="images/coffee_1.png" alt="coffee image"></a></div>
+                            <div class="proLb_right">
+                                <ul>
+                                    <li class="pro_title">아메리카노</li>
+                                    <li class="pro_txt">갤러리아우름만의 맛과</li>
+                                    <li class="pro_txt">향을 더한 로스팅 원두로</li>
+                                    <li class="pro_txt">깊고 진한 맛의 아메리카노</li>
+                                    <li class="pr_price">
+                                        <p class="">가격</p>
+                                        <p class="fw_bold"><span id="pd_price" class="unitprice" data-unitprice="3000">3,000</span>원</p>
+                                    </li>
+                                    <li class="pr_count">
+                                        <p class="">수량</p>
+                                        <div class="count_box">
+                                            <div class="t_right count_input"> 
+                                                <!-- <input type="hidden" name="pd_seq" class = "pd_seq" value = "<?php echo $rows['seq'];?>" pd_price = "<?php echo $rows['price'];?>"> -->
+                                                <input type="button" id="minus" class="minus" value="-">
+                                                <input type="text" id="cnt" class="cnt_input t_center" value="0" readonly="">
+                                                <input type="button" id='plus' class="plus" value="+">
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script type="text/javascript">
+                        /* **************************************** *
+                        * 2020-11-23 ~ 2020-11-25
+                        * index 상품가격 js
+                        * munju
+                        * **************************************** */
+                        $(document).ready(function(){
+                            
+                            // plus
+                            $(".plus").click(function() {
+                                var prodCnt = $(this).siblings(".cnt_input").val();
+                                
+                                if(prodCnt == "" || prodCnt == undefined){
+                                    return false;
+                                }
+                        
+                                $(this).siblings(".cnt_input").val(Number(prodCnt) + 1);
+                                
+                                calculation(); // 총금액 
+                            });
+                            
+                            // minus
+                            $(".minus").click(function() {
+                                var prodCnt = $(this).siblings(".cnt_input").val();
+                                
+                                if(prodCnt == "" || prodCnt == undefined){
+                                    return false;
+                                }else{
+                                    if(Number(prodCnt) == 0){
+                                        $(this).siblings(".cnt_input").val(Number(prodCnt));
+                                    }else{
+                                        $(this).siblings(".cnt_input").val(Number(prodCnt) - 1);
+                                    }
+                                }
+                                
+                                calculation(); // 총금액 
+                            });
+                        });
+                        
+                        //removeComma
+                        function removeComma(str){
+                            return parseInt(str.replace(/,/g,""));
+                        }
+                        
+                        //총합
+                        function calculation(){	
+                            var totalPrice = 0; // 전체가격
+                            
+                            $('.proL_box').each( function(idx, item){					
+                                var prodCnt   = $(this).find(".cnt_input").val();  //제품갯수
+                                var prodPrice = $(this).find(".unitprice").text(); //제품가격
+                        
+                                if(prodCnt == "" || prodCnt == undefined){
+                                    return false;
+                                }else{
+                                    prodCnt = Number(prodCnt);
+                                }
+                        
+                                if(prodPrice == "" || prodPrice == undefined){
+                                    return false;
+                                }else{
+                                    prodPrice = removeComma(prodPrice); // 콤마제거
+                                }
+                                 
+                                totalPrice += prodCnt * prodPrice;
+                            });
+                            
+                            if(totalPrice > 0){
+
+                                $(".proTotal_box").find(".total").text(COMMON.form.comma(totalPrice));
+                            
+                            }else{
+                            
+                                $(".proTotal_box").find(".total").text("0");
+                            }
+                        }
+                    </script>
+
+                    <!-- <script>
+                    $("document").ready(function(){
+                        var total_price = 0;
+                        var pd_seq = [];
+                        var pd_price = [];
+                        var pd_amount = [];
+                        
+                        $(".cnt_input").val(0);
+                        
+                        $(".plus").each(function(i){
+                            pd_seq[i] = 0;
+                            pd_price[i] = 0;
+                            pd_amount[i] = 0;
+                            $(this).click(function(){
+                                var price = parseInt($(this).siblings(".pd_seq").attr("pd_price"));
+                                var amount = parseInt($(this).siblings(".cnt_input").val());
+                                amount += 1;
+
+                                pd_seq[i] = $(this).siblings(".pd_seq").val();
+                                pd_amount[i] = amount;
+
+                                $(this).siblings(".cnt_input").val(amount);
+
+                                pd_price[i] += price;
+
+                                total_price = 0;
+                                for(var j = 0; j < pd_price.length; j++)
+                                {
+                                    if(pd_price[j] > 0)
+                                    {
+                                        total_price += pd_price[j];
+                                    }                    
+                                }
+                                $(".total_price").text(COMMON.form.comma(total_price));
+                            });
+                        });
+
+                        $(".minus").each(function(i){
+                            $(this).click(function(){
+                                var price = parseInt($(this).siblings(".pd_seq").attr("pd_price"));
+                                var amount = parseInt($(this).siblings(".cnt_input").val());
+                                amount -= 1;
+
+                                if(amount == 0)
+                                {
+                                    pd_seq[i] = 0;
+                                    pd_amount[i] = 0;
+                                }
+
+                                if(amount < 0)
+                                {
+                                    pd_amount[j] = 0;
+                                    $(this).siblings(".cnt_input").val(0);
+                                    alert("최소 구매수량은 1개 입니다.");
+                                    return flase;
+                                }
+
+                                $(this).siblings(".cnt_input").val(amount);
+
+                                pd_price[i] -= price;
+
+                                total_price = 0;
+                                for(var j = 0; j < pd_price.length; j++)
+                                {
+                                    if(pd_price[j] > 0)
+                                    {
+                                        total_price += pd_price[j];
+                                        
+                                    }
+                                }
+                                $(".total_price").text(COMMON.form.comma(total_price));
+                            });
+                        });
+                    });
+                    </script> -->
+                   
+                </div>
+            </form>
+            <!--} product_list-->
+        </div>
+        <!--} contents-->
+
+        <!--footer {-->
+        <footer class="mb30px">
+            <div class="proTotal_box">
+                <div class="proTotal_box_wrap">
+                    <div class="proTotal_txt">총금액</div>
+                    <div class="proTotal_txt proTotal_price t_right"><span class="total number">0</span>원</div>
+                    <button>주문</button>
+                </div>
+            </div>
+
+            <div class="ft_top over_hidden mlr_32px t_center">
+                <ul>
+                    <li><a href="#">고객센터</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                </ul>
+            </div>
+
+            <div class="ft_middle">
+                <ul class="t_center">
+                    <li><strong>아우름카페</strong> 서은교</li>
+                    <li>주소: 경기도 광명시 오리로길 619번길 11 (하안동 232번지) 예원빌딩</li>
+                    <li>팩스 : 02-897-8952 개인정보 보호책임자 : 김완수</li>
+                    <li>Copyright © 2019 갤러리아우름. All Rights Reserved.</li>
+                </ul>
+            </div>
+        </footer>
+        <!--} footer-->
+    </div>
+    <!--} wrap-->
+    
+</body>
+</html>
