@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FadeIn</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<style>
+    .fade { margin: 40px; padding: 40px; background-color: lightblue; opacity: 1; }
+</style>
+<script>
+    $(document).ready( function(){
+
+        $(window).on("load",function() {
+            //window로드 됐을때 해야할 일 
+            //window scroll 했을 때 해야 할 일 
+            $(window).scroll(function() {
+                
+                //.fade 각각 해야할 일
+                $(".fade").each(function() {
+                
+                    var objectBottom = $(this).offset().top + $(this).outerHeight();
+                    var windowBottom = $(window).scrollTop() + $(window).innerHeight();
+
+                    /* If the element is completely within bounds of the window, fade it in */
+                    if (objectBottom < windowBottom) { //object comes into view (scrolling down)
+                        
+                        if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
+
+                    } else { //object goes out of view (scrolling up)
+                        
+                        if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
+                    
+                    }
+                });
+            }); $(window).scroll(); //invoke scroll-handler on page-load
+        });
+    });
+</script>
+<body>
+    <div>
+        <div class="fade">Fade In 01</div>
+        <div class="fade">Fade In 01</div>
+        <div class="fade">Fade In 01</div>
+        <div class="fade">Fade In 01</div>
+        <div class="fade">Fade In 01</div>
+        <div class="fade">Fade In 01</div>
+        <div class="fade">Fade In 01</div>
+        <div class="fade">Fade In 01</div>
+        <div class="fade">Fade In 01</div>
+    </div>
+
+</body>
+</html>

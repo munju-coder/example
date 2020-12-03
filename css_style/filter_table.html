@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filter table</title>
+</head>
+<style>
+    .w60 { width: 60%; }
+    .w40 { width: 40%; }
+    * { box-sizing: border-box; }
+    #myInput { background: url(../javascript/images/search_icon.png) 10px 10px no-repeat; width: 30%; font-size: 16px; padding: 12px 20px 12px 40px; border: 1px solid #ddd; margin-bottom: 12px; }
+    #myTable { border-collapse: collapse; width: 30%; border: 1px solid #ddd; font-size: 18px; }
+    #myTable th,#myTable td { text-align: left; padding: 12px; }
+    #myTable tr { border-bottom: 1px solid #ddd; }
+    #myTable tr.header, #myTable tr:hover { background-color: #f1f1f1; }
+     
+</style>
+<script>
+    function myFunction(){
+
+    }
+</script>
+<body>
+    <h2>My Customers</h2>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+    <table>
+        <tr class="header">
+            <th class="w60">Name</th>
+            <th class="w40">Country</th>
+        </tr>
+
+        <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Germany</td>
+        </tr>
+
+        <tr>
+            <td>Island Trading</td>
+            <td>UK</td>
+        </tr>
+
+        <tr>
+            <td>Koniglich Essen</td>
+            <td>Germany</td>
+        </tr>
+
+        <tr>
+            <td>Laughing Bacchus Winecellars</td>
+            <td>Canada</td>
+        </tr>
+
+        <tr>
+            <td>Magazzini Alimentari Riuniti</td>
+            <td>Italy</td>
+        </tr>
+
+        <tr>
+            <td>North/South</td>
+            <td>UK</td>
+        </tr>
+
+        <tr>
+            <td>Paris specialites</td>
+            <td>France</td>
+        </tr>
+    </table>
+</body>
+</html>
