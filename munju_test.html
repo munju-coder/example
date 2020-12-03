@@ -480,14 +480,14 @@ global(특정한 객체에 속하지 않는 함수와 속성들)이다.
 <script>
     $(document).ready( function(){
         // 1. input:text name=chk 에 있는 value값을 배열에 담으시오.
-        var chk_array =[]; //빈배열 선언 담아서 더하기 위함
+        var chk_array =[]; 
         var total = 0; //value값을 담기위한 변수
         var inps = $('input');
         for (var i = 0; i < inps.length; i++) {
             //chk_array.push(inps[i].value);
             chk_array[i] = inps[i].value;
         }
-        // console.log(chk_array);  
+        console.log(chk_array);  
 
         // 2. input:text name=chk 에 있는 value값을 전부 더하시오.
         // for (var i = 0; i < inps.length; i++) {
