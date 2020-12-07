@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>target</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<script>
+    $(document).ready( function(){
+        var page_url = window.location.href;
+        var page_id = page_url.substring(page_url.lastIndexOf("#") + 1 );
+
+        if(page_id == 'section1'){
+            $('html,body').animate({
+                scrollTop: $('#scroll-' + page_id).offset().top
+            },500);
+        }else if (page_id == 'section2'){
+            $('html,body').animate({
+                scrollTop: $('#scroll-' + page_id).offset().top
+            },500);
+        }else if (page_id == 'section3'){
+            $('html,body').animate({
+                scrollTop: $('#scroll-' + page_id).offset().top
+            },500);
+        }else if (page_id == 'section4'){
+            $('html,body').animate({
+                scrollTop: $('#scroll-' + page_id).offset().top
+            },500);
+        }
+
+    });
+     
+</script>
+<style>
+    * { margin: 0; padding: 0; }
+    section { color: #fff; height: 1000px; text-align: center; line-height: 1000px; font-size: 5em; } 
+    .bg1 { background-color: red; }
+    .bg2 { background-color: teal; }
+    .bg3 { background-color: rebeccapurple; }
+    .bg4 { background-color: rosybrown; }
+</style>
+<body>
+    <section class="bg1" id="scroll-section1">
+        <p>section  1</p>
+    </section>
+
+    <section class="bg2" id="scroll-section2">
+        <p>section  2</p>
+    </section>
+
+    <section class="bg3" id="scroll-section3">
+        <p>section  3</p>
+    </section>
+
+    <section class="bg4" id="scroll-section4">
+        <p>section  4</p>
+    </section>
+</body>
+</html>
