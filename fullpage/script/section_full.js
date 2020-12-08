@@ -27,7 +27,7 @@ $(document).ready(function(){
 		if(!onpage_on) return;
 		
 		//스크롤 이벤트 막기
-		event.preventDefault();
+		// event.preventDefault();
 		event.stopPropagation();		
 		if(isScroll) return; // 현재 스크롤이 동작중이면 종료
 		
