@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<style>
+    ul { list-style: none; }
+    .wrap { max-width: 1200px; margin: 0 auto; }
+    .menu { padding: 0; margin: 0; list-style: none; }
+    .menu li { float: left; width: 25%; }
+    .menu::after { content: ''; display: block; overflow: hidden; clear: both; } 
+    .div_box ul li { font-size: 200px; }
+</style>
+<script>
+    // $(document).ready( function(){
+    //     $('.menu li').click( function(){
+    //         var scrollPosition = $($(this).attr("data-target")).offset().top;
+
+    //         $('body').animate({
+    //             scrollTop: scrollPosition
+    //         },500);
+    //     });
+    // });
+
+    
+
+    $(document).ready( function(){
+        //2020-12-28 munju 
+        // $('.catego').click( function(){
+        //     event.preventDefalut();
+        //     $('html,body').animate({scrollTop:$(this.hash).offset().top},500);
+        // });
+
+        $('.menu li a').click( function(){
+            e.preventDefault();
+            var scrollPosition = $($(this).attr("href").offset().top;
+            $('html,body').stop().animate({
+                scrollTop: scrollPosition
+            },700);
+        });
+        
+    });
+</script>
+<body>
+    <div class="wrap">
+        <div class="">
+            <ul class="menu">
+                <li class="catego"><a href="#menu1">about</a></li>
+                <li class="catego"><a href="#menu2">member</a></li>
+                <li class="catego"><a href="#menu3">product</a></li>
+                <li class="catego"><a href="#menu4">contact</a></li>
+            </ul>
+        </div>
+
+        <div class="div_box">
+            <h2 id="menu1">menu1</h2>
+            <ul>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+                <li>1</li>
+            </ul>
+        </div>
+
+        <div class="div_box">
+            <h2 id="menu2">menu2</h2>
+            <ul>
+                <li>2</li>
+                <li>2</li>
+                <li>2</li>
+                <li>2</li>
+                <li>2</li>
+                <li>2</li>
+                <li>2</li>
+            </ul>
+        </div>
+
+        <div class="div_box">
+            <h2 id="menu3">menu3</h2>
+            <ul>
+                <li>3</li>
+                <li>3</li>
+                <li>3</li>
+                <li>3</li>
+                <li>3</li>
+                <li>3</li>
+                <li>3</li>
+            </ul>
+        </div>
+
+        <div class="div_box">
+            <h2 id="menu4">menu4</h2>
+            <ul>
+                <li>4</li>
+                <li>4</li>
+                <li>4</li>
+                <li>4</li>
+                <li>4</li>
+                <li>4</li>
+                <li>4</li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+</html>
