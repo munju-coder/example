@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="../../js/COMMON.js"></script>
+</head>
+<style>
+    .t_center { text-align: center; }
+    .wrap { width: 100%; max-width: 1200px; margin: 0 auto; }
+    .wrap .product_box { float: left; width: 30%; text-align: center; }
+    .wrap::after { content: ''; display: block; overflow: hidden; clear: both; }
+    ul { margin: 0; padding: 0; list-style: none; }
+    .total_box ul { width: 100%; max-width: 1200px; margin: 0 auto; margin-top: 50px; }
+    .total_box ul li { float: left; width: 180px; text-align: center; }
+    .total_box ul:after { content: ''; display: block; overflow: hidden; clear: both; }
+</style>
+
+<script>
+    $(document).ready( function(){
+        var total_price = 0;   //총합 초기화
+        var pd_seq = [];   
+        var pd_price = [];     //가격배열
+        var pd_amount = [];    //수량배열
+
+        $('.cnt_input').val(0);  //제품 선택하기전 수량값 0으로 초기화
+
+        $('.plus').each( function(i){
+            pd_seq[i] = 0
+            pd_price[i] = 0
+            pd_amount[i] = 0
+
+            $(this).click( function(){
+                var each_price = parseInt($(this).siblings('.pd_seq').attr('unitprice'));
+                // console.log(each_price);
+                var amount_number = parseInt($(this).siblings('.cnt_input').val());
+                amount_number += 1;
+
+                // console.log(amount_number);
+                pd_amount[i] = amount_number;
+                $(this).siblings('.cnt_input').val(amount_number);
+
+                pd_price[i] += pd_price; 
+                total_price = 0;
+                
+
+                
+                for( var k = 0; k < pd_price.length; k++) {
+
+                }
+                
+            });
+        });
+
+    });
+</script>
+<body>
+    <div class="wrap">
+        <div class="product_box">
+            <img src="http://placehold.it/120x120/grefhd/ffffff?" alt="product image">
+            <div class="price_box">
+                <p class="">상품1</p>
+                <p class="fw_bold"><span id="pd_price">2,000</span>원</p>
+            </div>
+    
+            <div class="amount_box">
+                <div class="count_box">
+                    <div class="t_right count_input"> 
+                        <input type="hidden" name="pd_seq" class="pd_seq" value = "" unitprice="2000">
+                        <input type="button" id="minus" class="minus" value="-">
+                        <input type="text" id="cnt" class="cnt_input t_center" value="1" readonly>
+                        <input type="button" id="plus" class="plus" value="+">
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="product_box">
+            <img src="http://placehold.it/120x120/333/ffffff?" alt="product image">
+            <div class="price_box">
+                <p class="">상품2</p>
+                <p class="fw_bold"><span id="pd_price">5,000</span>원</p>
+            </div>
+    
+            <div class="amount_box">
+                <div class="count_box">
+                    <div class="t_right count_input"> 
+                        <input type="hidden" name="pd_seq" class="pd_seq" value = "" unitprice="5000">
+                        <input type="button" id="minus" class="minus" value="-">
+                        <input type="text" id="cnt" class="cnt_input t_center" value="1" readonly>
+                        <input type="button" id="plus" class="plus" value="+">
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="product_box">
+            <img src="http://placehold.it/120x120/73d1f2ffffff?" alt="product image">
+            <div class="price_box">
+                <p class="">상품3</p>
+                <p class="fw_bold"><span id="pd_price">1,000</span>원</p>
+            </div>
+    
+            <div class="amount_box">
+                <div class="count_box">
+                    <div class="t_right count_input"> 
+                        <input type="hidden" name="pd_seq" class="pd_seq" value = "" unitprice="1000">
+                        <input type="button" id="minus" class="minus" value="-">
+                        <input type="text" id="cnt" class="cnt_input t_center" value="1" readonly>
+                        <input type="button" id="plus" class="plus" value="+">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="product_box">
+            <img src="http://placehold.it/120x120/003548/ffffff?" alt="product image">
+            <div class="price_box">
+                <p class="">상품4</p>
+                <p class="fw_bold"><span id="pd_price">4,000</span>원</p>
+            </div>
+    
+            <div class="amount_box">
+                <div class="count_box">
+                    <div class="t_right count_input"> 
+                        <input type="hidden" name="pd_seq" class="pd_seq" value = "" unitprice="4000">
+                        <input type="button" id="minus" class="minus" value="-">
+                        <input type="text" id="cnt" class="cnt_input t_center" value="1" readonly>
+                        <input type="button" id="plus" class="plus" value="+">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="product_box">
+            <img src="http://placehold.it/120x120/dddddd/ffffff?" alt="product image">
+            <div class="price_box">
+                <p class="">상품5</p>
+                <p class="fw_bold"><span id="pd_price">3,000</span>원</p>
+            </div>
+    
+            <div class="amount_box">
+                <div class="count_box">
+                    <div class="t_right count_input"> 
+                        <input type="hidden" name="pd_seq" class="pd_seq" value = "" unitprice="3000">
+                        <input type="button" id="minus" class="minus" value="-">
+                        <input type="text" id="cnt" class="cnt_input t_center" value="1" readonly>
+                        <input type="button" id="plus" class="plus" value="+">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="total_box">
+        <ul>
+            <li>총합</li>
+            <li><span id="total_price">0</span>원</li>
+        </ul>
+    </div>
+</body>
+</html>

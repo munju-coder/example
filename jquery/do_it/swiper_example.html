@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!--swiper-->
+    <link rel="stylesheet" href="../../swiper_slide/css/swiper.min.css">
+    <script src="../../swiper_slide/js/swiper.js"></script>
+</head>
+<style>
+    .wrap { margin-top: 100px; }
+    .wrap img { width: 100%; }
+    .swiper-container { max-width: 1200px; }
+    .swiper-button-next ,.swiper-button-prev { color: #333; }
+</style>
+<script>
+    $(document).ready( function(){
+        var mainswiper = new Swiper('.main-swiper', {
+            slidesPerView: 3,
+            spaceBetween: 20,
+            loop : true, // 무한 반복
+            autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+            breakpoints: {
+
+                //1400px이하일때는 한번에 보여지는 슬라이드 갯수가 3개,간격은 30
+                1400: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                600: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
+    
+                100: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
+
+            },
+
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            }
+        
+        });
+    });
+</script>
+<body>
+    <div class="wrap swiper-container">
+        <div class="main-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="http://recovershop.co.kr/uploads/images/product/640/20201126155313_1606373593975121.jpg" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="http://recovershop.co.kr/uploads/images/product/640/20200702103012_1593653412998600.jpg" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="http://recovershop.co.kr/uploads/images/product/640/20201126155313_1606373593975121.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+        </div>
+    </div>
+</body>
+</html>

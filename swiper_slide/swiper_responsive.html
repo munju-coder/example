@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="../swiper_slide/css/swiper.min.css">
+    <script src="../swiper_slide/js/swiper.js"></script>
+</head>
+<script>
+    $(document).ready(function () {
+
+        var manswiper = new Swiper('.swiper-container', {
+            slidesPerView: 4,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 3000,
+            },
+            breakpoints: {
+
+                1425: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                },
+                800: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                600: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+
+                100: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
+
+            },
+
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+        });
+    });
+</script>
+<style>
+    .swiper-container { max-width: 1200px; margin: 100px auto; }
+    .swiper-container img { width: 100%; }
+    .swiper-button-prev:after, .swiper-container-rtl .swiper-button-next:after,.swiper-button-next:after, .swiper-container-rtl .swiper-button-prev:after
+    { color: red; }
+</style>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="http://recovershop.co.kr/uploads/images/product/640/20201126155313_1606373593975121.jpg" alt="banner"></div>
+            <div class="swiper-slide"><img src="http://recovershop.co.kr/uploads/images/product/640/20200702103012_1593653412998600.jpg" alt="banner"></div>
+            <div class="swiper-slide"><img src="http://recovershop.co.kr/uploads/images/product/640/20201104164342_1604475822088702.jpg" alt="banner"></div>
+            <div  class="swiper-slide"><img src="http://recovershop.co.kr/uploads/images/product/640/20200730114420_1596077060526068.jpg" alt="banner"></div>
+        </div>
+        <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"></div>
+        <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"></div>
+    </div>
+    
+</body>
+</html>
