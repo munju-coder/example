@@ -14,6 +14,11 @@
     .wrap img { width: 100%; }
     .swiper-container { max-width: 1200px; }
     .swiper-button-next ,.swiper-button-prev { color: #333; }
+    .swiper-container { overflow: initial; }
+    .main-swiper { overflow: hidden; }
+    .swiper-button-prev, .swiper-container-rtl .swiper-button-next { left: -50px; }
+    .swiper-button-next, .swiper-container-rtl .swiper-button-prev { right: -50px; }
+
 </style>
 <script>
     $(document).ready( function(){
