@@ -188,7 +188,7 @@ input { outline: none; }
                 <section class="pro_txt">
                     <h2>
                         <p>플레인아이스크림</p>
-                        <p class="smart_f_color fw_bold"><span>2,000</span>원</p>
+                        <p class="smart_f_color fw_bold"><span id="product_price">2,000</span>원</p>
                     </h2>
     
                     <div class="desert_option">
@@ -208,12 +208,33 @@ input { outline: none; }
                         <p class="f23">수량</p>
                         <div class="count_box over_hidden">
                             <div class="count_input over_hidden"> 
+                                <input type="hidden" name="pd_seq" class="pd_seq" value = "" price_number="2000">
                                 <input type="button" value="-" id="minus">
                                 <input type="text" id="cnt" name="amount[]" class="cnt_input" value="1" readonly="">
-                                <input type="button" id="plus" value="+">
+                                <input type="button" value="+" id="plus">
                             </div>
                         </div>
                     </div>
+
+                    <script>
+                        $(document).ready( function(){
+                            var total_price = 0; //총합
+                            $('.cnt_input').val('0');
+                            $('#plus').click( function(){
+                                $(this).click( function(){
+                                    var price = parseInt($(this).siblings('.pd_seq').attr('price_number'));
+                                    var amount = parseInt($(this).siblings('.cnt_input').val());
+                                    amount += 1;
+                                    console.log(amount);
+
+
+                                }); 
+                            });
+
+
+                            
+                        });
+                    </script>
     
                     <div class="total_price">
                         <ul>
