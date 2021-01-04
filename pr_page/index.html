@@ -384,14 +384,15 @@ $(function(){
             margin-top: -1px;
             z-index: 1;
             cursor: none;
-        }
+		}
+		.curhide { display: none; }
     </style>
 </head>
 <body>
     <div class="wrap">
         <div class="mouseCur" style="display: block; left: 1890px; top: 94px;"><span class="wheel"></span></div>
-        <header class="header">
-            <h1 class="logo curhide"><a href="#"><!-- <img src="../pr_page/images/img_always_txt.png" alt="always"></a> --></h1>
+        <header>
+            <h1 class="logo curhide"><!-- <a href="#"><img src="../pr_page/images/img_always_txt.png" alt="always"></a> --></h1>
             
             <a href="#" class="curhide" id="menuToggle">
                 <span></span>
@@ -448,14 +449,14 @@ $(function(){
         <div class="section mainTxt">
             <div class="midLine"></div>
             <div class="midTxt">
-                <span class="logoTxt"><img src="./images/img_always_txt.png" alt="always"></span>
+                <span><img src="./images/img_always_txt.png" alt="always"></span>
                 <span class="alwaysMsg">loved</span>
             </div>
 		</div>
 
         <div id="workArea">
-            <div class="workArea_wrap">
-				<ul class="">
+            <div>
+				<ul>
 					<li><img src="http://placehold.it/760x750/ed2f2f/ffffff?text=1"></li>
 					<li><img src="http://placehold.it/760x750/ed2f2f/ffffff?text=2"></li>
 					<li><img src="http://placehold.it/760x750/ed2f2f/ffffff?text=3"></li>
@@ -465,7 +466,7 @@ $(function(){
         </div>
 
         <footer>
-            <div class="ft_wrap">
+            <div>
                 <p>more project</p>
             </div>
         </footer>

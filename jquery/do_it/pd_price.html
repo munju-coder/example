@@ -34,7 +34,7 @@
 
             $(this).click( function(){
                 var price = parseInt($(this).siblings('.pd_seq').attr('pd_price')); 
-                //상품 가격은 형제요소인 input[type="hidden"]에 있는 pd_price값에 저장되어 있으므로 attr로 값을 가져온다
+                //상품 가격은 형제요소인 input[type="hidden"]에 있는 pd_price값에 가격이 저장되어 있으므로 attr로 값을 가져온다
                 var amount = parseInt($(this).siblings('.cnt_input').val()); //수량
                 //수량 값은 형제요소인 .cnt_input의 value값을 가져온다
                 amount += 1;
@@ -53,7 +53,6 @@
                 //pd_price배열의 index값에는 price변수를 더한 값으로 넣어줌 [2000,5000,1000]
 
                 total_price = 0; 
-                 
                 //상품의 갯수(length)에 따라 조건문 반복실행
                 for(var k= 0; k < pd_price.length; k++) {
 
@@ -87,7 +86,6 @@
                     alert('최소 구매수량은 1개 입니다');
                     return false;
                 }
-
                 //수량이 1보다 작은 경우 (제품 고정)
                 // if(amount < 1){
                 //     pd_amount[k] = 1;
@@ -95,8 +93,6 @@
                 //     alert('최소 구매수량은 1개입니다.');
                 //     return false;
                 // }
-
-
                 $(this).siblings('.cnt_input').val(amount);
                 
                 pd_price[i] -= price;
