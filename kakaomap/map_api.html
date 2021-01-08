@@ -6,28 +6,15 @@
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
+<style>
+    .dw_1400px { width: 100%; max-width: 1400px; margin: 0 auto; }
+    @media(max-width:768px) {
+        .contents h2 { font-size: 24px; } 
+        #katana_map { height: 380px !important; }
+    }
+</style>
 <body>
-<!--contents {-->
-    <script>
-        $(document).ready( function(){
-
-            $('.tablinks').each( function(){
-                $(this).click( function(){
-                    
-                    $(".tablinks").removeClass("border_active");
-                    $(this).addClass("border_active");
-
-                    $(".tabcontent").removeClass("tab_active");
-                    $(".tabcontent").css("display", "none");
-
-                    var chk = $(this).attr("tab_name");
-                    $('#' + chk).css("display", "block");
-
-                });
-                
-            });
-        });
-    </script>            
+<!--contents {-->      
     
     <section class="contents">
         <h2 class="dw_1400px" style="margin-top: 30px;">카타나 골프 오시는 길</h2>
@@ -77,13 +64,7 @@
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
     </script>
-    <style>
-        .dw_1400px { width: 100%; max-width: 1400px; margin: 0 auto; }
-        @media(max-width:768px) {
-            .contents h2 { font-size: 24px; } 
-            #katana_map { height: 380px !important; }
-        }
-    </style>
+    
     <!--} contents-->
 </body>
 </html>
