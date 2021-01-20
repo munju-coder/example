@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" id="font-awesome-css" href="http://themes.g5plus.net/april-pets/wp-content/plugins/april-framework/libs/smart-framework/assets/vendors/font-awesome/css/font-awesome.min.css?ver=4.7.0" type="text/css" media="all">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<style>
+    a { text-decoration: none; color: inherit; }
+    .fw-extra-bold { font-weight: 600; }
+    .header-contact-us {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: flex;
+        -webkit-align-items: flex-start;
+        -moz-align-items: flex-start;
+        -ms-align-items: flex-start;
+        -ms-flex-align: flex-start;
+        align-items: flex-start;
+    }
+
+    .header-contact-us .contact-us-item {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: flex;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        -ms-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-justify-content: space-between;
+        -moz-justify-content: space-between;
+        -ms-justify-content: space-between;
+        justify-content: space-between;
+        margin-right: 20px; 
+    }
+    .header-contact-us .contact-us-item a { display: inline-block; margin-top: 5px; }
+    .header-contact-us .contact-us-item .contact-icon {
+        color: #194145;
+        background-color: #ffd33d;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        position: relative;
+    }
+
+    .header-contact-us .contact-us-item .contact-icon:before {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-left: 2px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 7px solid #ffd33d;
+        -webkit-transform: rotate(60deg);
+        -moz-transform: rotate(60deg);
+        -ms-transform: rotate(60deg);
+        -o-transform: rotate(60deg);
+        transform: rotate(60deg);
+    }
+    .header-contact-us .contact-us-item .contact-icon i {
+        line-height: 40px;
+        font-size: 24px;
+    }
+
+    .fa {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .fa-phone:before { content: "\f095"; }
+
+    .header-contact-us .contact-us-item .contact-content {
+        padding-left: 12px;
+    }
+
+    .header-contact-us .contact-us-item .contact-content > span {
+        font-size: 13px;
+        font-weight: 600;
+        color: #5dd4e0;
+        letter-spacing: 0.15em;
+        display: inline-block;
+    }
+    .header-contact-us .contact-us-item .contact-content > div {
+        margin-top: -8px;
+    }
+
+    .customize-custom-html a {
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        -ms-transition: all .3s;
+        -o-transition: all .3s;
+        transition: all .3s;
+        color: inherit;
+    }
+    
+</style>
+<body>
+    <div class="header-contact-us">
+        <div class="contact-us-item">
+            <div class="contact-icon">
+                <i class="fa fa-phone"></i>
+            </div>
+            
+            <div class="contact-content">
+                <span>HOTLINE</span>
+                <div class="fw-extra-bold heading-color"><a href="tel:0122888999" class="gsf-link transition03">0122 888999</a></div>
+            </div>
+        </div>
+
+        <div class="contact-us-item">
+            <div class="contact-icon">
+                <i class="fa fa-envelope"></i>
+            </div>
+
+            <div class="contact-content">
+                <span>EMAIL</span>
+                <div><a href="mailto:works@april.com" class="gsf-link transition03">works@naver.com</a></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
