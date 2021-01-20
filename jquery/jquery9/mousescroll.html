@@ -46,7 +46,8 @@
             //div 안에 ul을 움직일것.
             
             $('div').mousemove( function(e){
-                console.log( e.pageX-$(this).offset().left );
+                console.log( e.pageX-$(this).offset().left ); 
+                //스크롤바위치
                 
                 var pos=( -1200-0 )/( 1000-0 )*( e.pageX-$(this).offset().left-0 )+0;
                 $('ul').css({'left':pos});

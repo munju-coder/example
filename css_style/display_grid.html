@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display gird</title>
+</head>
+<script>
+    /*
+        display gird 속성
+        display : gird; 
+        display : inline-grid;
+
+        grid-template-columns  column 길이를 설정함
+        Ex) grid-template-columns: 10% 20% 40%;
+
+        grid-column: 2/4   아이템 컬럼의 시작과 끝값
+        grid-row: 3/5      아이템 row의 시작과 끝값
+
+    
+    */
+</script>
+<style>
+    .grid-container {
+        display: grid;
+        /* grid-template-columns: auto auto auto; */
+        grid-template-columns: 100px 100px 100px;
+        grid-template-rows:100px 100px 100px;
+        background-color: #2196F3;
+        padding: 10px;
+    }
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+    .item1 { /* grid-column-start: 1; grid-column-end: 4; */  grid-column: 1 / 3; }
+    .item3 { grid-row-start: 2; grid-row-end: 4; }
+    .item4 { grid-column-start: 2; grid-column-end: 4; }
+
+</style>
+
+<body>
+    <div class="grid-container">
+        <div class="grid-item item1">1</div>
+        <div class="grid-item item2">2</div>
+        <div class="grid-item item3">3</div>  
+        <div class="grid-item item4">4</div>
+        <div class="grid-item item5">5</div>
+        <div class="grid-item item6">6</div> 
+    </div>
+</body>
+</html>

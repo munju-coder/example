@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    ul { display: inline-grid; list-style: none; grid-auto-flow: row; grid-gap: 24px; justify-items: center; margin: auto; }
+    p { margin: 0; }
+    @media (min-width: 500px) {
+        ul {  grid-auto-flow: column; }
+    }
+    a { color: white; text-decoration: none; /* box-shadow: inset 0 -1px 0 hsla(0, 0%, 100%, 0.4); */ }
+    li:last-child { grid-column: 1 / 2; grid-row: 1 / 2; }
+    li:hover ~ li p { animation: wave-animation 0.3s infinite; }
+    div { display: flex; height: 100vh; width: 100%; background-color: #002a38; line-height: 1.3; font-family: Menlo, monospace; }
+    @keyframes wave-animation {
+        0%,
+        100% {
+            transform: rotate(0deg);
+        }
+        25% {
+            transform: rotate(20deg);
+        }
+        75% {
+            transform: rotate(-15deg);
+        }
+    }
+</style>
+<body>
+    <div>
+        <ul>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Codepen</a></li>
+            <li><a href="#">Email</a></li>
+            <li><a href="#">Dribbble</a></li>
+            <li><a href="#">Github</a></li>
+            <li>
+                <p>👋</p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
