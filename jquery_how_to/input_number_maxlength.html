@@ -32,6 +32,12 @@ $( function(){
         }
     });
 });
+
+//숫자만입력
+function onlyNumber(){
+    if((event.keyCode<48)||(event.keyCode>57))
+    event.returnValue=false;
+}
 </script>
 <body>
     <div class="pay_layer">
@@ -47,6 +53,11 @@ $( function(){
             <span class="mr10px f14">유효기간</span>
             <input type="number" class="period_input" placeholder="MM" name="card_num_mm" id="" maxlength="2" oninput="maxLengthCheck(this);" onkeyup="return COMMON.form.removeString(event);">
             <input type="number" class="period_input" placeholder="YY" name="card_num_yy" id="" maxlength="2" oninput="maxLengthCheck(this);" onkeyup="return COMMON.form.removeString(event);">
+        </div>
+        
+        <div class="credit_box mb10px">
+            <span class="mr10px f14">숫자만입력할수있게</span>
+            <input type="text" class="period_input" onkeypress="onlyNumber();"  name="card_num_mm" id="" maxlength="2" oninput="maxLengthCheck(this);" onkeyup="return COMMON.form.removeString(event);">
         </div>
 
         <div class="credit_box">
