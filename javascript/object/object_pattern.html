@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript Pattern - 객체 생성 패턴</title>
+</head>
+<script>
+    /*
+        네임스페이스 패턴
+        -쉽게 구현할 수 있는 패턴이며, 전역변수의 개수를 줄이고, 변수명이 불필요하게 길어짐을 방지한다.
+        -전역 네임스페이스 객체는 흔히 대문자로 선언
+    */
+
+    //전역변수 5개
+    function Parent(){
+
+    }
+    function Child(){
+
+    }
+    var some_var = 1;i
+    var module1 = {};
+    var module2 = {};
+
+    //수정 후 
+    var MYAPP = {};
+    MYAPP.Parent = function(){
+        
+    };
+    MYAPP.Child = function(){
+        
+    };  
+    MYPAPP.some_var = 1;
+    
+    MYPAPP.modules = {};
+    MYPAPP.modules.module1.data = {a:1,b:2};
+    MYPAPP.modules.module2 = {};
+    
+</script>
+<body>
+    
+</body>
+</html>

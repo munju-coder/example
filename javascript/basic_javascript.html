@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript 복습하기</title>
+</head>
+<script>
+    /*
+        -자바스크립트 타입
+        1. Number - 실수, 부동소수점 64비트(double)
+        2. String -문자열
+        3. Boolean - True, False
+        4. undefined - 변수에 값이 할당되지 않을 때, 인터프리터가 undefined로 할당. 값이자 타입
+        5. null - 개발자가 의도적으로 할당하는 값, typeof값이 Object로 반환, 따라서 ===로 확인
+    
+    */
+
+    var nullCheck = null;
+    console.log(typeof nullCheck === null); //false
+    console.log(nullCheck === null); //true
+
+    /*
+        -참조타입(객체 타입)
+        1. Object
+        2. Array - 배열 객체로 취급
+        3. Function - 함수 객체로 취급
+
+    */
+
+    /*
+        NaN (Not a Number)
+        - 수치 연산을 해서 정상적인 값을 얻지 못할 때 발생하는 에러
+    */
+    console.log( 1 - 'hello'); // NaN
+
+    var foo = {
+        name: 'foo',
+        major: 'cs'
+    };
+    
+    foo['full-name'] = 'ffoo';
+    console.log(foo['full-name']); //'ffoo'
+    console.log(foo.full-name); //NaN, 프로퍼티명이 연산자를 포함할 경우
+
+    //객체의 모든 연산은 참조 값을 처리함.
+    var a = 10;
+    var b = 10;
+
+    var objA = {
+        value : 100
+    };
+
+    var objB = {
+        value : 100
+    };
+    var objC = objB;
+
+    console.log( a == b );
+    console.log( objA == objB );
+    console.log( objB == objC );
+
+
+
+</script>
+<body>
+    
+</body>
+</html>
