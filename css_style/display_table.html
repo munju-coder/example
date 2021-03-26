@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display table 속성</title>
+</head>
+<script>
+    /*
+        한줄에 있어야 하는 div가
+        고정적이지 않고 유동적으로 갯수가 늘어날 수 있으므로 float: left; width: 33%; 로 하지말고, 
+        -display table 속성을 이용한다.
+        -부모요소에 display: table-cell; width: 100%; table-layout: fixed;  지정
+        -자식요소 (한줄에 나열되어야하는 div) display: table-cell; vertical-align: middle; 
+
+    */
+</script>
+<style>
+    div { overflow: hidden; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    .wrap { width: 1200px; margin: 0 auto; }
+    /*
+    기존방식
+    .wrap .box_wrap div { float: left; width: 33%; text-align: center; } 
+    */
+
+    .box_wrap { display: table; width: 100%; table-layout: fixed; }
+    .box_wrap div { display: table-cell; vertical-align: middle; text-align: center; border: 1px solid #333; border-right: 0; }
+    .box_wrap div ul { padding: 10px; }
+    .box_wrap div:last-child { border-right: 1px solid #333; }
+
+</style>
+<body>
+    <div class="wrap">
+        <div class="box_wrap">
+            <div>
+                <ul>
+                    <li><img src="http://placehold.it/50x50/ed2f2f/ffffff?text=1" alt=""></li>
+                    <li>text입니다.</li>
+                    <li>text입니다.</li>
+                    <li>text입니다.</li>
+                </ul>
+            </div>
+
+            <div>
+                <ul>
+                    <li><img src="http://placehold.it/50x50/ed2f2f/ffffff?text=1" alt=""></li>
+                    <li>text입니다.</li>
+                    <li>text입니다.</li>
+                    <li>text입니다.</li>
+                </ul>
+            </div>
+
+            <div>
+                <ul>
+                    <li><img src="http://placehold.it/50x50/ed2f2f/ffffff?text=1" alt=""></li>
+                    <li>text입니다.</li>
+                    <li>text입니다.</li>
+                    <li>text입니다.</li>
+                </ul>
+            </div>
+
+            <div>
+                <ul>
+                    <li><img src="http://placehold.it/50x50/ed2f2f/ffffff?text=1" alt=""></li>
+                    <li>text입니다.</li>
+                    <li>text입니다.</li>
+                    <li>text입니다.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
