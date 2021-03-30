@@ -222,6 +222,28 @@
     closure();
 
     /*
+        클로져 활용
+        : 클로져를 활용하여 java기타 언어처럼 속성 및 메서드의 범위를 정할 수 있다.
+    */
+
+    var Module = ( function(){
+        var privateProperty = 'foo';
+        function privateMethod(args){
+            console.log('private method');
+        }
+        return {
+            publicProperty : '',
+            publicMethod: function(args){
+                console.log("public method");
+            },
+            privilegeMethod: function(args){
+                return privateMethod(args);
+            }
+        }
+    })();
+    Module.privilegeMethod();
+
+    /*
         arguments 객체 : 함수 호출 시에 넘겨진 실제 인자 값을 가진 배열
         arguments 활용: 메서드에 넘겨 받을 인자의 개수를 모를 때 유용함
     */
@@ -259,8 +281,78 @@
         return n;
    });
 
-    
+   var squareRoot = numbers2.myMap( function(num){
+        return Math.sqrt(num);
+   });
 
+   console.log(goodT);       // ['dic tanin','boo','nana']
+   console.log(squareRoot); // [ 1, 2, 3 ]
+
+   //this 바인딩 : 일반적으로 함수 내부에서 this를 사용하면 전역스코프(window)에 접근
+
+   //함수선언식
+   var text = 'global';
+   function bindings(){
+       var text = 'local';
+       console.log(this.text); //global
+       console.log(this); //window
+   }
+   bindings();
+   
+   //함수 표현식
+   var text = 'global';
+   var binding = function(){
+       var text = 'local';
+       console.log(this.text);
+       console.log(this);
+   }
+   binding();
+   //객체의 속성에서 함수를 선언하고 this를 사용하면 해당 객체에 접근할 수 있음
+   var text = 'global';
+   var binding = {
+       text: 'local',
+       printText: function(){
+           console.log(this.text); //local
+           console.log(this);      // { text: 'local',printText: f}
+       }
+   };
+   binding.printText();
+
+   //스코프체인을 이해하기 위한 예제
+   //ex.1 전역 스코프와 함수 스코프 구분하기
+   var a = 1;
+   var b = 2;
+   function func(){
+       var a = 10;
+       var b = 20;
+       console.log(a); //10
+       console.log(b); //20
+   }
+    func();
+    console.log(a); //1
+    console.log(b); //2
+
+    //ex.2 : 내부함수 innerfunc에서 외부함수인 func의 변수에 접근
+    var a = 1;
+    function func(){
+        var a = 2;
+        function innerfunc(){
+            return a;
+        }
+        console.log(innerfunc()); //2
+    }
+    func();
+
+    //ex3 : func1의 실행컨텍스트가 전역이라는 것에 주목
+    var a = 1;
+    function func1(){
+        return a;
+    }
+    function func2(func1){
+        var a = 2;
+        console.log(func1()); //1
+    }
+    func2(func1);
 </script>
 <body>
     
