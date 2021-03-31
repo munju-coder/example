@@ -46,14 +46,11 @@
         -setTimeout()은 web API의 종류로 코드를 실행하지 않고 지정한 시간만큼 기다렸다가 로직을 실행함.
   */
 
-    //#1
-    console.log('hello');
-    //#2
-    setTimeout( function(){
-        console.log('bye');
-    },3000);
-    //#3
-    console.log('hello Again');
+    // console.log('hello');
+    // setTimeout( function(){
+    //     console.log('bye');
+    // },3000);
+    // console.log('hello Again');
 
     //예상 ->>>> hello 출력-> 3초있다가 bye출력-> hello Again 출력
     //실제 ->>>> hello 출력 -> hello again출력 -> 3초있다가 bye출력
@@ -62,6 +59,34 @@
         일단 setTimeout()을 실행하고 나서 바로 다음코드인 console.log('hello Again');으로 넘어감
         따라서 hello -> hello Again -> bye 출력 
     */
+
+    //비동기 실행 방식인 setTimeout을 이용한 예제
+
+    // console.log('1');
+    // function exec() {
+    //     setTimeout( function(){
+    //         console.log('2');
+    //     },3000);
+    //     setTimeout( function(){
+    //         console.log('3');
+    //     },0);
+    //     console.log('4');
+    //     setTimeout( function(){
+    //         console.log('5');
+    //     },1000);
+    // }
+    // console.log(exec());
+
+    //실행결과 1 -> 4 -> 3 -> 5 -> 2
+    // setTimeout이 지연시간이 0이라고 해도 실행컨텍스트가 다르기 때문에 1,4가 먼저 출력됨
+
+    var i;
+    for ( i = 0; i < 5; i++ ){
+        setTimeout( function(){
+            console.log(i);
+        },1000);
+    }
+
 </script>
 <body>
     
