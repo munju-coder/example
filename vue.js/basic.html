@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>VueJS basic</title>
 </head>
-
+<style>
+  ul li { list-style: none; }
+</style>
 <body>
     <div id="app">
       <p>{{ title }}</p>
       <p>{{ howareyou() }}</p>
       <p>{{ sayHello() }}</p>
     </div>
+
+    <div id="content"> 
+        <ul>
+          <li>{{ title }}</li>
+          <li>{{ name() }}</li>
+          <li>{{ nickname() }}</li>
+        </ul>
+    </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
   new Vue({
     el: "#app",//어떤 요소에 적용할 지 정함 element
@@ -30,6 +40,20 @@
     }
   })
 
+  new Vue({
+      el: "#content",
+      data: {
+        title: 'vue.js 시작하기'
+      },
+      methods: {
+        name: function(){
+          return "이름은?"
+        },
+        nickname: function(){
+           return this.title
+        }
+      }
+  })
   /*
     VueJS 
     1.간단한 템플릿 구문을 사용해 선언적으로 DOM에 데이터를 렌더링하는 것       

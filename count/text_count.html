@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>textarea count</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<script>
+    /*
+        string.charCodeAt(index)
+        index -필수,0보다 큰 정수
+        :유니코드는 모든 시스템에서 일관되게 문자를 표현하기 위한 산업표준으로
+        charCodeAt는 주어진 index에 해당하는 유니코드 값을 리턴하는데 이 값은 
+        유니코드가 지원되는 모든 시스템에서 동일한 문자를 가리킨다.
+
+        var stringName = "생활코딩"
+        alert(stringName.charCodeAt(0)); //493373
+        // http://www.unicode.org/charts/PDF/UAC00.pdf 에서 '생'을 찾아보면 'C0DD'인데 이것은 16진수다.
+        // 이를 10진수로 변환하면 493373 이 된다. 
+    */
+    $(document).ready( function(){
+        $('#text').keyup( function(){
+            var textbox = $(this).val();
+            $('#count').text(getBytes(textbox));
+        });
+        function getBytes(str){
+            var cnt = 0;
+            for(var i = 0; i < str.length; i++){
+                cnt += (str.charCodeAt(i) > 128) ? 2 : 1;
+            }
+            return cnt;
+        }
+    });
+</script>
+<body>
+    <div>
+        <textarea id="text"></textarea>
+        <div>
+            <span id="count">0</span>&nbsp;<span>bytes</span>
+        </div>
+    </div>
+</body>
+</html>

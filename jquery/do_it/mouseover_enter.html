@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouseover,mouseenter 차이</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<script>
+    $(document).ready( function(){
+        $(".outer").mouseover( function(){
+            $('body').append("<h3>MOUSEOVER</h3>");
+        }).mouseenter( function(){
+            $('body').append("<h3>MOUSEENTER</h3>");
+        });
+    });
+
+    /*
+        mouseover와 mouseenter 차이점
+        -mouseover는 두번 발생하고, mouseenter는 한번 발생
+        (mouseover이벤트는 큰박스에서 한번, 작은 박스에서 한번 총 두번발생함)
+        -이벤트버블링을 막으려면 mouseover보다 mouseenter를 사용해야 버블링이 발생하지않음.
+        
+    */
+</script>
+<body>
+    <style>
+        .outer { width: 200px; height: 200px; background-color:orange; padding: 50px;  margin: 10px;}
+        .inner { width: 100%; height: 100%; background-color: pink; }
+
+    </style>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

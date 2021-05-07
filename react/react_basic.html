@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<script>
+    /*
+        react.js 시작하기
+        -원래 실제 React파일인 jsx파일을 사용하려면 webpack이나 browserify같은것들을 통해
+        컴파일 후 로드하여 사용해야하지만 간단한것부터 보기위해 babel.js를 로드하여 즉석에서 컴파일할 수 있게함
+        -React.js로 만든 DOM을 생성할 div를 만들고 
+        -javascript 
+            var CommentBox = React.createClass({})
+            -> Component생성 이름은 무조건 대문자로 시작하는 Camelcase로 네이밍할것
+    
+    */
+</script>
+<body>
+    <div id="content"></div>
+    <script type="text/babel">
+        var CommentBox = React.createClass({
+            render: function(){
+                return (
+                    <div>
+                        Hello, world! CommentBox!    
+                    </div>
+                );
+            }
+        });
+        ReactDOM.render(
+            <CommentBox />,
+            document.getElementById('content')
+        );
+    </script>
+
+</body>
+</html>

@@ -10,6 +10,10 @@
     <div id="app">
         <a v-bind:href="link">링크</a>
     </div>
+
+    <div id="box">
+        <a :href="https://naver.com">링크2</a>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
@@ -17,6 +21,12 @@
         el: "#app",
         data: {
             link : "https://naver.com"
+        }
+    })
+    new Vue ({
+        el: '#box',
+        data: {
+            link: "https://naver.com"
         }
     })
 
@@ -43,7 +53,7 @@
     -> 때문에 Vue에서는 자주 사용되는 v-bind와 v-on 디렉티브에 대해서만 특별한 약어를 제공한다
 
     5. v-bind 약어
-    - v-bind:href="url" 을 줄여 :href="url"
+    - v-bind:href="url" 을 줄여서 :href="url"
     <a v-bind:href="url">...</a>  =>> <a :href="url">...</a>
     - v-on:click="doSomething"을 줄여 @click="doSomething"
     <a v-on:click="doSomething">...</a> =>> <a @click="doSomething">...</a>

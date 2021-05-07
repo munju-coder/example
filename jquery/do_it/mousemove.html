@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mousemove event</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<script>
+    $(function(){
+        $(document).on("mousemove",function(e){
+            $(".posX").text(e.pageX);
+            $(".posY").text(e.pageY);
+        });
+
+        /*
+            $('이벤트대상').mousemove( function(매개변수){
+                매개변수(이벤트객체).속성;
+            });
+
+            마우스이벤트
+            -clientX : 마우스포인터의 X 좌푯값 반환(스크롤 이동거리 무시)
+            -clientY : 마우스포인터의 Y 좌푯값 반환(스크롤 이동거리 무시)
+            -pageX : 스크롤 X축의 이동한 거리를 계산하여 마우스 포인터의 X좌푯값을 반환
+            -pageY : 스크롤 Y축의 이동한 거리를 계산하여 마우스 포인터의 Y좌푯값을 반환
+            -screenX : 화면 모니터를 기준으로 마우스 포인터의 X좌표값을 반환
+            -screenY : 화면 모니터를 기준으로 마우스 포인터의 Y좌표값을 반환
+            -layerX : position을 적용한 요소를 기준으로 마우스 포인터의 X좌표값을 반환
+            -layerY : position을 적용한 요소를 기준으로 마우스 포인터의 Y좌표값을 반환
+            -button : 마우스 버튼의 종류에 따라 값을 반환(왼쪽:0 휠:1 오른쪽2)
+            
+        */
+    });
+</script>
+<body>
+    <h1>mousemove</h1>
+    <p>X : <span class="posX">0</span>px</p>
+    <p>Y : <span class="posY">0</span>px</p>
+</body>
+</html>

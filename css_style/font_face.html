@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹폰트 font-face사용규칙</title>
+    <script src="https://code.jquery.com/latest-min.js"></script>
+</head>
+<script>
+    /*
+        *웹폰트*
+        방문자의 로컬 컴퓨터의 폰트설치여부와 상관없이 온라인의 특정 서버에 위치한 폰트 파일을
+        다운로드하여 화면에 표시해주는 웹전용폰트
+
+
+        웹에서 사용할 수 있는 폰트
+
+        TrueTypeFont(*.ttf) : 트루타입은 애플과 마이크로소프트에 의해 1980년대 후반에 개발된 글꼴 표준
+        OpenTypeFonts(*.otf) : 오픈타입은 확장가능한 마이크로소프트 컴퓨터 글꼴 형식
+        The Web Open Font Format(*.WOFF) : WOFF는 W3C에서 추천하는 글꼴 형식
+        The Web Open Font Format(WOFF2.0) : WOFF에서 향상된 글꼴
+        SVG폰트(*.svg, *.svgz) : 벡터방식의 글꼴형식
+        Embeded Open Type Fonts(*.eot) : 익스플로러 6~8에서 사용하던 웹 폰트 방식
+
+        **주의** : ttf파일은 변환해서 웹폰트로 사용할때 저작권을 주의할것
+
+        @font-face -> 글꼴 파일을 html에 삽입하여 사용자의 컴퓨터에 설치되지 않은 글꼴을 서버에서
+        내려받아 사용할 수 있는 방법
+
+        -------------------------------@font-face구문----------------------------------------------
+
+        @font-face {
+            font-family: "폰트이름";
+            src: local("폰트이름1"),local("폰트이름2"),url("폰트이름.woff"),format("폰트포맷");
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        - font-family css문서에서 사용할 웹폰트 패밀리명으로 ( font-family에서 선언한 웹폰트의 패밀리명과
+        사용할 웹폰트 명이 반드시 같아야하는 것은 아님 )
+        ( IE 11 이하에서는 font-family에 선언한 웹폰트 패밀리명이 31자 이상이되면 적용되지 않음 )
+        - src 로컬에 이미 설치 된 폰트의 경로를 적는 local() 속성과 다운로드 할 웹폰트의 주소를 적는 url() 속성이있음
+        두 속성 모두 콤마를 사용하여 여러번 중첩해서 사용할 수 있으며 마지막에 오는 속성에 세미콜론만 붙여주면됨
+
+
+        1. @font-face 에는 font-family 인용부호 ''안에 글꼴이름 하나만 넣는다.
+        2. src: local("폰트이름1"), local("폰트이름2"), url("폰트이름.woff"); 에서
+        local()은 글꼴을 내려받기 이전에 사용자의 컴퓨터에 '폰트이름1'이 있으면 그것을 사용하고,
+        없으면 "폰트이름2", 그것도 없을 경우 url()에 있는 주소로 연결하려 폰트를 내려받는다.
+        3. format("폰트포맷") 글꼴 형식을 선택 ( woff, truetype, opentype, svg, embeded opentype 중 선택)
+        4. font-weight(생략가능) 글꼴 굵기 지정, font-style 이탤릭체를 지정(생략가능)
+
+        => 여러 브라우저에서 원하는 글꼴을 표시하기 위해서는 .eot/.woff/.otf,.ttf/.svg 파일을 모두업로드해야함
+        ( eot만 업로드할 경우에는 ie6~11브라우저에서만 보이고 다른 브라우저에서는 보이지 않음.)
+
+                [  IE  인터넷 익스플로러  ][  Chrome 크롬  ][  Safari  사파리   ][  Opera 오페라  ]
+
+        TTF/OTF :       IE9 이상                 O                 O                  O
+        WOFF    :       IE9 이상                 O                 O                  O
+        WOFF2   :         X                      O                 O                  O        
+        SVG     :         X                      O                 O                  O
+        EOT     :         O                      O                 O                  O
+
+        <사용예시>
+        @font-face {
+            font-family: 'NanumGothic';
+            src: url('NanumGothic.eot?#iefix') format('embedded-opentype');
+            url('NanumGothic.woff') format('woff'),
+            url('NanumGothic.otf') format('opentype'),
+            url('NanumGothic.svg#NanumGothic') foramt('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face { 
+            font-family:ng; src:url(NanumGothic.eot); 
+            src:local(※), 
+            url(NanumGothic.woff) format(‘woff’) 
+        } 
+        body{font-family:'나눔고딕', 'NanumGothic', ng}
+
+        * IE6~8의 경우 format() 구문을 인식하지 못하기 때문에 다른 url로 된 파일도 다운받아야함.
+        이것을 방지하기 위한 편법으로 eot파일 이름 뒤에 ?#iefix를 추가함
+        ?는 ie가 문자열의 나머지를 query string으로 (주소의 일부)생각하도록 만들어서
+        이후 문자들을 번역하는 것을 멈추게 하여 다른 파일의 다운로드 요청을 막음.
+        따라서 IE 구버전은 eot 파일만 내려받는다. 타브라우저는 해당 포맷만 다운하면됨.
+
+    */
+</script>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css blend mode</title>
+</head>
+<style>
+    /*css로 흑백이미지 만들기*/
+    /* .image-wrapper { background-color: white; }
+    .image-wrapper img { mix-blend-mode: luminosity; }
+    .image-wrapper img:hover { mix-blend-mode: normal; } */
+        body { background-color: black; }
+        @keyframes ani {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+       
+        .circle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+            margin: auto;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: #fff000;
+            animation: ani 3s alternate infinite;
+        }
+        .text {
+            mix-blend-mode: difference;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+            margin: auto;
+            height: 30px;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            color: #fff000;
+        }
+
+
+
+
+
+</style>
+<body>
+    <!-- 흑백이미지html -->
+    <!-- <div class="image-wrapper">
+        <img src="https://studiomeal.com/wp-content/themes/studiomeal/images/universe.jpg" alt="">
+    </div> -->
+
+    <!-- mix-blend-mode: difference -->
+    <div class="circle"></div>
+    <div class="text">CSS 블랜드모드</div>
+
+</body>
+</html>

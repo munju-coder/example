@@ -44,11 +44,8 @@
                
                 $(this).addClass( 'active' );
                 $btn.not( this ).removeClass( 'active');
-                
                 $( '.arrow' ).stop().animate({ 'top' : $(this).position().top + 20 });
-                
                 var pos = $bnnImg.eq( $(this).index() ).position().top;
-                
                 $('.banner').stop().animate({ 'scrollTop' : pos  }, 1000, "easeOutExpo")
             });
             
@@ -58,32 +55,28 @@
 </head>
 
 <body>
-
-<div class="dunkin">
-    <div class="btn">
-        <ol>
-            <li class="active">menu1</li>
-            <li>menu2</li>
-            <li>menu3</li>
-            <li>menu4</li>
-            <li>menu5</li>
-        </ol>
-        <div class="arrow"></div>
+    <div class="dunkin">
+        <div class="btn">
+            <ol>
+                <li class="active">menu1</li>
+                <li>menu2</li>
+                <li>menu3</li>
+                <li>menu4</li>
+                <li>menu5</li>
+            </ol>
+            <div class="arrow"></div>
+        </div>
+        
+        <div class="banner">
+            <ul>
+                <li><a href="#"><img src="images/img1.jpg" alt="배너"></a></li>
+                <li><a href="#"><img src="images/img2.jpg" alt="배너"></a></li>
+                <li><a href="#"><img src="images/img3.jpg" alt="배너"></a></li>
+                <li><a href="#"><img src="images/img4.jpg" alt="배너"></a></li>
+                <li><a href="#"><img src="images/img5.jpg" alt="배너"></a></li>
+            </ul>
+        </div>    
     </div>
-    
-    <div class="banner">
-        <ul>
-            <li><a href="#"><img src="images/img1.jpg" alt="배너"></a></li>
-            <li><a href="#"><img src="images/img2.jpg" alt="배너"></a></li>
-            <li><a href="#"><img src="images/img3.jpg" alt="배너"></a></li>
-            <li><a href="#"><img src="images/img4.jpg" alt="배너"></a></li>
-            <li><a href="#"><img src="images/img5.jpg" alt="배너"></a></li>
-        </ul>
-    </div>    
-</div>
-
-
-
 </body>
 
 </html>
