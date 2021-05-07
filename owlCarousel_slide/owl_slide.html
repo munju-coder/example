@@ -8,7 +8,7 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="../owlCarousel_slide/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
 <link rel="stylesheet" href="../owlCarousel_slide/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css"></link>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet"> 
 
 <script>
     $(function(){
@@ -38,31 +38,31 @@
         function initialize_owl(el) {
 
             el.owlCarousel({
-            autoplay:true, // 오토 플레이
-            autoplayTimeout:3000, // 오토 플레이 시에 다음 슬라이드로 넘어가는 주기, 2초
-            loop:true,
-            nav:false,
-            items:3,
-            lazyLoad: true,
-            smartSpeed: 1000,
-            margin:10/*,
-            responsive: {
-                0: {
-                items: 2
-                },
-                600: {
-                items: 3
-                },
-                1000: {
-                items: 5
-                }
-                반응형은 이부분 활용
-                }*/
-            });
+                autoplay:true, // 오토 플레이
+                autoplayTimeout:3000, // 오토 플레이 시에 다음 슬라이드로 넘어가는 주기, 2초
+                loop:true,
+                nav:false,
+                items:3,
+                lazyLoad: true,
+                smartSpeed: 1000,
+                margin:10/*,
+                responsive: {
+                    0: {
+                    items: 2
+                    },
+                    600: {
+                    items: 3
+                    },
+                    1000: {
+                    items: 5
+                    }
+                    반응형은 이부분 활용
+                    }*/
+                });
             }
         
             function destroy_owl(el) {
-            el.trigger('destroy.owl.carousel');
+                el.trigger('destroy.owl.carousel');
             }
     });
 </script>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input type 속성</title>
+</head>
+<body>
+    <p><input type="text"></p>
+    <p><input type="button" value="click!"></p>
+    <p><input type="checkbox"></p>
+    <p><input type="color"></p>
+    <p><input type="date"></p>
+    <p><input type="datetime-local"></p>
+    <p><input type="email" placeholder="email"></p>
+    <p><input type="file"></p>
+    <!-- 다중파일 선택 시 -->
+    <p><input type="file" multiple></p>
+    <!-- // -->
+    <p><input type="hidden"></p>
+    <p><input type="image" src="https://dasima.xyz/wp-content/uploads/2019/01/html-input-image-102.png"></p>
+    <p><input type="month"></p>
+    <p><input type="number"></p>
+    <p><input type="password"></p>
+    <p><input type="radio"></p>
+    <p><input type="range"></p>
+    <p><input type="reset"></p>
+    <p><input type="search"></p>
+    <p><input type="submit"></p>
+    <p><input type="tel"></p>
+    <p><input type="time"></p>
+    <p><input type="url"></p>
+    <p><input type="week"></p>
+
+    <!-- 리셋버튼 -->
+    <form action='a.jsp'>
+        ID : <input type='text' value='abcd'/><br>
+        PASSWORD : <input type='password' /><br>
+        성별<br>
+        <input type='radio' name='gender' value='female' checked/>여성
+        <input type='radio' name='gender' value='male' />남성<br>
+        좋아하는 과일<br>
+        <input type='checkbox' name='fruits' value='apple' checked/>사과
+        <input type='checkbox' name='fruits' value='banana' />바나나
+        <input type='checkbox' name='fruits' value='orange' />오렌지<br>
+        <input type='reset'>
+    </form>
+    <!-- // 리셋버튼 -->
+    
+    <!-- input file  -->
+    <label class="file-button" for="input-file">
+        파일 업로드
+    </label>
+    <input type="file" id="input-file">
+    <style>
+        .file-button { display: inline-block; padding: 6px 25px; background-color: #ff6600; border-radius: 4px; color: white; cursor: pointer; margin-bottom: 50px;  }
+        #input-file { display: none; }
+    </style>
+    <form>
+        <!--required : 반드시 파일이 선택되어야 하는지 여부를 지정-->
+        <input type="file" required/>
+        <input type="submit">
+    </form>
+
+    <!--input자동완성기능 off-->
+    <div>
+        이름: <input id="name" autocomplete="off"/>
+    </div>
+    <div>
+        이메일: <input id="email" autocomplete="on"/>
+    </div>
+
+    <input list="fruitslist" name="fruits" id="fruits">
+    <datalist id="fruitslist">
+        <option value="apple" label="사과">
+        <option value="banana" label="바나나">
+        <option value="grape" label="포도">
+        <option value="orange" label="오렌지">
+    </datalist>
+
+    <input id="name" onkeyup="printName()"/>
+    <div id="result"></div>
+    <script>
+        function printName(){
+            const name=document.getElementById('name').value;
+            document.getElementId("result").innerText = name;
+        }
+    </script>
+</body>
+</html>

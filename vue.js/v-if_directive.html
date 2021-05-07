@@ -19,6 +19,12 @@
         <p v-else = "cat">반려동물은 고양이지!</p>
         <button v-on:click = "dog = !dog">반대</button>
     </div>
+
+    <div id="app2">
+        <p v-if ="A">A</p>
+        <p v-else = "B">B</p>
+        <button @click="A = !A">반대</button>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
@@ -27,6 +33,13 @@
         el: "#app",
         data : {
             dog: true
+        }
+    })
+
+    new Vue({
+        el:"#app2",
+        data: {
+            A : true
         }
     })
 </script>

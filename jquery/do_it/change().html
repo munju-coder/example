@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>change() 이벤트</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<script>
+    /*
+        - change() 이벤트 메서드는 선택한 폼요소의 값을 새값으로 바꿈
+        - 포커스가 다른 요소로 이동하면 이벤트를 발생시킴
+        
+        *포커스이벤트등록
+        $("이벤트대상선택").change(function(){자바스크립트코드;});
+        $("이벤트대상선택").change(function(){자바스크립트코드;});
+
+        *포커스이벤트 강제발생
+        $("이벤트대상선택").change();
+    */
+   $(function(){
+       $("#rel_site").change( function(){
+            $('.txt').text($(this).val());
+       });
+   });
+
+
+</script>
+<body>
+    <select name="" id="rel_site">
+        <option value="사이트를 선택하면 value값이 출력됩니다.">사이트 선택</option>
+        <option value="www.google.com">구글</option>
+        <option value="www.naver.com">네이버</option>
+        <option value="www.daum.net">다음</option>
+    </select>
+    <p class="txt"></p>
+</body>
+</html>

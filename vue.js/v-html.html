@@ -16,6 +16,10 @@
         <div id= "app">
             <p v-html = "aLinkToMedium"></p>
         </div>
+
+        <div id="app2">
+            <p v-html = "alink2"></p>
+        </div>
     </body>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -26,6 +30,13 @@
                 aLinkToMedium: "<a href='http://naver.com'>링크</a>"
             }
         })
+
+        new Vue({
+            el: "#app2",
+            data: {
+                alink2: "<a href='http://naver.com'>링크</a>"
+            }
+        });
 
         // {{aLinkToMedium}}을 p태그 안에 직접 넣어주지 않고 v-html 디렉티브를 사용하여 p태그의 속성값으로 넣어줌
     </script>
