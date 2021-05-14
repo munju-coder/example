@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css gradients use</title>
+</head>
+<script>
+    /*
+        css gradients 속성
+        -두 개 이상의 색간의 점진적 전환 표현으로 image를 사용하는 곳에는 어디서나 적용가능함.
+        -그라디언트는 동적으로 생성하므로, 비슷한 효과를 보기위해 래스터이미지를 사용하지 않아도 됨
+        -브라우저가 직접 생성하므로 확대했을 때 래스터 이미지보다 좋은 품질을 보이며 크기조절도 즉시 가능함
+        1. 선형 linear-gradient() 함수
+        2. 방사형 radial-gradient 함수
+        3. 각진 원형 conic-gradient 함수
+    
+        
+    */
+</script>
+<style>
+    div { width: 100px; height: 100px; margin-top: 10px; }
+    /* 기본 선형 */
+    .simple-linear { background: linear-gradient(blue,pink); }
+    
+    /* 방향 전환 */
+    .horizontal-gradient { background: linear-gradient(to right, blue, pink); margin-top: 10px; }
+
+    /* 대각선 */
+    .diagonal-gradient { background: linear-gradient(to bottom right, blue, pink); }
+
+    /* 각도사용 */
+    .angled-gradient {  background: linear-gradient(70deg, blue, pink); }
+    
+    /* 색상선언 및 효과 */
+    .auto-apaced-linear-gradient { background: linear-gradient(red,yellow,blue,orange); }
+
+    /* creating hard lines */
+    .striped {  background: linear-gradient(to bottom left, cyan 50%, palegoldenrod 50% ); }
+
+    /* radial gradient */
+    .simple-radial { background: radial-gradient(red,blue); }
+
+    /* positioning the center of the gradient */
+    .radial-gradient { background: radial-gradient(at 0% 30%, red 10px, yellow 30%, #1e90ff 50% ); }
+
+    /* stacked radial gradient */
+    .stacked-radial { 
+        background:
+            radial-gradient(circle at 50% 0,
+                rgba(255,0,0,.5),
+                rgba(255,0,0,0) 70.71%),
+            radial-gradient(circle at 6.7% 75%,
+                rgba(0,0,255,.5),
+                rgba(0,0,255,0) 70.71%),
+            radial-gradient(circle at 93.3% 75%,
+                rgba(0,255,0,.5),
+                rgba(0,255,0,0) 70.71%) beige;
+        border-radius: 50%;
+    }
+    /* changing the angle */
+    .conic-gradient { background: conic-gradient(from 45deg, red, orange, yellow, green, blue, purple); }
+
+    /* overlaying gradients */
+    .layered-image { width: 300px; height: 150px; background: linear-gradient(to right, transparent, mistyrose), url("https://mdn.mozillademos.org/files/15525/critters.png");  }
+
+    /* controlling the progression of a gradient */
+    .colorhint-gradient { background: linear-gradient(to top, black, 20%, cyan); }
+    .regular-progression { background: linear-gradient(to top, black, cyan); }
+</style>
+
+<body>
+    <div class="simple-linear"></div>
+    <div class="horizontal-gradient"></div>
+    <div class="diagonal-gradient"></div>
+    <div class="angled-gradient"></div>
+    <div class="auto-apaced-linear-gradient"></div>
+    <div class="striped"></div>
+    <div class="simple-radial"></div>
+    <div class="radial-gradient"></div>
+    <div class="stacked-radial"></div>
+    <div class="conic-gradient"></div>
+    <div class="layered-image"></div>
+    <div class="colorhint-gradient"></div>
+    <div class="regular-progression"></div>
+</body>
+</html> 
