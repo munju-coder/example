@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하이키즈</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<script>
+    // 그래프 위치이동
+$(document).ready(function(){
+      
+      function example(){
+          var w = $(window).width();
+  
+          if(w<752){ //tablet&모바일이라면
+             $('.bar-graph-m').after( $('.move_contents'));
+  
+          }else{ //pc라면
+              $('.bar-graph-web').after( $('.move_contents'));
+          }
+      }
+  
+      //초기실행
+      example();
+  
+  
+      $(window).resize(function(){
+          example();
+      });
+  
+  })
+</script>
+<style>
+    /* common */
+    *, *::before, *::after { box-sizing: border-box; }
+    .wrap { width: 100%; overflow-x: hidden; }
+    body,ul,p,dl { padding: 0; margin: 0; }
+    li { list-style: none; }
+    a { color: inherit; text-decoration: none; }
+    a:hover,a:link { color: inherit; }
+    .mt80 { margin-top: 80px; }
+    .mt30 { margin-top: 30px; }
+
+    .h850-1 { height: 850px; }
+    .h850-2 { height: 850px; overflow: hidden; }
+    .h850-2.G06005 { background: none; }
+    .row { position: relative; display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; }
+    .G06005 { background: url(https://www.vegemil.co.kr:10001/main/brandgreenbia/common/css/../../img/product/G06005_B.jpg) center center no-repeat; background-size: cover; }
+    .f_ms { font-family: 'Montserrat', sans-serif; }
+    .f38_6_w { font-size: 38px; color: #fff; font-weight: 600; line-height: 150%; }
+    .hcenter { overflow: hidden; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; }
+    .hcenter_right { position: absolute; top: 50%; left: 92%; transform: translate(-50%, -50%); width: 100%; z-index: 50; }
+
+    .t_center { text-align: center; }
+    .loader-ring ul li { display: inline-block; vertical-align: middle; position: relative; margin-bottom: 28px; }
+    .f17_4_w { font-size: 17px; color: #fff; font-weight: 400; line-height: 150%; }
+    .f14_4_w { font-size: 14px; color: #fff; font-weight: 400; line-height: 180%; }
+    .f22_4_w { font-size: 22px; color: #fff; font-weight: 400; line-height: 150%; }
+    .f60_6_w { font-size: 60px; color: #fff; font-weight: 600; line-height: 150%; }
+    .col-md-4.G06005_top .round { background-color: #d90051; }
+    .round { color: #fff; font-size: 20px; font-weight: 400; padding: 12px 28px; display: inline-block; border-radius: 30px; }
+    .loader-ring.list1 { width: 400px; padding-left: 100px; }
+    .point_w {background: url(https://www.vegemil.co.kr:10001/main/brandgreenbia/common/css/../../img/ico_point_w.png) no-repeat 0px 10px; padding-left: 10px; }
+    .bar-wrap {
+        -moz-border-radius: 10px 10px 10px 10px;
+        -webkit-border-radius: 10px 10px 10px 10px;
+        -ms-border-radius: 10px 10px 10px 10px;
+        border-radius: 10px 10px 10px 10px;
+        background-color: rgba(255, 255, 255, 0.3);
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+    .bar-graph li dl dd:first-child { max-width: 60px; line-height: 120%; vertical-align: top; color: #fff; font-size: 14px; }
+    .bar-graph li dl dd:nth-child(2) { width: 255px; }
+    .bar-graph li dl dd { width: 100%; display: inline-block; margin: 0; padding: 0; vertical-align: middle; margin-bottom: 40px; }
+
+    @keyframes bar-fill {
+        0% {
+            width: 0;
+            display: block;
+        }
+        12%{
+            width: 12%;
+            display: block;
+        }
+
+        43%{
+            width: 43%;
+            display: block;
+        }
+    }
+    .bar-fill {
+        -moz-border-radius: 10px 10px 10px 10px;
+        -webkit-border-radius: 10px 10px 10px 10px;
+        -ms-border-radius: 10px 10px 10px 10px;
+        border-radius: 10px 10px 10px 10px;
+        -moz-animation: bar-fill 1s;
+        -webkit-animation: bar-fill 1s;
+        -ms-animation: bar-fill 1s;
+        animation: bar-fill 1s;
+        background-color: #fff;
+        display: block;
+        height: 5px;
+        width: 0px;
+    }
+    .bar-fill_12per { width: 12%; }
+    .bar-fill_45per { width: 45%; }
+    .bar-fill_43per { width: 43%; }
+
+    .bar-graph li dl dd { width: 100%; display: inline-block; margin: 0; padding: 0; vertical-align: middle; margin-bottom: 40px; }
+    .btn_type02 { background: none; font-size: 16px; font-weight: 600; padding: 22px 54px; display: inline-block; border-radius: 50px; border: 1px solid #fff; color: #fff; transition: 1s; }
+    .btn_type02:hover { background: #fff; color: #000; }
+ 
+    .bar-graph li dl dd:nth-child(3) { max-width: 65px; padding-left: 10px; line-height: 120%; vertical-align: top; color: #fff; font-size: 14px; }
+    .bar-graph li dl dd { width: 100%; display: inline-block; margin: 0; padding: 0; vertical-align: middle; margin-bottom: 40px; }
+
+    ul.mlk2 li { color: #fff; font-size: 25px; font-weight: 600; padding: 22px 0px; text-align: center; float: left; width: 140px; }
+    ul.G06005_kcal li:first-child { background: #77c126; }
+    ul.G06005_kcal li:nth-child(2) { background: #d90051; }
+    .kcalBox { position: absolute; left: 48px; bottom: 0; }
+    .bar-graph { list-style: none; margin: 30px 0px 0 0; }
+    @keyframes rotate-360 {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .loader-ring-light {
+        width: 80px;
+        height: 80px;
+        -moz-border-radius: 80px;
+        -webkit-border-radius: 80px;
+        border-radius: 80px;
+        -moz-box-shadow: 0 1px 0 #fff inset;
+        -webkit-box-shadow: 0 1px 0 #fff inset;
+        box-shadow: 0 1px 0 #fff inset;
+        animation: rotate-360 0.8s linear infinite;
+        border: 1px solid rgba(255, 255, 255, .5);
+    }
+    .loader-ring-track { position: absolute; top: 0; left: 0; width: 80px; height: 80px; -moz-border-radius: 80px; -webkit-border-radius: 80px; border-radius: 80px; }
+
+    @media(max-width:1200px) {
+        
+    }
+
+
+</style>
+<body>
+    <div class="wrap">
+        <div class="row G06005 BU01">
+            <div class="col-md-4 h850-1 G06005_top">
+                <div class="hcenter_right">
+                    <div>
+                        <p class="round round05">건강식품</p>
+                        <p class="f_ms f60_6_w mt30">하이키즈</p>
+                        <p class="f_ms f14_4_w wview">Balanced Nutrition for growing kids<br>during the growth period</p>
+                        <p class="f_ms f22_4_w mt30">성장기 어린이를 위한<br> 어린이 음료</p>
+                    </div>
+                    
+                    <div>
+                        <p class="f14_4_w mt30 point_w bar-graph-web">열량 구성비</p><ul class="bar-graph move_contents"> 
+                          <li>
+                            <dl>
+                                <dd>단백질</dd>
+                                <dd><div class="bar-wrap"><span class="bar-fill bar-fill_12per"></span></div></dd>
+                                <dd class="f_ms"><span class="counter">12</span>%</dd>
+                            </dl>
+                          </li> 
+                          <li>
+                            <dl>
+                                <dd>지방</dd>
+                                <dd><div class="bar-wrap"><span class="bar-fill bar-fill_45per"></span></div></dd>
+                                <dd class="f_ms"><span class="counter">45</span>%</dd>
+                            </dl>
+                          </li> 
+                          <li>
+                            <dl>
+                                <dd>탄수화물</dd>
+                                <dd><div class="bar-wrap"><span class="bar-fill bar-fill_43per"></span></div></dd>
+                                <dd class="f_ms"><span class="counter">43</span>%</dd>
+                            </dl>
+                          </li> 
+                        </ul>
+                        <!-- BAR-GRAPH -->
+                        
+                        <!-- //BAR-GRAPH -->
+                        <a href="https://www.vegemil.co.kr:10001/main/brandgreenbia/detail.aspx?p_code=G06005"><div class="btn_type02  f_ms mt30 mt40m">Read More</div></a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-md-4 h850-2 G06005 t_center">
+                <p class="mt80 f_ms f38_6_w wview">New Product</p>
+            </div>
+            
+            <div class="col-md-4 h850-3 G06005_bottom">
+                <div class="hcenter">
+                    <div class="loader-ring list1 bar-graph-m">
+                        <ul>
+                            <li>
+                                <div class="loader-ring-light"></div>
+                                <div class="loader-ring-track"><img src="images/ico_24.png" alt="#"></div>
+                            </li>
+                            <li class="f17_4_w">초유 단백질 CBP 9mg<br>특허 제 10-0509681호</li>
+                        </ul>
+
+                        <ul>
+                            <li>
+                                <div class="loader-ring-light"></div>
+                                <div class="loader-ring-track"><img src="images/ico_44.png" alt="#"></div>
+                            </li>
+                            <li class="f17_4_w">비타민 13종 중<br>비타민D 3㎍</li>
+                        </ul>
+
+                        <ul>
+                            <li>
+                                <div class="loader-ring-light"></div>
+                                <div class="loader-ring-track"><img src="images/ico_35.png" alt="#"></div>
+                            </li>
+                            <li class="f17_4_w">미네랄 12종 중<br>칼슘 150mg</li>
+                        </ul>
+
+                        <ul>
+                            <li>
+                                <div class="loader-ring-light"></div>
+                                <div class="loader-ring-track"><img src="images/ico_26.png" alt="#"></div>
+                            </li>
+                            <li class="f17_4_w">150ml 소용량 패키지</li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <div class="kcalBox wview">
+                    <ul class="G06005_kcal mlk2">
+                        <li class="f_ms">150ml</li>
+                        <li class="f_ms">150kcal</li>
+                    </ul>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+</body>
+</html>
