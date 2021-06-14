@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=ed
+    ge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  
+</head>
+<script>
+    /*
+        ECMA9버전까지 나와있긴 하지만 
+        ECMAScript2015버전을 많이 사용함
+    
+    */
+
+   /*
+
+        1. 모듈 (,모듈내보내고 가져오기)
+        모듈은 기능별 또는 화면별로 분리해서 js파일로 따로 만들어 저장해둔 뒤 
+        필요할 때마다 import하여 사용할 수 있게 하는 기술로 
+        재활용할 수 있기때문에 프로젝트 진행 시 쉽고 빠르게 구축을 할 수 있음
+        1) export
+        2) import
+        -> 모듈을 만들고 남들이 불러와 사용할 수 있기를 바라는 변수, 함수, 객체, 클래스
+        에 대해 export를 써주면 다른 모듈에서 import로 끌어다 사용할 수 있음.
+
+        2. 클래스 ES2015 버전 CLASS
+        3. let과 const
+        : 기존 javascript 에서 변수를 선언할 때는 무조건 var 를 사용했었으나, 
+        var는 Hosting 블론 단위 스코프 미지원, 중복선언 허용 등 몇가지 문제가 있었음.
+        ES2015에서는 let키워드를 사용함으로써 호이스팅문제도 해결하고 블록 단위 스코프도 지원하게됨
+        let이 제정 되었어도 var도 같이 사용가능하지만, 가능하면 let 을 사용할것.
+   */
+
+//    import { a, add } from '../aaa.js';
+//     console.log(a);
+//     console.log(add(100,50));
+</script>
+<body>
+    <div class="App"></div>
+    <script type="module" src="js/aaa.js"></script>
+</body>
+</html>
