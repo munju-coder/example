@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text-align-last-property</title>
+</head>
+<script>
+    /*
+        text-decoration-line
+        text-align-last
+    */ 
+</script>
+<style>
+    div.a { text-align: justify; -moz-text-align-last: right; text-align-last: right; -webkit-text-decoration-line: overline; /* Safari */
+   text-decoration-line: overline;  text-decoration-style: solid; }
+    div.b { text-align: justify; -moz-text-align-last: center; text-align-last: center; -webkit-text-decoration-line: underline; /* Safari */
+   text-decoration-line: underline;  text-decoration-style: wavy; }
+    div.c { text-align: justify; -moz-text-align-last: justify; text-align-last: justify; -webkit-text-decoration-line: line-through; /* Safari */
+   text-decoration-line: line-through; text-decoration-style: double; }
+    div.d { -webkit-text-decoration-line: overline underline; /* Safari */ text-decoration-line: overline underline; text-decoration-style: wavy; }
+</style>
+<body>
+    <h1>The text-align-last Property</h1>
+    <h2>text-align-last: right:</h2>
+    <div class="a">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.</p>
+    </div>
+
+    <h2>text-align-last: center:</h2>
+    <div class="b">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing el                                       it. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.</p>
+    </div>
+
+    <h2>text-align-last: justify:</h2>
+    <div class="c">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.</p>
+    </div>
+
+    <h2>text-decoration-line: overline underline:</h2>
+    <div class="d">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.</p>
+    </div>
+</body>
+</html>
