@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css 쓰기모드</title>
+</head>
+<script>
+    /*
+        문서나 구성요소의 쓰기모드는 텍스트 흐름의 방향을 뜻하고,
+        css에서 쓰기모드로 작업할 때에는 writing-mode 속성을 사용함.
+        
+        -horizontal-tb
+        -vertical-rl : 세로쓰기 오른쪽에서 왼쪽으로 실행
+        -vertical-lr : 세로쓰기 왼쪽에서 오른쪽으로 실행
+        -sideways-lr, sideways-rl : 가로쓰기 모드로 세로로 작성한 문장도 가로로 바뀜 / 파이어폭스에서만 지원함.
+    */ 
+</script>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .wrapper { border: 5px dotted black; inline-size: 200px; }
+    .horizontal-tb { writing-mode: horizontal-tb; margin-bottom: 1em;  }
+    .vertical-rl { writing-mode: vertical-rl; }
+    .vertical-lr { writing-mode: vertical-lr; }
+    .sideways-rl { writing-mode: sideways-rl; }
+    .sideways-lr { writing-mode: sideways-lr; }
+    .box { background-color: rgb(55,55,110); color: white; padding: 20px; margin: 20px; border-radius: .5em; inline-size: 10em; 
+    display: inline-block; vertical-align: middle; }
+    body { font: 1.4em/1.3 "Gill Sans", "Gill Sans MT", Calibri, sans-serif; margin: 2em 3em; }
+</style>
+<body>
+    <div class="box horizontal-tb">writing mode
+        <br>horizontal-tb
+    </div>
+
+    <div class="box vertical-rl">
+        writing mode
+        <br>vertical-rl
+    </div>
+
+    <div class="box vertical-lr">
+        writing mode
+        <br>vertical-lr
+    </div>
+
+    <div class="box sideways-rl">
+        writing mode
+        <br>sideways-rl
+    </div>
+
+    <div class="box sideways-lr">
+        writing mode
+        <br>sideways-lr
+    </div>
+</body>
+</html>
