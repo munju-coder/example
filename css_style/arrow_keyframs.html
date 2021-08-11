@@ -1,53 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    .btn-right {
-        text-decoration: none;
-        position: relative;
-        font-weight: 300;
-        font-size: 20px;
-        letter-spacing: -0.03em;
-        display: inline-block;
-        color: #fff;
-        background-color: rgb(48, 48, 48);
-        padding: 0.9em 2.8em 0.9em 2.25em;
-    }
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>화살표 애니메이션</title>
+    </head>
+    
+    <body>
+        <a href="#" class="btn_right">
+            바로가기<span class="arrow_right"></span>
+        </a>
 
-    .arrow-right {
-        position: absolute;
-        display: inline-block;
-        width: 0;
-        height: 0;
-        border-top: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-bottom: 8px solid transparent;
-        border-left: 8px solid white;
-        margin-top: 8px;
-        margin-left: 9px;
-        animation: horizontal 0.7s ease-in-out infinite;
-    }
+        <a href="#" class="btn_left">
+            바로가기<span class="arrow_left"></span>
+        </a>
+    </body>
 
-    @keyframes horizontal {
-        0% {
+    <style>
+        .btn_left {  
+            position: relative;
+            text-decoration: none; 
+            font-size: 20px; 
+            letter-spacing : -0.03em; 
+            display: inline-block; 
+            color: #fff; 
+            background-color: #8c8c8c; 
+            padding: 10px 20px; 
+        }
+        .arrow_left {
+            position: absolute;
+            display: inline-block;
+            width: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-right: 8px solid #fff;
+            left: 0;
+            margin-top: 8px;
             margin-left: 9px;
+            animation: horizontal 0.7s ease-in-out infinite;
         }
-        50% {
-            margin-left: 11px;
+            
+        .btn_right {
+            text-decoration: none;
+            position: relative;
+            font-size: 20px;
+            letter-spacing: -0.03em;
+            display: inline-block;
+            color: #fff;
+            background-color: rgb(48, 48, 48);
+            padding: 0.9em 2.8em 0.9em 2.25em;
         }
-        100% {
+
+        .arrow_right {
+            position: absolute;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 8px solid white;
+            margin-top: 8px;
             margin-left: 9px;
+            animation: horizontal 0.7s ease-in-out infinite;
         }
-    }
-</style>
-<body>
-    <a href="#" class="btn-right">
-        바로가기
-        <span class="arrow-right"></span>
-    </a>
-</body>
+
+        @keyframes horizontal {
+            0% {
+                margin-left: 9px;
+            }
+            50% {
+                margin-left: 11px;
+            }
+            100% {
+                margin-left: 9px;
+            }
+        }
+    </style>
 </html>

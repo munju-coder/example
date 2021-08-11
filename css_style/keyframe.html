@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    div{
-  position:absolute;
-  left:100px;
-  width:100px;
-  height:50px;
-  margin-left:-50px;
-  background-color:#000;
-  color:#fff;
-  /* 애니메이션 이름 */
-  animation-name: jaehee;
-  animation-duration:2s;
-  animation-duration: leaner;
-  animation-iteration-count:3;
-  animation-direction:alternate;
-  animation-fill-mode: forwards;
-}
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+  </head>
+  <style>
+      div{
+        position:absolute;
+        left:100px;
+        width:100px;
+        height:50px;
+        margin-left:-50px;
+        background-color:#000;
+        color:#fff;
+        /* 애니메이션 이름 */
+        animation-name: a;
+        animation-duration:2s;
+        animation-duration: leaner;
+        animation-iteration-count:3;
+        animation-direction: alternate;
+        animation-fill-mode: forwards;
+      }
 
-/* 키프레임 이름 = 애니메이션 이름 */
-@-webkit-keyframes jaehee {
-  0% {
-    left:100px;
-  }
-  100% {
-    left:300px;
-  }
-}
-</style>
-<body>
-    <div>box</div>
-</body>
+      /* 키프레임 이름 = 애니메이션 이름 */
+      @-webkit-keyframes a {
+        0% {
+          left:100px;
+        }
+        100% {
+          left:300px;
+        }
+      }
+  </style>
+  <body>
+      <div>box</div>
+  </body>
 </html>
