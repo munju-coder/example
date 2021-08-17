@@ -46,7 +46,7 @@
         });
     </script>
     <body>
-        <!-- <form>
+        <form>
             <div><span class="item"> 아이디 * </span>
             <input type="text" id="userId" ></div>
             
@@ -61,7 +61,7 @@
             
             <input type="button" id="regBtn" value="회원가입">
             <input type="reset" value="취소">
-        </form> -->
+        </form>
 
         <script>
             //숫자만입력
@@ -106,28 +106,25 @@
                         $('#mb_pw_chk').val('').focus();
                         return false;
                     }
-
                     alert('회원가입이 완료되었습니다.');
                 }
                 /**
-                 * @date 21-01-18 munju
                  * @brief 자동커서이동 추가
                  */
-                    $(".ex_input").keyup (function () {
-                        var charLimit = $(this).attr("maxlength");
-                        if (this.value.length >= charLimit) {
-                            $(this).next('.ex_input').focus();
-                            return false;
-                        }
-                    });
+                $(".ex_input").keyup (function () {
+                    var charLimit = $(this).attr("maxlength");
+                    if (this.value.length >= charLimit) {
+                        $(this).next('.ex_input').focus();
+                        return false;
+                    }
+                });
                 
                 //숫자입력함수
                 function onlyNumber(){
                     if((event.keyCode<48)||(event.keyCode>57))
-                        event.returnValue=false;
+                    event.returnValue=false;
                 }
 
-                
             });
         </script>
         <!-- 연습 -->
