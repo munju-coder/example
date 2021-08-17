@@ -10,26 +10,26 @@
 </head>
 <script>
     $(function() {
-            $('#box').draggable(
+        
+        $('#box').draggable(
             { containment: 'parent'},
-                { snap: '#wrap' },
-                { start:function(){
-                    // console.log("드래그 시작");
-                } },
-                
-                { drag : function(){
-                //    console.log("드래그 중"); 
-                } },
-                { stop : function(){
-                    // console.log("드래그 종료");
-                }}
-            );
-
-        });
+            { snap: '#wrap' },
+            { start:function(){
+                // console.log("드래그 시작");
+            } },
+            
+            { drag : function(){
+            //    console.log("드래그 중"); 
+            } },
+            { stop : function(){
+                // console.log("드래그 종료");
+            }}
+        );
+    });
 </script>
 <style>
-    #wrap { width: 800px; height: 400px; border: 1px solid #ddd; }
-    #box { width: 100px; height: 100px; border: 1px solid red; background-color: #ddd; }
+    #wrap { width: 800px; height: 400px; border: 1px solid rgb(255, 178, 178); }
+    #box { width: 100px; height: 100px; border: 1px solid rgb(255, 141, 141); background-color: rgb(255, 132, 132); }
 </style>
 
 <body>
