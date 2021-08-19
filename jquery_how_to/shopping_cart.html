@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>쇼핑몰 카트 스크립트 작성</title>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="../js/COMMON.js"></script>
+        <link rel="stylesheet" href="../css/default.css">
+    </head>
+    <style type="text/css">
+        .wrap { width: 100%; max-width: 1400px; margin: 60px auto 0 auto; }
+        .t_center { text-align: center; }
+        .w10per { width: 10%; }
+        .table_title { margin-bottom: 20px; }
+        .table_title h1 { float: left;  }
+        .table_title span { float: right; font-size: 2em; font-weight: 600; }
+        .table_title::after { content: ''; display: block; overflow: hidden; clear: both; }
+
+        .wrap .cart_left table  { border-collapse: collapse; border-spacing: 0; }
+        .wrap .cart_left table td { border-bottom: 1px solid rgb(209, 209, 209); font-size: 14px;  overflow: hidden; padding: 10px 5px; word-break: normal; }
+        .wrap .cart_left table th { border-top: 1px solid #333; border-bottom: 1px solid #e0dede; font-size: 14px; font-weight: normal; overflow: hidden; padding: 10px 5px; word-break: normal; }
+        .wrap .cart_left table th:first-child { width: 5%; }
+        .wrap .cart_left table .other { text-align: center; vertical-align: top; }
+        .wrap .cart_left table .first { width: 34%; text-align: left; vertical-align: top; }
+        .wrap .cart_left table .first img { float: left; width: 180px; margin-right: 110px; }
+        .wrap .cart_left table .first ul { float: left; }
+        .wrap .cart_left table::after { content: ''; display: block; overflow: hidden; clear: both; }
+        .wrap .cart_left table .first ul li { margin-bottom: 10px; }
+        .wrap .cart_left table .first::after { content: ''; display: block; overflow: hidden; clear: both; }
+
+        .qty { position: relative; display: inline-block; width: 50px; margin: 0 1px 0 0; text-align: left; }
+        .qty input[type="text"] { width: 22px; height: 23px; padding: 0 0 0 5px; line-height: 25px; border: 1px solid #d4d8d9; border-radius: 3px 0 0 3px;  color: #353535; font-size: 12px; }
+        .qty .up { position: absolute; left: 27px; top: -6px; }
+        .qty .down { position: absolute; left: 27px; bottom: -1px; }
+
+        .cart_bottom table { margin-top: 30px; }
+        .cart_bottom table tr th { height: 30px; font-size: 17px; font-weight: 600; border-top: 1px solid #333; border-bottom: 1px solid #ddd;  padding: 10px 5px; }
+        .cart_bottom table tr td { padding: 10px 5px; font-size: 18px; }
+        .change_btn { transition: .3s; cursor: pointer; border: 1px solid rgb(199, 199, 199); color: #333; background-color: white; width: 100px; font-size: 13px; padding: 3px; margin-top: 10px; }
+        .change_btn:hover { background-color: rgb(235, 235, 235); transition: .3s; }
+        .order_btn { background-color: #565656;  color: white; }
+        .btn_area li button { width: 100px; padding: 7px 14px; font-size: 13px; margin-bottom: 6px; cursor: pointer; } 
+        .btn_area li:last-child button { margin-bottom: 0; }
+        .cart_wrap .next_btn { margin-top: 80px;}
+        .cart_wrap .next_btn button { width: 200px; background-color: #727272; padding: 15px 10px; font-size: 16px; color: white; }
+        .cart_wrap .next_btn button.all_order_btn { margin-right: 10px; }
+    </style>
+    <body>
+        <div class="wrap">
+            <!--cart_wrap {-->
+            <div class="cart_wrap">
+
+                <!--cart_left {-->
+                <div class="cart_left">
+                    <div class="table_title">
+                        <h1>shopping Cart</h1>
+                        <span>3 Items</span>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="pd_all_input" name="pr_price"></th>
+                                <th class="first">상품정보</th>
+                                <th class="other">수량</th>
+                                <th class="other">판매가</th>
+                                <th class="other">배송비</th>
+                                <th class="other">합계</th>
+                                <th class="other w10per">선택</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="first_check t_center">
+                                    <input type="checkbox" name="chk[]" pd_price="12000" amount="1" class="each_chk" >
+                                </td>
+
+                                <td class="first">
+                                    <img src="http://recovershop.co.kr/uploads/images/product/640/20210705151136_1625465496326921.jpg" alt="상품이미지">
+                                    <ul>
+                                        <li>상품명 : 맥심모카골드 1BOX</li>
+                                        <li>옵션 <span class="option_btn">할인특가1+1</span></li>
+                                        <li><button class="change_btn">옵션변경</button></li>
+                                    </ul>
+                                </td>
+                                
+                                <td class="other">
+                                    <span class="qty">
+                                        <input id="cnt" class="cnt_input" value="1" type="text">
+                                        <a href="javascript:;" class="up"><img src="https://img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" alt="수량증가"></a>
+                                        <a href="javascript:;" class="down">
+                                            <img src="https://img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" alt="수량감소">
+                                        </a>
+                                    </span>
+                                </td>
+
+                                <script>
+                                    $(document).ready( function(){
+
+                                        var toatl_price = 0;
+                                        var pd_seq = [];
+                                        var amount = [];
+                                        var chkBox = [];
+                                        var product_price = [];
+                                        var each_price = [];
+                                        var each_product_price = 0;
+                                        var deliveryPrice = 3000;
+                                        var deliveryChkPrice = 29999;
+                                        var chkBoxCnt = 0;
+                                        
+                                        //수량 숫자 1로 항상 초기화
+                                        $('#cnt').val(1);
+                                        //체크박스 체크 초기화
+                                        $('input:checkbox').prop("checked", false);
+
+                                        //전체선택체크박스 하면 해야할 일
+                                        $('#pd_all_input').click( function(){
+                                            
+                                            //배열 초기화
+                                            pd_check = [];
+                                            qty = [];
+                                            check_box = [];
+                                            product_price = [];
+                                            total_price = [];
+                                            each_product_price = 0; 
+                                            //
+                                            if($('#pd_all_input').prop('checked')){
+                                                $('input:checkbox[name="chk[]"]').prop('checked',true);
+                                                $('input:checkbox[name="chk[]"]').each(function(i){
+
+                                                    check_box[i] = i;
+                                                    product_price[i] = parseInt(COMMON.form.str_num($(".product_price").eq(i).text()));
+                                                    qty[i] = parseInt(COMMON.form.str_num($('.cnt_input').eq(i).val()));
+
+                                                    //각각의 가격은 상품 * 수량
+                                                    each_pricep[i] = (product_price[i] * qty[i]);
+                                                    //상품 각각의 가격의 합
+                                                    each_product_price += each_price[i];
+                                                    //총가격의 합에 넣기
+                                                    $('.only_p_price').text(COMMON.form.comma(each_product_price));
+                                                    
+                                                    if(each_product_price > deliveryChkPrice){
+                                                        //상품이 29999보다 크면 배송비 더하지 않고 총합이랑 같음
+                                                        total_price = each_product_price;
+
+                                                    }
+
+                                                });
+                                            }else{
+                                               
+                                            }
+                                        });
+
+                                    });
+                                </script>
+
+                                <td class="other">
+                                    <div class="cart_table t_center cart_price">
+                                        <span class="product_price">10,000</span>원
+                                    </div>
+                                </td>
+
+                                <td class="other">
+                                    <span class="total_price cart_sum_price">0</span>원
+                                </td>
+                                
+                                <td class="other">
+                                    <div class="">무료</div>
+                                </td>
+
+                                <td class="other">
+                                    <ul class="btn_area">
+                                        <li><button class="order_btn">주문하기</button></li>
+                                        <li><button class="dibs_btn">관심상품등록</button></li>
+                                        <li><button class="delete_btn">삭제하기</button></li>
+                                    </ul>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="first_check t_center">
+                                    <input type="checkbox" name="chk[]" pd_price="12000" amount="1" class="each_chk" >
+                                </td>
+
+                                <td class="first">
+                                    <img src="http://recovershop.co.kr/uploads/images/product/640/20210705151136_1625465496326921.jpg" alt="상품이미지">
+                                    <ul>
+                                        <li>상품명 : 맥심모카골드 1BOX</li>
+                                        <li>옵션 <span class="option_btn">할인특가1+1</span></li>
+                                        <li><button class="change_btn">옵션변경</button></li>
+                                    </ul>
+                                </td>
+                                
+                                <td class="other">
+                                    <span class="qty">
+                                        <input id="cnt" class="cnt_input" value="1" type="text">
+                                        <a href="javascript:;" class="up"><img src="https://img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" alt="수량증가"></a>
+                                        <a href="javascript:;" class="down">
+                                            <img src="https://img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" alt="수량감소">
+                                        </a>
+                                    </span>
+                                </td>
+
+                                <td class="other">
+                                    <div class="cart_table t_center cart_price">
+                                        <span class="product_price">30,000</span>원
+                                    </div>
+                                </td>
+
+                                <td class="other">
+                                    <span class="total_price cart_sum_price">0</span>원
+                                </td>
+                                
+                                <td class="other">
+                                    <div class="">무료</div>
+                                </td>
+
+                                <td class="other">
+                                    <ul class="btn_area">
+                                        <li><button class="order_btn">주문하기</button></li>
+                                        <li><button class="dibs_btn">관심상품등록</button></li>
+                                        <li><button class="delete_btn">삭제하기</button></li>
+                                    </ul>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="first_check t_center">
+                                    <input type="checkbox" name="chk[]" pd_price="12000" amount="1" class="each_chk" >
+                                </td>
+
+                                <td class="first">
+                                    <img src="http://recovershop.co.kr/uploads/images/product/640/20210705151136_1625465496326921.jpg" alt="상품이미지">
+                                    <ul>
+                                        <li>상품명 : 맥심모카골드 1BOX</li>
+                                        <li>옵션 <span class="option_btn">할인특가1+1</span></li>
+                                        <li><button class="change_btn">옵션변경</button></li>
+                                    </ul>
+                                </td>
+                                
+                                <td class="other">
+                                    <span class="qty">
+                                        <input id="cnt" class="cnt_input" value="1" type="text">
+                                        <a href="javascript:;" class="up"><img src="https://img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" alt="수량증가"></a>
+                                        <a href="javascript:;" class="down">
+                                            <img src="https://img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" alt="수량감소">
+                                        </a>
+                                    </span>
+                                </td>
+
+                                <td class="other">
+                                    <div class="cart_table t_center cart_price">
+                                        <span class="product_price">30,000</span>원
+                                    </div>
+                                </td>
+
+                                <td class="other">
+                                    <span class="total_price cart_sum_price">0</span>원
+                                </td>
+                                
+                                <td class="other">
+                                    <div class="">무료</div>
+                                </td>
+
+                                <td class="other">
+                                    <ul class="btn_area">
+                                        <li><button class="order_btn">주문하기</button></li>
+                                        <li><button class="dibs_btn">관심상품등록</button></li>
+                                        <li><button class="delete_btn">삭제하기</button></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <!--} cart_left-->
+                
+                <!--cart_bottom {-->
+                <div class="cart_bottom">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="">총 상품금액</th>
+                                <th class="">총 배송비</th>
+                                <th class="">결제예정금액</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td class="t_center">
+                                    <span class="only_p_price">0</span>원
+                                </td>
+                                
+                                <td class="t_center">
+                                    <span class="etc_price" del_pr="3000">0</span> 원
+                                </td>
+
+                                <td class="t_center">
+                                    <span class="total_price cart_sum_price">0</span>원
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--} cart_bottom-->
+         
+                <div class="next_btn t_center">
+                    <button class="all_order_btn">전체상품주문</button>
+                    <button class="choice_order_btn">선택상품주문</button>
+                </div>
+            </div>
+            <!--} cart_wrap-->
+        </div>
+    </body>
+</html>
