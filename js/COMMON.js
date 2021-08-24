@@ -185,11 +185,7 @@ COMMON.form = {
     /**
      * @brief   숫자만 추출
      * @param {string} str 
-     */
-    str_num : function(str)
-    {
-        var res = str.replace(/[^0-9]/g,"");    
-        return res;
+   
     },
     /**
      * @biref 자리수 채우기
