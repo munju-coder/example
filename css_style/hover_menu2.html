@@ -13,30 +13,36 @@
         a { text-decoration: none; color: #f6f4e6; font-size: 24px; text-transform: uppercase; font-weight: 600; display: inline-block; width: 80px; 
         transition: all .2s ease-in-out; }
         .nav_menu a:hover { color: #fddb3a; }
-        .nav_menu .dot { 
-            width: 6px; 
-            height: 6px; 
-            background-color: #fddb3a; 
-            border-radius: 50%; 
-            opacity: 0; 
-            -webkit-transform: translateX(30px);
-            transform: translateX(30px);
-            -webkit-transition: all .2s ease-in-out; 
-            transition: all .2s ease-in-out;
-        }
-        .nav_menu a:nth-child(1):hover ~ .dot {  
-            -webkit-transform: translateX(30px); 
-            transform: translate(30px); 
-            -webkit-transition: all .2s ease-in-out;
-            transition: all .2s ease-in-out;
+        .nav_menu .dot {  width: 6px;  height: 6px;  background-color: #fddb3a;  border-radius: 50%;  opacity: 0;  -webkit-transform: translateX(30px); transform: translateX(30px); -webkit-transition: all .2s ease-in-out;  transition: all .2s ease-in-out; }
+        .nav_menu a:nth-child(1):hover ~ .dot { -webkit-transform: translateX(30px); transform: translate(30px); -webkit-transition: all .2s ease-in-out; transition: all .2s ease-in-out; opacity: 1; }
+        .nav_menu a:nth-child(2):hover ~ .dot {
+            -webkit-transform: translateX(110px);
+            transform: translateX(110px);
+            -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
             opacity: 1;
         }
 
+        .nav_menu a:nth-child(3):hover ~ .dot {
+            -webkit-transform: translateX(200px);
+            transform: translateX(200px);
+            -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+            opacity: 1;
+        }
+
+        .nav_menu a:nth-child(4):hover ~ .dot {
+            -webkit-transform: translateX(285px);
+            transform: translateX(285px);
+            -webkit-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+            opacity: 1;
+        }
 
     </style>
     <body>
         <nav class="nav_menu">
-            <a href="#">home</a>
+            <a href="#">홈</a>
             <a href="#">home</a>
             <a href="#">home</a>
             <a href="#">home</a>
