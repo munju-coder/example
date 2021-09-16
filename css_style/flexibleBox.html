@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>flexible Box 가이드</title>
+    </head>
+    <script>
+        /*
+            전체레이아웃 수직 구성
+            위 - 아래 스크롤 
+            -레이아웃 구성 시 많이 사용하는 요소는 기본적으로 블록 개념으로 표시되며
+            수직으로 쌓이기 떄문에 수직구성은 상대적으로 쉽게 만들 수 있음.
+            대신에 수평구조를 만드는 속성이 명확하지 않아 table이나 float 혹은 inline-block 등의 도움을 받았었음
+        */
+    </script>
+    <style>
+        .box { float: left; }
+        .clearElement { clear: both; }
+        /* box를 제외한 clearElement라는 이름(class)의 다음(next) 요소도 있어야해서 실제사용엔 매우불편함 */
+
+        .clearfix::after { content: ''; display: block; clear: both; }
+        .box1 { float: left; }
+        /* 수평이 될 요소들에 직접 float을 적용하고 요소들의 부모요소에 미리 설정한 clearfix를 적용함 */
+
+        .box-container { display: flex; }
+        /* flex는 수평이 될 요소들의 Container(box-container)에 display flex를 적용함 */
+        /* flex는 요소의 크기가 불분명하거나 동적인 경우에도, 각요소를 정렬할 수 있는 효율적 방법을 제공함 */
+    </style>
+    <body>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="clearElement"></div>
+
+        <div class="clearfix">
+            <div class="box1"></div>
+            <div class="box1"></div>
+            <div class="box1"></div>
+        </div>
+
+        <div class="box-container">
+            <div class="box2"></div>
+            <div class="box2"></div>
+            <div class="box2"></div>
+        </div>
+    </body>
+</html>
