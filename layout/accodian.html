@@ -6,71 +6,73 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="../js/COMMON.js"></script>
+        <!--fontawesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <script src="../jquery/jquery5/lib/jquery.easing.1.3.js"></script>
         <link rel="stylesheet" href="../font/Pretendard/web/static/pretendard-subset.css" />
         <link rel="stylesheet" href="../font/Pretendard/web/static/pretendard.css" />
         <link rel="stylesheet" href="../css/default.css" />
     </head>
     <style>
+        .wrap { width: 1200px; margin: 20px auto; text-align: center; }
+        header { width: 100%; background-color: #bfbfbf; }
+        header nav { float: left; }
+        header nav .main_menu { display: none; }
+        header nav img { border: 1px solid #7f7f7f; margin-right: 20px; }
+        header::after { content: ''; display: block; overflow: hidden; clear: both; }
+        header .left_title { float: left; margin-top: 10px; }
+        header .right_title { float: right; margin-top: 10px; } 
+
+        .content .chart { height: 200px; margin: 0 0 10px 0; border: 1px solid #ddd; }
+        .content .main_left { float: left; width: 28%; margin-right: 16px; background-color: #f1f1eb; padding: 10px; border: 1px solid #d5d5d5; }
+        .content .main_left .ml_table,.content .main_right .mr_table { border: 1px solid #ddd; padding: 10px; background-color: white; }
+
+        .content::after { content: ''; display: block; overflow: hidden; clear: both; }
+        .content .main_right { float: left; width: 67%; background-color: #f1f1eb; padding: 10px; border: 1px solid #d5d5d5; }
+        .content .folder { display: none; }
+        .content .not_folder { opacity: 1; }
+        
+        .content .top_title { border: 1px solid #ddd; margin-bottom: 20px; background-color: white; }
+        .content .top_title .chart_txt { font-size: 22px; color: red; font-weight: 600; }
+        .content .top_title .arrow_area { float: right; margin-top: 4px; cursor: pointer; }
+        .content .top_title::after { content: ''; display: block; overflow: hidden; clear: both; }
+        .content .main_right .top_title .chart_txt { color: #ff9629; }
+        .content select { width: 85px; }
+        .content .complete_btn { border: none; background-color: #333; color: white; font-size: 13px; padding: 4px 10px; }
+        .t_center { text-align: center; }
+        .t_right { text-align: right; }
+        .mb10px { margin-bottom: 10px; }
+
+        .tg { border-collapse: collapse; border-spacing: 0; }
+        .tg td {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+
+        .tg th {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+        .active { display: none; }
+
 
     </style>
     <body>
         <div class="wrap">
-            <style>
-                .wrap { width: 1200px; margin: 20px auto; text-align: center; }
-                header { width: 100%; background-color: #bfbfbf; }
-                header nav { float: left; }
-                header nav .main_menu { display: none; }
-                header nav img { border: 1px solid #7f7f7f; margin-right: 20px; }
-                header::after { content: ''; display: block; overflow: hidden; clear: both; }
-                header .left_title { float: left; margin-top: 10px; }
-                header .right_title { float: right; margin-top: 10px; } 
-
-                .content .chart { height: 200px; margin: 0 0 10px 0; border: 1px solid #ddd; }
-                .content .main_left { float: left; width: 28%; margin-right: 16px; background-color: #f1f1eb; padding: 10px; border: 1px solid #d5d5d5; }
-                .content .main_left .ml_table,.content .main_right .mr_table { border: 1px solid #ddd; padding: 10px; background-color: white; }
-
-                .content::after { content: ''; display: block; overflow: hidden; clear: both; }
-                .content .main_right { float: left; width: 67%; background-color: #f1f1eb; padding: 10px; border: 1px solid #d5d5d5; }
-                .content .folder { display: none; }
-                .content .not_folder { opacity: 1; }
-                
-                .content .top_title { border: 1px solid #ddd; margin-bottom: 20px; background-color: white; }
-                .content .top_title .chart_txt { font-size: 22px; color: red; font-weight: 600; }
-                .content .top_title .arrow_area { float: right; margin-top: 4px; cursor: pointer; }
-                .content .top_title::after { content: ''; display: block; overflow: hidden; clear: both; }
-                .content .main_right .top_title .chart_txt { color: #ff9629; }
-                .content select { width: 85px; }
-                .content .complete_btn { border: none; background-color: #333; color: white; font-size: 13px; padding: 4px 10px; }
-                .t_center { text-align: center; }
-                .t_right { text-align: right; }
-                .mb10px { margin-bottom: 10px; }
-
-                .tg { border-collapse: collapse; border-spacing: 0; }
-                .tg td {
-                    border-color: black;
-                    border-style: solid;
-                    border-width: 1px;
-                    font-family: Arial, sans-serif;
-                    font-size: 14px;
-                    overflow: hidden;
-                    padding: 10px 5px;
-                    word-break: normal;
-                }
-
-                .tg th {
-                    border-color: black;
-                    border-style: solid;
-                    border-width: 1px;
-                    font-family: Arial, sans-serif;
-                    font-size: 14px;
-                    font-weight: normal;
-                    overflow: hidden;
-                    padding: 10px 5px;
-                    word-break: normal;
-                }
-                .active { display: none; }
-            </style>
             <header>
                 <nav>
                     <img src="../images/menu.PNG" alt="메뉴아이콘">
@@ -85,9 +87,67 @@
                     <h1><a href="accodian.html">CESS 전기종합관제시스템</a></h1>
                 </div>
 
-                <div class="right_title">
-                    <a href="#"><img src="../images/right_title.PNG" alt="마이페이지 로고"></a>
+                <!-- <div class="right_title">
+                    <a href="#"><img src="../images/right_title.PNG" alt="마이페이지 로고"><i class="fas fa-chevron-down"></i></a>
+                </div> -->
+                <style>
+                    .menu_box {width:100%; padding:7px 0;}
+                    .menu_box img {position: relative; top:5px; padding-right:10px;}
+                    .menu_btn,
+                    .menu_box ul li {cursor:pointer;}
+                    .menu_box ul li:hover { font-weight:bold;}
+                    .menu_btn {font-size:17px; color:#ffffff; overflow: hidden; }
+                    .menu_hide {font-size:13px; color:#ffffff; display: none; margin-top: 10px; margin-left: 39px; }
+                    .menu_hide ul li {padding:3px 0;}
+                    .menu_hide ul li a {color:#ffffff;}
+                    .up_icon { display: none; }
+
+                </style>
+                <div class="menu_box">
+                    <div class="menu_btn">
+                        <a href="#">
+                            <img src="../images/right_title.PNG" alt="마이페이지 로고">
+                            <i class="fas fa-chevron-down down_icon"></i>
+                            <i class="fas fa-chevron-up up_icon"></i>
+                        </a>
+
+                        <ul class="menu_hide">
+                            <li><a href="#">홍길동님</a></li>
+                            <li><a href="#">마이페이지</a></li>
+                            <li><a href="#">로그아웃</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- <div class="menu_hide">
+                        <ul>
+                            <li><a href="#">홍길동님</a></li>
+                            <li><a href="#">마이페이지</a></li>
+                            <li><a href="#">로그아웃</a></li>
+                        </ul>
+                    </div> -->
                 </div>
+                <script>
+                    $(document).ready( function(){
+                        $('.menu_btn').click( function(){
+                            $(".menu_hide").toggle();
+                            $('.up_icon,.down_icon').toggle();
+                        });
+                        // $(".menu_btn").each(function(i){
+                        //     $(this).click(function(){
+                        //         //before init
+                        //         $(".menu_hide").hide();
+                        //         $(".menu_btn").children(".fas").attr('class', 'fas fa-chevron-down');
+                        //         $(".menu_btn").css("color","#ffffff");
+                                
+                                
+                        //         //this change
+                        //         $(this).css("color","#fc637d");
+                        //         $(this).children(".fas").attr('class', 'fas fa-chevron-up');
+                        //         $(this).next().toggle();
+                        //     });
+                        // });
+                    });
+                </script>
             </header>
 
             <div class="content">
@@ -95,7 +155,6 @@
                     차트영역
                 </div>
 
-                
                 <script>
                     //  $('.arrow_area').each( function(i){
                     //     $(this).click( function(){
@@ -112,9 +171,9 @@
 
                     $( function() {
                         $( 'ul.table_flex li' ).click( function() {
-                            $( this ).animate({ 'width' : 782 }, 1000, "easeOutExpo");
+                            $( this ).animate({ 'width' : 782 }, 1000, "easeOutQuad");
                             $('table .active,.w_active').toggle();
-                            $( 'li' ).not( this ).animate({ 'width' : 358 }, 1000, "easeOutExpo");
+                            $( 'li' ).not( this ).animate({ 'width' : 358 }, 1000, "easeOutQuad");
                         });
                     });
                 </script>
@@ -123,8 +182,8 @@
                             <div class="top_title">
                                 <span class="chart_txt">위험</span>
                                 <div class="arrow_area">
-                                    <img class="not_folder" src="../../images/right_arr.PNG" alt="오른쪽화살표">
-                                    <img class="folder" src="../../images/left_arr.PNG" alt="왼쪽화살표">
+                                    <img class="not_folder" src="../images/right_arr.PNG" alt="오른쪽화살표">
+                                    <img class="folder" src="../images/left_arr.PNG" alt="왼쪽화살표">
                                 </div>
                             </div>
             
@@ -182,8 +241,8 @@
                             <div class="top_title">
                                 <span class="chart_txt">경고</span>
                                 <div class="arrow_area">
-                                    <img class="not_folder" src="../../images/left_arr.PNG" alt="왼쪽화살표">
-                                    <img class="folder" src="../../images/right_arr.PNG" alt="오른쪽화살표">
+                                    <img class="not_folder" src="../images/left_arr.PNG" alt="왼쪽화살표">
+                                    <img class="folder" src="../images/right_arr.PNG" alt="오른쪽화살표">
                                 </div>
                             </div>
             
