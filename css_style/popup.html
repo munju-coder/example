@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="popup_wrap">
+        <div class="popup_title">
+            <div class="title">
+                <h2>재전송요청사유상세</h2>
+                <div class="close">
+                    <button type="button" class="close_btn">x</button>
+                </div>
+            </div>
+            <div class="arrow_right"></div><span>연계재전송요청(송신)</span>
+        </div>
+        <style type="text/css">
+            .popup_wrap { width: 800px; }
+            .popup_title .title div.close { float: right; }
+
+            .arrow_right {
+                display: inline-block;
+                width: 0;
+                height: 0;
+                border-top: 8px solid transparent;
+                border-right: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 8px solid rgb(7, 7, 7);
+            }
+            textarea { width: 99%; }
+            .tg {
+                border-collapse: collapse;
+                border-spacing: 0;
+            }
+
+            .tg td {
+                border-color: black;
+                border-style: solid;
+                border-width: 1px;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                overflow: hidden;
+                padding: 10px 5px;
+                word-break: normal;
+            }
+
+            .tg th {
+                border-color: black;
+                border-style: solid;
+                border-width: 1px;
+                font-family: Arial, sans-serif;
+                font-size: 14px;
+                font-weight: normal;
+                overflow: hidden;
+                padding: 10px 5px;
+                word-break: normal;
+            }
+
+            .tg .tg-c3cn {
+                background-color: #ffccc9;
+                text-align: right;
+                vertical-align: top
+            }
+
+            .tg .tg-cmwg {
+                background-color: #ffccc9;
+                text-align: center;
+                vertical-align: top
+            }
+
+            .tg .tg-0lax {
+                text-align: left;
+                vertical-align: top
+            }
+        </style>
+        <table class="tg" style="undefined;table-layout: fixed; width: 890px">
+            <!-- <colgroup>
+                <col style="width: 159px">
+                <col style="width: 212px">
+                <col style="width: 222px">
+                <col style="width: 297px">
+            </colgroup> -->
+            <thead>
+                <tr>
+                    <th class="tg-c3cn">연계데이터발생일시</th>
+                    <th class="tg-0lax" colspan="3">2021-01-01</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tg-c3cn">인터페이스ID</td>
+                    <td class="tg-0lax">4_SEC_SEND_4</td>
+                    <td class="tg-c3cn">발생 일련번호</td>
+                    <td class="tg-0lax">20222222222222222222222222</td>
+                </tr>
+                <tr>
+                    <td class="tg-cmwg">재전송요청<br>대상구분</td>
+                    <td class="tg-0lax">청약정보(10)</td>
+                    <td class="tg-c3cn">상세코드</td>
+                    <td class="tg-0lax">공제계약(11)</td>
+                </tr>
+                <tr>
+                    <td class="tg-cmwg">재전송요청사유*<br>(0 / 2000 byte)</td>
+                    <td class="tg-0lax" colspan="3">
+                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tg-cmwg">처리상태</td>
+                    <td class="tg-0lax">성공(S)</td>
+                    <td class="tg-c3cn">처리일시</td>
+                    <td class="tg-0lax">2020-01-01</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
