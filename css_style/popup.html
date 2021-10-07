@@ -73,7 +73,7 @@
 
             .tg .tg-0lax {
                 text-align: left;
-                vertical-align: top
+                vertical-align: top;
             }
         </style>
         <table class="tg" style="undefined;table-layout: fixed; width: 890px">
@@ -117,5 +117,71 @@
             </tbody>
         </table>
     </div>
+
+    <div class="bottom_btn">
+        <span class="arrow bottom"></span>
+    </div>
+
+    <div class="top_btn">
+        <span class="arrow top"></span>
+    </div>
+    
+    <style>
+        .bottom_btn { position: fixed; left: 800px; top: 100px; }
+        .top_btn { position: fixed; left: 800px; }
+        .arrow {
+            display: inline-block;
+            background: #ad1e51;
+            position: relative;
+        }
+    
+        .arrow.top, .arrow.bottom {
+            width: 9px;
+            height: 14px;
+        }
+        .arrow:before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+    
+        .arrow.top:before {
+            top: -23px;
+            left: -8px;
+            border-width: 12px 12px;
+            border-color: transparent transparent #ad1e51 transparent;
+        }
+    
+        .arrow.bottom:before {
+            top: 14px;
+            left: -7px;
+            border-width: 12px 12px;
+            border-color: #ad1e51 transparent transparent transparent;
+        }
+
+        .arrow.bottom:after {
+            content: '맨 아래로';
+            position: absolute;
+            width: 100px;
+            height: 0;
+            top: 28px;
+            font-size: 12px;
+            left: -19px;
+        }
+
+        .arrow.top:after {
+            content: '맨 위로';
+            position: absolute;
+            width: 100px;
+            height: 0;
+            top: 16px;
+            font-size: 12px;
+            left: -15px;
+        }
+    </style>
+
+    
 </body>
 </html>
